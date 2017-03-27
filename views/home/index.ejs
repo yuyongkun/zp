@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/css/base.css' />
+    <link rel='stylesheet' href='/css/index.css' />
+</head>
+
+<body>
+    <%include header.ejs%>
+        <div class="banner">
+            <div class="carousel" id="index-pic">
+                <ul>
+                    <li>
+                        <a href="#"><img class="lazy-img" src="/images/1.jpg" title="惊蛰已过，春暖花开"></a>
+                    </li>
+                    <li style="display: none;">
+                        <a href="#"><img class="lazy-img" src="/images/2.jpg" title="惊蛰已过，春暖花开"></a>
+                    </li>
+                    <li style="display: none;">
+                        <a href="#"><img class="lazy-img" src="/images/3.jpg" title="惊蛰已过，春暖花开"></a>
+                    </li>
+                    <li style="display: none;">
+                        <a href="#"><img class="lazy-img" src="/images/4.jpg" title="惊蛰已过，春暖花开"></a>
+                    </li>
+                </ul>
+                <div class="carousel-num" id="carousel-num">
+                    <span class="carousel-cur">
+                        <a href="#"><img src="/images/1.jpg"></a>
+                    </span>
+                    <span>
+                        <a href="#"><img src="/images/2.jpg"></a>
+                    </span>
+                    <span>
+                        <a href="#"><img src="/images/3.jpg"></a>
+                    </span>
+                    <span>
+                        <a href="#"><img src="/images/4.jpg"></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="zp-wrap hot-recommended">
+            <h2>热门推荐</h2>
+            <a href="#">
+                <img src="/images/tj-1.png">
+                <p>液压过滤器滤芯</p>
+            </a>
+            <a href="#">
+                <img src="/images/tj-2.png">
+                <p>液压过滤器滤芯</p>
+            </a>
+            <a href="#">
+                <img src="/images/tj-3.png">
+                <p>液压过滤器滤芯</p>
+            </a>
+            <a href="#">
+                <img src="/images/tj-4.png">
+                <p>液压过滤器滤芯</p>
+            </a>
+            <a href="#">
+                <img src="/images/tj-5.png">
+                <p>液压过滤器滤芯</p>
+            </a>
+        </div>
+        <div class="zp-wrap zp-ad">
+            <a href="#" class="zp-ad-pre"></a>
+            <a href="#" class="zp-ad-next"></a>
+            <div id="demo">
+                <div id="indemo">
+                    <div id="demo1">
+                        <a href="#"><img src="/images/ad-1.jpg" border="0" /></a>
+                        <a href="#"><img src="/images/ad-2.jpg" border="0" /></a>
+                        <a href="#"><img src="/images/ad-3.jpg" border="0" /></a>
+                        <a href="#"><img src="/images/ad-4.jpg" border="0" /></a>
+                        <a href="#"><img src="/images/ad-5.jpg" border="0" /></a>
+                    </div>
+                    <div id="demo2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="zp-wrap zp-info">
+            <div class="zp-info-list">
+                <div class="zp-info-list-title">
+                    <div class="zp-info-name">
+                        <h4>新闻中心</h4></div>
+                    <a href="#">更多&gt;</a>
+                </div>
+                <div class="zp-info-list-content zp-info-news">
+                    <div class="zp-info-news-list">
+                        <img src="/images/news-1.jpg">
+                        <a href="/ProductInfo/311.html" title="">油田滤芯、注井水滤芯 一体式聚,油田滤芯、注井水滤芯... </a>
+                        <span>2017-03-07</span>
+                    </div>
+                    <div class="zp-info-news-list">
+                        <img src="/images/news-1.jpg">
+                        <a href="/ProductInfo/311.html" title="">油田滤芯、注井水滤芯 一体式聚,油田滤芯、注井水滤芯... </a>
+                        <span>2017-03-07</span>
+                    </div>
+                </div>
+            </div>
+            <div class="zp-info-list">
+                <div class="zp-info-list-title">
+                    <div class="zp-info-name">
+                        <h4>技术支持</h4></div>
+                    <a href="#">更多&gt;</a>
+                </div>
+                <div class="zp-info-list-content">
+                    <div class="zp-info-aboutus-icon"><img src="/images/apic.jpg"></div>
+                    <p class="zp-info-aboutus-intro"><a href="#">艾达机械设备有限公司是一家专业致力于工业液压油过滤器滤芯，压缩机过滤器滤芯及金属烧结滤芯研发，生产，销售，服务于一体的专业滤器厂家。咨询电话：0373-</a></p>
+                </div>
+            </div>
+            <div class="zp-info-list">
+                <div class="zp-info-list-title">
+                    <div class="zp-info-name">
+                        <h4>行业应用</h4></div>
+                    <a href="#">更多&gt;</a>
+                </div>
+                <div class="zp-info-list-content">
+                    <div class="zp-info-aboutus-icon"><img src="/images/apic.jpg"></div>
+                    <p class="zp-info-aboutus-intro"><a href="#">艾达机械设备有限公司是一家专业致力于工业液压油过滤器滤芯，压缩机过滤器滤芯及金属烧结滤芯研发，生产，销售，服务于一体的专业滤器厂家。咨询电话：0373-</a></p>
+                </div>
+            </div>
+        </div>
+        <%include footer.ejs%>
+        <script type="text/javascript" src="js/libs/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/global/common.js"></script>
+</body>
+
+</html>
