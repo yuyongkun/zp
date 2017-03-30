@@ -25,4 +25,10 @@ router.get('/contact', function(req, res, next) {
 router.get('/aboutus', function(req, res, next) {
     res.render('home/aboutus', { title: 'Express' });
 });
+
+
+/*后台*/
+router.get('/admin', function(req, res, next) {
+    res.render('admin/index', { title: 'Express' });
+});
 module.exports = router;
