@@ -9,6 +9,10 @@ router.get('/', function(req, res, next) {
 router.get('/products', function(req, res, next) {
     res.render('home/products', { title: 'Express' });
 });
+/*产品详情*/
+router.get('/details', function(req, res, next) {
+    res.render('home/details', { title: 'Express' });
+});
 /*解决方案*/
 router.get('/case', function(req, res, next) {
     res.render('home/case', { title: 'Express' });

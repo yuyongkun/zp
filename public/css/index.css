@@ -53,9 +53,6 @@
     color: #898989;
 }
 
-.zp-info-list .zp-info-list-title a:hover {
-    color: #009ce0;
-}
 
 .zp-info-list .zp-info-list-content {
     padding-top: 20px;
@@ -69,9 +66,7 @@
     color: #636363;
 }
 
-.zp-info-list .zp-info-list-content a:hover {
-    color: #009ce0;
-}
+
 
 .zp-info-list .zp-info-list-content .zp-info-aboutus-icon {
     float: left;

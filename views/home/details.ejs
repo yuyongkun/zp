@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/css/base.css' />
+    <link rel='stylesheet' href='/css/details.css' />
+</head>
+
+<body>
+    <%include header.ejs%>
+        <div class="zp-wrap">
+            <div class="details-wrap">
+                <div class="details-head">
+                    <a href="/details" title="阿特拉斯压缩机油分1622 3140 00" alt="阿特拉斯压缩机油分1622 3140 00"><img class="products-icon" src="/images/test/t1.jpg"></a>
+                    <h1 class="products-desc">多米尼克Domnick Hunter精密过滤器AO001</h1>
+                    <p>日期：2014-04-28 作者：艾达机械</p>
+                </div>
+                <div class="details-content">
+                    <div class="details-content-nav"><span class="details-cur">产品介绍</span><span>联系我们</span><span>相关产品</span></div>
+                    <div class="details-content-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%include footer.ejs%>
+            <script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
+            <script type="text/javascript" src="/js/global/common.js"></script>
+            <script type="text/javascript">
+            $('ul#products-primary-nav li').bind('click', function() {
+                $('ul#products-primary-nav li').removeClass('cur');
+                $(this).addClass('cur');
+                $('.products-types').hide();
+                var dataId = $(this).data('id');
+                if (dataId === 'products-primary-01') {
+                    $('#products-primary-01').show();
+
+                } else if (dataId === 'products-primary-02') {
+                    $('#products-primary-02').show();
+                } else if (dataId === 'products-primary-03') {
+                    $('#products-primary-03').show();
+                } else if (dataId === 'products-primary-04') {
+                    $('#products-primary-04').show();
+                } else if (dataId === 'products-primary-05') {
+                    $('#products-primary-05').show();
+                } else if (dataId === 'products-primary-06') {
+                    $('#products-primary-06').show();
+                }
+            });
+            </script>
+</body>
+
+</html>
