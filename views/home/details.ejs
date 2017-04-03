@@ -19,9 +19,8 @@
                     <p>日期：2014-04-28 作者：艾达机械</p>
                 </div>
                 <div class="details-content">
-                    <div class="details-content-nav"><span class="details-cur">产品介绍</span><span>联系我们</span><span>相关产品</span></div>
+                    <div id="details-content-nav" class="details-content-nav"><span class="details-cur">产品介绍</span><span>联系我们</span><span>相关产品</span></div>
                     <div class="details-content-body">
-                        
                     </div>
                 </div>
             </div>
@@ -30,6 +29,10 @@
             <script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
             <script type="text/javascript" src="/js/global/common.js"></script>
             <script type="text/javascript">
+            $('#details-content-nav span').bind('click',function(){
+                $('#details-content-nav span').removeClass('details-cur');
+                $(this).addClass('details-cur');
+            });
             $('ul#products-primary-nav li').bind('click', function() {
                 $('ul#products-primary-nav li').removeClass('cur');
                 $(this).addClass('cur');
