@@ -1,0 +1,153 @@
+    <%include header.ejs%>
+    	<script type="text/javascript">
+    	  $(function(){
+    	        $('.column').equalHeight();
+    	        $("#currentView").html("<a href='/admin/index'>后台首页</a> <div class='breadcrumb_divider'></div> <a class='current'>首页信息</a>");
+    	    });
+    	</script>
+	<section id="main" class="column">
+   <h4 class="alert_info">欢迎来到免费的MediaLoot管理面板模板，这可能是一个翔实的消息。</h4>
+		<article class="module width_full">
+			<header><h3>Stats</h3></header>
+			<div class="module_content">
+				<article class="stats_graph">
+					<img src="#" width="520" height="140" alt="" />
+				</article>
+				
+				<article class="stats_overview">
+					<div class="overview_today">
+						<p class="overview_day">Today</p>
+						<p class="overview_count">1,876</p>
+						<p class="overview_type">Hits</p>
+						<p class="overview_count">2,103</p>
+						<p class="overview_type">Views</p>
+					</div>
+					<div class="overview_previous">
+						<p class="overview_day">Yesterday</p>
+						<p class="overview_count">1,646</p>
+						<p class="overview_type">Hits</p>
+						<p class="overview_count">2,054</p>
+						<p class="overview_type">Views</p>
+					</div>
+				</article>
+				<div class="clear"></div>
+			</div>
+		</article><!-- end of stats article -->
+		<article class="module width_3_quarter">
+			<header><h3 class="tabs_involved">Content Manager</h3>
+			<ul class="tabs">
+				<li class="active"><a href="#tab1">Posts</a></li>
+				<li><a href="#tab2">Comments</a></li>
+			</ul>
+			</header>
+
+			<div class="tab_container">
+				<div id="tab1" class="tab_content">
+					<table class="tablesorter" cellspacing="0"> 
+					<thead> 
+						<tr> 
+							<th></th> 
+							<th>Entry Name</th> 
+							<th>Category</th> 
+							<th>Created On</th> 
+							<th>Actions</th> 
+						</tr> 
+					</thead> 
+					<tbody> 
+						<tr> 
+							<td><input type="checkbox"></td> 
+							<td>Lorem Ipsum Dolor Sit Amet</td> 
+							<td>Articles</td> 
+							<td>5th April 2011</td> 
+							<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+						</tr> 
+						<tr> 
+							<td><input type="checkbox"></td> 
+							<td>Ipsum Lorem Dolor Sit Amet</td> 
+							<td>Freebies</td> 
+							<td>6th April 2011</td> 
+							<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+						</tr>
+						<tr> 
+							<td><input type="checkbox"></td> 
+							<td>Sit Amet Dolor Ipsum</td> 
+							<td>Tutorials</td> 
+							<td>10th April 2011</td> 
+							<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+						</tr> 
+						<tr> 
+							<td><input type="checkbox"></td> 
+							<td>Dolor Lorem Amet</td> 
+							<td>Articles</td> 
+							<td>16th April 2011</td> 
+							<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+						</tr>
+						<tr> 
+							<td><input type="checkbox"></td> 
+							<td>Dolor Lorem Amet</td> 
+							<td>Articles</td> 
+							<td>16th April 2011</td> 
+							<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+						</tr>  
+					</tbody> 
+					</table>
+				</div><!-- end of #tab1 -->
+				
+				<div id="tab2" class="tab_content" style="display:none">
+					<table class="tablesorter" cellspacing="0"> 
+						<thead> 
+							<tr> 
+								<th></th> 
+								<th>Comment</th> 
+								<th>Posted by</th> 
+								<th>Posted On</th> 
+								<th>Actions</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+							<tr> 
+								<td><input type="checkbox"></td> 
+								<td>Lorem Ipsum Dolor Sit Amet</td> 
+								<td>Mark Corrigan</td> 
+								<td>5th April 2011</td> 
+								<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+							</tr> 
+							<tr> 
+								<td><input type="checkbox"></td> 
+								<td>Ipsum Lorem Dolor Sit Amet</td> 
+								<td>Jeremy Usbourne</td> 
+								<td>6th April 2011</td> 
+								<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+							</tr>
+							<tr> 
+								<td><input type="checkbox"></td> 
+								<td>Sit Amet Dolor Ipsum</td> 
+								<td>Super Hans</td> 
+								<td>10th April 2011</td> 
+								<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+							</tr> 
+							<tr> 
+								<td><input type="checkbox"></td> 
+								<td>Dolor Lorem Amet</td> 
+								<td>Alan Johnson</td> 
+								<td>16th April 2011</td> 
+								<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+							</tr> 
+							<tr> 
+								<td><input type="checkbox"></td> 
+								<td>Dolor Lorem Amet</td> 
+								<td>Dobby</td> 
+								<td>16th April 2011</td> 
+								<td><input type="image" src="/static/admin/img/icn_edit.png" title="Edit"><input type="image" src="/static/admin/img/icn_trash.png" title="Trash"></td> 
+							</tr> 
+						</tbody> 
+					</table>
+				</div><!-- end of #tab2 -->
+			</div><!-- end of .tab_container -->
+		</article><!-- end of content manager article -->
+		</section>
+    <%include footer.ejs%>
+    	
+		
+		
+	

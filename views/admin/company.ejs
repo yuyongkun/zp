@@ -1,0 +1,47 @@
+
+    <%include header.ejs%>
+  
+    <section id="main" class="column">
+     <h4 class="alert_info">欢迎来到免费的MediaLoot管理面板模板，这可能是一个翔实的消息。</h4>
+    <article class="module width_full">
+			<div class="module_content">
+				<fieldset>
+					<label for="txtModule">公司名称英文</label>
+					<input type="text" name="nameEn" value="<%= result.nameEn %>"/>
+				</fieldset>
+				<fieldset>
+					<label for="txtName">公司名称中文</label>
+					<input type="text" name="nameCh" value="<%= result.nameCh %>"/>
+				</fieldset>
+				<fieldset>
+					<label for="txtAction">联系电话</label>
+					<input type="text" name="phone" value="<%= result.phone %>"/>
+				</fieldset>
+				<fieldset>
+					<label for="txtButton">移动联系方式</label>
+					<input type="text" name="mobile" value="<%= result.mobile %>"/>
+				</fieldset>
+					<fieldset>
+					<label for="txtButton">公司邮编</label>
+					<input type="text" name="email" value="<%= result.email %>"/>
+				</fieldset>
+				<fieldset>
+					<label for="txtButton">企业QQ</label>
+					<input type="text" name="enterpriseQQ" value="<%= result.enterpriseQQ %>"/>
+				</fieldset>
+				<fieldset>
+					<label for="txtButton">公司地址</label>
+					<input type="text"  name="enterpriseQQ" value="<%= result.address %>"/>
+				</fieldset>
+				<fieldset>
+					<label for="txtButton">公司简介</label>
+					<textarea id="description"><%= result.description %></textarea>
+				</fieldset>
+				<div class="tc mt20">
+					<a href="javascript:void(0)" class="button green" id="btnAdd">保存</a>
+				</div>
+			</div>
+			
+		</article><!-- end of post new article -->
+		</section>
+    <%include footer.ejs%>

@@ -11,7 +11,11 @@
     "debug": "~2.6.0",
     "ejs": "~2.5.5",
     "express": "~4.14.1",
+    "express-session": "latest",
+    "formidable": "^1.1.1",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.2"
+    "mysql": "latest",
+    "serve-favicon": "~2.3.2",
+    "ueditor": "^1.2.1"
   }
 }

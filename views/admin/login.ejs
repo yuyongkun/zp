@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8"/>
+	<title>后台登录</title>
+	<link rel="stylesheet" href="/static/admin/css/layout.css" type="text/css"/>
+		<script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js" ></script>
+
+</head>
+<body>
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title"><a href="index.html">Pwstrick Admin</a></h1>
+		</hgroup>
+	</header> <!-- end of header bar -->
+	<div class="w500 mc ovh">
+		<section id="main"  style="margin-top: 50px;">
+			<article class="module width_full">
+				<header><h3>登录</h3></header>
+				<form class="module_content" role="form" id="loginForm" method="post" action="/admin/login">
+					<fieldset>
+						<label for="txtUser">用户名</label>
+						<input type="text" id="username" name="username" placeholder="用户名" required/>
+					</fieldset>
+					<fieldset>
+						<label for="txtPwd">密码</label>
+						<input type="password" id="password" name="password" placeholder="密码" required/>
+					</fieldset>
+					<div class="tc h30">
+						<button type="submit" style="width: 70px;height: 30px;" class="button green">登录</button>
+					</div>
+				</form>
+			</article>
+		</section>
+
+	</div>
+</body>
+</html>

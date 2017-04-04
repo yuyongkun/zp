@@ -3,9 +3,13 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session=require('express-session');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var admin = require('./routes/admin');
+var product = require('./routes/product');
+var ueditor = require('./routes/ueditor');
 
 var app = express();
 // view engine setup
@@ -14,12 +18,27 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.set('port', 3003);
+app.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
+});
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser("An"));
+app.use(session({
+    secret:'an',
+    resave:false,
+    saveUninitialized:true
+}));
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
+app.use('/admin', admin);
+app.use('/product', product);
+app.use('/ueditor', ueditor);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
