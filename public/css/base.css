@@ -275,7 +275,7 @@ ul.zp-wrap>li:nth-child(2) .about_nav>ul>li:hover h3 {
     border-right: 1px solid #fff;
 }
 
-ul.zp-wrap>li:nth-child(2) .about_nav>ul>li:hover {
+ul.zp-wrap>li:nth-child(2) .about_nav>ul>li:hover{
     border-color: #fff;
 }
 
@@ -291,7 +291,9 @@ ul.zp-wrap>li:nth-child(2) .about_nav>ul>li:last-child>h3 {
     border-bottom: none;
 }
 
-
+ul.zp-wrap>li:nth-child(4) .about_nav>ul>li,ul.zp-wrap>li:nth-child(5) .about_nav>ul>li{
+border-bottom: 1px solid #e0dedf;
+}
 ul.zp-wrap>li:nth-child(4) .about_nav,
 ul.zp-wrap>li:nth-child(5) .about_nav,
 ul.zp-wrap>li:nth-child(6) .about_nav {
