@@ -311,7 +311,7 @@ ul.zp-wrap>li:nth-child(6) .about_nav ul li a {
     padding-bottom: 32px;
     background: #666464;
     overflow: hidden;
-    color: #fff;
+    color: #ccc;
 }
 
 .fotter h3 {
@@ -352,6 +352,13 @@ ul.zp-wrap>li:nth-child(6) .about_nav ul li a {
 .fotter ul.fotter-size-nav li a {
     font-family: "新宋体";
     line-height: 20px;
+}
+
+.zp-wrap p {
+    color: #ccc;
+}
+.footer-related-link a{
+    padding:0px 5px;
 }
 
 /* 百度分享 */
