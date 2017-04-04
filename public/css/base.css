@@ -28,6 +28,11 @@ a,
 p {
     text-decoration: none;
     word-wrap: break-word;
+    color: #444;
+}
+
+a:hover {
+    color: #009ce0;
 }
 
 i {
@@ -36,6 +41,10 @@ i {
 
 li {
     list-style: none;
+}
+
+.zp-head {
+    box-shadow: 0px 3px 5px #ddd;
 }
 
 .zp-wrap {
@@ -152,7 +161,7 @@ li {
 
 ul.zp-wrap >li {
     float: left;
-    width: 16.66%;
+    width: 20%;
     padding: 2px 0 5px;
     text-align: center;
     border-top: 3px solid #eee;
@@ -182,7 +191,7 @@ ul.zp-wrap>li:hover {
 ul.zp-wrap>li .about_nav {
     display: none;
     position: absolute;
-    width:16.66%;
+    width: 20%;
     top: 40px;
     margin-left: -1px;
     border-left: 1px solid #e0dedf;
@@ -222,7 +231,7 @@ ul.zp-wrap>li:nth-child(2) .about_nav .zp-product-list {
     width: 500px;
     min-height: 250px;
     top: 0;
-    left: 161px;
+    left: 249px;
     padding: 7px 15px;
     border-right: 1px solid #e0dedf;
     border-bottom: 3px solid #009ce0;
@@ -282,13 +291,15 @@ ul.zp-wrap>li:nth-child(2) .about_nav>ul>li:last-child>h3 {
     border-bottom: none;
 }
 
-ul.zp-wrap>li:nth-child(2) .about_nav,
+
+ul.zp-wrap>li:nth-child(4) .about_nav,
 ul.zp-wrap>li:nth-child(5) .about_nav,
 ul.zp-wrap>li:nth-child(6) .about_nav {
-    width: 16.66%;
+    width: 20%;
 }
 
 ul.zp-wrap>li:nth-child(2) .about_nav ul li a,
+ul.zp-wrap>li:nth-child(4) .about_nav ul li a,
 ul.zp-wrap>li:nth-child(5) .about_nav ul li a,
 ul.zp-wrap>li:nth-child(6) .about_nav ul li a {
     padding: 5px 0;
@@ -302,7 +313,7 @@ ul.zp-wrap>li:nth-child(6) .about_nav ul li a {
     padding-bottom: 32px;
     background: #666464;
     overflow: hidden;
-    color: #fff;
+    color: #ccc;
 }
 
 .fotter h3 {
@@ -331,7 +342,7 @@ ul.zp-wrap>li:nth-child(6) .about_nav ul li a {
 
 .fotter ul.fotter-size-nav li {
     float: left;
-    width: 16.66%;
+    width: 20%;
 }
 
 .fotter ul.fotter-size-nav li h4 {
@@ -343,4 +354,135 @@ ul.zp-wrap>li:nth-child(6) .about_nav ul li a {
 .fotter ul.fotter-size-nav li a {
     font-family: "新宋体";
     line-height: 20px;
+}
+
+.fotter p {
+    color: #ccc;
+}
+.footer-related-link a{
+    padding:0px 5px;
+}
+
+/* 百度分享 */
+
+.share-default {
+    float: right;
+    text-align: right;
+}
+
+.share-default .share-btn,
+.share-ss .share-btn {
+    height: 28px;
+    width: 30px;
+    display: inline-block;
+    background: url("/images/share_icon.svg") 6px 4px no-repeat;
+    position: relative;
+    margin: 0;
+    float: none;
+    padding: 0;
+}
+
+.share-default .qzone,
+.share-ss .qzone {
+    background-position: 6px -36px;
+}
+
+.share-default .weixin,
+.share-ss .weixin {
+    background-position: 6px -276px;
+}
+
+.share-menu {
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 28px;
+    background: #fff;
+    width: 119px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+.share-menu ul li {
+    float: left;
+}
+
+.share-menu a {
+    float: left !important;
+    width: 79px;
+    height: 35px !important;
+    line-height: 35px !important;
+    padding-left: 40px !important;
+    position: relative;
+    background-image: none !important;
+    margin: 0 !important;
+    border-bottom: 3px solid #ffffff;
+    text-decoration: none;
+    color: #666;
+}
+
+.share-menu a:hover {
+    color: #0078d7;
+    text-decoration: none;
+    background-color: #F2F2F2;
+    border-bottom: 3px solid #0078d7;
+}
+
+.share-menu a i {
+    position: absolute;
+    left: 11px;
+    top: 11px;
+    width: 18px;
+    height: 18px;
+    background: url("/images/share_icon.svg") 0 -80px no-repeat;
+}
+
+.share-menu a.qq i {
+    background-position: 0 -160px;
+}
+
+.share-menu a.douban i {
+    background-position: 0 -200px;
+}
+
+.share-menu a.renren i {
+    background-position: 0 -240px;
+}
+
+.share-default .weibo:hover {
+    background-position: -34px 4px;
+}
+
+.share-default .qzone:hover {
+    background-position: -34px -36px;
+}
+
+.share-default .weixin:hover {
+    background-position: -34px -276px;
+}
+
+.share-default .share-btn:hover {
+    background-color: #F5F5F5;
+}
+
+.share-menu a.tqq:hover i {
+    background-position: -40px -80px;
+}
+
+.share-menu a.qq:hover i {
+    background-position: -40px -160px;
+}
+
+.share-menu a.douban:hover i {
+    background-position: -40px -200px;
+}
+
+.share-menu a.renren:hover i {
+    background-position: -40px -240px;
+}
+
+#_share {
+    position: absolute;
+    top: 100px;
+    right: 414px;
 }
