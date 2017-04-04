@@ -25,16 +25,19 @@
 .details-content-nav {
     border-top: 4px solid #23aae4;
 }
-.details-content-nav:after{
-	content: '';
+
+.details-content-nav:after {
+    content: '';
     clear: both;
     display: block;
 }
+
 .details-content-nav span {
     float: left;
     width: 33.33%;
     height: 39px;
     line-height: 39px;
+    font-size: 14px;
     background: #f2f2f2;
     border-right: 1px solid #e1e1e1;
     border-bottom: 1px solid #e1e1e1;
@@ -48,24 +51,28 @@
 }
 
 .details-content-body {
-        min-height: 300px;
+    min-height: 300px;
 }
-.details-func{
-	padding:15px 0;
-	float: left;
+
+.details-func {
+    padding: 15px 0;
+    float: left;
     width: 100%;
 }
 
-.details-func p{
-	color: #666;
+.details-func p {
+    color: #666;
 }
-.details-func table{
-	color: #666;
-	border-color: #ddd;
+
+.details-func table {
+    color: #666;
+    border-color: #ddd;
 }
-.details-func table tr td{
-	padding-left: 5px;
+
+.details-func table tr td {
+    padding-left: 5px;
 }
+
 .products-center-item {
     float: left;
     width: 230px;
