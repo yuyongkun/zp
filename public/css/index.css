@@ -250,7 +250,9 @@
 .hot-recommended a img {
     height: 45px;
 }
-
+.hot-recommended p{
+    color: #fff;
+}
 
 /* 滚动广告 */
 

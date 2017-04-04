@@ -161,7 +161,7 @@ li {
 
 ul.zp-wrap >li {
     float: left;
-    width: 16.66%;
+    width: 20%;
     padding: 2px 0 5px;
     text-align: center;
     border-top: 3px solid #eee;
@@ -191,7 +191,7 @@ ul.zp-wrap>li:hover {
 ul.zp-wrap>li .about_nav {
     display: none;
     position: absolute;
-    width: 16.66%;
+    width: 20%;
     top: 40px;
     margin-left: -1px;
     border-left: 1px solid #e0dedf;
@@ -231,7 +231,7 @@ ul.zp-wrap>li:nth-child(2) .about_nav .zp-product-list {
     width: 500px;
     min-height: 250px;
     top: 0;
-    left: 161px;
+    left: 249px;
     padding: 7px 15px;
     border-right: 1px solid #e0dedf;
     border-bottom: 3px solid #009ce0;
@@ -291,13 +291,15 @@ ul.zp-wrap>li:nth-child(2) .about_nav>ul>li:last-child>h3 {
     border-bottom: none;
 }
 
-ul.zp-wrap>li:nth-child(2) .about_nav,
+
+ul.zp-wrap>li:nth-child(4) .about_nav,
 ul.zp-wrap>li:nth-child(5) .about_nav,
 ul.zp-wrap>li:nth-child(6) .about_nav {
-    width: 16.66%;
+    width: 20%;
 }
 
 ul.zp-wrap>li:nth-child(2) .about_nav ul li a,
+ul.zp-wrap>li:nth-child(4) .about_nav ul li a,
 ul.zp-wrap>li:nth-child(5) .about_nav ul li a,
 ul.zp-wrap>li:nth-child(6) .about_nav ul li a {
     padding: 5px 0;
@@ -340,7 +342,7 @@ ul.zp-wrap>li:nth-child(6) .about_nav ul li a {
 
 .fotter ul.fotter-size-nav li {
     float: left;
-    width: 16.66%;
+    width: 20%;
 }
 
 .fotter ul.fotter-size-nav li h4 {
@@ -354,7 +356,7 @@ ul.zp-wrap>li:nth-child(6) .about_nav ul li a {
     line-height: 20px;
 }
 
-.zp-wrap p {
+.fotter p {
     color: #ccc;
 }
 .footer-related-link a{

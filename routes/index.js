@@ -21,6 +21,14 @@ router.get('/case', function(req, res, next) {
 router.get('/servicesupport', function(req, res, next) {
     res.render('home/servicesupport', { title: 'Express' });
 });
+/*服务保证*/
+router.get('/ServiceGuarantee', function(req, res, next) {
+    res.render('home/ServiceGuarantee', { title: 'Express' });
+});
+/*服务流程*/
+router.get('/ServiceProcess', function(req, res, next) {
+    res.render('home/ServiceProcess', { title: 'Express' });
+});
 /*联系我们*/
 router.get('/contact', function(req, res, next) {
     res.render('home/contact', { title: 'Express' });
