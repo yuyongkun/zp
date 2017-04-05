@@ -1,7 +1,33 @@
-.aboutus-wrap{
-	background: url(/images/ny_about.jpg) no-repeat;
-	    margin-bottom: 20px;
-}
-.aboutus-content{
+.aboutus-wrap {
 	    padding-top: 120px;
+      background: url(/images/ny_about.jpg) no-repeat -245px 0;
+}
+
+.aboutus-content {
+    background: #fff;
+}
+
+.aboutus-content h2 {
+    padding-bottom: 5px;
+    color: #009ce0;
+}
+
+.aboutus-content p {
+	    width: 480px;
+    margin-bottom: 20px;
+}
+
+.aboutus-c1 {
+    background: url(/images/about_bg.jpg) no-repeat;
+    padding:45px 30px 0px;
+      
+}
+.aboutus-c2{
+   display: inline-block;
+    width: 49%;
+    padding:45px 30px 45px;
+    vertical-align: top;
+}
+.aboutus-c2 img{
+	width:100%;
 }
