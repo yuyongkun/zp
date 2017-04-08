@@ -302,7 +302,9 @@ ul.zp-wrap>li .servicesupport-nav {
     width: 40%;
     right: 20%;
 }
-
+.servicesupport-s1{
+    cursor: default;
+}
 .servicesupport-s1 h2 {
     color: #009ce0;
     padding: 5px 0;
