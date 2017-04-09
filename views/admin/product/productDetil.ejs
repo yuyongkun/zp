@@ -1,24 +1,49 @@
-    <%include ../../header.ejs%>
+    <%include ../header.ejs%>
+    <body>
+       <%include ../left.ejs%>
       <section id="main" class="column">
      <h4 class="alert_info">欢迎来到免费的MediaLoot管理面板模板，这可能是一个翔实的消息。</h4>
     <article class="module width_full">
 			<div class="module_content">
 				<fieldset>
-					<label for="txtName">菜单名</label>
-					<input type="text" id="txtName"/>
+					<label for="txtName">产品名称</label>
+					<input type="text" id="nameCh" name="nameCh" value="<%=result.nameCh%>"/>
 				</fieldset>
 				<fieldset>
-					<label for="txtModule">模块名</label>
-					<input type="text" id="txtModule"/>
+					<label for="txtModule">产品编码</label>
+					<input type="text" id="code" name="code" value="<%=result.code%>"/>
 				</fieldset>
 				<fieldset>
-					<label for="txtAction">方法名</label>
-					<input type="text" id="txtAction"/>
+					<label for="txtAction">图片</label>
+					<input type="file" id="imgUrl" name="imgUrl" onchange="uploadImg()"/>
+					<img class="product_img" id="productImg" src="<%=result.imgUrl%>"></img>
 				</fieldset>
 				
 				<fieldset>
-					<label for="txtButton">按钮名</label>
-					<input type="text" id="txtButton"/>
+					<label for="txtButton">简介</label>
+					<input type="text" id="introduction" name="introduction" value="<%=result.introduction%>"/>
+				</fieldset>
+				<fieldset>
+					<label for="txtButton">一级产品名称</label>
+						<select name="firstCode" id="firstCode">
+					<% firstList.forEach(function(flist){
+					   if(flist.productCode==result.firstCode){%>
+					   <option value="<%=flist.productCode%>" selected><%=flist.productNameCh%></option>
+					   <%}else{%>
+					  <option value="<%=flist.productCode%>"><%=flist.productNameCh%></option>
+					<%}})%>   
+			        </select>
+				</fieldset>
+				<fieldset>
+					<label for="txtButton">二级产品名称</label>
+					<select name="secondCode" id="secondCode">
+					<% secondList.forEach(function(slist){
+					   if(slist.productCode==result.secondCode){%>
+					   <option value="<%=slist.productCode%>" selected><%=slist.productNameCh%></option>
+					   <%}else{%>
+					  <option value="<%=slist.productCode%>"><%=slist.productNameCh%></option>
+					<%}})%>   
+			        </select>
 				</fieldset>
 				<fieldset>
 				<div>
@@ -35,10 +60,41 @@
 		</section>
 		
 		<script type="text/javascript">
-
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('editor');
-
+    function getContent() {
+        var arr = [];
+        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getContent());
+        alert(arr.join("\n"));
+    }
+    $(function() {
+		 var conntent="<%=result.description%>";
+		 conntent = "" + conntent;
+		 conntent = conntent.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+		 ue.ready(function() {//编辑器初始化完成再赋值  
+	            ue.setContent(conntent);  //赋值给UEditor  
+	        });  
+	});
+   function uploadImg(){
+	   var FormServlet= "/product/upload";
+	   var fileInfo =$('#imgUrl').prop('files')[0];
+	   var fd = new FormData();
+	   fd.append("imgUrl", fileInfo);
+	   $.ajax({    
+           type:'post',        
+           url:FormServlet,    
+           data:fd,
+           cache:false,    
+           dataType:'json',    
+           success:function(data){
+               alert("请求成功");
+           }    
+       });    
+              
+   }
 </script>
-        <%include ../../footer.ejs%>
+</body>
+        <%include ../footer.ejs%>

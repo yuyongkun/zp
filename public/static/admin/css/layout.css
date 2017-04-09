@@ -857,11 +857,12 @@ box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
 }
 
 fieldset select {
-width: 96%;
+width: 91%;
 margin: 0 10px;
 border: 1px solid #bbb;
-height: 20px;
+height: 28px;
 color: #666666;
+border-radius: 5px;
 }
 
 fieldset textarea {
@@ -1524,3 +1525,31 @@ ul.paginationA01 li a:active{
 .w500{width:500px}
 .wperect{width:100%}
 .wperect50{width:50%}
+
+
+#divbg
+        {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 999;
+            top: 0px;
+            left: 0px;
+            filter: alpha(opacity=50);
+            opacity: 0.5;
+            background-color: #AAAAAA;
+        }
+        #diveditcontent
+        {
+            width: 630px;
+            height: 150px;
+            position: absolute;
+            z-index: 1000;
+            background-color: #444444;
+        }
+        #divheader
+        {
+            width: 100%;
+            height: 25px;
+            background-color: #BB5500;
+        }

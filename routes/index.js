@@ -54,7 +54,7 @@ router.get('/products/list/:name', function(req, res, next) {
 	console.log(req.query.code);
 	var page={limit:10,num:1};
 	if(req.query.p){
-		page['num']=req.query.p<1?1:req.query.p;
+		page['num']=req.query.p<1?1:req.query.p;13523020493
 	}
 	var startp=(page.num-1)*page.limit;
 	var endp=page.num*page.limit-1;
