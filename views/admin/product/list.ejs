@@ -1,4 +1,7 @@
  <%include ../header.ejs%>
+ 
+<body>
+   <%include ../left.ejs%>
 <script type="text/javascript">
 	$(function() {
 		$('.column').equalHeight();
@@ -94,8 +97,8 @@
 							<td><%= pro.fName%></td>
 							<td><%= pro.sName%></td> 
 							<td><img class="product_img" src="<%= pro.imgUrl%>"></img></td>
-							<td><a href="extend_menu_add.html?id=1" title="编辑"><font class="ficomoon icon-edit"></font></a>
-							<a href="javascript:void(0)" title="删除" name="del" eid="1"><font class="ficomoon icon-delete"></font></a></td> 
+							<td><a href="/product/detail/<%= pro.sCode%>?code=<%= pro.code%>" title="编辑"><font class="ficomoon icon-edit"></font></a>
+							<a href="/delete/detail/<%= pro.sCode%>?code=<%= pro.code%>" title="删除" name="del" eid="1"><font class="ficomoon icon-delete"></font></a></td> 
 						</tr>
 		<%})%>
 						
@@ -111,4 +114,5 @@
 		</nav>
 	</article>
 </section>
+</body>
 <%include ../footer.ejs%>
