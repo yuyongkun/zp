@@ -6,15 +6,24 @@
         <%= title %>
     </title>
     <link rel='stylesheet' href='/css/base.css' />
-    <link rel='stylesheet' href='/css/aboutus.css' />
+    <link rel='stylesheet' href='/css/concatus.css' />
 </head>
 
 <body>
-    <%include header.ejs%>
-    <div class="aboutus">
-    </div>
-    <%include footer.ejs%>
-    <script type="text/javascript" src="js/libs/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/global/common.js"></script>
+    <%include ../public/header.ejs%>
+        <div class="zp-wrap">
+            <div class="concatus">
+                <h3>联系我们：</h3>
+                <p>电 话：0373-5128206 </p>
+                <p> 手 机： 15137376132 企业QQ:2230845473 </p>
+                <p>邮 编：453000 </p>
+                <p>电子邮件：sales@aida-machinery.com </p>
+                <p>公司地址：新乡市红旗区一号工业园108号 </p>
+            </div>
+        </div>
+        <%include ../public/footer.ejs%>
+            <script type="text/javascript" src="js/libs/jquery-1.11.3.min.js"></script>
+            <script type="text/javascript" src="js/global/common.js"></script>
 </body>
+
 </html>

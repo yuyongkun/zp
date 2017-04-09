@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <%include header.ejs%>
+    <%include ../public/header.ejs%>
  <div class="zp-wrap">
  <div id="firstCode" style="display:none;"><%=firstCode%></div>
             <div class="products-nav">
@@ -44,14 +44,14 @@
             <div class="products-wrap">
                 <h3>产品中心</h3>
                 <div id="products-center" class="products-list">
-                <%  if(list){
+                <%if(list){
 						list.forEach(function(pro){ %>
 						<div class="products-center-item">
                         <a href="/details/<%= pro.code%>" title="<%= pro.nameCh%>"  alt="<%= pro.nameCh%>"><img class="products-icon" src="<%= pro.imgUrl%>"></a>
                         <p class="products-desc"><%= pro.nameCh%></p>
                     </div>
 						
-		<%})}%>
+		        <%})}%>
                 </div>
                 <nav class="nav">
 			<ul class="pagination paginationA paginationA01" id="pagination">
@@ -61,7 +61,7 @@
             </div>
         </div>
         
-        <%include footer.ejs%>
+       <%include ../public/footer.ejs%>
             <script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
             <script type="text/javascript" src="/js/global/common.js"></script>
             <script type="text/javascript">
