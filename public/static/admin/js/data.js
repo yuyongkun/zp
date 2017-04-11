@@ -18,8 +18,8 @@ function connectServer(){
 	        callback(results);
 	    });
 	}
- function insertFun(client , username , password,callback){
-	      client.query('insert into table_1 value(?,?)', [username, password], function(err,result){
+ function insertFun(client ,sql,callback){
+	      client.query(sql, function(err,result){
 	          if( err ){
 	              console.log( "error:" + err.message);
 	              return err;

@@ -1,10 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
+
 var usr = require('../public/static/admin/js/data.js');
 
-var TITLE='admin';
-var uuid = require('node-uuid');
 /*后台*/
 router.get('/', function(req, res, next) {
     res.render('admin/index', { title: '新乡市艾达机械设备有限公司' });

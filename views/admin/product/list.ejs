@@ -7,7 +7,7 @@
 		$('.column').equalHeight();
 		$("#currentView")
 				.html(
-						"<a href='/admin/index'>后台首页</a> <div class='breadcrumb_divider'></div><a href='/product/hydraulicFilter/index'>后台首页</a> <div class='breadcrumb_divider'></div> <a class='current'>产品列表</a>");
+						"<a href='/admin/index'>后台首页</a> <div class='breadcrumb_divider'></div> <a class='current'>产品列表</a>");
 	});
 </script>
 <section id="main" class="column">
@@ -19,7 +19,7 @@
 	
 		<% secondList.forEach(function(slist){%>
 		<li class="product_name">
-		<a class="button blue" href="/product/threeList/<%=slist.productCode%>?code=<%=slist.productCode%>"><%=slist.productNameCh%></a> 
+		<a class="button blue" href="/product/secondList?code=<%=fCode%>&sCode=<%=slist.productCode%>"><%=slist.productNameCh%></a> 
 		</li>
 		<%})%>
 	 <!--<li class="product_name">
@@ -97,8 +97,8 @@
 							<td><%= pro.fName%></td>
 							<td><%= pro.sName%></td> 
 							<td><img class="product_img" src="<%= pro.imgUrl%>"></img></td>
-							<td><a href="/product/detail/<%= pro.sCode%>?code=<%= pro.code%>" title="编辑"><font class="ficomoon icon-edit"></font></a>
-							<a href="/delete/detail/<%= pro.sCode%>?code=<%= pro.code%>" title="删除" name="del" eid="1"><font class="ficomoon icon-delete"></font></a></td> 
+							<td><a href="/product/detail/<%= pro.sCode%>?id=<%= pro.id%>" title="编辑"><font class="ficomoon icon-edit"></font></a>
+							<a href="/delete/detail/<%= pro.sCode%>?id=<%= pro.id%>" title="删除" name="del" eid="1"><font class="ficomoon icon-delete"></font></a></td> 
 						</tr>
 		<%})%>
 						

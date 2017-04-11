@@ -4,10 +4,15 @@ var formidable = require('formidable');
 var usr = require('../public/static/admin/js/data.js');
 var pagination = require('../public/static/admin/js/pagination.js');
 var secondList={};
+var querystring = require("querystring");
+var uuid = require('node-uuid');
 var AVATAR_UPLOAD_FOLDER = '/images/ueditor/';
+var TITLE='admin';
+var fs = require('fs');
 
-router.get('/secondList/:name', function(req, res, next) {
+router.get('/secondList', function(req, res, next) {
 	console.log(req.query.code);
+	console.log(req.query.sCode);
 	client = usr.connect();
 	result = null;
 	var sql='SELECT productCode,productNameCh FROM second_product_list WHERE FirstCode="'+req.query.code+'"';
@@ -16,15 +21,17 @@ router.get('/secondList/:name', function(req, res, next) {
 		console.log(result);
 		secondList=result;
 		var code=result[0].productCode;
-		var name=result[0].productNameEn;
-		res.redirect('/product/threeList/'+name+'?code='+code);
+		if(req.query.sCode){
+			code=req.query.sCode;
+		}
+		res.redirect('/product/threeList?code='+req.query.code+'&sCode='+code);
 	});
     
 });
 
-router.get('/threeList/:name', function(req, res, next) {
-	console.log(req.params.name);
+router.get('/threeList', function(req, res, next) {
 	console.log(req.query.code);
+	console.log(req.query.sCode);
 	var page={limit:10,num:1};
 	if(req.query.p){
 		page['num']=req.query.p<1?1:req.query.p;
@@ -34,7 +41,7 @@ router.get('/threeList/:name', function(req, res, next) {
 	var pagehelp={currentpage:page.num,code:req.query.code,pagesize:10,pagecount:10,name:req.params.name};
 	client = usr.connect();
 	result = null;
-	var sql='SELECT t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode="'+req.query.code 
+	var sql='SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode="'+req.query.sCode 
 	+'" AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT '+startp+','+endp+'';
 	console.log(sql);
 	usr.selectFun(client,"SELECT COUNT(1) count  FROM three_product_list t WHERE t.secondCode='"+req.query.code+"'", function(count) {
@@ -42,7 +49,7 @@ router.get('/threeList/:name', function(req, res, next) {
 		    var pagehtml=pagination.pagehtml(pagehelp);
 			usr.selectFun(client,sql, function(result) {
 				console.log(result);
-				res.render('admin/product/list', { title: '新乡市艾达机械设备有限公司',secondList:secondList,list:result,locals:pagehtml});
+				res.render('admin/product/list', { title: '新乡市艾达机械设备有限公司',secondList:secondList,list:result,locals:pagehtml,fCode:req.query.code});
 			});
 	});
     
@@ -54,14 +61,14 @@ router.get('/ueditor', function(req, res, next) {
 
 router.get('/detail/:sCode', function(req, res, next) {
 	console.log(req.params.sCode);
-	console.log(req.query.code);
+	console.log(req.query.id);
 	client = usr.connect();
 	result = null;
 	firstList =null;
 	secondList=null;
 	var firstSql="SELECT  productCode,productNameCh FROM first_product_list  order by productCode";
 	
-	var sql="SELECT t.code,t.nameCh,t.imgUrl,t.description,t.introduction,t.firstCode,t.secondCode FROM three_product_list t  WHERE t.code='"+req.query.code+"'";
+	var sql="SELECT t.id,t.code,t.nameCh,t.imgUrl,t.description,t.introduction,t.firstCode,t.secondCode FROM three_product_list t  WHERE t.id='"+req.query.id+"'";
 	console.log(sql);
 	usr.selectFun(client,sql, function(result) {
 		console.log(result);
@@ -91,7 +98,7 @@ router.get('/getSecondProductList/:fCode', function(req, res, next) {
 	client = usr.connect();
 	result = null;
 	var firstCode=req.params.fCode;
-	var sql="select  productCode,productNameCh from second_product_list  where FirstCode='"+firstCode+"'";
+	var sql="select  productCode,productNameCh from second_product_list  where FirstCode='"+firstCode+"' order by productCode";
 		console.log(sql);
 		usr.selectFun(client,sql, function(result) {
 			console.log(result);
@@ -133,16 +140,70 @@ router.post('/upload', function(req, res) {
 	              res.render('admin/index', { title: TITLE });
 	              return;                   
 	        }
-	        var avatarName = uuid.v1() + '.' + extName;
+	        var id="";
+	        if(req.query.id){
+	        	id=req.query.id;
+	        }else{
+	        	id=uuid.v1();
+	        }
+	        var avatarName =  id+ '.' + extName;
 	        var newPath = form.uploadDir + avatarName;
-
 	        console.log(newPath);
 	        fs.renameSync(files.imgUrl.path, newPath);  //重命名
 	        //fs.unlinkSync(newPath);
+	        var sql="";
+	        if(req.query.id){
+	           sql="UPDATE three_product_list SET imgUrl='"+AVATAR_UPLOAD_FOLDER+ avatarName+"' WHERE id='"+req.query.id+"'";
+	        }else{
+	           sql="INSERT INTO three_product_list (id,imgUrl) VALUES('"+id+"','"+AVATAR_UPLOAD_FOLDER+ avatarName+"'); ";
+	        }
+	        console.log(sql);
+	        client = usr.connect();
+	        usr.selectFun(client,sql, function(result) {
+	    		console.log(result);
+	    		res.send(JSON.stringify({img:AVATAR_UPLOAD_FOLDER+ avatarName,id:id}));
+	    	});
+		    
 	    });
 	    
-	    res.locals.success = '上传成功';
-	    res.send(JSON.stringify(newPath));
+	   
 	});
-
+router.post('/saveProduct', function(req, res, next) {
+	console.log(req.body.code);
+	var sql="";
+	if(req.body.id){
+	   sql="UPDATE three_product_list SET nameCh='"+req.body.nameCh+"',introduction='"+req.body.introduction
+	+"',CODE='"+req.body.code+"',firstCode='"+req.body.firstCode+"',secondCode='"+req.body.secondCode
+	+"',description='"+req.body.description+"' WHERE id='"+req.body.id+"'";
+	}else{
+		sql="insert into three_product_list (id,nameCh,introduction,code,firstCode,secondCode,createdBy,createdDate,description) values ( uuid(),'"+req.body.nameCh
+		+"','"+req.body.introduction+"','"+req.body.code+"','"+req.body.firstCode
+		+"','"+req.body.secondCode+"','aidiFilter',NOW(),'"+req.body.description+"')";
+	}
+	console.log(sql);
+	client = usr.connect();
+	usr.selectFun(client,sql, function(result) {
+		console.log(result);
+		var obj={firstCode:req.body.firstCode,secondCode:req.body.secondCode};
+		res.send(JSON.stringify(obj));
+	});
+});
+router.get('/newProduct', function(req, res, next) {
+	client = usr.connect();
+	fResult = null;
+	sResult=null;
+	var firstSql="SELECT  productCode,productNameCh FROM first_product_list  order by productCode";
+	console.log(firstSql);
+	usr.selectFun(client,firstSql, function(fResult) {
+		console.log(fResult);
+		var firstList=fResult;
+		var code=fResult[0].productCode;
+		var sql="select  productCode,productNameCh from second_product_list  where FirstCode='"+code+"' order by productCode";
+			console.log(sql);
+			usr.selectFun(client,sql, function(result) {
+				console.log(result);
+				res.render('admin/product/newProduct', { title: '新乡市艾达机械设备有限公司',firstList:firstList,secondList:result});
+			});
+	});
+});
 module.exports = router;
