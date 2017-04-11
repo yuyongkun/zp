@@ -109,6 +109,7 @@ router.get('/getSecondProductList/:fCode', function(req, res, next) {
 
 
 router.post('/upload', function(req, res) {
+	console.log('upload-----------------------------');
 	  var form = new formidable.IncomingForm();   //创建上传表单
 	      form.encoding = 'utf-8';        //设置编辑
 	      form.uploadDir = 'public'+ AVATAR_UPLOAD_FOLDER;     //设置上传目录

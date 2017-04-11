@@ -194,6 +194,7 @@ ul.zp-wrap>li .about_nav {
     width: 20%;
     top: 40px;
     margin-left: -1px;
+    margin-top: 0px;
     border-left: 1px solid #e0dedf;
     border-right: 1px solid #e0dedf;
     border-bottom: 3px solid #009ce0;
@@ -260,7 +261,9 @@ ul.zp-wrap>li .products-nav>ul>li>h3 {
     z-index: 1;
     color: #464646;
 }
-
+ul.zp-wrap>li .products-nav>ul>li>h3>a{
+     color: #464646;
+}
 ul.zp-wrap>li .products-nav>ul>li>.zp-product-list {
     display: none;
     position: absolute;
@@ -300,11 +303,12 @@ ul.zp-wrap>li .servicesupport-nav>ul>li {
 
 ul.zp-wrap>li .servicesupport-nav {
     width: 40%;
-    right: 20%;
 }
-.servicesupport-s1{
+
+.servicesupport-s1 {
     cursor: default;
 }
+
 .servicesupport-s1 h2 {
     color: #009ce0;
     padding: 5px 0;

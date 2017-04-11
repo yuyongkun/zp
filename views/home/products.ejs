@@ -18,13 +18,12 @@
                     <h3>所有系列</h3>
                     <div class="products-list">
                         <ul id="products-primary-nav">
-                            <li  name="1001" ><a href="/products/1001">液压过滤器滤芯</a></li>
-                            <li  name="1002" ><a href="/products/1002">空压机三滤及后置过滤器滤芯</a></li>
-                            <li  name="1003" ><a href="/products/1003">真空泵过滤器滤芯</a></li>
-                            <li  name="1004" ><a href="/products/1004">金属烧结过滤器滤芯</a></li>
-                            <li  name="1005" ><a href="/products/1005">滤油机系列</a></li>
-                            <li  name="1006" ><a href="/products/1006">其他过滤设备</a></li>
-                           
+                            <li><a href="/products/1001">液压过滤器滤芯</a></li>
+                            <li><a href="/products/1002">空压机三滤及后置过滤器滤芯</a></li>
+                            <li><a href="/products/1003">真空泵过滤器滤芯</a></li>
+                            <li><a href="/products/1004">金属烧结过滤器滤芯</a></li>
+                            <li><a href="/products/1005">滤油机系列</a></li>
+                            <li><a href="/products/1006">其他过滤设备</a></li>
                         </ul>
                     </div>
                 </div>
@@ -45,12 +44,11 @@
                 <h3>产品中心</h3>
                 <div id="products-center" class="products-list">
                 <%if(list){
-						list.forEach(function(pro){ %>
-						<div class="products-center-item">
+					list.forEach(function(pro){ %>
+					<div class="products-center-item">
                         <a href="/details/<%= pro.code%>" title="<%= pro.nameCh%>"  alt="<%= pro.nameCh%>"><img class="products-icon" src="<%= pro.imgUrl%>"></a>
                         <p class="products-desc"><%= pro.nameCh%></p>
                     </div>
-						
 		        <%})}%>
                 </div>
                 <nav class="nav">
