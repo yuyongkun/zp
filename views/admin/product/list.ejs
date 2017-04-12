@@ -9,6 +9,21 @@
 				.html(
 						"<a href='/admin/index'>后台首页</a> <div class='breadcrumb_divider'></div> <a class='current'>产品列表</a>");
 	});
+    function deletePro(id,code,sCode){
+        $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function(){
+        	 $.ajax({    
+                 type:'get',        
+                 url:'/product/delete?id='+id,    
+                 cache:false,    
+                 dataType:'json',    
+                 success:function(data){
+                	 alert("你居然真的删除了..."); 
+                	 var url="/product/secondList?code="+code+'&sCode='+sCode;
+       		         location.href =url;
+                 }    
+             });
+        });
+    }
 </script>
 <section id="main" class="column">
 <div style="width: 60px;display: inline;float: left;margin-top: 15px;">
@@ -16,57 +31,11 @@
 </div>
 	<div style="width: 95%;display: inline;float: left;	margin-top: 10px;">
 	<ul>
-	
 		<% secondList.forEach(function(slist){%>
 		<li class="product_name">
 		<a class="button blue" href="/product/secondList?code=<%=fCode%>&sCode=<%=slist.productCode%>"><%=slist.productNameCh%></a> 
 		</li>
 		<%})%>
-	 <!--<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">贺德克过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">玛勒过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">派克过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">富卓过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">颇尔过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">威格士过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">大生过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">翡翠过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">力士乐过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">玛勒过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">西德福过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">雅歌过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">EPE过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-		<a class="button blue" href="/product/hydraulicFilter/index">英德诺曼过滤器滤芯</a>
-		</li>
-		<li class="product_name">
-	    <a class="button blue" href="/product/hydraulicFilter/index">唐纳森过滤器滤芯</a>
-	    </li> -->
 	    </ul>
 	</div>
 	<hr class="split"> 
@@ -98,7 +67,7 @@
 							<td><%= pro.sName%></td> 
 							<td><img class="product_img" src="<%= pro.imgUrl%>"></img></td>
 							<td><a href="/product/detail/<%= pro.sCode%>?id=<%= pro.id%>" title="编辑"><font class="ficomoon icon-edit"></font></a>
-							<a href="/delete/detail/<%= pro.sCode%>?id=<%= pro.id%>" title="删除" name="del" eid="1"><font class="ficomoon icon-delete"></font></a></td> 
+							<a href="javascript:void(0)" onclick="deletePro('<%= pro.id%>','<%= pro.fCode%>','<%= pro.sCode%>')" title="删除" ><font class="ficomoon icon-delete"></font></a></td> 
 						</tr>
 		<%})%>
 						
@@ -114,5 +83,6 @@
 		</nav>
 	</article>
 </section>
+ 
 </body>
 <%include ../footer.ejs%>

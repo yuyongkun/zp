@@ -41,7 +41,7 @@ router.get('/threeList', function(req, res, next) {
 	var pagehelp={currentpage:page.num,code:req.query.code,pagesize:10,pagecount:10,name:req.params.name};
 	client = usr.connect();
 	result = null;
-	var sql='SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode="'+req.query.sCode 
+	var sql='SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode="'+req.query.sCode 
 	+'" AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT '+startp+','+endp+'';
 	console.log(sql);
 	usr.selectFun(client,"SELECT COUNT(1) count  FROM three_product_list t WHERE t.secondCode='"+req.query.code+"'", function(count) {
@@ -84,14 +84,18 @@ router.get('/detail/:sCode', function(req, res, next) {
 	});
    
 });
-router.get('/delete/:sCode', function(req, res, next) {
-	console.log(req.params.name);
+router.get('/delete', function(req, res, next) {
+	console.log(req.query.id);
 	console.log(req.query.code);
+	console.log(req.query.sCode);
 	client = usr.connect();
 	result = null;
-	var sql='select count(1) count from admin where name="'+req.body.username+'" and password = "' + req.body.password+'"';
+	var sql='DELETE FROM three_product_list WHERE id="' + req.query.id+'"';
 	console.log(sql);
-    res.render('admin/product/productDetil', { title: '新乡市艾达机械设备有限公司' });
+	usr.selectFun(client,sql, function(result) {
+		res.send(JSON.stringify("Success"));
+	});
+	
 });
 
 router.get('/getSecondProductList/:fCode', function(req, res, next) {
@@ -102,7 +106,7 @@ router.get('/getSecondProductList/:fCode', function(req, res, next) {
 		console.log(sql);
 		usr.selectFun(client,sql, function(result) {
 			console.log(result);
-			res.send(JSON.stringify(result));
+			res.redirect('/product/threeList?code='+req.query.code+'&sCode='+code);
 		});
     
 });

@@ -18,12 +18,12 @@
                     <h3>所有系列</h3>
                     <div class="products-list">
                         <ul id="products-primary-nav">
-                            <li><a href="/products/1001">液压过滤器滤芯</a></li>
-                            <li><a href="/products/1002">空压机三滤及后置过滤器滤芯</a></li>
-                            <li><a href="/products/1003">真空泵过滤器滤芯</a></li>
-                            <li><a href="/products/1004">金属烧结过滤器滤芯</a></li>
-                            <li><a href="/products/1005">滤油机系列</a></li>
-                            <li><a href="/products/1006">其他过滤设备</a></li>
+                            <li><a href="/products/list?code=2101&fCode=1001">液压过滤器滤芯</a></li>
+                            <li><a href="/products/list?code=2201&fCode=1002">空压机三滤及后置过滤器滤芯</a></li>
+                            <li><a href="/products/list?code=2301&fCode=1003">真空泵过滤器滤芯</a></li>
+                            <li><a href="/products/list?code=2401&fCode=1004">金属烧结过滤器滤芯</a></li>
+                            <li><a href="/products/list?code=2501&fCode=1005">滤油机系列</a></li>
+                            <li><a href="/products/list?code=2601&fCode=1006">其他过滤设备</a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,11 +31,12 @@
                     <h3>所有品牌</h3>
                     <div id="products-content" class="products-list">
                         <ul>
-                        <% if(secondList){ 
-                        secondList.forEach(function(slist){%>
-                         <li><a href="/products/list/<%=slist.productCode%>?code=<%=slist.productCode%>"><%=slist.productNameCh%></a></li>
-		                <%})}%>
-                           
+                         <li><a id="2101" href="/products/list?code=2101&fCode=1001">国标黎明过滤器滤芯</a></li>
+                        </ul>
+                    </div>
+                    <div id="products-content" class="products-list">
+                        <ul>
+                         <li><a id="2201" href="/products/list?code=2201&fCode=1002">国标黎明过滤器滤芯</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,7 +47,7 @@
                 <%if(list){
 					list.forEach(function(pro){ %>
 					<div class="products-center-item">
-                        <a href="/details/<%= pro.code%>" title="<%= pro.nameCh%>"  alt="<%= pro.nameCh%>"><img class="products-icon" src="<%= pro.imgUrl%>"></a>
+                        <a href="/details?id=<%= pro.id%>" title="<%= pro.nameCh%>"  alt="<%= pro.nameCh%>"><img class="products-icon" src="<%= pro.imgUrl%>"></a>
                         <p class="products-desc"><%= pro.nameCh%></p>
                     </div>
 		        <%})}%>
