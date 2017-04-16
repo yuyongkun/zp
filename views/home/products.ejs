@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>
         <%= title %>
@@ -8,70 +7,63 @@
     <link rel='stylesheet' href='/css/base.css' />
     <link rel='stylesheet' href='/css/products.css' />
 </head>
-
 <body>
-    <%include ../public/header.ejs%>
- <div class="zp-wrap">
- <div id="firstCode" style="display:none;"><%=firstCode%></div>
-            <div class="products-nav">
-                <div class="products-r1">
-                    <h3>所有系列</h3>
-                    <div class="products-list">
-                        <ul id="products-primary-nav">
-                            <li><a href="/products/list?code=2101&fCode=1001">液压过滤器滤芯</a></li>
-                            <li><a href="/products/list?code=2201&fCode=1002">空压机三滤及后置过滤器滤芯</a></li>
-                            <li><a href="/products/list?code=2301&fCode=1003">真空泵过滤器滤芯</a></li>
-                            <li><a href="/products/list?code=2401&fCode=1004">金属烧结过滤器滤芯</a></li>
-                            <li><a href="/products/list?code=2501&fCode=1005">滤油机系列</a></li>
-                            <li><a href="/products/list?code=2601&fCode=1006">其他过滤设备</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="products-primary-01" class="products-r1 products-types">
-                    <h3>所有品牌</h3>
-                    <div id="products-content" class="products-list">
-                        <ul>
-                         <li><a id="2101" href="/products/list?code=2101&fCode=1001">国标黎明过滤器滤芯</a></li>
-                        </ul>
-                    </div>
-                    <div id="products-content" class="products-list">
-                        <ul>
-                         <li><a id="2201" href="/products/list?code=2201&fCode=1002">国标黎明过滤器滤芯</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="products-wrap">
-                <h3>产品中心</h3>
-                <div id="products-center" class="products-list">
-                <%if(list){
-					list.forEach(function(pro){ %>
-					<div class="products-center-item">
-                        <a href="/details?id=<%= pro.id%>" title="<%= pro.nameCh%>"  alt="<%= pro.nameCh%>"><img class="products-icon" src="<%= pro.imgUrl%>"></a>
-                        <p class="products-desc"><%= pro.nameCh%></p>
-                    </div>
-		        <%})}%>
-                </div>
-                <nav class="nav">
-			<ul class="pagination paginationA paginationA01" id="pagination">
-				<%- locals %>
-			</ul>
-		</nav>
+<%include ../public/header.ejs%>
+<div class="zp-wrap">
+    <div id="firstCode" style="display:none;"><%=firstCode%></div>
+    <div class="products-nav">
+        <div class="products-r1">
+            <h3>所有系列</h3>
+            <div class="products-list">
+                <ul id="products-primary-nav">
+                    <li><a href="/products/list?code=2101&fCode=1001">液压过滤器滤芯</a></li>
+                    <li><a href="/products/list?code=2201&fCode=1002">空压机三滤及后置过滤器滤芯</a></li>
+                    <li><a href="/products/list?code=2301&fCode=1003">真空泵过滤器滤芯</a></li>
+                    <li><a href="/products/list?code=2401&fCode=1004">金属烧结过滤器滤芯</a></li>
+                    <li><a href="/products/list?code=2501&fCode=1005">滤油机系列</a></li>
+                    <li><a href="/products/list?code=2601&fCode=1006">其他过滤设备</a></li>
+                </ul>
             </div>
         </div>
-        
-       <%include ../public/footer.ejs%>
-            <script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
-            <script type="text/javascript" src="/js/global/common.js"></script>
-            <script type="text/javascript">
-               var name=$("#firstCode").text();
-               $("#products-primary-nav li").each(function(){
-            	    if($(this).attr("name")==name){
-            	    	$(this).attr("class","cur")
-            	    }
-            	  });
-               
-            </script>
+        <div id="products-primary-01" class="products-r1 products-types">
+            <h3>所有品牌</h3>
+            <div id="products-content" class="products-list">
+                <ul>
+                 <li><a id="2101" href="/products/list?code=2101&fCode=1001">国标黎明过滤器滤芯</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="products-wrap">
+        <h3>产品中心</h3>
+        <div id="products-center" class="products-list">
+            <%if(list){
+    			list.forEach(function(pro){ %>
+    			<div class="products-center-item">
+                    <a href="/details?id=<%= pro.id%>" title="<%= pro.nameCh%>"  alt="<%= pro.nameCh%>"><img class="products-icon" src="<%= pro.imgUrl%>"></a>
+                    <p class="products-desc"><%= pro.nameCh%></p>
+                </div>
+            <%})}%>
+        </div>
+        <nav class="nav">
+    		<ul class="pagination paginationA paginationA01" id="pagination">
+    			<%- locals %>
+    		</ul>
+    	</nav>
+    </div>
+</div>
+<%include ../public/footer.ejs%>
+<script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/global/common.js"></script>
+<script type="text/javascript">
+   var name=$("#firstCode").text();
+   $("#products-primary-nav li").each(function(){
+	    if($(this).attr("name")==name){
+	    	$(this).attr("class","cur")
+	    }
+	  });
+   
+</script>
 </body>
 
 </html>
