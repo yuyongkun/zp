@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var admin = require('./routes/admin');
 var product = require('./routes/product');
 var ueditor = require('./routes/ueditor');
+var service = require('./routes/service');
 
 var app = express();
 // view engine setup
@@ -32,13 +33,12 @@ app.use(session({
     saveUninitialized:true
 }));
 
-
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/admin', admin);
 app.use('/product', product);
 app.use('/ueditor', ueditor);
+app.use('/service',service);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
