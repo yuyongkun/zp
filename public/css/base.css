@@ -44,7 +44,7 @@ li {
 }
 
 .zp-head {
-        margin-bottom: 20px;
+    margin-bottom: 20px;
     box-shadow: 0px 3px 5px #ddd;
 }
 
@@ -262,9 +262,11 @@ ul.zp-wrap>li .products-nav>ul>li>h3 {
     z-index: 1;
     color: #464646;
 }
-ul.zp-wrap>li .products-nav>ul>li>h3>a{
-     color: #464646;
+
+ul.zp-wrap>li .products-nav>ul>li>h3>a {
+    color: #464646;
 }
+
 ul.zp-wrap>li .products-nav>ul>li>.zp-product-list {
     display: none;
     position: absolute;
