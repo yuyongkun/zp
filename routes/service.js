@@ -7,6 +7,7 @@ router.get('/',function(req,res,next){
 		title:"新建服务",
 	});
 });
+
 //修改服务
 router.get('/edit/:who',function(req,res,next){
 	console.log('-------修改服务参数--------');

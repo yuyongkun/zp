@@ -1,0 +1,5 @@
+常用node包:
+使用supervisor提高nodejs调试效率
+npm -g install supervisor
+supervisor必须安装到全局,如果你不安装到全局，错误命令会提示你安装到全局,如果不想安装到默认的全局,也可以自己修改全局路径到当前路径
+npm config set prefix "路径"
