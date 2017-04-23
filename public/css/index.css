@@ -1,4 +1,23 @@
-
+.carousel-indicators .active {
+    width: 80px;
+    height: 7px;
+        background-color: #009ce0;
+}
+.carousel-indicators li {
+     width: 80px;
+    height: 7px;
+    vertical-align: middle;
+    background-color: #fff \9;
+    background-color: #fff;
+    border: none;
+    border-radius: 3px;
+}
+.carousel-inner>.item{
+    background: gray;
+}
+.lazy-img{
+    width: 100%;
+}
 /* 常见信息 */
 
 .zp-info {

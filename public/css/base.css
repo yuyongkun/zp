@@ -33,6 +33,7 @@ p {
 
 a:hover {
     color: #009ce0;
+    text-decoration: none;
 }
 
 i {
@@ -66,12 +67,13 @@ li {
 
 .zp-top ul {
     float: right;
+    margin-bottom: 0px;
 }
 
 .zp-top ul li {
     float: left;
     margin-right: 16px;
-    padding: 3px 0;
+    padding: 6px 0;
 }
 
 .zp-top ul li a {
