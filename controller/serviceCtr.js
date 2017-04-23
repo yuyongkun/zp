@@ -32,7 +32,7 @@ module.exports={
 			form.parse(req, function (err, fields, files) {
 				console.log('－－－－－－参数－－－－－－');
 				console.log(fields);
-				if(fields.content===''){
+				if(fields.content==''){
 					res.json({
 						responseCode:'-1',
 						responseMsg:'服务内容不能为空'
