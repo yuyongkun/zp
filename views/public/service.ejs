@@ -1,20 +1,8 @@
 <div class="servicesupport-slider">
     <ul>
         <li class="newscenter">售后服务</li>
-        <%if(title=="服务支持"){%>
-            <li class="service-cur"><a href="/servicesupport/">服务与支持</a></li>
-            <li><a href="/ServiceGuarantee/">服务保障</a></li>
-            <li><a href="/ServiceProcess/">服务流程</a></li>
-        <%}%>
-        <%if(title=="服务保障"){%>
-            <li><a href="/servicesupport/">服务与支持</a></li>
-            <li class="service-cur"><a href="/ServiceGuarantee/">服务保障</a></li>
-            <li><a href="/ServiceProcess/">服务流程</a></li>
-        <%}%>
-         <%if(title=="服务流程"){%>
-            <li><a href="/servicesupport/">服务与支持</a></li>
-            <li><a href="/ServiceGuarantee/">服务保障</a></li>
-            <li class="service-cur"><a href="/ServiceProcess/">服务流程</a></li>
-        <%}%>
+        <li class="<%=type==1?'service-cur':''%>"><a href="/service/support/">服务与支持</a></li>
+        <li class="<%=type==2?'service-cur':''%>"><a href="/service/guarantee/">服务保障</a></li>
+        <li class="<%=type==3?'service-cur':''%>"><a href="/service/process/">服务流程</a></li>
     </ul>
 </div>

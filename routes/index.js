@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var service_controller=require('../controller/serviceCtr');
 var usr = require('../public/static/admin/js/data.js');
 var pagination = require('../public/static/admin/js/pagination.js');
-var serviceDao = require('../dao/serviceDao.js');
 var secondList = {};
 var firstCode;
 var uuid = require('node-uuid');
@@ -23,18 +23,7 @@ router.get("/i18n/:locale", function (req, res) {
 router.get('/case', function(req, res, next) {
     res.render('home/case', { title: '解决方案' });
 });
-/*服务支持*/
-router.get('/servicesupport', function(req, res, next) {
-    res.render('home/servicesupport', { title: '服务支持' });
-});
-/*服务保障*/
-router.get('/ServiceGuarantee', function(req, res, next) {
-    res.render('home/ServiceGuarantee', { title: '服务保障' });
-});
-/*服务流程*/
-router.get('/ServiceProcess', function(req, res, next) {
-    res.render('home/ServiceProcess', { title: '服务流程' });
-});
+
 /*联系我们*/
 router.get('/contact', function(req, res, next) {
     res.render('home/contact', { title: '联系我们' });
@@ -84,5 +73,30 @@ router.get('/details', function(req, res, next) {
         res.render('home/details', { title: '新乡市艾达机械设备有限公司', pro:result[0]});
     });
 });
+/*服务支持*/
+router.get('/service/:who', function(req, res, next) {
+    var param=req.params;
+    param=param.who;
 
+    res.locals.title='服务支持';
+    res.locals.type=1;
+    if(param==='guarantee'){
+        res.locals.title='服务保障';
+        res.locals.type=2;
+    }else if(param==='process'){
+        res.locals.title='服务流程';
+        res.locals.type=3;
+    }
+    req.type=res.locals.type;
+    service_controller.queryService(req,res,function(result){
+        var content;
+        if(result.length>0){
+            content=result[0].content;
+        }
+        res.render('home/servicesupport', {
+            serviceContent:content
+        });
+        
+    });
+});
 module.exports = router;

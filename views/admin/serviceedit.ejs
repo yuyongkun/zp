@@ -1,0 +1,123 @@
+	<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Dashboard I Admin Panel</title>
+	
+	<link rel="stylesheet" href="/static/admin/css/layout.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/ueditor/themes/default/css/ueditor.css" type="text/css" media="screen" />
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js" ></script>
+	<script type="text/javascript" src="/static/admin/js/jquery.tablesorter.min.js" ></script>
+	<script type="text/javascript" src="/static/admin/js/hideshow.js" ></script>
+	<script type="text/javascript" src="/static/admin/js/showBox.js" ></script>
+	<script type="text/javascript" src="/static/admin/js/jquery.equalHeight.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"> </script>
+	<style type="text/css">
+		 .service-wrap{
+		 	padding:20px;
+		 	margin-left: 301px;
+		 }
+		 	.group-item{
+			padding-bottom: 10px;
+			color:#3a3a3a;
+		}
+		.group-item label{
+			    display: inline-block;
+			padding-right:5px;
+			vertical-align: middle;
+		}
+	
+		.group-item .editor{
+			display: inline-block;
+			vertical-align: top;
+		}
+		.group-item .submit{
+			padding:6px 12px;
+			margin-left: 58px;
+			border-radius:3px;
+			background: gray;
+			color:#fff;
+			cursor: pointer;
+		}
+		ul.service-edit-n1{
+			    display: inline-block;
+    width: 400px;
+    margin-left: 5px;
+        vertical-align: middle;
+		}
+		ul.service-edit-n1 li{
+			      display: inline-block;
+    padding-right: 5px;
+		}
+	 </style>
+</head>
+<body>
+<input id="edit-type" type="hidden" name="type" value=<%=type%> />
+<%include left.ejs%>
+<section class="column">
+<div class="service-wrap">
+<form id="formService">
+	<div class="group-item">
+		<label>服务类型:</label>
+		<ul class="service-edit-n1">
+		<li><a href="/service/edit/1">服务支持</a></li>
+		<li><a href="/service/edit/2">服务保障</a></li>
+		<li><a href="/service/edit/3">服务流程</a></li>
+		</ul>
+	</div>
+	<div class="group-item">
+		<label style="padding-bottom: 10px">服务内容:</label>
+		<script type="text/plain" id="editor"><%-serviceContent%></script>
+	</div>
+	<div class="group-item">
+		<span id="submit" class="submit">提交</span>
+	</div>
+</form>
+</div>
+</section>
+<script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+<script type="text/javascript">
+ var editor=UE.getEditor("editor", {
+                    "initialFrameHeight": 500,
+                    "initialFrameWidth": 949
+                });
+$('#submit').click(function(){
+	var content=editor.getContent();
+	// if(content===''){
+	// 	alert('服务内容不能为空');
+	// 	return;
+	// }
+	var formdata=new FormData();
+	formdata.append('type',$('#edit-type').val());
+	formdata.append('content',content);
+	$.ajax({
+		url:'/service/addservice',
+		type:'post',
+		dataType:'json',
+		data:formdata,
+		 processData: false,  
+        contentType: false, 
+		success:function(result){
+			if(result.responseCode==='000000'){
+				alert('上传成功');
+			}else{
+				alert(result.responseMsg);
+			}
+		},
+		error:function(xhr,statustext){
+			alert(statustext);
+		}
+	});
+});
+</script>
+</body>
+</html>

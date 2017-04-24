@@ -1,5 +1,14 @@
 /* Essentials */
-
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
 html, div, map, dt, isindex, form, header, aside, section, section, article, footer {  
     display: block;  
 } 
@@ -355,8 +364,6 @@ text-shadow: 0 1px 0 #fff;
 
 #sidebar li>a {
 display: inline-block;
-height: 17px;
-line-height: 17px;
 width:200px;
 padding:5px;
 vertical-align:middle
@@ -448,7 +455,7 @@ section#main {
 width: 77%;
 min-height: 500px;
 float: left;
-margin-top: -2px
+padding: 0px 15px;
 }
 .main_shadow{
 background: url(../img/sidebar_shadow.png) repeat-y left top;
@@ -467,7 +474,6 @@ margin: 8px 20px;
 .module {
 border: 1px solid #9BA0AF;
 width: 100%;
-margin: 20px 3% 0 3%;
 margin-top: 20px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
@@ -511,7 +517,7 @@ overflow:hidden;
 /* Module Widths */
 
 .width_full {
-width: 95%;
+width: 100%;
 }
 
 .width_half {
@@ -562,7 +568,6 @@ height: 60px;
 .product_name {
 	text-align:center;
 font-size: 14px;
-margin-left: 5px;
 width: 160px;
 float: left;
 display: inline;
@@ -1040,7 +1045,6 @@ a.button {
 
   a.button:before { 
     height: 23px;
-    bottom: -4px;
     border-top: 0;
     
     -webkit-border-radius: 0 0 3px 3px; 
@@ -1111,7 +1115,6 @@ a.button {
   a.blue:hover,
   a.blue:visited {
     color: #42788e;
-    border-bottom: 4px solid #589cb6;
     background: #abe4f8;
     
     text-shadow: 0px 1px 0px #bee9fa;
@@ -1441,8 +1444,7 @@ a.button {
     display: block;
     height: 2px;
     outline: medium none;
-    width: 95%;
-	margin:0 3%;
+    width: 100%;
 }
 .nav {
 	padding-top:14px;
