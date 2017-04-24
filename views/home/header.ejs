@@ -2,13 +2,13 @@
     <div class="zp-top">
         <div class="zp-wrap">
             <ul>
-                <li><a href="#">阿里巴巴</a></li>
+                <li><a href="#"><%= __('ali') %></a></li>
                 <li><a href="/contact">联系我们</a></li>
                 <li><a href="/aboutus">关于我们</a></li>
                 <li>
-                    <select>
-                        <option>china</option>
-                        <option selected="">English</option>
+                    <select onchange="changeLocale" id="locale">
+                        <option selected="" value="zh">Chinese</option>
+                        <option value="en">English</option>
                     </select>
                 </li>
             </ul>

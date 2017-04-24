@@ -1,14 +1,14 @@
 <div class="zp-head">
-    <div class="zp-top">
+       <div class="zp-top">
         <div class="zp-wrap">
             <ul>
-                <li><a href="#">阿里巴巴</a></li>
-                <li><a href="/contact">联系我们</a></li>
-                <li><a href="/aboutus">关于我们</a></li>
+                <li><a href="#"><%= __('Alibaba') %></a></li>
+                <li><a href="/contact"><%= __('ContactUs') %></a></li>
+                <li><a href="/aboutus"><%= __('AboutUs') %></a></li>
                 <li>
-                    <select>
-                        <option>china</option>
-                        <option selected="">English</option>
+                    <select onchange="changeLocale()" id="locale">
+                        <option selected="true" value="zh"><%= __('China') %></option>
+                        <option value="en"><%= __('English') %></option>
                     </select>
                 </li>
             </ul>
@@ -18,7 +18,7 @@
         <div class="zp-logo"><img src="/images/logo.png"></div>
         <div class="zp-contact-style">
             <div class="zp-hot-line">
-                <p>24小时热线</p>
+                <p><%= __('24HourHotline') %></p>
                 <p>400-888-9999</p>
             </div>
             <div class="zp-online-service">
@@ -31,13 +31,13 @@
     </div>
     <div class="zp-site-nav">
         <ul class="zp-wrap">
-            <li><a href="/">首&nbsp;&nbsp; 页</a></li>
+            <li><a href="/"><%= __('Home') %></a></li>
             <li class="nav_first">
-                <a href="/products/list?code=2101&fCode=1001">产品中心</a>
+                <a href="/products/list?code=2101&fCode=1001"><%= __('ProductCenter') %></a>
                 <div class="about_nav products-nav">
                     <ul>
                         <li>
-                            <h3><a href="/products/list?code=2101&fCode=1001">液压过滤器滤芯</a></h3>
+                            <h3><a href="/products/list?code=2101&fCode=1001"><%= __('Product1') %></a></h3>
                             <div class="zp-product-list">
                                 <ul>
                                     <li><a href="/products/list?code=2101&fCode=1001">国标黎明过滤器滤芯</a></li>
@@ -59,7 +59,7 @@
                             </div>
                         </li>
                         <li>
-                            <h3><a href="/products/list?code=2201&fCode=1002">空压机三滤及后置过滤器滤芯</a></h3>
+                            <h3><a href="/products/list?code=2201&fCode=1002"><%= __('Product2') %></a></h3>
                             <div class="zp-product-list">
                                 <ul>
                                     <li><a href="/products/list?code=2201&fCode=1002">阿特拉斯过滤器滤芯</a></li>
@@ -84,7 +84,7 @@
                             </div>
                         </li>
                         <li>
-                            <h3><a href="/products/1003">真空泵过滤器滤芯</a></h3>
+                            <h3><a href="/products/1003"><%= __('Product3') %></a></h3>
                             <div class="zp-product-list">
                                 <ul>
                                     <li><a href="/BuschVacuumPumpOilMistFilter/">普旭真空泵油雾过滤器滤芯</a></li>
@@ -95,7 +95,7 @@
                             </div>
                         </li>
                         <li>
-                            <h3><a href="/products/1004">金属烧结过滤器滤芯</a></h3>
+                            <h3><a href="/products/1004"><%= __('Product4') %></a></h3>
                             <div class="zp-product-list">
                                 <ul>
                                     <li><a href="/SinteredMetalMeshng/">标准五层及多层金属烧结网</a></li>
@@ -110,7 +110,7 @@
                             </div>
                         </li>
                         <li>
-                            <h3><a href="/products/1005">滤油机系列</a></h3>
+                            <h3><a href="/products/1005"><%= __('Product5') %></a></h3>
                             <div class="zp-product-list">
                                 <ul>
                                     <li><a href="/PortableOilFilteringMachine/">便携式滤油机</a></li>
@@ -126,7 +126,7 @@
                             </div>
                         </li>
                         <li>
-                            <h3><a href="/products/1006">其他过滤设备</a></h3>
+                            <h3><a href="/products/1006"><%= __('Product6') %></a></h3>
                             <div class="zp-product-list">
                                 <ul style="background: none;">
                                     <li><a href="/SuctionAutomaticSelf-cleaningFilter/">内吸式自动自清洗过滤器</a></li>
@@ -142,28 +142,46 @@
                     </ul>
                 </div>
             </li>
-            <li><a href="/case/">解决方案</a></li>
-            <li class="nav_first"><a href="/servicesupport/">服务支持</a>
+            <li><a href="/case/"><%= __('Solution') %></a></li>
+            <li class="nav_first"><a href="/servicesupport/"><%= __('ServiceSupport') %></a>
                 <div class="about_nav servicesupport-nav">
                     <ul>
-                        <li><a href="/ServiceGuarantee/">服务保障</a></li>
-                        <li><a href="/ServiceProcess/">服务流程</a></li>
+                        <li><a href="/ServiceGuarantee/"><%= __('ServiceGuarantee') %></a></li>
+                        <li><a href="/ServiceProcess/"><%= __('ServiceProcess') %></a></li>
                     </ul>
                     <div class="servicesupport-s1">
-                    <h2>售后服务，一站到位</h2>
-                    <p>1.3亿投资、950余家售后服务站、70公里服务半径；180多家配件网点，为宇通品质提供最完善的保障。</p>
+                    <h2><%= __('Service') %></h2>
+                    <p><%= __('ServiceDescription') %></p>
                     </div>
                 </div>
             </li>
-            <li class="nav_first"><a href="/plus/list.php?tid=12">新闻中心</a>
+            <li class="nav_first"><a href="/plus/list.php?tid=12"><%= __('NewsCenter') %></a>
                 <div class="about_nav">
                     <ul>
-                        <li><a href="/DynamicEnterprise/">企业动态</a></li>
-                        <li><a href="/ProductInfo/">产品资讯</a></li>
-                         <li><a href="/admin">产品资讯</a></li>
+                        <li><a href="/DynamicEnterprise/"><%= __('EntreprisesNews') %></a></li>
+                        <li><a href="/ProductInfo/"><%= __('ProductInformation') %></a></li>
+                         <li><a href="/admin"><%= __('ProductInformation') %></a></li>
                     </ul>
                 </div>
             </li>
         </ul>
     </div>
 </div>
+
+<script>
+//语言
+function changeLocale(){
+	 var locale=$("#locale").val();
+	 $.ajax({    
+         type:'get',        
+         url:'/i18n/'+locale,    
+         cache:false,    
+         dataType:'json',    
+         success:function(data){
+             if(data){
+          	 location.reload();
+             }
+         }    
+     });    
+}
+</script>

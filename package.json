@@ -17,6 +17,7 @@
     "mysql": "latest",
     "node-uuid": "^1.4.8",
     "serve-favicon": "~2.3.2",
-    "ueditor": "^1.2.1"
+    "ueditor": "^1.2.1",
+    "i18n": "*"
   }
 }

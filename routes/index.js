@@ -5,10 +5,19 @@ var pagination = require('../public/static/admin/js/pagination.js');
 var serviceDao = require('../dao/serviceDao.js');
 var secondList = {};
 var firstCode;
+var uuid = require('node-uuid');
 
 /* 首页 */
 router.get('/', function(req, res, next) {
-    res.render('home/index', { title: '新乡市艾达机械设备有限公司' });
+    res.render('home/index', { title:  res.__('Company') });
+});
+//allow MANUAL locale selection
+router.get("/i18n/:locale", function (req, res) {
+	console.log(req.cookies.locale);
+    res.cookie('locale',req.params.locale, {
+		maxAge : 1000*60*60*24
+	});
+    res.send(JSON.stringify("Success"));
 });
 /*解决方案*/
 router.get('/case', function(req, res, next) {

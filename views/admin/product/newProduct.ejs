@@ -14,9 +14,14 @@
     <article class="module width_full">
 			<div class="module_content">
 				<fieldset>
-					<label for="txtName">产品名称</label>
+					<label for="txtName">产品中文名称</label>
 					<input type="hidden" id="id" name="id"/>
 					<input type="text" id="nameCh" name="nameCh" />
+				</fieldset>
+				<fieldset>
+					<label for="txtName">产品英文名称</label>
+					<input type="hidden" id="id" name="id"/>
+					<input type="text" id="nameEn" name="nameEn" />
 				</fieldset>
 				<fieldset>
 					<label for="txtModule">产品编码</label>
@@ -123,6 +128,7 @@
     }
     function saveProduct(){
        var id=$("#id").val();
+       var nameEn=$("#nameEn").val();
  	   var nameCh=$("#nameCh").val();
  	   var introduction=$("#introduction").val();
  	   var code=$("#code").val();
@@ -131,7 +137,7 @@
  	   var secondCode=$("#secondCode").val();
  	   var description=UE.getEditor('editor').getContent();
  	   description=description.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
- 	   var data={id:id,nameCh:nameCh,introduction:introduction,code:code,imgUrl:imgUrl,firstCode:firstCode,secondCode:secondCode,description:description};
+ 	   var data={id:id,nameEn:nameEn,nameCh:nameCh,introduction:introduction,code:code,imgUrl:imgUrl,firstCode:firstCode,secondCode:secondCode,description:description};
  	   
  	   $.ajax({
  		   url:"/product/saveProduct",
