@@ -140,3 +140,6 @@ mysql> show grants for 'cactiuser'@'%';
 alter table table_test drop primary key;
 然后再添加主键
 alter table table_test add primary key(id);
+
+删除表中的数据
+delete from 表名称 where 删除条件;

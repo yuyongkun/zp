@@ -52,7 +52,7 @@ module.exports={
 			    	console.log(result);
 			    	if(result.length<=0){
 			    		console.log('－－－－－－服务不存在插入数据－－－－－－');
-			    		connection.query(service_model.insert,[fields.type,fields.content],function(err,result){
+			    		connection.query(service_model.insert,[fields.type,fields.type,fields.content],function(err,result){
 							if(result){
 								var result={
 									responseCode:'000000',

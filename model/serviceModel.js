@@ -1,6 +1,6 @@
 // CRUD SQL语句
 var serviceModel = {
-    insert: 'INSERT INTO service(type,content) VALUES(?,?)',
+    insert: 'INSERT INTO service(id,type,content) VALUES(?,?,?)',
     update: 'update service set content=? where type=?',
     delete: 'delete from service where type=?',
     queryContentByType: 'select content from service where type=?',

@@ -5,6 +5,7 @@
     <title>
         <%= title %>
     </title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css' />
     <link rel='stylesheet' href='/css/base.css' />
     <link rel='stylesheet' href='/css/index.css' />
 </head>
@@ -12,7 +13,7 @@
 <body>
     <%include ../public/header.ejs%>
         <div class="banner">
-            <div class="carousel" id="index-pic">
+           <!--  <div class="carousel" id="index-pic">
                 <ul>
                     <li>
                         <a href="#"><img class="lazy-img" src="/images/1.jpg" title="惊蛰已过，春暖花开"></a>
@@ -41,7 +42,38 @@
                         <a href="#"><img src="/images/4.jpg"></a>
                     </span>
                 </div>
-            </div>
+            </div> -->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <a href="#"><img class="lazy-img" src="/images/1.jpg" title="惊蛰已过，春暖花开"></a>
+        </div>
+        <div class="item">
+          <a href="#"><img class="lazy-img" src="/images/2.jpg" title="惊蛰已过，春暖花开"></a>
+        </div>
+        <div class="item">
+          <a href="#"><img class="lazy-img" src="/images/3.jpg" title="惊蛰已过，春暖花开"></a>
+        </div>
+         <div class="item">
+          <a href="#"><img class="lazy-img" src="/images/4.jpg" title="惊蛰已过，春暖花开"></a>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
         </div>
         <div class="zp-wrap hot-recommended">
             <h2><%= __('PopularRecommendation') %></h2>
@@ -127,104 +159,46 @@
         </div>
         <%include ../public/footer.ejs%>
         <script type="text/javascript" src="js/libs/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/plugs/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/global/common.js"></script>
         <script type="text/javascript">
-             //广告位
-    function banner() {
-        var now = 0,
-            $span = $("#carousel-num").find('span'),
-            $li = $("#index-pic").find('ul li'),
-            total = $li.length;
-        var roll = function() {
-            $span.removeClass('carousel-cur');
-            if (now == total - 1) {
-                now = 0;
-            } else {
-                now = now + 1;
-            }
-            for (i = 0; i < total; i++) {
-                $li.eq(i).css("display", "none");
-            }
+        //轮播
+        function zpad() {
+            var speed = 50;
 
-            $li.eq(now).fadeIn(400);
-            $span.eq(now).addClass('carousel-cur');
-        };
-        var int = setInterval(roll, 5000);
-        $span.bind('mouseenter mouseleave', function(e) {
-            if (e.type === 'mouseenter') {
-                window.clearInterval(int);
-                if ($(this).index() != now) {
-                    now = $(this).index() - 1;
-                    roll();
+            var tab = document.getElementById("demo");
+
+            var tab1 = document.getElementById("demo1");
+
+            var tab2 = document.getElementById("demo2");
+
+            tab2.innerHTML = tab1.innerHTML;
+
+            function Marquee() {
+
+                if (tab2.offsetWidth - tab.scrollLeft <= 0)
+
+                    tab.scrollLeft -= tab1.offsetWidth
+                else {
+                    tab.scrollLeft++;
+
                 }
-            } else {
-                int = setInterval(roll, 5000);
-            }
-        });
-        $li.bind('mouseenter mouseleave', function(e) {
-            if (e.type === 'mouseenter') {
-                window.clearInterval(int);
-            } else {
-                int = setInterval(roll, 5000);
-            }
-        });
-    }
-    banner();
-    //轮播
-    function zpad() {
-        var speed = 50;
-
-        var tab = document.getElementById("demo");
-
-        var tab1 = document.getElementById("demo1");
-
-        var tab2 = document.getElementById("demo2");
-
-        tab2.innerHTML = tab1.innerHTML;
-
-        function Marquee() {
-
-            if (tab2.offsetWidth - tab.scrollLeft <= 0)
-
-                tab.scrollLeft -= tab1.offsetWidth
-            else {
-                tab.scrollLeft++;
 
             }
 
-        }
+            var MyMar = setInterval(Marquee, speed);
 
-        var MyMar = setInterval(Marquee, speed);
+            tab.onmouseover = function() {
+                clearInterval(MyMar)
+            };
 
-        tab.onmouseover = function() {
-            clearInterval(MyMar)
-        };
-
-        tab.onmouseout = function() {
-            MyMar = setInterval
-
+            tab.onmouseout = function() {
+                MyMar = setInterval
                 (Marquee, speed)
         };
     }
     zpad();
-    $(function() { 
-    	var cookie=document.cookie;
-    	var arr=cookie.split(";");
-    	var langue=arr[1];
-    	arr.forEach(function( val, index ) {
-    		var arr1=val.split("=");
-    		if(arr1[0] && arr1[0] == "locale"){
-    			langue=arr1[1];
-    			 return false;
-    		}
-    		});
-    	if(!langue){
-    		langue="zh";
-    	}
-    	  $("#locale").find("option[selected='true']").attr("selected",false);
-    	  $("#locale").find("option[value='"+langue+"']").attr("selected",true);
-       	 } 
-    	);
+   
         </script>
 </body>
 
