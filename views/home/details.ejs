@@ -59,14 +59,12 @@
             </div>
         </div>
        <%include ../public/footer.ejs%>
-            <script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
-            <script type="text/javascript" src="/js/global/common.js"></script>
             <script type="text/javascript">
             $(function() {
       		  var conntent ="" + "<%=pro.description%>";
       		  conntent= conntent.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
       		  conntent = conntent.replace(new RegExp("&lt;","g"),"<").replace(new RegExp("&gt;","g"), ">").replace(new RegExp("\"","g"), "'").replace(new RegExp("&#34;","g"),"'");
-      		  $("#.details-content-body").html(conntent);
+      		  $("#details-content-body").html(conntent);
       	});
             $('#details-content-body').on('click', '.details-func', function() {
 
