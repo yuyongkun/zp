@@ -60,3 +60,13 @@
 .service-cur a {
     color: #009ce0;
 }
+.bread a {
+    padding:0 10px;
+    color: #009ce0;
+}
+/* 关于公司 */
+.companyrelative ul li.newscenter{
+background: url(/images/abouticon.gif) no-repeat 20px center;
+padding-left: 70px;
+}
+

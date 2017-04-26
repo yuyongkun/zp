@@ -4,10 +4,6 @@ var router = express.Router();
 var usr = require('../public/static/admin/js/data.js');
 
 /*后台*/
-router.get('/', function(req, res, next) {
-    res.render('admin/index', { title: '新乡市艾达机械设备有限公司' });
-});
-
 router.get('/index', function(req, res, next) {
 	if (req.cookies.islogin) {
 		req.session.islogin = req.cookies.islogin;

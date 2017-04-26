@@ -1,11 +1,11 @@
-.products-nav {
+.products-nav-ss {
     margin-bottom: 20px;
       padding: 15px 15px 15px 78px;
         background: #fff;
     border: 1px solid #e5e5e5;
 }
 
-.products-nav:after {
+.products-nav-ss:after {
     content: '';
     clear: both;
     display: block;

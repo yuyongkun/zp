@@ -5,11 +5,20 @@ var usr = require('../public/static/admin/js/data.js');
 var pagination = require('../public/static/admin/js/pagination.js');
 var secondList = {};
 var firstCode;
+var uuid = require('node-uuid');
 
 /* 首页 */
 router.get('/', function(req, res, next) {
-    res.render('home/index', { title: '新乡市艾达机械设备有限公司' });
+    res.render('home/index', { title:  res.__('Company') });
 });
+// //allow MANUAL locale selection
+// router.get("/i18n/:locale", function (req, res) {
+// 	console.log(req.cookies.locale);
+//     res.cookie('locale',req.params.locale, {
+// 		maxAge : 1000*60*60*24
+// 	});
+//     res.send(JSON.stringify("Success"));
+// });
 /*解决方案*/
 router.get('/case', function(req, res, next) {
     res.render('home/case', { title: '解决方案' });
@@ -90,4 +99,31 @@ router.get('/service/:who', function(req, res, next) {
         
     });
 });
+/*公司简介,公司荣誉,公司文化*/
+router.get('/companyinfo',function(req,res,next){
+    res.render('home/companyinfo',{
+        title:'公司简介',
+        type:1
+    });
+});
+router.get('/companyhonor',function(req,res,next){
+    res.render('home/companyhonor',{
+        title:'公司荣誉',
+        type:2
+    });
+});
+router.get('/companyculture',function(req,res,next){
+    res.render('home/companyculture',{
+        title:'公司文化',
+        type:3
+    });
+});
+router.get('/contactus',function(req,res,next){
+    res.render('home/contactus',{
+        title:'联系我们',
+        type:4
+    });
+});
+
+
 module.exports = router;

@@ -20,7 +20,7 @@ module.exports={
 	//添加数据
 	addService:function(req,res){
 		pool.getConnection(function(err,connection){
-			 // 解析一个文件上传
+			// 解析一个文件上传
 			var form = new multiparty.Form();
 			//设置编辑
 		    form.encoding = 'utf-8';

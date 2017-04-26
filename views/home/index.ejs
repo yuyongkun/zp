@@ -76,7 +76,7 @@
     </div>
         </div>
         <div class="zp-wrap hot-recommended">
-            <h2>热门推荐</h2>
+            <h2><%= __('PopularRecommendation') %></h2>
             <a href="#">
                 <img src="/images/tj-1.png">
                 <p>液压过滤器滤芯</p>
@@ -118,8 +118,8 @@
             <div class="zp-info-list">
                 <div class="zp-info-list-title">
                     <div class="zp-info-name">
-                        <h4>新闻中心</h4></div>
-                    <a href="#">更多&gt;</a>
+                        <h4><%= __('NewsCenter') %></h4></div>
+                    <a href="#"><%= __('More') %>&gt;</a>
                 </div>
                 <div class="zp-info-list-content zp-info-news">
                     <div class="zp-info-news-list">
@@ -137,23 +137,23 @@
             <div class="zp-info-list">
                 <div class="zp-info-list-title">
                     <div class="zp-info-name">
-                        <h4>技术支持</h4></div>
-                    <a href="#">更多&gt;</a>
+                        <h4><%= __('ServiceSupport') %></h4></div>
+                    <a href="#"><%= __('More') %>&gt;</a>
                 </div>
                 <div class="zp-info-list-content">
                     <div class="zp-info-aboutus-icon"><img src="/images/apic.jpg"></div>
-                    <p class="zp-info-aboutus-intro"><a href="#">艾达机械设备有限公司是一家专业致力于工业液压油过滤器滤芯，压缩机过滤器滤芯及金属烧结滤芯研发，生产，销售，服务于一体的专业滤器厂家。咨询电话：0373-</a></p>
+                    <p class="zp-info-aboutus-intro"><a href="#"><%= __('ServiceSupportDescription') %></a></p>
                 </div>
             </div>
             <div class="zp-info-list">
                 <div class="zp-info-list-title">
                     <div class="zp-info-name">
-                        <h4>行业应用</h4></div>
-                    <a href="#">更多&gt;</a>
+                        <h4><%= __('IndustryApplication') %></h4></div>
+                    <a href="#"><%= __('More') %>&gt;</a>
                 </div>
                 <div class="zp-info-list-content">
                     <div class="zp-info-aboutus-icon"><img src="/images/apic.jpg"></div>
-                    <p class="zp-info-aboutus-intro"><a href="#">艾达机械设备有限公司是一家专业致力于工业液压油过滤器滤芯，压缩机过滤器滤芯及金属烧结滤芯研发，生产，销售，服务于一体的专业滤器厂家。咨询电话：0373-</a></p>
+                    <p class="zp-info-aboutus-intro"><a href="#"><%= __('IndustryApplicationDescription') %></a></p>
                 </div>
             </div>
         </div>
@@ -191,11 +191,11 @@
 
             tab.onmouseout = function() {
                 MyMar = setInterval
-
-                    (Marquee, speed)
-            };
-        }
-        zpad();
+                (Marquee, speed)
+        };
+    }
+    zpad();
+   
         </script>
 </body>
 

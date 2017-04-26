@@ -59,6 +59,11 @@ router.get('/ueditor', function(req, res, next) {
     res.render('admin/product/ueditor', { title: '新乡市艾达机械设备有限公司' });
 });
 
+router.get('/i18n', function(req, res, next) {
+	console.log(req.session.locale);
+    res.render('admin/product/i18n', { title: res.__('Hello') });
+});
+
 router.get('/detail/:sCode', function(req, res, next) {
 	console.log(req.params.sCode);
 	console.log(req.query.id);
@@ -68,7 +73,7 @@ router.get('/detail/:sCode', function(req, res, next) {
 	secondList=null;
 	var firstSql="SELECT  productCode,productNameCh FROM first_product_list  order by productCode";
 	
-	var sql="SELECT t.id,t.code,t.nameCh,t.imgUrl,t.description,t.introduction,t.firstCode,t.secondCode FROM three_product_list t  WHERE t.id='"+req.query.id+"'";
+	var sql="SELECT t.id,t.code,t.nameEn,t.nameCh,t.imgUrl,t.description,t.introduction,t.firstCode,t.secondCode FROM three_product_list t  WHERE t.id='"+req.query.id+"'";
 	console.log(sql);
 	usr.selectFun(client,sql, function(result) {
 		console.log(result);
@@ -177,11 +182,11 @@ router.post('/saveProduct', function(req, res, next) {
 	console.log(req.body.code);
 	var sql="";
 	if(req.body.id){
-	   sql="UPDATE three_product_list SET nameCh='"+req.body.nameCh+"',introduction='"+req.body.introduction
+	   sql="UPDATE three_product_list SET nameEn='"+req.body.nameEn+"', nameCh='"+req.body.nameCh+"',introduction='"+req.body.introduction
 	+"',CODE='"+req.body.code+"',firstCode='"+req.body.firstCode+"',secondCode='"+req.body.secondCode
 	+"',description='"+req.body.description+"' WHERE id='"+req.body.id+"'";
 	}else{
-		sql="insert into three_product_list (id,nameCh,introduction,code,firstCode,secondCode,createdBy,createdDate,description) values ( uuid(),'"+req.body.nameCh
+		sql="insert into three_product_list (id,,nameEn,nameCh,introduction,code,firstCode,secondCode,createdBy,createdDate,description) values ( uuid(),'"+req.body.nameEn+"','"+req.body.nameCh
 		+"','"+req.body.introduction+"','"+req.body.code+"','"+req.body.firstCode
 		+"','"+req.body.secondCode+"','aidiFilter',NOW(),'"+req.body.description+"')";
 	}
