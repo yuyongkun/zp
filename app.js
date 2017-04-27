@@ -31,7 +31,6 @@ app.use(session({
     saveUninitialized:true
 }));
 
-<<<<<<< HEAD
 //configure i18n
 i18n.configure({
     locales : [
@@ -57,9 +56,6 @@ i18n.configure({
         }
         next();
     });
-
-=======
->>>>>>> origin/HEAD
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/admin', admin);

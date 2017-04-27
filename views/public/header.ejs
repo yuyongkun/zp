@@ -5,12 +5,8 @@
                 <li><a href="#"><%= __('Alibaba') %></a></li>
                 <li><a href="/contact"><%= __('ContactUs') %></a></li>
                 <li><a href="/aboutus"><%= __('AboutUs') %></a></li>
-                <li>
-                    <select onchange="changeLocale()" id="locale">
-                        <option selected="true" value="zh"><%= __('China') %></option>
-                        <option value="en"><%= __('English') %></option>
-                    </select>
-                </li>
+                <li><a href="javascript:void(0)" onclick="changeLocale('zh')"><%= __('China') %></a></li>
+                <li><a href="javascript:void(0)" onclick="changeLocale('en')"><%= __('English') %></a></li>
             </ul>
         </div>
     </div>
@@ -167,11 +163,9 @@
         </ul>
     </div>
 </div>
-
 <script>
 //语言
-function changeLocale(){
-	 var locale=$("#locale").val();
+function changeLocale(locale){
 	 $.ajax({    
          type:'get',        
          url:'/i18n/'+locale,    

@@ -1,12 +1,14 @@
 {
 	"Hello": "网站导航",
 	"Alibaba" : "阿里巴巴",
-	"ContactUs":"联系我们",
-	"AboutUs":"关于我们",
 	"Company" : "新乡市艾达机械设备有限公司",
 	"CompanyProfile": "公司简介",
 	"Honor": "公司荣誉",
 	"CompanyCulture": "企业文化",
+	"ContactUs":"联系我们",
+	"AboutUs":"关于我们",
+	"Date" : "日期",
+	"Author":"作者",
 	"China" : "中文",
 	"English": "英文",
 	"24HourHotline":"24小时热线",
@@ -34,5 +36,8 @@
 	"IndustryApplicationDescription":"艾达机械设备有限公司是一家专业致力于工业液压油过滤器滤芯，压缩机过滤器滤芯及金属烧结滤芯研发，生产，销售，服务于一体的专业滤器厂家。咨询电话：0373-000000",
 	"footer":"Copyright ©新乡市艾达机械设备有限公司    地址：新乡市红旗区一号工业园108号  邮编：453000 ",
 	"YuCP":"豫CP备12039160号 ",
-	"Links":"友情链接"
+	"Links":"友情链接",
+	"ProductDescription":"产品介绍",
+	"RelatedProducts":"相关产品",
+	"IndustryApplication":"行业应用"
 }
