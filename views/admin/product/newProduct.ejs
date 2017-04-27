@@ -120,7 +120,7 @@
     		contentType: false,  
     		dataType:'json',
             success:function(data){
-            	 $("#productImg").attr("src",data.img);
+            	$("#productImg").attr("src",data.img+'?random='+Math.random());
             	 $("#id").val(data.id);
             }    
         });    

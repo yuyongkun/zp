@@ -40,7 +40,6 @@ i18n.configure({
     directory: __dirname + '/i18n'
 });
 app.use(i18n.init);
-
 // set locale (on every request), if session locale exists
 // otherwise use default browser setting
 app.use(function(req, res, next) {
@@ -56,7 +55,6 @@ app.use(function(req, res, next) {
     }
     next();
 });
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/admin', admin);

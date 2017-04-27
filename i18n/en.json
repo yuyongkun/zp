@@ -7,6 +7,8 @@
 	"CompanyCulture": "Company Culture",
 	"ContactUs": "ContactUs",
 	"AboutUs": "AboutUs",
+	"Date" : "Date",
+	"Author":"Author",
 	"China": "Chinese",
 	"English": "English",
 	"24HourHotline": "24 Hour Hotline",
@@ -34,5 +36,8 @@
 	"IndustryApplicationDescription": "Ida Machinery Equipment Co., Ltd. is a professional dedicated to the industrial hydraulic oil filter cartridge, compressor filter cartridge and metal sintered filter R & D, production, sales and service in one of the professional filter manufacturers. Tel: 0373-000000",
 	"footer": "footer",
 	"YuCP": "YuCP",
-	"Links": "Links"
+	"Links": "Links",
+	"ProductDescription":"Product Description",
+	"RelatedProducts":"Related Products",
+	"IndustryApplication":"Industry Application"
 }

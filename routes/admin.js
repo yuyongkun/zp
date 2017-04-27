@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var usr = require('../public/static/admin/js/data.js');
+var model=require('../model/model');
+var controller=require('../controller/controller');
 
 /*后台*/
 router.get('/index', function(req, res, next) {
@@ -17,26 +18,10 @@ router.get('/index', function(req, res, next) {
 });
 
 router.get('/company', function(req, res, next) {
-	if (req.cookies.islogin) {
-		req.session.islogin = req.cookies.islogin;
-	}
-	if (req.session.islogin) {
-		res.locals.islogin = req.session.islogin;
-		res.cookie('islogin', res.locals.islogin, {
-			maxAge : 600000
-		});
-		client = usr.connect();
-		result = null;
-		var sql='SELECT *  FROM company';
-		console.log(sql);
-		usr.selectFun(client,sql, function(result) {
+		controller.selectFun(res,model.loginModel.queryCompany,[],function(result){
 			console.log(result);
 			res.render('admin/company', { title: '新乡市艾达机械设备有限公司',result : result[0]});
 		});
-		
-	}else{
-		res.redirect('login');
-	}
 });
 
 router.get('/logout', function(req, res) {
@@ -48,11 +33,7 @@ router.get('/logout', function(req, res) {
 router.get('/login', function(req, res, next) {
     res.render('admin/login', { title: '新乡市艾达机械设备有限公司'});
 }).post('/login',function(req, res) {
-	client = usr.connect();
-	result = null;
-	var sql='select count(1) count from admin where name="'+req.body.username+'" and password = "' + req.body.password+'"';
-	console.log(sql);
-	usr.selectFun(client,sql, function(result) {
+	controller.selectFun(res,model.loginModel.queryUser,[req.body.username,req.body.password],function(result){
 		if (result[0] === undefined) {
 			res.send('没有该用户');
 		} else {
@@ -67,6 +48,7 @@ router.get('/login', function(req, res, next) {
 				res.redirect('');
 			}
 		}
+	
 	});
 });
 

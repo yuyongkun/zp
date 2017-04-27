@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var service_controller=require('../controller/serviceCtr');
-var usr = require('../public/static/admin/js/data.js');
+var model=require('../model/model');
+var controller=require('../controller/controller');
 var pagination = require('../public/static/admin/js/pagination.js');
 var secondList = {};
 var firstCode;
@@ -44,34 +45,27 @@ router.get('/products/list', function(req, res, next) {
     var startp = (page.num - 1) * page.limit;
     var endp = page.num * page.limit - 1;
     var pagehelp = { currentpage: page.num, code: req.query.code, pagesize: 10, pagecount: 10, fCode: req.query.fCode };
-    client = usr.connect();
-    result = null;
-    var sql = 'SELECT t.id,t.code,t.nameCh,t.imgUrl FROM three_product_list t WHERE t.secondCode="' + req.query.code + '" ORDER BY t.code LIMIT ' + startp + ',' + endp + '';
-    console.log(sql);
-    usr.selectFun(client, "SELECT COUNT(1) count  FROM three_product_list t WHERE t.secondCode='" + req.query.code + "'", function(count) {
-        var pagecount = count[0].count;
-        pagehelp['pagecount'] = pagecount;
-        var pagehtml = pagination.pagehtml(pagehelp);
-        if (pagecount == 0) {
-            res.render('home/products', { title: '新乡市艾达机械设备有限公司', secondCode: req.query.code, list: [], locals: pagehtml, firstCode: req.query.fCode });
-        }
-        usr.selectFun(client, sql, function(result) {
-            console.log(result);
-            res.render('home/products', { title: '新乡市艾达机械设备有限公司', secondCode: req.query.code, list: result, locals: pagehtml, firstCode: req.query.fCode });
-        });
-    });
+    
+    controller.selectFun(res,model.productModel.queryProductCount,[req.query.code],function(count){
+    	 var pagecount = count[0].count;
+         pagehelp['pagecount'] = pagecount;
+         var pagehtml = pagination.pagehtml(pagehelp);
+         if (pagecount == 0) {
+             res.render('home/products', { title: '新乡市艾达机械设备有限公司', secondCode: req.query.code, list: [], locals: pagehtml, firstCode: req.query.fCode });
+         }
+         controller.selectFun(res,model.productModel.queryProductList,[req.query.code,startp,endp],function(result){
+        	 console.log(result);
+             res.render('home/products', { title: '新乡市艾达机械设备有限公司', secondCode: req.query.code, list: result, locals: pagehtml, firstCode: req.query.fCode });
+     	});
+	});
 });
 
 /*产品详情*/
 router.get('/details', function(req, res, next) {
-	console.log(req.query.id);
-	var sql="SELECT t.id,t.code,t.nameCh,t.imgUrl,t.description,t.introduction,t.createdBy,DATE_FORMAT(t.createdDate,'%Y/%c/%d') createdDate,t.description FROM three_product_list t  WHERE t.id='"+req.query.id+"'";
-	client = usr.connect();
-    result = null;
-	usr.selectFun(client, sql, function(result) {
-        console.log(result);
-        res.render('home/details', { title: '新乡市艾达机械设备有限公司', pro:result[0]});
-    });
+	controller.selectFun(res,model.productModel.queryProduct,[req.query.id],function(result){
+		console.log(result);
+        res.render('home/details', { title: '新乡市艾达机械设备有限公司', pro:result[0],locale:req.cookies.locale});
+	});
 });
 /*服务支持*/
 router.get('/service/:who', function(req, res, next) {

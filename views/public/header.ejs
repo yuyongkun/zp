@@ -81,12 +81,6 @@
                         }
                     }
                 </script>
-                    <!--
-                    <select onchange="changeLocale()" id="locale">
-                        <option selected="true" value="zh"><a href="#"></a></option>
-                        <option value="en"><%= __('English') %></option>
-                    </select>-->
-                </li>
             </ul>
         </div>
     </div>
@@ -245,21 +239,3 @@
         </ul>
     </div>
 </div>
-<!--
-<script>
-//语言
-function changeLocale(){
-	 var locale=$("#locale").val();
-	 $.ajax({    
-         type:'get',        
-         url:'/i18n/'+locale,    
-         cache:false,    
-         dataType:'json',    
-         success:function(data){
-             if(data){
-          	 location.reload();
-             }
-         }    
-     });    
-}
-</script>-->
