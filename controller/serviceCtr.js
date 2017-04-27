@@ -20,7 +20,7 @@ module.exports={
 	//添加数据
 	addService:function(req,res){
 		pool.getConnection(function(err,connection){
-			 // 解析一个文件上传
+			// 解析一个文件上传
 			var form = new multiparty.Form();
 			//设置编辑
 		    form.encoding = 'utf-8';
@@ -41,42 +41,54 @@ module.exports={
 				}
 			    connection.query(service_model.queryType,[fields.type],function(err,result){
 			    	if(err){
-			    		console.log('－－－－－－查询服务出错－－－－－－');
+			    		console.log('－－－－－－查询出错－－－－－－');
 						res.json({
 							responseCode:'-1',
 							responseMsg:err
 						});
 						return;
 			    	}
-			    	console.log('－－－－－－查询服务成功－－－－－－');
+			    	console.log('－－－－－－查询成功－－－－－－');
 			    	console.log(result);
 			    	if(result.length<=0){
 			    		console.log('－－－－－－服务不存在插入数据－－－－－－');
 			    		connection.query(service_model.insert,[fields.type,fields.type,fields.content],function(err,result){
-							if(result){
-								var result={
+			    			if(err){
+								console.log('－－－－－－插入出错－－－－－－');
+								console.log(err);
+								res.json({
+									responseCode:'-1',
+									responseMsg:err.code
+								});
+			    			}else{
+								console.log('－－－－－－插入成功－－－－－－');
+			    				console.log(result);
+								res.json({
 									responseCode:'000000',
 									responseMsg:"成功"
-								};
-
-							}
-							//返回结果
-							res.json(result);
+								});
+			    			}
 							//释放链接
 							connection.release();
 						});
 			    	}else{
-			    		console.log('－－－－－－服务已存在更新数据－－－－－－');
+			    		console.log('－－－－－－数据已存在更新数据－－－－－－');
 			    		connection.query(service_model.update,[fields.content,fields.type],function(err,result){
-			    			if(result){
+			    			if(err){
+			    				console.log('－－－－－－更新出错－－－－－－');
+			    				console.log(err);
+								res.json({
+									responseCode:'-1',
+									responseMsg:err.code
+								});
+			    			}else{
 			    				console.log('－－－－－－更新成功－－－－－－');
 			    				console.log(result);
-			    				var result={
+								res.json({
 									responseCode:'000000',
 									responseMsg:"成功"
-								};
+								});
 			    			}
-			    			callback(res,result);
 							//释放链接
 							connection.release();
 
@@ -86,7 +98,7 @@ module.exports={
 		    });
 		});
 	},
-	queryService:function(req,res,callbacks){
+	queryService:function(req,res,callback){
 		pool.getConnection(function(err,connection){
      		console.log('－－－－－－查询服务内容－－－－－－');
      		console.log(req.type);
@@ -94,7 +106,7 @@ module.exports={
 				if(result){
 					console.log('－－－－－－查询服务内容成功－－－－－－');
 					console.log(result);
-					callbacks(result);
+					callback(result);
 				}
 				connection.release();
 			});

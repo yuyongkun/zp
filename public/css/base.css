@@ -64,7 +64,38 @@ li {
     clear: both;
     display: block;
 }
+.language-setting{
+         position: relative;
+    width: 60px;
+       text-align: center;
+    cursor: pointer;
+}
+.language-setting i{
+       position: absolute;
+       left: 52px;
+    top: 15px;
+    width: 14px;
+    height: 14px;
+    background: url(/images/lan.gif) no-repeat;
 
+}
+.language-setting:hover ul{
+  display: block;
+    
+}
+.language-setting ul{
+    display: none;
+   position: absolute;
+    width: 100%;
+    top: 32px;
+    text-align: center;
+    background: #fff;
+    z-index: 1;
+    border: 1px solid #e1e1e1;
+}
+.language-setting ul li{
+    width: 100%
+}
 .zp-top ul {
     float: right;
     margin-bottom: 0px;
@@ -325,8 +356,8 @@ ul.zp-wrap>li .servicesupport-nav {
 
 ul.zp-wrap>li .products-nav ul li a,
 ul.zp-wrap>li .servicesupport-nav ul li a {
-    padding: 5px 0;
-}
+/*    padding: 5px 0;
+*/}
 
 .bread {
     padding-bottom: 10px;
@@ -381,13 +412,12 @@ ul.zp-wrap>li .servicesupport-nav ul li a {
 
 .fotter ul.fotter-size-nav li {
     float: left;
-    width: 20%;
+        width: 16.66%;
 }
 
 .fotter ul.fotter-size-nav li h4 {
     font-size: 14px;
     line-height: 28px;
-    margin-bottom: 10px;
 }
 
 .fotter ul.fotter-size-nav li a {
@@ -659,7 +689,7 @@ ul.zp-wrap>li .servicesupport-nav ul li a {
     height: 27px;
     left: 50%;
     margin-left: -13px;
-    background-image: url(/Assets/images/tip-icon.png);
+    background-image: url(/images/tip-icon.png);
     background-position: 0 0;
 }
 

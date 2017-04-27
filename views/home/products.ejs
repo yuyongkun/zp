@@ -9,9 +9,10 @@
 </head>
 <body>
 <%include ../public/header.ejs%>
-<div class="zp-wrap">
+<div class="zp-wrap" style="margin-top: 60px;">
     <div id="firstCode" style="display:none;"><%=firstCode%></div>
-    <div class="products-nav">
+    <div class="products-nav-ss">
+    <h2 class="sel_title">筛选产品</h2>
         <div class="products-r1">
             <h3>所有系列</h3>
             <div class="products-list">
@@ -53,8 +54,6 @@
     </div>
 </div>
 <%include ../public/footer.ejs%>
-<script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="/js/global/common.js"></script>
 <script type="text/javascript">
    var name=$("#firstCode").text();
    $("#products-primary-nav li").each(function(){

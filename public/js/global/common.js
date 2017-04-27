@@ -15,7 +15,7 @@
                 m[method[i]] = (function() {
                     var type = method[i];
                     return function(message, timeout) {
-                        common.tip(message, type, timeout);
+                        Common.tip(message, type, timeout);
                     };
                 })();
             }
@@ -32,13 +32,13 @@
             var div = document.getElementById("_tips");
             if (!div) {
                 var htmTip = '<div id="_tips" class="_tips"><span id="tip_icon" class="tip_icon"></span><span id="tip_text" class="tip_text"></span></div>';
-                common.appendHTML(document.body, htmTip);
+                Common.appendHTML(document.body, htmTip);
             }
             var text = document.getElementById("tip_text");
             text.innerHTML = message;
             div = document.getElementById("_tips");
             tip = document.getElementById("tip_icon");
-            tip.style.backgroundImage = 'url(/Assets/images/tip-icon.png)';
+            tip.style.backgroundImage = 'url(/images/tip-icon.png)';
             if (type == 'success') {
                 tip.style.backgroundPosition = '0 0';
                 div.style.backgroundColor = '#18b536';
@@ -100,6 +100,19 @@
                 }, 120);
             }
         },
+         appendHTML: function (container, htm) {
+            var pnode = document.createElement('div'),
+                nodes = null,
+                fragment = document.createDocumentFragment();
+            pnode.innerHTML = htm;
+            cnodes = pnode.childNodes;
+            for (var i = 0, len = cnodes.length; i < len; i++) {
+                fragment.appendChild(cnodes[i].cloneNode(true));
+            }
+            container.appendChild(fragment);
+            nodes = null;
+            fragment = null;
+        },
         /*百度分享*/
         share: function(obj) {
             obj = obj || {},
@@ -113,7 +126,7 @@
                     bdCustomStyle: "",
                     onBeforeClick: _setShareInfo,
                     onAfterClick: function() {
-                        //                        common.msg.info('分享成功');
+                        //                        Common.msg.info('分享成功');
                     }
                 },
                 //分享按钮设置

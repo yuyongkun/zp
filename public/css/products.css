@@ -1,11 +1,11 @@
-.products-nav {
+.products-nav-ss {
     margin-bottom: 20px;
-    padding: 15px;
+      padding: 15px 15px 15px 78px;
         background: #fff;
     border: 1px solid #e5e5e5;
 }
 
-.products-nav:after {
+.products-nav-ss:after {
     content: '';
     clear: both;
     display: block;
@@ -34,7 +34,7 @@
 
 .products-r1 .products-list {
     float: left;
-    width: 903px;
+       width: 808px;
 }
 
 .products-r1 .products-list:after {
@@ -178,4 +178,19 @@ ul.paginationA01 li a:active{
 	background:#D9D9D9;
 	background:-moz-linear-gradient(top,#FFFFFF 1px,#EAEAEA 1px,#b6b6b6);
 	background:-webkit-gradient(linear,0 0,0 100%,color-stop(0.02,#FFFFFF),color-stop(0.02,#EAEAEA),color-stop(1,#b6b6b6));	
+}
+
+
+.sel_title {
+    position: absolute;
+    left: -1px;
+    top: -35px;
+        width: 181px;
+    height: 60px;
+    padding-left: 80px;
+    font-size: 20px;
+    color: #363636;
+    font-weight: normal;
+    line-height: 50px;
+    background: url(/images/sel_title.png);
 }

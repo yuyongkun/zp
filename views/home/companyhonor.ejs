@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/css/base.css' />
+    <link rel='stylesheet' href='/css/servicesupport.css' />
+</head>
+
+<body>
+    <%include ../public/header.ejs%>
+        <div class="servicesupport companyrelative">
+            <div class="zp-wrap">
+                <%include ../public/companyrelative.ejs%>
+                    <div class="servicesupport-container">
+                        <div class="bread">您的位置：<a href="/" target="_blank">首页</a>><a href="/aboutus">关于AIDA</a>><a href="/companyculture/"><%= title %></a></div>
+                       <div class="ny_right">
+      <div class="ny_right_tit">
+         <h3>公司荣誉</h3>
+      </div>
+      <div class="ny_right_text">
+ 
+&nbsp;<img alt="" src="/images/1-14042QK300164.jpg" style="width: 552px; height: 782px;">
+      </div>
+    </div>
+                    </div>
+            </div>
+        </div>
+        <%include ../public/footer.ejs%>
+            <script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
+            <script type="text/javascript" src="/js/global/common.js"></script>
+</body>
+
+</html>
