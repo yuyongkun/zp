@@ -14,7 +14,7 @@ var productModel = {
         imgInsert:'INSERT INTO three_product_list (imgUrl,id) VALUES(?,?); ',
         imgUpdate:'UPDATE three_product_list SET imgUrl= ? WHERE id= ? ',
         updateProduct:'UPDATE three_product_list SET nameEn= ? , nameCh= ? ,introduction= ? ,CODE= ? ,firstCode= ? ,secondCode= ? ,description= ? ,descriptionEn= ? WHERE id=?',
-        insertProduct:'insert into three_product_list (nameEn,nameCh,introduction,code,firstCode,secondCode,createdBy,createdDate,description,descriptionEn,id) values (?,?,?,?,?,?,?,"aidaFilter",NOW(),?, uuid())',
+        insertProduct:'insert into three_product_list (nameEn,nameCh,introduction,code,firstCode,secondCode,createdBy,createdDate,description,descriptionEn,id) values (?,?,?,?,?,?,"aidaFilter",NOW(),?,?, uuid())',
         firstList:'SELECT  productCode,productNameCh FROM first_product_list  order by productCode',
         list:'SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode= ? AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT ? , ? ',
 	};
