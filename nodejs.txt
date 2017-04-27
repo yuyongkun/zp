@@ -3,3 +3,13 @@
 npm -g install supervisor
 supervisor必须安装到全局,如果你不安装到全局，错误命令会提示你安装到全局,如果不想安装到默认的全局,也可以自己修改全局路径到当前路径
 npm config set prefix "路径"
+
+
+$ sudo npm install forever -g   #安装
+$ forever start app.js          #启动
+$ forever stop app.js           #关闭
+$ forever start -l forever.log -o out.log -e err.log app.js   #输出日志和错误
+
+forever stop /root/zp/bin/www
+forever start /root/zp/bin/www
+forever start -a -l forever.log -o out.log -e err.log /root/zp/bin/www
