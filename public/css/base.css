@@ -32,7 +32,7 @@ p {
 }
 
 a:hover {
-    color: #009ce0;
+    color: #009ce0!important;
     text-decoration: none;
 }
 
@@ -70,15 +70,16 @@ li {
        text-align: center;
     cursor: pointer;
 }
-.language-setting i{
-       position: absolute;
+.language-s1:after{
+    content:'';
+    position: absolute;
        left: 52px;
     top: 15px;
     width: 14px;
     height: 14px;
     background: url(/images/lan.gif) no-repeat;
-
 }
+
 .language-setting:hover ul{
   display: block;
     
@@ -287,6 +288,7 @@ ul.zp-wrap>li .products-nav>ul>li>h3 {
     width: 251px;
     text-align: left;
     padding: 7px 15px;
+    margin:0px;
     border-right: 1px solid #e0dedf;
     border-bottom: 1px solid #e0dedf;
     overflow: hidden;

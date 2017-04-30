@@ -46,7 +46,7 @@ router.get('/threeList', function(req, res, next) {
 	    var sql=model.productModel.list;
 	    controller.selectFun(res,sql,[req.query.sCode,startp,endp],function(result){
 		    console.log(result);
-			res.render('admin/product/list', { title: '新乡市艾达机械设备有限公司',secondList:secondList,list:result,locals:pagehtml,fCode:req.query.code});
+			res.render('admin/product/list', { title: '产品列表',secondList:secondList,list:result,locals:pagehtml,fCode:req.query.code});
 		});
 	});
 });
@@ -72,7 +72,7 @@ router.get('/detail/:sCode', function(req, res, next) {
 			var code=firstList[0].productCode;
 				controller.selectFun(res,secondSql,[code],function(secondList){
 					console.log(result);
-					res.render('admin/product/productDetil', { title: '新乡市艾达机械设备有限公司' ,result:result[0],firstList:firstList,secondList:secondList});
+					res.render('admin/product/productDetil', { title: '编辑产品' ,result:result[0],firstList:firstList,secondList:secondList});
 					});
 			});
 	});
@@ -177,7 +177,7 @@ router.get('/newProduct', function(req, res, next) {
 		var code=fResult[0].productCode;
 			controller.selectFun(res,sql,[code],function(result){
 				console.log(result);
-				res.render('admin/product/newProduct', { title: '新乡市艾达机械设备有限公司',firstList:firstList,secondList:result});
+				res.render('admin/product/newProduct', { title: '新增产品',firstList:firstList,secondList:result});
 				});
 		});
 

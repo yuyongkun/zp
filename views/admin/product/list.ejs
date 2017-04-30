@@ -3,13 +3,7 @@
 <body>
    <%include ../left.ejs%>
 <script type="text/javascript">
-	$(function() {
-		$('.column').equalHeight();
-		$("#currentView")
-				.html(
-						"<a href='/admin/index'>后台首页</a> <div class='breadcrumb_divider'></div> <a class='current'>产品列表</a>");
-	});
-    function deletePro(id,code,sCode){
+	function deletePro(id,code,sCode){
         $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function(){
         	 $.ajax({    
                  type:'get',        

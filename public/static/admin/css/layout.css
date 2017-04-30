@@ -170,22 +170,15 @@ background: url(../img/icn_logout.png) center no-repeat;
 section#secondary_bar .breadcrumbs_container {
 float: left;
 width: 77%;
-background: url(../img/secondary_bar_shadow.png) no-repeat left top;
+/*background: url(../img/secondary_bar_shadow.png) no-repeat left top;*/
 height: 38px;
 }
 
 article.breadcrumbs {
-float: left;
-padding: 0 10px;
-border: 1px solid #ccc;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
--webkit-box-shadow: 0 1px 0 #fff;
--moz-box-shadow: 0 1px 0 #fff;
-box-shadow: 0 1px 0 #fff;
-height: 23px;
-margin: 4px 3%;
+    float: left;
+    width: 100%;
+    text-align: center;
+    line-height: 35px;
 }
 
 .breadcrumbs a {

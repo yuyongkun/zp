@@ -1,16 +1,17 @@
 var express=require('express');
 var router=express.Router();
 var service_controller=require('../controller/serviceCtr');
-//新建服务
+//新建服务页面
 router.get('/',function(req,res,next){
 	res.render('admin/serviceadd',{
 		title:"新建服务",
 	});
 });
 
-//修改服务
+//修改服务页面
 router.get('/edit/:who',function(req,res,next){
 	console.log('-------修改服务参数--------');
+	res.locals.title='修改服务';
 	var param=req.params;
 	console.log(param);
 

@@ -30,22 +30,24 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-
+app.use(express.static(path.join(__dirname, 'public')));
 //configure i18n
 i18n.configure({
     locales: [
         'en',
         'zh'
     ],
-    directory: __dirname + '/i18n'
+    defaultLocale: 'zh',
+    directory: './i18n'
 });
 app.use(i18n.init);
 // set locale (on every request), if session locale exists
 // otherwise use default browser setting
 app.use(function(req, res, next) {
+    console.log("locale000000000------->",req.cookies.locale);
     // check if user has changed i18n settings
     if (req.cookies && req.cookies.locale) {
-        console.log('---55555555555555---' + req.cookies.locale);
+        console.log("locale000000000------->",req.cookies.locale);
         i18n.setLocale(req, req.cookies.locale);
     } else {
         res.cookie('locale', 'zh', {
@@ -55,12 +57,17 @@ app.use(function(req, res, next) {
     }
     next();
 });
-app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/', index);
+console.log("start------->",'111111111111111');
 app.use('/admin', admin);
+console.log("start------->",'222222222222222');
 app.use('/product', product);
+console.log("start------->",'3333333333333333');
 app.use('/ueditor', ueditor);
+console.log("start------->",'4444444444444444444');
 app.use('/service', service);
+console.log("start------->",'555555555555555555555');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
