@@ -38,36 +38,34 @@ i18n.configure({
         'zh'
     ],
     defaultLocale: 'zh',
-    directory: './i18n'
+    directory: './i18n',
+    updateFiles: false,
+    indent: "\t",
+    extension: '.js',
 });
 app.use(i18n.init);
 // set locale (on every request), if session locale exists
 // otherwise use default browser setting
 app.use(function(req, res, next) {
-    console.log("locale000000000------->",req.cookies.locale);
     // check if user has changed i18n settings
     if (req.cookies && req.cookies.locale) {
-        console.log("locale000000000------->",req.cookies.locale);
+        // res.clearCookie(name);
+        console.log("locale",req.cookies.locale);
+        res.cookie('locale', req.cookies.locale, {
+            maxAge: 365*24*600
+        });
         i18n.setLocale(req, req.cookies.locale);
     } else {
-        res.cookie('locale', 'zh', {
-            maxAge: 600000
-        });
         i18n.setLocale(req, 'zh');
     }
     next();
 });
 
 app.use('/', index);
-console.log("start------->",'111111111111111');
 app.use('/admin', admin);
-console.log("start------->",'222222222222222');
 app.use('/product', product);
-console.log("start------->",'3333333333333333');
 app.use('/ueditor', ueditor);
-console.log("start------->",'4444444444444444444');
 app.use('/service', service);
-console.log("start------->",'555555555555555555555');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
