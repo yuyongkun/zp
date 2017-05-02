@@ -1,8 +1,8 @@
 {
+	"Company": "Company",
 	"Alibaba": "Alibaba",
 	"ContactUs": "ContactUs",
 	"AboutUs": "AboutUs",
-	"China": "Chinese",
 	"24HourHotline": "24HourHotline",
 	"Home": "Home",
 	"ProductCenter": "ProductCenter",
@@ -28,10 +28,9 @@
 	"IndustryApplicationDescription": "IndustryApplicationDescription",
 	"Hello": "Hello",
 	"CompanyProfile": "CompanyProfile",
-	"Honor": "Honor",
+	"CompanyHonor": "CompanyHonor",
 	"CompanyCulture": "CompanyCulture",
 	"footer": "footer",
 	"YuCP": "YuCP",
-	"Links": "Links",
-	"Company": "Company"
+	"Links": "Links"
 }

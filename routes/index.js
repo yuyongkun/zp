@@ -13,13 +13,13 @@ router.get('/', function(req, res, next) {
     res.render('home/index', { title:  res.__('Company') });
 });
 // //allow MANUAL locale selection
-// router.get("/i18n/:locale", function (req, res) {
-// 	console.log(req.cookies.locale);
-//     res.cookie('locale',req.params.locale, {
-// 		maxAge : 1000*60*60*24
-// 	});
-//     res.send(JSON.stringify("Success"));
-// });
+ router.get("/i18n/:locale", function (req, res) {
+ 	console.log(req.cookies.locale);
+     res.cookie('locale',req.params.locale, {
+ 		maxAge : 1000*60*60*24
+ 	});
+     res.send(JSON.stringify("Success"));
+ });
 /*解决方案*/
 router.get('/case', function(req, res, next) {
     res.render('home/case', { title: '解决方案' });
