@@ -6,12 +6,12 @@
 	"24HourHotline": "24HourHotline",
 	"Home": "Home",
 	"ProductCenter": "ProductCenter",
-	"Product1": "Product1",
-	"Product2": "Product2",
-	"Product3": "Product3",
-	"Product4": "Product4",
-	"Product5": "Product5",
-	"Product6": "Product6",
+	"Product1": "Hydraulic filter cartridge",
+	"Product2": "Filter cartridge filter for air compressor",
+	"Product3": "Vacuum pump filter cartridge",
+	"Product4": "Metal sinter filter cartridge",
+	"Product5": "Filter oil machine series",
+	"Product6": "Other filtering equipment",
 	"Solution": "Solution",
 	"ServiceSupport": "ServiceSupport",
 	"ServiceGuarantee": "ServiceGuarantee",
@@ -33,5 +33,6 @@
 	"footer": "footer",
 	"YuCP": "YuCP",
 	"Links": "Links",
-	"Company": "Company"
+	"Company": "Company",
+	"CompanyHonor": "CompanyHonor"
 }

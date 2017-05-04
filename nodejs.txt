@@ -13,3 +13,4 @@ $ forever start -l forever.log -o out.log -e err.log app.js   #输出日志和�
 forever stop /root/zp/bin/www
 forever start /root/zp/bin/www
 forever start -a -l forever.log -o out.log -e err.log /root/zp/bin/www
+forever stop -a -l forever.log -o out.log   -e err.log /root/zp/bin/www

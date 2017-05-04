@@ -7,7 +7,6 @@ var multiparty = require('multiparty');
 var callback=function(res,result){
 	if(result===undefined){
 		console.log('－－－－－－操作服务失败－－－－－－');
-		console.log(result);
 		res.json({
 			responseCode:'-1',
 			responseMsg:'操作失败'
@@ -30,8 +29,6 @@ module.exports={
 		    // form.maxFilesSize = 2 * 1024 * 1024;
 		    //form.maxFields = 1000;  设置所以文件的大小总和
 			form.parse(req, function (err, fields, files) {
-				console.log('－－－－－－参数－－－－－－');
-				console.log(fields);
 				if(fields.content==''){
 					res.json({
 						responseCode:'-1',
@@ -41,28 +38,22 @@ module.exports={
 				}
 			    connection.query(service_model.queryType,[fields.type],function(err,result){
 			    	if(err){
-			    		console.log('－－－－－－查询出错－－－－－－');
 						res.json({
 							responseCode:'-1',
 							responseMsg:err
 						});
 						return;
 			    	}
-			    	console.log('－－－－－－查询成功－－－－－－');
-			    	console.log(result);
 			    	if(result.length<=0){
 			    		console.log('－－－－－－服务不存在插入数据－－－－－－');
 			    		connection.query(service_model.insert,[fields.type,fields.type,fields.content],function(err,result){
 			    			if(err){
-								console.log('－－－－－－插入出错－－－－－－');
-								console.log(err);
 								res.json({
 									responseCode:'-1',
 									responseMsg:err.code
 								});
 			    			}else{
 								console.log('－－－－－－插入成功－－－－－－');
-			    				console.log(result);
 								res.json({
 									responseCode:'000000',
 									responseMsg:"成功"
@@ -76,14 +67,12 @@ module.exports={
 			    		connection.query(service_model.update,[fields.content,fields.type],function(err,result){
 			    			if(err){
 			    				console.log('－－－－－－更新出错－－－－－－');
-			    				console.log(err);
 								res.json({
 									responseCode:'-1',
 									responseMsg:err.code
 								});
 			    			}else{
 			    				console.log('－－－－－－更新成功－－－－－－');
-			    				console.log(result);
 								res.json({
 									responseCode:'000000',
 									responseMsg:"成功"
@@ -101,11 +90,9 @@ module.exports={
 	queryService:function(req,res,callback){
 		pool.getConnection(function(err,connection){
      		console.log('－－－－－－查询服务内容－－－－－－');
-     		console.log(req.type);
 			connection.query(service_model.queryContentByType,[req.type],function(err,result){
 				if(result){
 					console.log('－－－－－－查询服务内容成功－－－－－－');
-					console.log(result);
 					callback(result);
 				}
 				connection.release();

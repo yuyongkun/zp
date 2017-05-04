@@ -250,7 +250,7 @@ ul.zp-wrap>li .about_nav a:hover {
 }
 
 ul.zp-wrap>li .products-nav {
-    width: 251px;
+    width: 281px;
     border-right: none;
 }
 
@@ -285,7 +285,7 @@ ul.zp-wrap>li .products-nav>ul>li>h3 {
     max-width: 100%;
     max-height: 38px;
     left: 0px;
-    width: 251px;
+    width: 281px;
     text-align: left;
     padding: 7px 15px;
     margin:0px;
@@ -308,7 +308,7 @@ ul.zp-wrap>li .products-nav>ul>li>.zp-product-list {
     width: 500px;
     min-height: 250px;
     top: 0;
-    left: 249px;
+    left: 279px;
     padding: 7px 15px;
     border-right: 1px solid #e0dedf;
     border-bottom: 3px solid #009ce0;
@@ -358,8 +358,8 @@ ul.zp-wrap>li .servicesupport-nav {
 
 ul.zp-wrap>li .products-nav ul li a,
 ul.zp-wrap>li .servicesupport-nav ul li a {
-/*    padding: 5px 0;
-*/}
+font-weight: 100;
+}
 
 .bread {
     padding-bottom: 10px;

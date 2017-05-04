@@ -10,10 +10,8 @@ router.get('/',function(req,res,next){
 
 //修改服务页面
 router.get('/edit/:who',function(req,res,next){
-	console.log('-------修改服务参数--------');
 	res.locals.title='修改服务';
 	var param=req.params;
-	console.log(param);
 
 	param=param.who;
 	res.locals.type=1;
