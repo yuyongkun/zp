@@ -6,77 +6,7 @@
                 <li><a href="/contactus"><%= __('ContactUs') %></a></li>
                 <li><a href="/aboutus"><%= __('AboutUs') %></a></li>
                 <li id="language-setting" class="language-setting">
-                    <%if(__('China')=='Chinese'){%>
-                       <span class="language-s1" id="en">English</span>
-                        <ul>
-                            <li id="zh">中文</li>
-                        </ul> 
-                    <%}else{%>
-                    <span class="language-s1" id="zh">中文</span>
-                        <ul>
-                            <li id="en">English</li>
-                        </ul>
-                        
-                    <%}%>
                 </li>
-                <script>
-                    
-                    var locale=getCookie('locale');
-                    var ss=document.querySelector('.language-s1');
-                    if(locale=="zh"){
-                    ss.setAttribute('id','zh');
-                    }else{
-                    ss.setAttribute('id','en');
-                    }
-                    var languageSetting=document.getElementById('language-setting');
-                    languageSetting.onclick=function(e){
-                        var _id=e.target.id;
-                        if(_id=='zh'){
-                            setCookie("locale","zh","d300");
-                        }else if(_id=='en'){
-                            setCookie("locale","en","d300");
-
-                        }
-                    };
-
-                    function getCookie(name){
-                        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-                        if(arr=document.cookie.match(reg))
-                        return unescape(arr[2]);
-                        else
-                        return null;
-                    }
-                     function delCookie(name){
-                        var exp = new Date();
-                        exp.setTime(exp.getTime() - 1);
-                        var cval=getCookie(name);
-                        if(cval!=null)
-                        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
-                    }
-                    function setCookie(name,value,time){
-                        var strsec = getsec(time);
-                        var exp = new Date();
-                        exp.setTime(exp.getTime() + strsec*1);
-                        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
-                        location.reload();
-                    }
-                    function getsec(str){
-                        var str1=str.substring(1,str.length)*1;
-                        var str2=str.substring(0,1);
-                        if (str2=="s")
-                        {
-                        return str1*1000;
-                        }
-                        else if (str2=="h")
-                        {
-                        return str1*60*60*1000;
-                        }
-                        else if (str2=="d")
-                        {
-                        return str1*24*60*60*1000;
-                        }
-                    }
-                </script>
             </ul>
         </div>
     </div>

@@ -37,20 +37,14 @@ i18n.configure({
         'en',
         'zh'
     ],
-    defaultLocale: 'zh',
-    directory: __dirname +'/i18n',
-    updateFiles: false,
-    indent: "\t",
-    extension: '.js',
+    directory:__dirname+'/i18n'
 });
 app.use(i18n.init);
 app.use(function(req, res, next) {
     console.log("locale---->",req.cookies.locale);
     if (req.cookies && req.cookies.locale) {
-        res.clearCookie(req.cookies.locale);
-        // res.cookie('locale', req.cookies.locale, {
-        //     maxAge: 365*24*600
-        // });
+        // res.clearCookie(name);
+        console.log("locale",req.cookies.locale);
         i18n.setLocale(req, req.cookies.locale);
     } else {
         i18n.setLocale(req, 'zh');
