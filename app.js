@@ -41,12 +41,12 @@ i18n.configure({
 });
 app.use(i18n.init);
 app.use(function(req, res, next) {
-    console.log("locale---->",req.cookies.locale);
-    if (req.cookies && req.cookies.locale) {
-        // res.clearCookie(name);
-        console.log("locale",req.cookies.locale);
-        i18n.setLocale(req, req.cookies.locale);
+    console.log("req.hostname------>",req.hostname);
+    if (req.hostname== 'en.aidafilter.cn') {
+        res.locals.inlanguage='en';
+        i18n.setLocale(req, 'en');
     } else {
+        res.locals.inlanguage='zh';
         i18n.setLocale(req, 'zh');
     }
     next();

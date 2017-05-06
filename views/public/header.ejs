@@ -6,6 +6,13 @@
                 <li><a href="/contactus"><%= __('ContactUs') %></a></li>
                 <li><a href="/aboutus"><%= __('AboutUs') %></a></li>
                 <li id="language-setting" class="language-setting">
+                <%if(inlanguage==='en'){%>
+                    <a href="http://en.aidafilter.cn/" target="_blank" class="language-s1">English</a>
+                    <ul><li><a href="http://zh.aidafilter.cn/" target="_blank">中文</a></li></ul>
+                <%}else{%>
+                    <a href="http://zh.aidafilter.cn/" target="_blank" class="language-s1">中文</a>
+                    <ul><li><a href="http://en.aidafilter.cn/" target="_blank">English</a></li></ul>
+                <%}%>
                 </li>
             </ul>
         </div>
