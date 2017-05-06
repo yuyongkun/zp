@@ -13,6 +13,7 @@ var admin = require('./routes/admin');
 var product = require('./routes/product');
 var ueditor = require('./routes/ueditor');
 var service = require('./routes/service');
+var news = require('./routes/news');
 
 var app = express();
 // view engine setup
@@ -57,6 +58,7 @@ app.use('/admin', admin);
 app.use('/product', product);
 app.use('/ueditor', ueditor);
 app.use('/service', service);
+app.use('/news', news);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

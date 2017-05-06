@@ -11,10 +11,10 @@
                     var locale=getCookie('locale');
                     var languageSetting=document.getElementById('language-setting');
                     var html='';
-                    if(locale=="zh"){
-                        html='<span class="language-s1" id="zh">中文</span><ul><li id="en">English</li></ul>';
+                    if(locale=="en"){
+                    	html='<span class="language-s1" id="en">English</span><ul><li id="zh">中文</li></ul>';
                     }else{
-                        html='<span class="language-s1" id="en">English</span><ul><li id="zh">中文</li></ul>';
+                    	html='<span class="language-s1" id="zh">中文</span><ul><li id="en">English</li></ul>';
                     }
                     languageSetting.innerHTML=html;
                     languageSetting.onclick=function(e){
