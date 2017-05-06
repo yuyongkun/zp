@@ -1,14 +1,17 @@
 {
+	//顶部
 	"Alibaba": "Alibaba",
 	"Company": "Company",
 	"24HourHotline": "24HourHotline",
-
+	
+	//关于AIDA
 	"CompanyProfile": "CompanyProfile",
 	"CompanyHonor": "CompanyHonor",
 	"CompanyCulture": "CompanyCulture",
 	"ContactUs": "ContactUs",
 	"AboutUs": "AboutUs",
-
+	
+	//一级产品列表
 	"Product1": "Hydraulic filter cartridge",
 	"Product2": "Air compressor three filtration and back filter cartridge",
 	"Product3": "Vacuum pump filter cartridge",
@@ -16,6 +19,7 @@
 	"Product5": "Filter oil machine series",
 	"Product6": "Other filtering equipment",
 	
+	//二级产品列表
 	"Product1_Second_product1":"National standard dawn filter cartridge",
 	"Product1_Second_product2":"Filter cartridge filter",
 	"Product1_Second_product3":"He dek filter cartridge",
@@ -82,7 +86,8 @@
 	"Product6_Second_product5":"Bag filter",
 	"Product6_Second_product6":"Plate type sealing filter",
 	"Product6_Second_product7":"Pipeline filter",
-
+    
+    //网站导航
 	"Home": "Home",
 	"ProductCenter": "ProductCenter",
 	"Solution": "Solution",
@@ -92,21 +97,25 @@
 	"NewsCenter": "NewsCenter",
 	"EntreprisesNews": "EntreprisesNews",
 	"ProductInformation": "ProductInformation",
-
+	
+	//首页相关文案
     "PopularRecommendation": "PopularRecommendation",
 	"More": "More",
 	"ServiceSupportDescription": "ServiceSupportDescription",
 	"IndustryApplication": "IndustryApplication",
 	"IndustryApplicationDescription": "IndustryApplicationDescription",
-
+	
+	//服务界面相关文案
 	"Service": "After sales service, one station is in place",
 	"ServiceDescription": "ServiceDescription",
 
+	//产品详情相关文案
 	"Date": "Date",
 	"Author": "Author",
 	"ProductDescription": "RelatedProducts",
 	"RelatedProducts": "RelatedProducts",
-
+	
+	//页脚相关文案
 	"footer": "footer",
 	"YuCP": "YuCP",
 	"Links": "Links",
