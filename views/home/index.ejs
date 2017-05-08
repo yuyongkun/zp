@@ -13,38 +13,7 @@
 <body>
     <%include ../public/header.ejs%>
         <div class="banner">
-           <!--  <div class="carousel" id="index-pic">
-                <ul>
-                    <li>
-                        <a href="#"><img class="lazy-img" src="/images/1.jpg" title="惊蛰已过，春暖花开"></a>
-                    </li>
-                    <li style="display: none;">
-                        <a href="#"><img class="lazy-img" src="/images/2.jpg" title="惊蛰已过，春暖花开"></a>
-                    </li>
-                    <li style="display: none;">
-                        <a href="#"><img class="lazy-img" src="/images/3.jpg" title="惊蛰已过，春暖花开"></a>
-                    </li>
-                    <li style="display: none;">
-                        <a href="#"><img class="lazy-img" src="/images/4.jpg" title="惊蛰已过，春暖花开"></a>
-                    </li>
-                </ul>
-                <div class="carousel-num" id="carousel-num">
-                    <span class="carousel-cur">
-                        <a href="#"><img src="/images/1.jpg"></a>
-                    </span>
-                    <span>
-                        <a href="#"><img src="/images/2.jpg"></a>
-                    </span>
-                    <span>
-                        <a href="#"><img src="/images/3.jpg"></a>
-                    </span>
-                    <span>
-                        <a href="#"><img src="/images/4.jpg"></a>
-                    </span>
-                </div>
-            </div> -->
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -76,26 +45,26 @@
     </div>
         </div>
         <div class="zp-wrap hot-recommended">
-            <h2><%= __('PopularRecommendation') %></h2>
+            <h2><%= __('HotRecommended') %></h2>
             <a href="#">
                 <img src="/images/tj-1.png">
-                <p>液压过滤器滤芯</p>
+                <p><%= __('Product1') %></p>
             </a>
             <a href="#">
                 <img src="/images/tj-2.png">
-                <p>液压过滤器滤芯</p>
+                <p><%= __('Product2') %></p>
             </a>
             <a href="#">
                 <img src="/images/tj-3.png">
-                <p>液压过滤器滤芯</p>
+                <p><%= __('Product3') %></p>
             </a>
             <a href="#">
                 <img src="/images/tj-4.png">
-                <p>液压过滤器滤芯</p>
+                <p><%= __('Product4') %></p>
             </a>
             <a href="#">
                 <img src="/images/tj-5.png">
-                <p>液压过滤器滤芯</p>
+                <p><%= __('Product5') %></p>
             </a>
         </div>
         <div class="zp-wrap zp-ad">

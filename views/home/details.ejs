@@ -25,7 +25,8 @@
                         <span data-id='details-industryapplication'><%= __('IndustryApplication') %></span>
                     </div>
                     <div id="details-content-body" class="details-content-body">
-                        <%-pro.description%>
+                       <div id="details-products-intro" class="details-func">
+                         <%-pro.description%>
                         </div>
                         <div id="details-related-products" class="details-func" style="display: none">
                             <div class="products-list">
@@ -62,18 +63,13 @@
             <script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
             <script type="text/javascript" src="/js/global/common.js"></script>
             <script type="text/javascript">
-            <script type="text/javascript">
-            $('#details-content-body').on('click', '.details-func', function() {
-
-
-            });
             $('#details-content-nav span').bind('click', function() {
                 $('#details-content-nav span').removeClass('details-cur');
                 $(this).addClass('details-cur');
 
                 $('#details-content-body .details-func').hide();
-                var pid = $(this).data('id');
-                $('#' + pid).show();
+                var _id = $(this).data('id');
+                $('#' + _id).show();
             });
             $('ul#products-primary-nav li').bind('click', function() {
                 $('ul#products-primary-nav li').removeClass('cur');
