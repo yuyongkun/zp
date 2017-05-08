@@ -3,11 +3,11 @@
 <body>
    <%include ../left.ejs%>
 <script type="text/javascript">
-	function deletePro(id,code,sCode){
+	function deletePro(id,code,sCode,image){
         $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function(){
         	 $.ajax({    
                  type:'get',        
-                 url:'/product/delete?id='+id,    
+                 url:'/product/delete?id='+id+'&image='+image,    
                  cache:false,    
                  dataType:'json',    
                  success:function(data){
@@ -61,7 +61,7 @@
 							<td><%= pro.sName%></td> 
 							<td><img class="product_img" src="<%= pro.imgUrl%>"></img></td>
 							<td><a href="/product/detail/<%= pro.sCode%>?id=<%= pro.id%>" title="编辑"><font class="ficomoon icon-edit"></font></a>
-							<a href="javascript:void(0)" onclick="deletePro('<%= pro.id%>','<%= pro.fCode%>','<%= pro.sCode%>')" title="删除" ><font class="ficomoon icon-delete"></font></a></td> 
+							<a href="javascript:void(0)" onclick="deletePro('<%= pro.id%>','<%= pro.fCode%>','<%= pro.sCode%>','<%= pro.imgUrl%>')" title="删除" ><font class="ficomoon icon-delete"></font></a></td> 
 						</tr>
 		<%})%>
 						

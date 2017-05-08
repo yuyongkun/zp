@@ -15,12 +15,7 @@
             <div class="details-wrap">
                 <div class="details-head">
                     <a href="#" title="<%=pro.nameCh%>" alt="<%=pro.nameCh%>"><img class="products-icon" src="<%=pro.imgUrl%>"></a>
-                     
-                     <%if(locale=='zh'){%>
-                     <h1 class="products-desc"><%= pro.nameCh%></h1>
-                     <%}else{%>
-                     <h1 class="products-desc"><%= pro.nameEn%></h1>
-                     <%}%>
+                     <h1 class="products-desc"><%= pro.name%></h1>
                      <p><%= __('Author') %>：<%=pro.createdBy%> <%= __('Date') %>：<%=pro.createdDate%></p>
                 </div>
                 <div class="details-content">
@@ -30,11 +25,7 @@
                         <span data-id='details-industryapplication'><%= __('IndustryApplication') %></span>
                     </div>
                     <div id="details-content-body" class="details-content-body">
-                    <%if(locale=='zh'){%>
                         <%-pro.description%>
-                         <%}else{%>
-                          <%-pro.descriptionEn%>
-                           <%}%>
                         </div>
                         <div id="details-related-products" class="details-func" style="display: none">
                             <div class="products-list">

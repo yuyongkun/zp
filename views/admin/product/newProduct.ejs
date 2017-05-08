@@ -23,11 +23,6 @@
 					<input type="file" id="imgUrl" name="imgUrl" onchange="uploadImg()"/>
 					<img class="product_img" id="productImg" src=""></img>
 				</fieldset>
-				
-				<fieldset>
-					<label for="txtButton">简介</label>
-					<input type="text" id="introduction" name="introduction" />
-				</fieldset>
 				<fieldset>
 					<label for="txtButton">一级产品名称</label>
 						<select name="firstCode" id="firstCode" onchange="getSecondProductList()">
@@ -128,7 +123,6 @@
        var id=$("#id").val();
        var nameEn=$("#nameEn").val();
  	   var nameCh=$("#nameCh").val();
- 	   var introduction=$("#introduction").val();
  	   var code=$("#code").val();
  	   var imgUrl=$("#imgUrl").val();
  	   var firstCode=$("#firstCode").val();
@@ -137,7 +131,7 @@
  	   var descriptionEn=ueEn.getContent();
  	   description=description.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
  	  descriptionEn=descriptionEn.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
- 	   var data={id:id,nameEn:nameEn,nameCh:nameCh,introduction:introduction,code:code,imgUrl:imgUrl,firstCode:firstCode,secondCode:secondCode,description:description,descriptionEn:descriptionEn};
+ 	   var data={id:id,nameEn:nameEn,nameCh:nameCh,code:code,imgUrl:imgUrl,firstCode:firstCode,secondCode:secondCode,description:description,descriptionEn:descriptionEn};
  	   
  	   $.ajax({
  		   url:"/product/saveProduct",

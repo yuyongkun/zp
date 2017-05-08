@@ -1,34 +1,34 @@
 (function() {
     window.Common = {
         autoEvent:function(){
-            function getCookie(name){
-                    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-                    if(arr=document.cookie.match(reg))
-                    return unescape(arr[2]);
-                    else
-                    return null;
-                }
-                    var locale=getCookie('locale');
-                    var languageSetting=document.getElementById('language-setting');
-                    var html='';
-                    if(locale=="en"){
-                    	html='<span class="language-s1" id="en">English</span><ul><li id="zh">中文</li></ul>';
-                    }else{
-                    	html='<span class="language-s1" id="zh">中文</span><ul><li id="en">English</li></ul>';
-                    }
-                    languageSetting.innerHTML=html;
-                    languageSetting.onclick=function(e){
-                        var _id=e.target.id;
-                        $.ajax({    
-                            type:'get',        
-                            url:'/i18n/'+_id,    
-                            cache:false,    
-                            dataType:'json',    
-                            success:function(data){
-                                window.location.reload();
-                            }    
-                        });
-                    };
+            // function getCookie(name){
+            //         var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            //         if(arr=document.cookie.match(reg))
+            //         return unescape(arr[2]);
+            //         else
+            //         return null;
+            //     }
+            //         var locale=getCookie('locale');
+            //         var languageSetting=document.getElementById('language-setting');
+            //         var html='';
+            //         if(locale=="zh"){
+            //             html='<span class="language-s1" id="zh">中文</span><ul><li id="en">English</li></ul>';
+            //         }else{
+            //             html='<span class="language-s1" id="en">English</span><ul><li id="zh">中文</li></ul>';
+            //         }
+            //         languageSetting.innerHTML=html;
+            //         languageSetting.onclick=function(e){
+            //             var _id=e.target.id;
+            //             $.ajax({    
+            //                 type:'get',        
+            //                 url:'/i18n/'+_id,    
+            //                 cache:false,    
+            //                 dataType:'json',    
+            //                 success:function(data){
+            //                     window.location.reload();
+            //                 }    
+            //             });
+            //         };
                 }(),
         /*
          * 常用提示框

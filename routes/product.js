@@ -79,8 +79,10 @@ router.get('/detail/:sCode', function(req, res, next) {
 });
 router.get('/delete', function(req, res, next) {
 	console.log(req.query.id);
+	console.log(req.query.image);
 	controller.selectFun(res,model.productModel.del,[req.query.id],function(result){
 		console.log(result);
+		fs.unlinkSync("../public"+req.query.image);
 		res.send(JSON.stringify("Success"));
 	});
 });
@@ -162,7 +164,7 @@ router.post('/saveProduct', function(req, res, next) {
 		sql=model.productModel.insertProduct;
 	}
 	
-	var arr=[req.body.nameEn,req.body.nameCh,req.body.introduction,req.body.code,req.body.firstCode,req.body.secondCode,req.body.description,req.body.descriptionEn,req.body.id];
+	var arr=[req.body.nameEn,req.body.nameCh,req.body.code,req.body.firstCode,req.body.secondCode,req.body.description,req.body.descriptionEn,req.body.id];
 	 controller.selectFun(res,sql,arr,function(result){
 		 console.log(result);
 			var obj={firstCode:req.body.firstCode,secondCode:req.body.secondCode};

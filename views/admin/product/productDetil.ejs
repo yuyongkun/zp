@@ -23,11 +23,6 @@
 					<input type="hidden" id="imgUrl" name="imgUrl" value="<%=result.imgUrl%>"/>
 					<img class="product_img" id="productImg" src="<%=result.imgUrl%>"></img>
 				</fieldset>
-				
-				<fieldset>
-					<label for="txtButton">简介</label>
-					<input type="text" id="introduction" name="introduction" value="<%=result.introduction%>"/>
-				</fieldset>
 				<fieldset>
 					<label for="txtButton">一级产品名称</label>
 						<select name="firstCode" id="firstCode" onchange="getSecondProductList()">
@@ -138,14 +133,13 @@
 	   var id=$("#id").val();
 	   var nameEn=$("#nameEn").val();
 	   var nameCh=$("#nameCh").val();
-	   var introduction=$("#introduction").val();
 	   var code=$("#code").val();
 	   var imgUrl=$("#imgUrl").val();
 	   var firstCode=$("#firstCode").val();
 	   var secondCode=$("#secondCode").val();
 	   var description=ue.getContent();;
 	   var descriptionEn=ueEn.getContent();
-	   var data={id:id,nameEn:nameEn,nameCh:nameCh,introduction:introduction,code:code,imgUrl:imgUrl,firstCode:firstCode,secondCode:secondCode,description:description,descriptionEn:descriptionEn};
+	   var data={id:id,nameEn:nameEn,nameCh:nameCh,code:code,imgUrl:imgUrl,firstCode:firstCode,secondCode:secondCode,description:description,descriptionEn:descriptionEn};
 	   
 	   $.ajax({
 		   url:   "/product/saveProduct",

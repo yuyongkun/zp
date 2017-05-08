@@ -62,7 +62,13 @@ router.get('/products/list', function(req, res, next) {
 
 /*产品详情*/
 router.get('/details', function(req, res, next) {
-	controller.selectFun(res,model.productModel.queryProduct,[req.query.id],function(result){
+	var sql;
+	if(res.locals.inlanguage=='en'){
+		sql=model.productModel.queryProductEn;
+	}else{
+		sql=model.productModel.queryProductZh;
+	}
+	controller.selectFun(res,sql,[req.query.id],function(result){
 		console.log(result);
         res.render('home/details', { title: '新乡市艾达机械设备有限公司', pro:result[0],locale:req.cookies.locale});
 	});
