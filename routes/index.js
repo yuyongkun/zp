@@ -44,7 +44,8 @@ router.get('/products/list', function(req, res, next) {
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.num * page.limit - 1;
-    var pagehelp = { currentpage: page.num, code: req.query.code, pagesize: 10, pagecount: 10, fCode: req.query.fCode };
+    var href='/products/list?fCode='+req.query.fCode+'&code='+req.query.code;
+    var pagehelp = { currentpage: page.num,  pagesize: 10, pagecount: 10, href: href };
     
     controller.selectFun(res,model.productModel.queryProductCount,[req.query.code],function(count){
     	 var pagecount = count[0].count;
@@ -53,7 +54,13 @@ router.get('/products/list', function(req, res, next) {
          if (pagecount == 0) {
              res.render('home/products', { title: '新乡市艾达机械设备有限公司', secondCode: req.query.code, list: [], locals: pagehtml, firstCode: req.query.fCode });
          }
-         controller.selectFun(res,model.productModel.queryProductList,[req.query.code,startp,endp],function(result){
+         var sql;
+         if(res.locals.inlanguage=='en'){
+     		sql=model.productModel.queryProductListEn;
+     	}else{
+     		sql=model.productModel.queryProductListZh;
+     	}
+         controller.selectFun(res,sql,[req.query.code,startp,endp],function(result){
         	 console.log(result);
              res.render('home/products', { title: '新乡市艾达机械设备有限公司', secondCode: req.query.code, list: result, locals: pagehtml, firstCode: req.query.fCode });
      	});

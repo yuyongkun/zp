@@ -41,8 +41,8 @@
             <%if(list){
     			list.forEach(function(pro){ %>
     			<div class="products-center-item">
-                    <a href="/details?id=<%= pro.id%>" title="<%= pro.nameCh%>"  alt="<%= pro.nameCh%>"><img class="products-icon" src="<%= pro.imgUrl%>"></a>
-                    <p class="products-desc"><%= pro.nameCh%></p>
+                    <a href="/details?id=<%= pro.id%>" title="<%= pro.name%>"  alt="<%= pro.name%>"><img class="products-icon" src="<%= pro.imgUrl%>"></a>
+                    <p class="products-desc"><%= pro.name%></p>
                 </div>
             <%})}%>
         </div>

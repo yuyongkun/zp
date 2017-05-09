@@ -2,6 +2,10 @@
     <body>
        <%include ../left.ejs%>
       <section id="main" class="column">
+      <div style="width: 100px;display: inline;float: left;margin-top: 15px;">
+<h3>新闻发布</h3>
+</div>
+	<hr class="split"> 
     <article class="module width_full">
 			<div class="module_content">
 				<fieldset>
@@ -43,12 +47,11 @@
     function saveNews(){
        var nameEn=$("#nameEn").val();
  	   var nameCh=$("#nameCh").val();
- 	   var description=ue.getContent();
+ 	   var descriptionCh=ue.getContent();
  	   var descriptionEn=ueEn.getContent();
- 	   description=description.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
+ 	  descriptionCh=descriptionCh.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
  	  descriptionEn=descriptionEn.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
- 	   var data={nameEn:nameEn,nameCh:nameCh,description:description,descriptionEn:descriptionEn};
- 	   
+ 	   var data={nameEn:nameEn,nameCh:nameCh,descriptionCh:descriptionCh,descriptionEn:descriptionEn};
  	   $.ajax({
  		   url:"/news/saveNews",
  		   type: "post",
@@ -58,7 +61,7 @@
  		      alert("error message : "+errorThrown.toString());
  		      },
  		   success: function(data){
- 		      var url="/product/secondList?code="+data.firstCode+'&sCode='+secondCode;
+ 		      var url="/news/query";
  		      location.href =url;
  		   }
  		  }); 

@@ -1,6 +1,5 @@
 function  pagehtml(pagehelp){
-	var code=pagehelp.code;
-	var name=pagehelp.name;
+	var href=pagehelp.href;
 	var pagecount = pagehelp.pagecount;
 	var pagesize = pagehelp.pagesize;
 	var currentpage = pagehelp.currentpage;
@@ -18,13 +17,13 @@ function  pagehtml(pagehelp){
 			}else{
 				num=parseInt(currentpage)-parseInt(1);
 			}
-		   pagehtml+= '<li><a class="previous" href="/product/threeList/'+name+'?code='+code+'&p='+(num)+'">上一页</a></li>';
+		   pagehtml+= '<li><a class="previous" href="'+href+'&p='+(num)+'">上一页</a></li>';
 		}
 		for(var i=1;i<=counts;i++){
 			if(i==currentpage){
-			   pagehtml+= '<li><a class="current"  href="/product/threeList/'+name+'?code='+code+'&p='+i+'">'+i+'</a></li>';
+			   pagehtml+= '<li><a class="current"  href="'+href+'&p='+i+'">'+i+'</a></li>';
 			}else{
-			   pagehtml+= '<li><a href="/product/threeList/'+name+'?code='+code+'&p='+i+'">'+i+'</a></li>';
+			   pagehtml+= '<li><a href="'+href+'&p='+i+'">'+i+'</a></li>';
 			}
 		}
 		if(currentpage<counts+1){
@@ -34,7 +33,7 @@ function  pagehtml(pagehelp){
 			}else{
 				num=parseInt(currentpage)+parseInt(1);
 			}
-		  pagehtml+= '<li><a class="next" href="/product/threeList/'+name+'?code='+code+'&p='+(num)+'">下一页</a></li>';
+		  pagehtml+= '<li><a class="next" href="'+href+'&p='+(num)+'">下一页</a></li>';
 		}
 	return pagehtml;
 }
