@@ -38,7 +38,8 @@ router.get('/threeList', function(req, res, next) {
 	}
 	var startp=(page.num-1)*page.limit;
 	var endp=page.num*page.limit-1;
-	var pagehelp={currentpage:page.num,code:req.query.code,pagesize:10,pagecount:10,name:req.params.name};
+	var href='/product/threeList?code='+req.query.code+'&sCode='+req.query.sCode;
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
 	var queryCount=model.productModel.queryProductCount;
 	controller.selectFun(res,queryCount,[req.query.sCode],function(count){
 		pagehelp['pagecount']=count[0].count;
@@ -82,7 +83,12 @@ router.get('/delete', function(req, res, next) {
 	console.log(req.query.image);
 	controller.selectFun(res,model.productModel.del,[req.query.id],function(result){
 		console.log(result);
-		fs.unlinkSync("../public"+req.query.image);
+		fs.unlinkSync("../public"+req.query.image,function(err){
+			if(err){
+				console.log(err);
+				throw err;
+			}
+		});
 		res.send(JSON.stringify("Success"));
 	});
 });

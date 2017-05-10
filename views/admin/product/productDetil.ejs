@@ -2,6 +2,10 @@
     <body>
        <%include ../left.ejs%>
       <section id="main" class="column">
+      <div style="width: 100px;display: inline;float: left;margin-top: 15px;">
+<h3>产品修改</h3>
+</div>
+	<hr class="split"> 
     <article class="module width_full">
 			<div class="module_content">
 				<fieldset>
@@ -28,7 +32,7 @@
 						<select name="firstCode" id="firstCode" onchange="getSecondProductList()">
 					<% firstList.forEach(function(flist){
 					   if(flist.productCode==result.firstCode){%>
-					   <option value="<%=flist.productCode%>" selected><%=flist.productNameCh%></option>
+					   <option value="<%=flist.productCode%>" selected="selected"><%=flist.productNameCh%></option>
 					   <%}else{%>
 					  <option value="<%=flist.productCode%>"><%=flist.productNameCh%></option>
 					<%}})%>   
@@ -39,7 +43,7 @@
 					<select name="secondCode" id="secondCode">
 					<% secondList.forEach(function(slist){
 					   if(slist.productCode==result.secondCode){%>
-					   <option value="<%=slist.productCode%>" selected><%=slist.productNameCh%></option>
+					   <option value="<%=slist.productCode%>" selected="selected"><%=slist.productNameCh%></option>
 					   <%}else{%>
 					  <option value="<%=slist.productCode%>"><%=slist.productNameCh%></option>
 					<%}})%>   

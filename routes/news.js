@@ -10,7 +10,55 @@ router.get('/new', function(req, res, next) {
 	res.render('admin/news/newNews', { title: '发布新闻'});
 });
 router.post('/saveNews', function(req, res, next) {
-	res.render('admin/news/newNews', { title: '发布新闻'});
+	console.log(req.body.id);
+	if(req.body.id){
+		   sql=model.news.updateNews;
+		}else{
+			sql=model.news.insertNews;
+		}
+	var arr=[req.body.nameCh,req.body.nameEn,req.body.descriptionCh,req.body.descriptionEn,req.body.id];
+	controller.selectFun(res,sql,arr,function(result){
+	    console.log(result);
+	    res.send(JSON.stringify("Success"));
+	});
+});
+router.get('/detail', function(req, res, next) {
+	console.log(req.query.id);
+	var sql=model.news.queryNew;
+	controller.selectFun(res,sql,[req.query.id],function(result){
+		console.log(result);
+		res.render('admin/news/newsDetail', { title: '编辑产品' ,result:result[0]});
+	});
+});
+router.get('/delete', function(req, res, next) {
+	console.log(req.query.id);
+	controller.selectFun(res,model.news.del,[req.query.id],function(result){
+	    console.log(result);
+	    res.send(JSON.stringify("Success"));
+	});
+});
+router.get('/query', function(req, res, next) {
+	console.log("------------1");
+	var page={limit:10,num:1};
+	if(req.query.p){
+		page['num']=req.query.p<1?1:req.query.p;
+	}
+	var startp=(page.num-1)*page.limit;
+	var endp=page.num*page.limit-1;
+	var href='/news/query?n=10';
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
+	var queryCount=model.news.queryCount;
+	
+	controller.selectFun(res,queryCount,[],function(count){
+		pagehelp['pagecount']=count[0].count;
+	    var pagehtml=pagination.pagehtml(pagehelp);
+	    console.log("------------2");
+	    var sql=model.news.queryNewsList;
+	    controller.selectFun(res,sql,[startp,endp],function(result){
+		    console.log(result);
+			res.render('admin/news/list', { title: '产品列表',list:result,locals:pagehtml});
+		});
+	});
 });
 
 module.exports = router;
