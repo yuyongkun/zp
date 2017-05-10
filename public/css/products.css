@@ -1,6 +1,6 @@
 .products-nav-ss {
     margin-bottom: 20px;
-      padding: 15px 15px 15px 78px;
+      padding: 15px;
         background: #fff;
     border: 1px solid #e5e5e5;
 }
@@ -79,8 +79,8 @@
 
 .products-center-item {
     float: left;
-    width: 230px;
-    height: 173px;
+    width: 180px;
+    height: 215px;
     margin-right: 20px;
     margin-bottom: 20px;
     background: #fff;
@@ -88,13 +88,13 @@
     box-shadow: 0px 3px 4px #ddd;
 }
 
-.products-center-item:nth-child(4n) {
+.products-center-item:nth-child(5n) {
     margin-right: 0px;
 }
 
 .products-center-item .products-icon {
-    width: 230px;
-    max-height: 138px;
+    width: 180px;
+    height: 180px;
 }
 
 .products-center-item .products-desc {
@@ -118,79 +118,64 @@
     display: block;
 }
 .nav {
-	padding-top:14px;
-	margin:0 3%;
-	width: 95%
+        padding-bottom: 20px;
 }
 
 /*****************************************************************/
-/*	pagination																			  */
+/*  pagination                                                                            */
 /*****************************************************************/
 ul.pagination
 {
-	margin:0px;
-	padding:0px;
-	overflow:hidden;
-	font:12px 'Tahoma';
-	text-align:right
+    margin:0px;
+    padding:0px;
+    overflow:hidden;
+    font:12px 'Tahoma';
+    text-align:right
 }
 ul.pagination li
 {
-	display:inline-block;
-	margin:0px;
-	padding:0px;
-	margin-left:5px;
+    display:inline-block;
+    margin:0px;
+    padding:0px;
+    margin-left:5px;
 }
 ul.pagination li:first-child
 {
-	margin-left:0px;
+    margin-left:0px;
 }
 ul.pagination li a
 {
-	color:black;
-	display:block;
-	text-decoration:none;
-	padding:7px 10px 7px 10px;
+    color:black;
+    display:block;
+    text-decoration:none;
+    padding:7px 10px 7px 10px;
 }
 ul.paginationA li a
 {
-	color:#FFFFFF;
-	border-radius:3px;	
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
+    color:#FFFFFF;
+    border-radius:3px;  
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
 }
 ul.paginationA01 li a
 {
-	color:#474747;
-	border:solid 1px #B6B6B6;
-	padding:6px 9px 6px 9px;
-	background:#E6E6E6;
-	background:-moz-linear-gradient(top,#FFFFFF 1px,#F3F3F3 1px,#E6E6E6);
-	background:-webkit-gradient(linear,0 0,0 100%,color-stop(0.02,#FFFFFF),color-stop(0.02,#F3F3F3),color-stop(1,#E6E6E6));
-}	
-	
+    color:#474747;
+    border:solid 1px #B6B6B6;
+    padding:6px 9px 6px 9px;
+    background:#E6E6E6;
+    background:-moz-linear-gradient(top,#FFFFFF 1px,#F3F3F3 1px,#E6E6E6);
+    background:-webkit-gradient(linear,0 0,0 100%,color-stop(0.02,#FFFFFF),color-stop(0.02,#F3F3F3),color-stop(1,#E6E6E6));
+}   
+    
 ul.paginationA01 li a:hover,
 ul.paginationA01 li a.current
 {
-	background:#FFFFFF;
+    background:#FFFFFF;
 }
 ul.paginationA01 li a:active{
-	background:#D9D9D9;
-	background:-moz-linear-gradient(top,#FFFFFF 1px,#EAEAEA 1px,#b6b6b6);
-	background:-webkit-gradient(linear,0 0,0 100%,color-stop(0.02,#FFFFFF),color-stop(0.02,#EAEAEA),color-stop(1,#b6b6b6));	
+    background:#D9D9D9;
+    background:-moz-linear-gradient(top,#FFFFFF 1px,#EAEAEA 1px,#b6b6b6);
+    background:-webkit-gradient(linear,0 0,0 100%,color-stop(0.02,#FFFFFF),color-stop(0.02,#EAEAEA),color-stop(1,#b6b6b6)); 
 }
 
 
-.sel_title {
-    position: absolute;
-    left: -1px;
-    top: -35px;
-        width: 181px;
-    height: 60px;
-    padding-left: 80px;
-    font-size: 20px;
-    color: #363636;
-    font-weight: normal;
-    line-height: 50px;
-    background: url(/images/sel_title.png);
-}
