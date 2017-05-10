@@ -51,7 +51,7 @@ li {
 
 .zp-wrap {
     position: relative;
-    width: 1000px;
+    width: 1080px;
     margin: 0px auto;
 }
 
@@ -344,6 +344,7 @@ ul.zp-wrap>li .servicesupport-nav {
 }
 
 .servicesupport-s1 {
+        margin-top: -20px;
     cursor: default;
 }
 
@@ -352,9 +353,6 @@ ul.zp-wrap>li .servicesupport-nav {
     padding: 5px 0;
 }
 
-.servicesupport-s1 p {
-    padding: 0 40px 15px;
-}
 
 ul.zp-wrap>li .products-nav ul li a,
 ul.zp-wrap>li .servicesupport-nav ul li a {
