@@ -1,6 +1,6 @@
 .products-nav-ss {
-    margin-bottom: 20px;
-      padding: 15px;
+    margin-bottom: 15px;
+      padding: 0px 15px;
         background: #fff;
     border: 1px solid #e5e5e5;
 }
@@ -28,7 +28,7 @@
     float: left;
     margin-right: 20px;
     line-height: 1;
-    padding: 8px 0;
+    padding: 5px 0;
     text-align: right;
 }
 
@@ -51,7 +51,7 @@
 
 .products-r1 .products-list ul li {
     float: left;
-    padding: 9px;
+    padding: 6px;
     line-height: 1;
     cursor: pointer;
     margin-right: 8px;
@@ -106,7 +106,7 @@
 
 }
 .products-wrap>h3 {
-       padding: 12px 15px;
+       padding: 8px 15px;
     margin-bottom: 15px;
     border-top: 1px solid #eee;
     background: #fff;
