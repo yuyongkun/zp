@@ -38,6 +38,8 @@ router.get('/products/list', function(req, res, next) {
     console.log(req.params.name);
     console.log(req.query.code);
     console.log(req.query.fCode);
+    res.locals.fcode=req.query.fCode;
+    res.locals.code=req.query.code;
     var page = { limit: 10, num: 1 };
     if (req.query.p) {
         page['num'] = req.query.p < 1 ? 1 : req.query.p;

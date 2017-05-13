@@ -5,33 +5,112 @@
         <%= title %>
     </title>
     <link rel='stylesheet' href='/css/base.css?t=201705102356' />
+    <link rel='stylesheet' href='/css/style.css?t=201705102356' />
     <link rel='stylesheet' href='/css/products.css?t=201705102356' />
 </head>
 <body>
 <%include ../public/header.ejs%>
 <div class="zp-wrap">
-    <div id="firstCode" style="display:none;"><%=firstCode%></div>
-    <div class="products-nav-ss">
-        <div class="products-r1">
-            <h3>所有系列</h3>
-            <div class="products-list">
-                <ul id="products-primary-nav">
-                    <li><a href="/products/list?code=2101&fCode=1001">液压过滤器滤芯</a></li>
-                    <li><a href="/products/list?code=2201&fCode=1002">空压机三滤及后置过滤器滤芯</a></li>
-                    <li><a href="/products/list?code=2301&fCode=1003">真空泵过滤器滤芯</a></li>
-                    <li><a href="/products/list?code=2401&fCode=1004">金属烧结过滤器滤芯</a></li>
-                    <li><a href="/products/list?code=2501&fCode=1005">滤油机系列</a></li>
-                    <li><a href="/products/list?code=2601&fCode=1006">其他过滤设备</a></li>
-                </ul>
-            </div>
-        </div>
-        <div id="products-primary-01" class="products-r1 products-types">
-            <h3>所有品牌</h3>
-            <div id="products-content" class="products-list">
-                <ul>
-                 <li><a id="2101" href="/products/list?code=2101&fCode=1001">国标黎明过滤器滤芯</a></li>
-                </ul>
-            </div>
+    <div class="products-nav-content">
+        <div class="products-list">
+            <ul>
+                <li class="<%=fcode==1001?'product-cur':''%>">
+                    <a href="/products/list?code=2101&fCode=1001"><span class="icon-everyone icon-menu"></span>液压过滤器滤芯 </a>
+                    <ul>
+                        <li class="<%=(fcode==1001&&code==2101)?'product-cur':''%>"><a href="/products/list?code=2101&fCode=1001"><%= __('Product1_Second_product1') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2102)?'product-cur':''%>"><a href="/products/list?code=2102&fCode=1001"><%= __('Product1_Second_product2') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2103)?'product-cur':''%>"><a href="/products/list?code=2103&fCode=1001"><%= __('Product1_Second_product3') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2104)?'product-cur':''%>"><a href="/products/list?code=2104&fCode=1001"><%= __('Product1_Second_product4') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2105)?'product-cur':''%>"><a href="/products/list?code=2105&fCode=1001"><%= __('Product1_Second_product5') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2106)?'product-cur':''%>"><a href="/products/list?code=2106&fCode=1001"><%= __('Product1_Second_product6') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2107)?'product-cur':''%>"><a href="/products/list?code=2107&fCode=1001"><%= __('Product1_Second_product7') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2108)?'product-cur':''%>"><a href="/products/list?code=2108&fCode=1001"><%= __('Product1_Second_product8') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2109)?'product-cur':''%>"><a href="/products/list?code=2109&fCode=1001"><%= __('Product1_Second_product9') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2110)?'product-cur':''%>"><a href="/products/list?code=2110&fCode=1001"><%= __('Product1_Second_product10') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2111)?'product-cur':''%>"><a href="/products/list?code=2111&fCode=1001"><%= __('Product1_Second_product11') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2112)?'product-cur':''%>"><a href="/products/list?code=2112&fCode=1001"><%= __('Product1_Second_product12') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2113)?'product-cur':''%>"><a href="/products/list?code=2113&fCode=1001"><%= __('Product1_Second_product13') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2114)?'product-cur':''%>"><a href="/products/list?code=2114&fCode=1001"><%= __('Product1_Second_product14') %></a></li>
+                        <li class="<%=(fcode==1001&&code==2115)?'product-cur':''%>"><a href="/products/list?code=2115&fCode=1001"><%= __('Product1_Second_product15') %></a></li>
+                    </ul>
+                </li>
+
+                <li class="<%=fcode==1002?'product-cur':''%>">
+                    <a href="/products/list?code=2201&fCode=1002"><span class="icon-everyone icon-menu"></span>空压机三滤及后置过滤器滤芯</a>
+                    <ul>
+                        <li class="<%=(fcode==1002&&code==2201)?'product-cur':''%>"><a href="/products/list?code=2201&fCode=1002"><%= __('Product2_Second_product1') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2202)?'product-cur':''%>"><a href="/products/list?code=2202&fCode=1002"><%= __('Product2_Second_product2') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2203)?'product-cur':''%>"><a href="/products/list?code=2203&fCode=1002"><%= __('Product2_Second_product3') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2204)?'product-cur':''%>"><a href="/products/list?code=2204&fCode=1002"><%= __('Product2_Second_product4') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2205)?'product-cur':''%>"><a href="/products/list?code=2205&fCode=1002"><%= __('Product2_Second_product5') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2206)?'product-cur':''%>"><a href="/products/list?code=2206&fCode=1002"><%= __('Product2_Second_product6') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2207)?'product-cur':''%>"><a href="/products/list?code=2207&fCode=1002"><%= __('Product2_Second_product7') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2208)?'product-cur':''%>"><a href="/products/list?code=2208&fCode=1002"><%= __('Product2_Second_product8') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2209)?'product-cur':''%>"><a href="/products/list?code=2209&fCode=1002"><%= __('Product2_Second_product9') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2210)?'product-cur':''%>"><a href="/products/list?code=2210&fCode=1002"><%= __('Product2_Second_product10') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2211)?'product-cur':''%>"><a href="/products/list?code=2211&fCode=1002"><%= __('Product2_Second_product11') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2212)?'product-cur':''%>"><a href="/products/list?code=2212&fCode=1002"><%= __('Product2_Second_product12') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2213)?'product-cur':''%>"><a href="/products/list?code=2213&fCode=1002"><%= __('Product2_Second_product13') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2214)?'product-cur':''%>"><a href="/products/list?code=2214&fCode=1002"><%= __('Product2_Second_product14') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2215)?'product-cur':''%>"><a href="/products/list?code=2215&fCode=1002"><%= __('Product2_Second_product15') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2216)?'product-cur':''%>"><a href="/products/list?code=2216&fCode=1002"><%= __('Product2_Second_product16') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2217)?'product-cur':''%>"><a href="/products/list?code=2217&fCode=1002"><%= __('Product2_Second_product17') %></a></li>
+                        <li class="<%=(fcode==1002&&code==2218)?'product-cur':''%>"><a href="/products/list?code=2218&fCode=1002"><%= __('Product2_Second_product18') %></a></li>
+                    </ul>
+                </li>
+
+                <li class="<%=fcode==1003?'product-cur':''%>">
+                    <a href="/products/list?code=2301&fCode=1003"><span class="icon-everyone icon-menu"></span>真空泵过滤器滤芯</a>
+                    <ul>
+                        <li class="<%=(fcode==1003&&code==2301)?'product-cur':''%>"><a href="/products/list?code=2301&fCode=1003"><%= __('Product3_Second_product1') %></a></li>
+                        <li class="<%=(fcode==1003&&code==2302)?'product-cur':''%>"><a href="/products/list?code=2302&fCode=1003"><%= __('Product3_Second_product2') %></a></li>
+                        <li class="<%=(fcode==1003&&code==2303)?'product-cur':''%>"><a href="/products/list?code=2303&fCode=1003"><%= __('Product3_Second_product3') %></a></li>
+                        <li class="<%=(fcode==1003&&code==2304)?'product-cur':''%>"><a href="/products/list?code=2304&fCode=1003"><%= __('Product3_Second_product4') %></a></li>
+                    </ul>
+                </li>
+
+                <li class="<%=fcode==1004?'product-cur':''%>">
+                    <a href="/products/list?code=2401&fCode=1004"><span class="icon-everyone icon-menu"></span>金属烧结过滤器滤芯</a>
+                    <ul>
+                        <li class="<%=(fcode==1004&&code==2401)?'product-cur':''%>"><a href="/products/list?code=2401&fCode=1004"><%= __('Product4_Second_product1') %></a></li>
+                        <li class="<%=(fcode==1004&&code==2402)?'product-cur':''%>"><a href="/products/list?code=2402&fCode=1004"><%= __('Product4_Second_product2') %></a></li>
+                        <li class="<%=(fcode==1004&&code==2403)?'product-cur':''%>"><a href="/products/list?code=2403&fCode=1004"><%= __('Product4_Second_product3') %></a></li>
+                        <li class="<%=(fcode==1004&&code==2404)?'product-cur':''%>"><a href="/products/list?code=2404&fCode=1004"><%= __('Product4_Second_product4') %></a></li>
+                        <li class="<%=(fcode==1004&&code==2405)?'product-cur':''%>"><a href="/products/list?code=2405&fCode=1004"><%= __('Product4_Second_product5') %></a></li>
+                        <li class="<%=(fcode==1004&&code==2406)?'product-cur':''%>"><a href="/products/list?code=2406&fCode=1004"><%= __('Product4_Second_product6') %></a></li>
+                        <li class="<%=(fcode==1004&&code==2407)?'product-cur':''%>"><a href="/products/list?code=2407&fCode=1004"><%= __('Product4_Second_product7') %></a></li>
+                        <li class="<%=(fcode==1004&&code==2408)?'product-cur':''%>"><a href="/products/list?code=2408&fCode=1004"><%= __('Product4_Second_product8') %></a></li>
+                    </ul>
+                </li>
+
+                <li class="<%=fcode==1005?'product-cur':''%>">
+                    <a href="/products/list?code=2501&fCode=1005"><span class="icon-everyone icon-menu"></span>滤油机系列</a>
+                    <ul>
+                        <li class="<%=(fcode==1005&&code==2501)?'product-cur':''%>"><a href="/products/list?code=2501&fCode=1005"><%= __('Product5_Second_product1') %></a></li>
+                        <li class="<%=(fcode==1005&&code==2502)?'product-cur':''%>"><a href="/products/list?code=2502&fCode=1005"><%= __('Product5_Second_product2') %></a></li>
+                        <li class="<%=(fcode==1005&&code==2503)?'product-cur':''%>"><a href="/products/list?code=2503&fCode=1005"><%= __('Product5_Second_product3') %></a></li>
+                        <li class="<%=(fcode==1005&&code==2504)?'product-cur':''%>"><a href="/products/list?code=2504&fCode=1005"><%= __('Product5_Second_product4') %></a></li>
+                        <li class="<%=(fcode==1005&&code==2505)?'product-cur':''%>"><a href="/products/list?code=2505&fCode=1005"><%= __('Product5_Second_product5') %></a></li>
+                        <li class="<%=(fcode==1005&&code==2506)?'product-cur':''%>"><a href="/products/list?code=2506&fCode=1005"><%= __('Product5_Second_product6') %></a></li>
+                        <li class="<%=(fcode==1005&&code==2507)?'product-cur':''%>"><a href="/products/list?code=2507&fCode=1005"><%= __('Product5_Second_product7') %></a></li>
+                        <li class="<%=(fcode==1005&&code==2508)?'product-cur':''%>"><a href="/products/list?code=2508&fCode=1005"><%= __('Product5_Second_product8') %></a></li>
+                        <li class="<%=(fcode==1005&&code==2509)?'product-cur':''%>"><a href="/products/list?code=2509&fCode=1005"><%= __('Product5_Second_product9') %></a></li>
+                    </ul>
+                </li>
+
+                <li class="<%=fcode==1006?'product-cur':''%>">
+                    <a href="/products/list?code=2601&fCode=1006"><span class="icon-everyone icon-menu"></span>其他过滤设备</a>
+                    <ul>
+                        <li class="<%=(fcode==1006&&code==2601)?'product-cur':''%>"><a href="/products/list?code=2601&fCode=1006"><%= __('Product6_Second_product1') %></a></li>
+                        <li class="<%=(fcode==1006&&code==2602)?'product-cur':''%>"><a href="/products/list?code=2602&fCode=1006"><%= __('Product6_Second_product2') %></a></li>
+                        <li class="<%=(fcode==1006&&code==2603)?'product-cur':''%>"><a href="/products/list?code=2603&fCode=1006"><%= __('Product6_Second_product3') %></a></li>
+                        <li class="<%=(fcode==1006&&code==2604)?'product-cur':''%>"><a href="/products/list?code=2604&fCode=1006"><%= __('Product6_Second_product4') %></a></li>
+                        <li class="<%=(fcode==1006&&code==2605)?'product-cur':''%>"><a href="/products/list?code=2605&fCode=1006"><%= __('Product6_Second_product5') %></a></li>
+                        <li class="<%=(fcode==1006&&code==2606)?'product-cur':''%>"><a href="/products/list?code=2606&fCode=1006"><%= __('Product6_Second_product6') %></a></li>
+                        <li class="<%=(fcode==1006&&code==2607)?'product-cur':''%>"><a href="/products/list?code=2607&fCode=1006"><%= __('Product6_Second_product7') %></a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="products-wrap">
@@ -53,15 +132,6 @@
     </div>
 </div>
 <%include ../public/footer.ejs%>
-<script type="text/javascript">
-   var name=$("#firstCode").text();
-   $("#products-primary-nav li").each(function(){
-	    if($(this).attr("name")==name){
-	    	$(this).attr("class","cur")
-	    }
-	  });
-   
-</script>
 </body>
 
 </html>
