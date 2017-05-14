@@ -21,6 +21,16 @@
 					<label for="txtModule">产品编码</label>
 					<input type="text" id="code" name="code" value="<%=result.code%>"/>
 				</fieldset>
+				<fieldset class="product-detail">
+					<label for="txtModule">产品介绍</label>
+					<p>品牌:<input type="text" id="brand" name="brand" value="brand"/></p>
+					<p>型号:<input type="text" id="model" name="model" value="model"/></p>
+					<p>滤材:<input type="text" id="filter_material" name="filter_material" value="filter_material"/></p>
+					<p>过滤精度:<input type="text" id="filtration_precision" name="filtration_precision" value="filtration_precision"/></p>
+					<p>工作温度:<input type="text" id="operating_temperature" name="operating_temperature" value="operating_temperature"/></p>
+					<p>公称压力:<input type="text" id="nominal_pressure" name="nominal_pressure" value="nominal_pressure"/></p>
+					<p>应用领域:<input type="text" id="application_field" name="application_field" value="application_field"/></p>
+				</fieldset>
 				<fieldset>
 					<label for="txtAction">图片</label>
 					<input type="file" id="img" name="img" onchange="uploadImg()"/>
