@@ -253,6 +253,7 @@ section#secondary_bar {
     height: 38px;
     width: 100%;
     background: #f2f2f2;
+        box-shadow: 0px 2px 4px #ddd;
     /*background: #F1F1F4 url(../img/secondary_bar.png) repeat-x;*/
 }
 
@@ -354,7 +355,7 @@ article.breadcrumbs {
 
 aside#sidebar {
     width: 23%;
-    background: #E0E0E3 url(../img/sidebar.png) repeat;
+    background: #444;
     float: left;
     min-height: 950px;
 }
@@ -411,9 +412,7 @@ div#footer {
 /* Sidebar Menu */
 
 #sidebar h3 {
-    color: #1F1F20;
-    text-transform: uppercase;
-    text-shadow: 0 1px 0 #fff;
+    color: #fff;
     margin: 10px 0 10px 6%;
     display: block;
     float: left;
@@ -495,9 +494,7 @@ div#footer {
 }
 
 #sidebar li a {
-    color: #666666;
-    text-decoration: none;
-    text-shadow: 0 1px 0 #fff;
+    color: #fff;
 }
 
 #sidebar li>a {
@@ -508,13 +505,13 @@ div#footer {
 }
 
 #sidebar li font {
-    color: #666;
+    color: #eee;
     vertical-align: middle;
     margin-right: 5px
 }
 
 #sidebar li a:hover {
-    color: #444444;
+    color: #fff;
 }
 
 #sidebar li.active {
@@ -581,14 +578,13 @@ div#footer {
 }
 
 #sidebar p {
-    color: #666666;
+    color: #fff;
     padding-left: 6%;
-    text-shadow: 0 1px 0 #fff;
     margin: 10px 0 0 0;
 }
 
 #sidebar a {
-    color: #666666;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -1282,8 +1278,6 @@ a.pink:visited {
 
 a.pink:hover {
     background: #f56778;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f56778), to(#f997b0));
-    background: -moz-linear-gradient(top, #f56778, #f997b0);
 }
 
 
@@ -1294,10 +1288,6 @@ a.blue:hover,
 a.blue:visited {
     color: #42788e;
     background: #abe4f8;
-    text-shadow: 0px 1px 0px #bee9fa;
-    background: -webkit-gradient(linear, left top, left bottom, from(#abe4f8), to(#74d0f4));
-    background: -moz-linear-gradient(top, #abe4f8, #74d0f4);
-    box-shadow: inset 1px 1px 0 #b2e6f8;
 }
 
 .blue:before,
@@ -1308,8 +1298,6 @@ a.blue:visited {
 
 a.blue:hover {
     background: #74d0f4;
-    background: -webkit-gradient(linear, left top, left bottom, from(#74d0f4), to(#abe4f8));
-    background: -moz-linear-gradient(top, #74d0f4, #abe4f8);
 }
 
 button.green,
@@ -1319,15 +1307,10 @@ button.green:visited {
     border-bottom: 4px solid #799545;
     text-shadow: 0px 1px 0px #d5e8aa;
     background: #cae285;
-    background: -webkit-gradient(linear, left top, left bottom, from(#cae285), to(#a3cd5a));
-    background: -moz-linear-gradient(top, #cae285, #a3cd5a);
-    box-shadow: inset 1px 1px 0 #cce3a1;
 }
 
 button.green:hover {
     background: #a3cd5a;
-    background: -webkit-gradient(linear, left top, left bottom, from(#a3cd5a), to(#cae285));
-    background: -moz-linear-gradient(top, #a3cd5a, #cae285);
 }
 
 
