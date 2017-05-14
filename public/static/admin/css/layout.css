@@ -252,7 +252,8 @@ header#header h2.section_title {
 section#secondary_bar {
     height: 38px;
     width: 100%;
-    background: #F1F1F4 url(../img/secondary_bar.png) repeat-x;
+    background: #f2f2f2;
+    /*background: #F1F1F4 url(../img/secondary_bar.png) repeat-x;*/
 }
 
 section#secondary_bar .user {
@@ -356,7 +357,6 @@ aside#sidebar {
     background: #E0E0E3 url(../img/sidebar.png) repeat;
     float: left;
     min-height: 950px;
-    margin-top: -4px;
 }
 
 div#footer {
@@ -619,7 +619,9 @@ section#main {
     text-transform: uppercase;
     text-shadow: 0 1px 0 #fff;
     font-size: 13px;
-    margin: 8px 20px;
+        text-align: center;
+            padding: 10px 0;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 
@@ -1203,6 +1205,7 @@ a.button {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 a.button:before,
@@ -1334,12 +1337,7 @@ a.green,
 a.green:hover,
 a.green:visited {
     color: #5d7731;
-    border-bottom: 4px solid #799545;
-    text-shadow: 0px 1px 0px #d5e8aa;
     background: #cae285;
-    background: -webkit-gradient(linear, left top, left bottom, from(#cae285), to(#a3cd5a));
-    background: -moz-linear-gradient(top, #cae285, #a3cd5a);
-    box-shadow: inset 1px 1px 0 #cce3a1;
 }
 
 .green:before,
@@ -2023,9 +2021,6 @@ ul.paginationA01 li a:active {
 .product-detail p input {
     display: inline-block;
     float: inherit;
-}
-.edui-default .edui-editor{
-	border:none!important;
 }
 #imgUrl{
 	padding-left: 8px;
