@@ -193,7 +193,7 @@ a:hover {
 header#header {
     height: 55px;
     width: 100%;
-    background: #222222 url(../img/header_bg.png) repeat-x;
+    background: #444;
 }
 
 header#header h1.site_title,
@@ -209,7 +209,7 @@ header#header h2.section_title {
     text-indent: 1.8%;
     line-height: 55px;
     color: #fff;
-    text-shadow: 0 -1px 0 #000;
+    border-right: 1px solid #333;
 }
 
 header#header h1.site_title a {
@@ -221,7 +221,6 @@ header#header h2.section_title {
     text-align: center;
     text-indent: 4.5%;
     width: 68%;
-    background: url(../img/header_shadow.png) no-repeat left top;
 }
 
 .btn_view_site {
