@@ -5,8 +5,8 @@
     <title>
         <%= title %>
     </title>
-    <link rel='stylesheet' href='/css/base.css' />
-    <link rel='stylesheet' href='/css/details.css' />
+    <link rel='stylesheet' href='/css/base.css?t=201705102356'/>
+    <link rel='stylesheet' href='/css/details.css?t=201705102356'/>
 </head>
 
 <body>
@@ -15,8 +15,10 @@
             <div class="details-wrap">
                 <div class="details-head">
                     <a href="#" title="<%=pro.nameCh%>" alt="<%=pro.nameCh%>"><img class="products-icon" src="<%=pro.imgUrl%>"></a>
-                     <h1 class="products-desc"><%= pro.name%></h1>
-                     <p><%= __('Author') %>：<%=pro.createdBy%> <%= __('Date') %>：<%=pro.createdDate%></p>
+                    <div class="details-info">
+                         <h1 class="products-desc"><%= pro.name%></h1>
+                        <p><%= __('Author') %>：<%=pro.createdBy%> <%= __('Date') %>：<%=pro.createdDate%></p>
+                    </div>
                 </div>
                 <div class="details-content">
                     <div id="details-content-nav" class="details-content-nav">

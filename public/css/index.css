@@ -32,10 +32,9 @@
 
 .zp-info-list {
     float: left;
-    width: 306px;
-    height: 246px;
-    margin-right: 31px;
-    border-bottom: 1px solid #e1e1e1;
+        width: 346px;
+    margin-right: 20px;
+    box-shadow: 0 1px 3px #e1e1e1;
 }
 
 .zp-info-list:last-child {
@@ -57,24 +56,27 @@
 
 .zp-info-list .zp-info-list-title .zp-info-name {
     float: left;
-    padding: 8px 14px;
+    padding: 0px 14px;
     margin-bottom: -1px;
     font-size: 16px;
     background: #fff;
     border-top: 3px solid #009ce0;
     color: #009ce0;
 }
-
+.zp-info-list .zp-info-list-title .zp-info-name h4{
+    color: #009ce0;
+}
 .zp-info-list .zp-info-list-title a {
     float: right;
-    padding-top: 14px;
+    padding-top: 10px;
     padding-right: 12px;
     color: #898989;
 }
 
 
 .zp-info-list .zp-info-list-content {
-    padding-top: 20px;
+        padding: 15px;
+    background: #fff;
 }
 
 .zp-info-list .zp-info-list-content p {
@@ -98,7 +100,6 @@
 .zp-info-list .zp-info-list-content .zp-info-aboutus-intro {
     margin-left: 120px;
     padding-left: 15px;
-    padding-right: 10px;
 }
 
 .zp-info-list .zp-info-news-list {
@@ -255,7 +256,6 @@
 .hot-recommended a {
     display: block;
     float: left;
-    width: 132px;
     height: 100%;
     margin-right: 25px;
     text-align: center;

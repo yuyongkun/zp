@@ -1,110 +1,132 @@
-.products-nav-ss {
-    margin-bottom: 20px;
-      padding: 15px 15px 15px 78px;
+/*自定义滚动条*/
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+.products-list>ul>li>ul::-webkit-scrollbar {
+    display:none;
+    width: 6px;
+    height: 10px;
+    background-color:#50555b;
+   transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    -moz-transition: all .3s;
+}
+.products-list>ul>li>ul:hover::-webkit-scrollbar {
+    display:block;
+}
+/*定义滑块 内阴影+圆角*/
+.products-list>ul>li>ul::-webkit-scrollbar-thumb:vertical {
+    background: #aaadb2;
+    -webkit-border-radius: 5px;
+    outline: #fff solid 2px;
+    outline-offset: -2px;
+}
+/*定义hover状态时滑块 内阴影+圆角*/
+.products-list>ul>li>ul::-webkit-scrollbar-thumb:hover {
+    background-color: #6c6e71;
+}
+.products-nav-content {
+    margin-bottom: 15px;
         background: #fff;
     border: 1px solid #e5e5e5;
 }
 
-.products-nav-ss:after {
+.products-nav-content:after {
     content: '';
     clear: both;
     display: block;
 }
-
-.products-r1 {
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
+.products-list>ul{
+    display: table;
+        width: 100%;
 }
-.products-r1:last-child{
-    border-bottom: none;
+.products-list>ul>li{
+    display: table-cell;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #3a3a3a;
+     font-weight: bold;
+    border-right: 1px solid #e5e5e5;
 }
-.products-r1:after {
-    content: '';
-    clear: both;
-    display: block;
+ul>li.product-cur>a{
+    color: #009ce0!important;
 }
-
-.products-r1>h3 {
-    float: left;
-    margin-right: 20px;
+.products-list>ul>li:last-child{
+    border-right: none;
+}
+.icon-everyone{
+    padding-right: 3px;
+font-size: 19px;
+font-weight: normal;
+    vertical-align: text-bottom;
+}
+.products-list>ul>li:hover ul{
+display: block;
+}
+.products-list>ul>li>ul{
+        display: none;
+    position: absolute;
+    top: 40px;
+    width: 420px;
+    max-height: 400px;
+    overflow-y: auto;
+    text-indent: 20px;
+    text-align: left;
+    background: #454951;
+    box-shadow: 1px 1px 4px 1px #8c8c8c;
+}
+.products-list>ul>li:nth-child(4) ul{
+        right: 266px;
+}
+.products-list>ul>li:nth-child(5) ul{
+right: 142px;
+}
+.products-list>ul>li:last-child ul{
+right: 0;
+}
+.products-list>ul>li>ul li a{
+         display: block;
     line-height: 1;
     padding: 8px 0;
-    text-align: right;
-}
-
-.products-r1 .products-list {
-    float: left;
-       width: 808px;
-}
-
-.products-r1 .products-list:after {
-    content: '';
-    clear: both;
-    display: block;
-}
-
-.products-r1 .products-list ul:after {
-    content: '';
-    clear: both;
-    display: block;
-}
-
-.products-r1 .products-list ul li {
-    float: left;
-    padding: 9px;
-    line-height: 1;
-    cursor: pointer;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    border-radius: 2px;
-}
-
-.products-r1 .products-list ul li.cur {
-    background: #009ce0;
     color: #fff;
-    border-radius: 3px;
+    border-bottom: 1px solid #999;
 }
 
-.products-r1 .products-list ul li:hover {
-    color: #009ce0;
-}
 
-.products-r1 .products-list ul li.cur:hover {
-    color: #fff;
-}
 
-.products-r1 .products-list ul li.cur a {
-    color: #fff;
-}
+
 
 .products-center-item {
     float: left;
-    width: 230px;
-    height: 173px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    width: 170px;
+    height: 200px;
+    margin-right: 12px;
+    margin-bottom: 15px;
     background: #fff;
     overflow: hidden;
-    box-shadow: 0px 3px 4px #ddd;
+   box-shadow: 0px 0 4px #ddd;
+        border: 1px solid #e5e5e5;
 }
 
-.products-center-item:nth-child(4n) {
+.products-center-item:nth-child(6n) {
     margin-right: 0px;
 }
 
 .products-center-item .products-icon {
-    width: 230px;
-    max-height: 138px;
+    display: block;
+    width: 170px;
+    height: 170px;
 }
 
 .products-center-item .products-desc {
     padding: 5px;
 }
 .products-wrap{
-
+    min-height: 600px;
 }
 .products-wrap>h3 {
-       padding: 12px 15px;
+       padding: 8px 15px;
     margin-bottom: 15px;
     border-top: 1px solid #eee;
     background: #fff;
@@ -118,79 +140,64 @@
     display: block;
 }
 .nav {
-	padding-top:14px;
-	margin:0 3%;
-	width: 95%
+        padding-bottom: 20px;
 }
 
 /*****************************************************************/
-/*	pagination																			  */
+/*  pagination                                                                            */
 /*****************************************************************/
 ul.pagination
 {
-	margin:0px;
-	padding:0px;
-	overflow:hidden;
-	font:12px 'Tahoma';
-	text-align:right
+    margin:0px;
+    padding:0px;
+    overflow:hidden;
+    font:12px 'Tahoma';
+    text-align:right
 }
 ul.pagination li
 {
-	display:inline-block;
-	margin:0px;
-	padding:0px;
-	margin-left:5px;
+    display:inline-block;
+    margin:0px;
+    padding:0px;
+    margin-left:5px;
 }
 ul.pagination li:first-child
 {
-	margin-left:0px;
+    margin-left:0px;
 }
 ul.pagination li a
 {
-	color:black;
-	display:block;
-	text-decoration:none;
-	padding:7px 10px 7px 10px;
+    color:black;
+    display:block;
+    text-decoration:none;
+    padding:7px 10px 7px 10px;
 }
 ul.paginationA li a
 {
-	color:#FFFFFF;
-	border-radius:3px;	
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
+    color:#FFFFFF;
+    border-radius:3px;  
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
 }
 ul.paginationA01 li a
 {
-	color:#474747;
-	border:solid 1px #B6B6B6;
-	padding:6px 9px 6px 9px;
-	background:#E6E6E6;
-	background:-moz-linear-gradient(top,#FFFFFF 1px,#F3F3F3 1px,#E6E6E6);
-	background:-webkit-gradient(linear,0 0,0 100%,color-stop(0.02,#FFFFFF),color-stop(0.02,#F3F3F3),color-stop(1,#E6E6E6));
-}	
-	
+    color:#474747;
+    border:solid 1px #B6B6B6;
+    padding:6px 9px 6px 9px;
+    background:#E6E6E6;
+    background:-moz-linear-gradient(top,#FFFFFF 1px,#F3F3F3 1px,#E6E6E6);
+    background:-webkit-gradient(linear,0 0,0 100%,color-stop(0.02,#FFFFFF),color-stop(0.02,#F3F3F3),color-stop(1,#E6E6E6));
+}   
+    
 ul.paginationA01 li a:hover,
 ul.paginationA01 li a.current
 {
-	background:#FFFFFF;
+    background:#FFFFFF;
 }
 ul.paginationA01 li a:active{
-	background:#D9D9D9;
-	background:-moz-linear-gradient(top,#FFFFFF 1px,#EAEAEA 1px,#b6b6b6);
-	background:-webkit-gradient(linear,0 0,0 100%,color-stop(0.02,#FFFFFF),color-stop(0.02,#EAEAEA),color-stop(1,#b6b6b6));	
+    background:#D9D9D9;
+    background:-moz-linear-gradient(top,#FFFFFF 1px,#EAEAEA 1px,#b6b6b6);
+    background:-webkit-gradient(linear,0 0,0 100%,color-stop(0.02,#FFFFFF),color-stop(0.02,#EAEAEA),color-stop(1,#b6b6b6)); 
 }
 
 
-.sel_title {
-    position: absolute;
-    left: -1px;
-    top: -35px;
-        width: 181px;
-    height: 60px;
-    padding-left: 80px;
-    font-size: 20px;
-    color: #363636;
-    font-weight: normal;
-    line-height: 50px;
-    background: url(/images/sel_title.png);
-}

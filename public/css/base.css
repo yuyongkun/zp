@@ -51,7 +51,7 @@ li {
 
 .zp-wrap {
     position: relative;
-    width: 980px;
+    width: 1080px;
     margin: 0px auto;
 }
 
@@ -164,16 +164,20 @@ li {
     padding-right: 30px;
     border-right: 1px solid #ccc;
 }
-
+.zp-md .zp-contact-style .zp-hot-line p{
+    line-height: 1;
+    margin:0px;
+}
 .zp-md .zp-contact-style .zp-hot-line p:first-child {
     font-weight: bold;
     color: #a1a1a1;
+    
+        padding-bottom: 8px;
 }
 
 .zp-md .zp-contact-style .zp-hot-line p:last-child {
     font-weight: bold;
     font-size: 26px;
-    line-height: 30px;
     color: #ed1b23;
     font-family: Arial;
 }
@@ -344,6 +348,7 @@ ul.zp-wrap>li .servicesupport-nav {
 }
 
 .servicesupport-s1 {
+        margin-top: -20px;
     cursor: default;
 }
 
@@ -352,9 +357,6 @@ ul.zp-wrap>li .servicesupport-nav {
     padding: 5px 0;
 }
 
-.servicesupport-s1 p {
-    padding: 0 40px 15px;
-}
 
 ul.zp-wrap>li .products-nav ul li a,
 ul.zp-wrap>li .servicesupport-nav ul li a {

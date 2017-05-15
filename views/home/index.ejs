@@ -6,8 +6,8 @@
         <%= title %>
     </title>
     <link rel='stylesheet' href='/css/bootstrap.min.css' />
-    <link rel='stylesheet' href='/css/base.css' />
-    <link rel='stylesheet' href='/css/index.css' />
+    <link rel='stylesheet' href='/css/base.css?t=201705102356' />
+    <link rel='stylesheet' href='/css/index.css?t=201705102356' />
 </head>
 
 <body>
@@ -47,27 +47,27 @@
         <div class="zp-wrap hot-recommended">
             <h2><%= __('HotRecommended') %></h2>
             <a href="/products/list?code=2101&fCode=1001">
-                <img src="/images/tj-1.png">
+                <img src="/images/logo.png">
                 <p><%= __('Product1') %></p>
             </a>
             <a href="/products/list?code=2201&fCode=1002">
-                <img src="/images/tj-2.png">
+                <img src="/images/logo.png">
                 <p><%= __('Product2') %></p>
             </a>
             <a href="/products/list?code=2301&fCode=1003">
-                <img src="/images/tj-3.png">
+                <img src="/images/logo.png">
                 <p><%= __('Product3') %></p>
             </a>
             <a href="/products/list?code=2401&fCode=1004">
-                <img src="/images/tj-4.png">
+                <img src="/images/logo.png">
                 <p><%= __('Product4') %></p>
             </a>
             <a href="/products/list?code=2501&fCode=1005">
-                <img src="/images/tj-5.png">
+                <img src="/images/logo.png">
                 <p><%= __('Product5') %></p>
             </a>
             <a href="/products/list?code=2601&fCode=1006">
-                <img src="/images/tj-5.png">
+                <img src="/images/logo.png">
                 <p><%= __('Product6') %></p>
             </a>
         </div>
@@ -110,23 +110,24 @@
             <div class="zp-info-list">
                 <div class="zp-info-list-title">
                     <div class="zp-info-name">
-                        <h4><%= __('ServiceSupport') %></h4></div>
-                    <a href="/service/support/"><%= __('More') %>&gt;</a>
+                        <h4><%= __('AboutUs') %></h4>
+                        </div>
+                    <a href="/aboutus"><%= __('More') %>&gt;</a>
                 </div>
                 <div class="zp-info-list-content">
                     <div class="zp-info-aboutus-icon"><img src="/images/apic.jpg"></div>
-                    <p class="zp-info-aboutus-intro"><a href="#"><%= __('ServiceSupportDescription') %></a></p>
+                    <p class="zp-info-aboutus-intro"><a href="/aboutus"><%= __('ServiceSupportDescription') %></a></p>
                 </div>
             </div>
             <div class="zp-info-list">
                 <div class="zp-info-list-title">
                     <div class="zp-info-name">
-                        <h4><%= __('IndustryApplication') %></h4></div>
-                    <a href="#"><%= __('More') %>&gt;</a>
+                        <h4><%= __('ServiceSupport') %></h4></div>
+                    <a href="/service/support/"><%= __('More') %>&gt;</a>
                 </div>
                 <div class="zp-info-list-content">
                     <div class="zp-info-aboutus-icon"><img src="/images/apic.jpg"></div>
-                    <p class="zp-info-aboutus-intro"><a href="#"><%= __('IndustryApplicationDescription') %></a></p>
+                    <p class="zp-info-aboutus-intro"><a href="/service/support/"><%= __('serviceDescription') %></a></p>
                 </div>
             </div>
         </div>

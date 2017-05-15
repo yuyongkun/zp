@@ -14,3 +14,23 @@ forever stop /root/zp/bin/www
 forever start /root/zp/bin/www
 forever start -a -l forever.log -o out.log -e err.log /root/zp/bin/www
 forever stop -a -l forever.log -o out.log   -e err.log /root/zp/bin/www
+
+
+
+重启:
+方式一:
+npm restart
+方式二:
+ps aux | grep node
+
+kill -9 PRCOCESS_ID
+
+
+删除文件夹实例：
+rm -rf /var/log/httpd/access
+删除文件使用实例：
+rm -f /var/log/httpd/access.log
+
+
+ls -a:显示所有文件
+vim+文档名:打开文件
