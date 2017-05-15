@@ -6,9 +6,10 @@ var loginModel = {
 
 var productModel = {
 	    queryUser: 'select count(1) count from admin where name= ? and password = ? ',
-	    queryProduct:'SELECT t.id,t.code,t.nameEn,t.nameCh,t.imgUrl,t.description,t.introduction,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.descriptionEn,t.firstCode,t.secondCode FROM three_product_list t  WHERE t.id=?',
-	    queryProductEn:'SELECT t.nameEn name,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.descriptionEn description FROM three_product_list t  WHERE t.id=?',
-	    queryProductZh:'SELECT t.nameCh name,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description  FROM three_product_list t  WHERE t.id=?',
+	    queryProduct:'SELECT t.id,t.code,t.nameEn,t.nameCh,t.imgUrl,t.description,t.introduction,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.descriptionEn,t.firstCode,t.secondCode, t.brandZh,t.brandEn,t.modelZh,t.modelEn,t.applicationFieldZh,t.applicationFieldEn,'+
+        't.filterMaterialZh,t.filterMaterialEn,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure FROM three_product_list t  WHERE t.id=?',
+	    queryProductEn:'SELECT t.nameEn name,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.descriptionEn description,t.brandEn brand,t.modelEn model,t.applicationFieldEn applicationField,t.filterMaterialEn filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure FROM three_product_list t  WHERE t.id=?',
+	    queryProductZh:'SELECT t.nameCh name,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.brandZh brand,t.modelZh model,t.applicationFieldZh applicationField,t.filterMaterialZh filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure  FROM three_product_list t  WHERE t.id=?',
 	    queryProductListEn:'SELECT t.id,t.code,t.nameEn name,t.imgUrl FROM three_product_list t WHERE t.secondCode= ?  ORDER BY t.code LIMIT ? ,? ',
 	    queryProductListZh:'SELECT t.id,t.code,t.nameCh name,t.imgUrl FROM three_product_list t WHERE t.secondCode= ?  ORDER BY t.code LIMIT ? ,? ',
 	    queryProductCount:'SELECT COUNT(1) count  FROM three_product_list t WHERE t.secondCode= ? ',
@@ -16,8 +17,10 @@ var productModel = {
         secondList:'select  productCode,productNameCh from second_product_list  where FirstCode= ? order by productCode',
         imgInsert:'INSERT INTO three_product_list (imgUrl,id,createdBy,createdDate) VALUES(?,?,"aidaFilter",NOW()); ',
         imgUpdate:'UPDATE three_product_list SET imgUrl= ? WHERE id= ? ',
-        updateProduct:'UPDATE three_product_list SET nameEn= ? , nameCh= ? ,CODE= ? ,firstCode= ? ,secondCode= ? ,description= ? ,descriptionEn= ? WHERE id=?',
-        insertProduct:'insert into three_product_list (nameEn,nameCh,code,firstCode,secondCode,createdBy,createdDate,description,descriptionEn,id) values (?,?,?,?,?,"aidaFilter",NOW(),?,?, uuid())',
+        updateProduct:'UPDATE three_product_list SET nameEn= ? , nameCh= ? ,CODE= ? ,firstCode= ? ,secondCode= ? ,description= ? ,descriptionEn= ?,brandZh= ?,brandEn=?,modelZh=?,modelEn=?,applicationFieldZh=? ,applicationFieldEn=?,'
+        	           +'filterMaterialZh=?,filterMaterialEn=?,filtrationPrecision=?,operatingTemperature=?,nominalPressure=? WHERE id=?',
+        insertProduct:'insert into three_product_list (nameEn,nameCh,code,firstCode,secondCode,createdBy,createdDate,description,descriptionEn,brandZh,brandEn,modelZh,modelEn,applicationFieldZh,applicationFieldEn,'+
+                       'filterMaterialZh,filterMaterialEn,filtrationPrecision,operatingTemperature,nominalPressure,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"aidaFilter",NOW(),?,?, uuid())',
         firstList:'SELECT  productCode,productNameCh FROM first_product_list  order by productCode',
         list:'SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode= ? AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT ? , ? ',
 	};

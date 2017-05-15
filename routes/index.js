@@ -47,7 +47,7 @@ router.get('/products/list', function(req, res, next) {
     var startp = (page.num - 1) * page.limit;
     var endp = page.num * page.limit - 1;
     var href='/products/list?fCode='+req.query.fCode+'&code='+req.query.code;
-    var pagehelp = { currentpage: page.num,  pagesize: 10, pagecount: 10, href: href };
+    var pagehelp = { currentpage: page.num,  pagesize: 30, pagecount: 10, href: href };
     
     controller.selectFun(res,model.productModel.queryProductCount,[req.query.code],function(count){
     	 var pagecount = count[0].count;
