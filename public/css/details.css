@@ -16,10 +16,11 @@
     border: 1px solid #e5e5e5;
 }
 
-.details-head p {
+.details-info>p {
         color: #888;
     line-height: 1;
     padding-top: 8px;
+    margin-bottom: 10px;
 }
 
 .details-content {
@@ -119,4 +120,16 @@
     font-family: "Microsoft Yahei", Arial, 宋体, Helvetica;
     padding-bottom: 8px;
     border-bottom: 1px dotted rgb(204, 204, 204);
+}
+.products-js{
+    width: 600px;
+        padding: 8px 5px;
+    background: #6b8396;
+}
+.products-js p{
+    display: inline-block;
+        line-height: 1;
+    padding-bottom: 6px;
+    color: #fff;
+    width: 49%;
 }
