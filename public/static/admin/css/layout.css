@@ -1521,7 +1521,20 @@ ul.paginationA01 li a:active{
 .wperect{width:100%}
 .wperect50{width:50%}
 
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
 
+        .fileinput-button input{
+            position:absolute;
+            right: 0px;
+            top: 0px;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+        }
 #divbg
         {
             width: 100%;

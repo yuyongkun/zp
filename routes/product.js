@@ -83,12 +83,21 @@ router.get('/delete', function(req, res, next) {
 	console.log(req.query.image);
 	controller.selectFun(res,model.productModel.del,[req.query.id],function(result){
 		console.log(result);
-		fs.unlinkSync("../public"+req.query.image,function(err){
-			if(err){
-				console.log(err);
-				throw err;
-			}
-		});
+		if(req.query.image){
+			var path="../public"+req.query.image;
+			fs.exists(path, function(exists){
+				console.log(exists);
+				if(exists){
+					fs.unlinkSync(path,function(err){
+						if(err){
+							console.log(err);
+							throw err;
+						}
+					});
+				}
+				
+			});
+		}
 		res.send(JSON.stringify("Success"));
 	});
 });
@@ -119,8 +128,8 @@ router.post('/upload', function(req, res) {
 	        }  
 	        var extName = '';  //后缀名
 	        console.log(files);
+	        if(files && files.imgUrl){
 	        console.log(files.imgUrl);
-	        console.log(files.imgUrl.type);
 	        var file=files.imgUrl[0];
 	        console.log(file.originalFilename);
 	        var type=file.originalFilename.split(".")[1];
@@ -146,6 +155,7 @@ router.post('/upload', function(req, res) {
 	        }
 	        var avatarName =  id+ '.' + extName;
 	        var newPath = '../public'+ AVATAR_UPLOAD_FOLDER+ avatarName;
+	        console.log(newPath);
 	        fs.renameSync(file.path, newPath);
 	        //fs.unlinkSync(newPath);
 	        var sql="";
@@ -158,6 +168,7 @@ router.post('/upload', function(req, res) {
 				console.log(result);
 				res.send(JSON.stringify({id:id,img:AVATAR_UPLOAD_FOLDER+ avatarName}));
 			});
+	        }
 	    });
 	   
 	});
