@@ -125,7 +125,10 @@ router.post('/upload', function(req, res) {
 	          res.locals.error = err;
 	          console.log(err);
 	          return;        
-	        }  
+	        } 
+	        console.log(fields);
+	        var firstCode=fields.firstCode[0];
+	        var secondCode=fields.secondCode[0];
 	        var extName = '';  //后缀名
 	        console.log(files);
 	        if(files && files.imgUrl){
@@ -164,7 +167,7 @@ router.post('/upload', function(req, res) {
 	        }else{
 	           sql=model.productModel.imgInsert;
 	        }
-	        controller.selectFun(res,sql,[AVATAR_UPLOAD_FOLDER+ avatarName,id],function(result){
+	        controller.selectFun(res,sql,[AVATAR_UPLOAD_FOLDER+ avatarName,id,firstCode,secondCode],function(result){
 				console.log(result);
 				res.send(JSON.stringify({id:id,img:AVATAR_UPLOAD_FOLDER+ avatarName}));
 			});

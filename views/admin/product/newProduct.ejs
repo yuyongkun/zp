@@ -58,8 +58,9 @@
 					<label for="txtAction">图片</label>
 					 <span class="btn btn-success fileinput-button">
 				            <span>上传</span>
-				            <input type="file" id="imgUrl" name="imgUrl" onchange="uploadImg()">
+				            <input type="file" id="img" name="img" onchange="uploadImg()">
 				        </span>
+				        <input type="hidden" id="imgUrl" name="imgUrl"/>
 					<img class="product_img" id="productImg" src=""></img>
 				</fieldset>
 				<fieldset class="product-detail">
@@ -141,9 +142,13 @@
     }
     function uploadImg(){
  	   var FormServlet= "/product/upload";
- 	   var fileInfo =$('#imgUrl').prop('files')[0];
+ 	   var fileInfo =$('#img').prop('files')[0];
+ 	   var firstCode=$("#firstCode").val();
+	   var secondCode=$("#secondCode").val();
  	   var fd = new FormData();
  	   fd.append("imgUrl", fileInfo);
+ 	   fd.append("firstCode", firstCode);
+ 	   fd.append("secondCode", secondCode);
  	   $.ajax({    
             type:'post',        
             url:FormServlet,    
@@ -154,7 +159,8 @@
     		dataType:'json',
             success:function(data){
             	$("#productImg").attr("src",data.img+'?random='+Math.random());
-            	 $("#id").val(data.id);
+            	$("#id").val(data.id);
+            	$("#imgUrl").val(data.img);
             }    
         });    
                

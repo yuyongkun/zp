@@ -15,8 +15,8 @@ var productModel = {
 	    queryProductCount:'SELECT COUNT(1) count  FROM three_product_list t WHERE t.secondCode= ? ',
         del:'DELETE FROM three_product_list WHERE id= ? ',
         secondList:'select  productCode,productNameCh from second_product_list  where FirstCode= ? order by productCode',
-        imgInsert:'INSERT INTO three_product_list (imgUrl,id,createdBy,createdDate) VALUES(?,?,"aidaFilter",NOW()); ',
-        imgUpdate:'UPDATE three_product_list SET imgUrl= ? WHERE id= ? ',
+        imgInsert:'INSERT INTO three_product_list (imgUrl,id,firstCode,secondCode,createdBy,createdDate) VALUES(?,?,?,?,"aidaFilter",NOW()); ',
+        imgUpdate:'UPDATE three_product_list SET imgUrl= ?,firstCode=?,secondCode=? WHERE id= ? ',
         updateProduct:'UPDATE three_product_list SET nameEn= ? , nameCh= ? ,CODE= ? ,firstCode= ? ,secondCode= ? ,description= ? ,descriptionEn= ?,brandZh= ?,brandEn=?,modelZh=?,modelEn=?,applicationFieldZh=? ,applicationFieldEn=?,'
         	           +'filterMaterialZh=?,filterMaterialEn=?,filtrationPrecision=?,operatingTemperature=?,nominalPressure=? WHERE id=?',
         insertProduct:'insert into three_product_list (nameEn,nameCh,code,firstCode,secondCode,createdBy,createdDate,description,descriptionEn,brandZh,brandEn,modelZh,modelEn,applicationFieldZh,applicationFieldEn,'+
