@@ -40,14 +40,14 @@ router.get('/products/list', function(req, res, next) {
     console.log(req.query.fCode);
     res.locals.fcode=req.query.fCode;
     res.locals.code=req.query.code;
-    var page = { limit: 10, num: 1 };
+    var page = { limit: 30, num: 1 };
     if (req.query.p) {
         page['num'] = req.query.p < 1 ? 1 : req.query.p;
     }
     var startp = (page.num - 1) * page.limit;
-    var endp = page.num * page.limit - 1;
+    var endp = page.limit;
     var href='/products/list?fCode='+req.query.fCode+'&code='+req.query.code;
-    var pagehelp = { currentpage: page.num,  pagesize: 30, pagecount: 10, href: href };
+    var pagehelp = { currentpage: page.num,  pagesize: 30, pagecount: 30, href: href };
     
     controller.selectFun(res,model.productModel.queryProductCount,[req.query.code],function(count){
     	 var pagecount = count[0].count;

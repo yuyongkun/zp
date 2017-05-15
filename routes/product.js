@@ -37,7 +37,7 @@ router.get('/threeList', function(req, res, next) {
 		page['num']=req.query.p<1?1:req.query.p;
 	}
 	var startp=(page.num-1)*page.limit;
-	var endp=page.num*page.limit-1;
+	var endp=page.limit;
 	var href='/product/threeList?code='+req.query.code+'&sCode='+req.query.sCode;
 	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
 	var queryCount=model.productModel.queryProductCount;
