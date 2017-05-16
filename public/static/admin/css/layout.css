@@ -622,7 +622,6 @@ section#main {
 
 .module {
     width: 100%;
-    background: #ffffff;
     overflow: hidden
 }
 
@@ -769,10 +768,9 @@ section#main {
 
 .tablesorter thead tr {
     height: 34px;
-    background: url(../img/table_sorter_header.png) repeat-x;
+    background: #ddd;
     text-align: left;
     text-indent: 10px;
-    cursor: pointer;
 }
 
 .tablesorter td {
@@ -2324,7 +2322,9 @@ fieldset input[type=text], fieldset input[type=password], .common_input{
     font-style: normal;
 }
 
-
+th{
+    border-right: 1px solid #c5c5c5;
+}
 
 
 

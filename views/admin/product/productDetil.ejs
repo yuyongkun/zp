@@ -7,56 +7,50 @@
 				<fieldset class="product-detail">
 					<label for="txtName">产品名称</label>
 					<input type="hidden" id="id" name="id" value="<%=result.id%>"/>
-					<p>中文:<input type="text" id="nameCh" name="nameCh" value="<%=result.nameCh%>"/></p>
-					<p>英文:<input type="text" id="nameEn" name="nameEn" value="<%=result.nameEn%>"/></p>
+					<div class="group-item">中文:<input type="text" id="nameCh" name="nameCh" value="<%=result.nameCh%>"/></div>
+					<div class="group-item">英文:<input type="text" id="nameEn" name="nameEn" value="<%=result.nameEn%>"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">产品编码</label>
-					<p>编码:<input type="text" id="code" name="code" value="<%=result.code%>"/></p>
+					<div class="group-item"><input type="text" id="code" name="code" value="<%=result.code%>"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">品牌</label>
-					<p>中文:<input type="text" id="brandZh" name="brandZh" value="<%=result.brandEn%>"/></p>
-					<p>英文:<input type="text" id="brandEn" name="brandEn" value="<%=result.brandEn%>"/></p>
+					<div class="group-item">中文:<input type="text" id="brandZh" name="brandZh" value="<%=result.brandEn%>"/></div>
+					<div class="group-item">英文:<input type="text" id="brandEn" name="brandEn" value="<%=result.brandEn%>"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">型号</label>
-					<p>中文:<input type="text" id="modelZh" name="modelZh" value="<%=result.modelZh%>"/></p>
-					<p>英文:<input type="text" id="modelEn" name="brandEn" value="<%=result.brandEn%>"/></p>
+					<div class="group-item">中文:<input type="text" id="modelZh" name="modelZh" value="<%=result.modelZh%>"/></div>
+					<div class="group-item">英文:<input type="text" id="modelEn" name="brandEn" value="<%=result.brandEn%>"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">滤材</label>
-					<p>中文:<input type="text" id="filterMaterialZh" name="filterMaterialZh" value="<%=result.filterMaterialZh%>"/></p>
-					<p>英文:<input type="text" id="filterMaterialEn" name="filterMaterialEn" value="<%=result.filterMaterialEn%>"/></p>
+					<div class="group-item">中文:<input type="text" id="filterMaterialZh" name="filterMaterialZh" value="<%=result.filterMaterialZh%>"/></div>
+					<div class="group-item">英文:<input type="text" id="filterMaterialEn" name="filterMaterialEn" value="<%=result.filterMaterialEn%>"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">应用领域</label>
-					<p>中文:<input type="text" id="applicationFieldZh" name="applicationFieldZh" value="<%=result.applicationFieldZh%>"/></p>
-					<p>英文:<input type="text" id="applicationFieldEn" name="applicationFieldEn" value="<%=result.applicationFieldEn%>"/></p>
+					<div class="group-item">中文:<input type="text" id="applicationFieldZh" name="applicationFieldZh" value="<%=result.applicationFieldZh%>"/></div>
+					<div class="group-item">英文:<input type="text" id="applicationFieldEn" name="applicationFieldEn" value="<%=result.applicationFieldEn%>"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">过滤精度</label>
-					<p>过滤精度:<input type="text" id="filtrationPrecision" name="filtrationPrecision" value="<%=result.filtrationPrecision%>"/></p>
-					<!-- <p>中文:<input type="text" id="filtrationPrecisionZh" name="filtrationPrecisionZh"/></p>
-					<p>英文:<input type="text" id="filtrationPrecisionEn" name="filtrationPrecisionEn"/></p> -->
+					<div class="group-item"><input type="text" id="filtrationPrecision" name="filtrationPrecision" value="<%=result.filtrationPrecision%>"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">工作温度</label>
-					<p>工作温度:<input type="text" id="operatingTemperature" name="operatingTemperature" value="<%=result.operatingTemperature%>"/></p>
-				<!-- 	<p>中文:<input type="text" id="operatingTemperatureZh" name="operatingTemperatureZh"/></p>
-					<p>英文:<input type="text" id="operatingTemperatureEn" name="operatingTemperatureEn"/></p> -->
+					<div class="group-item"><input type="text" id="operatingTemperature" name="operatingTemperature" value="<%=result.operatingTemperature%>"/></div>
 				</fieldset>
 				
 				<fieldset class="product-detail">
 					<label for="txtModule">公称压力</label>
-					<p>公称压力:<input type="text" id="nominalPressure" name="nominalPressure" value="<%=result.nominalPressure%>"/></p>
-					<!-- <p>中文:<input type="text" id="nominalPressureZh" name="nominalPressureZh"/></p>
-					<p>英文:<input type="text" id="nominalPressureEn" name="nominalPressureEn"/></p> -->
+					<div class="group-item"><input type="text" id="nominalPressure" name="nominalPressure" value="<%=result.nominalPressure%>"/></div>
 				</fieldset>
 				<fieldset>
 					<label for="txtAction">图片</label>
-					 <span class="btn btn-success fileinput-button">
-				            <span>上传</span>
+					 <span class="btn btn-success fileinput-button select-pic">
+				            <i>上传</i>
 				            <input type="file" id="img" name="img" onchange="uploadImg()">
 				        </span>
 				        <input type="hidden" id="imgUrl" name="imgUrl" value="<%=result.imgUrl%>"/>
