@@ -7,60 +7,54 @@
 				<fieldset class="product-detail">
 					<label for="txtName">产品名称</label>
 					<input type="hidden" id="id" name="id"/>
-					<p>中文:<input type="text" id="nameCh" name="nameCh"/></p>
-					<p>英文:<input type="text" id="nameEn" name="nameEn"/></p>
+					<div class="group-item">中文:<input type="text" id="nameCh" name="nameCh"/></div>
+					<div class="group-item">英文:<input type="text" id="nameEn" name="nameEn"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">产品编码</label>
-					<p>编码:<input type="text" id="code" name="code"/></p>
+					<div class="group-item"><input type="text" id="code" name="code"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">品牌</label>
-					<p>中文:<input type="text" id="brandZh" name="brandZh"/></p>
-					<p>英文:<input type="text" id="brandEn" name="brandEn"/></p>
+					<div class="group-item">中文:<input type="text" id="brandZh" name="brandZh"/></div>
+					<div class="group-item">英文:<input type="text" id="brandEn" name="brandEn"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">型号</label>
-					<p>中文:<input type="text" id="modelZh" name="modelZh"/></p>
-					<p>英文:<input type="text" id="modelEn" name="brandEn"/></p>
+					<div class="group-item">中文:<input type="text" id="modelZh" name="modelZh"/></div>
+					<div class="group-item">英文:<input type="text" id="modelEn" name="brandEn"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">滤材</label>
-					<p>中文:<input type="text" id="filterMaterialZh" name="filterMaterialZh"/></p>
-					<p>英文:<input type="text" id="filterMaterialEn" name="filterMaterialEn"/></p>
+					<div class="group-item">中文:<input type="text" id="filterMaterialZh" name="filterMaterialZh"/></div>
+					<div class="group-item">英文:<input type="text" id="filterMaterialEn" name="filterMaterialEn"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">应用领域</label>
-					<p>中文:<input type="text" id="applicationFieldZh" name="applicationFieldZh"/></p>
-					<p>英文:<input type="text" id="applicationFieldEn" name="applicationFieldEn"/></p>
+					<div class="group-item">中文:<input type="text" id="applicationFieldZh" name="applicationFieldZh"/></div>
+					<div class="group-item">英文:<input type="text" id="applicationFieldEn" name="applicationFieldEn"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">过滤精度</label>
-					<p>过滤精度:<input type="text" id="filtrationPrecision" name="filtrationPrecision"/></p>
-					<!-- <p>中文:<input type="text" id="filtrationPrecisionZh" name="filtrationPrecisionZh"/></p>
-					<p>英文:<input type="text" id="filtrationPrecisionEn" name="filtrationPrecisionEn"/></p> -->
+					<div class="group-item"><input type="text" id="filtrationPrecision" name="filtrationPrecision"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">工作温度</label>
-					<p>工作温度:<input type="text" id="operatingTemperature" name="operatingTemperature"/></p>
-				<!-- 	<p>中文:<input type="text" id="operatingTemperatureZh" name="operatingTemperatureZh"/></p>
-					<p>英文:<input type="text" id="operatingTemperatureEn" name="operatingTemperatureEn"/></p> -->
+					<div class="group-item"><input type="text" id="operatingTemperature" name="operatingTemperature"/></div>
 				</fieldset>
 				
 				<fieldset class="product-detail">
 					<label for="txtModule">公称压力</label>
-					<p>公称压力:<input type="text" id="nominalPressure" name="nominalPressure"/></p>
-					<!-- <p>中文:<input type="text" id="nominalPressureZh" name="nominalPressureZh"/></p>
-					<p>英文:<input type="text" id="nominalPressureEn" name="nominalPressureEn"/></p> -->
+					<div class="group-item"><input type="text" id="nominalPressure" name="nominalPressure"/></div>
 				</fieldset>
 				
 				<fieldset>
 					<label for="txtAction">图片</label>
-					 <span class="btn btn-success fileinput-button">
-				            <span>上传</span>
-				            <input type="file" id="img" name="img" onchange="uploadImg()">
-				        </span>
-				        <input type="hidden" id="imgUrl" name="imgUrl"/>
+					<span class="btn btn-success fileinput-button select-pic">
+			            <i>上传</i>
+			            <input type="file" id="img" name="img" onchange="uploadImg()">
+			        </span>
+			        <input type="hidden" id="imgUrl" name="imgUrl"/>
 					<img class="product_img" id="productImg" src=""></img>
 				</fieldset>
 				<fieldset class="product-detail">

@@ -252,8 +252,7 @@ section#secondary_bar {
     height: 38px;
     width: 100%;
     background: #f2f2f2;
-        box-shadow: 0px 2px 4px #ddd;
-    /*background: #F1F1F4 url(../img/secondary_bar.png) repeat-x;*/
+    box-shadow: 0px 2px 4px #ddd;
 }
 
 section#secondary_bar .user {
@@ -302,7 +301,6 @@ section#secondary_bar .user {
 section#secondary_bar .breadcrumbs_container {
     float: left;
     width: 77%;
-    /*background: url(../img/secondary_bar_shadow.png) no-repeat left top;*/
     height: 38px;
 }
 
@@ -614,8 +612,8 @@ section#main {
     text-transform: uppercase;
     text-shadow: 0 1px 0 #fff;
     font-size: 13px;
-        text-align: center;
-            padding: 10px 0;
+    text-align: center;
+    padding: 10px 0;
     border-bottom: 1px solid #e5e5e5;
 }
 
@@ -1019,10 +1017,7 @@ fieldset input[type=password],
     color: #666666;
     padding-left: 10px;
     padding: 2px 5px;
-    display: block;
-    float: left;
-    width: 70%;
-    margin: 0 10px 5px;
+    width: 400px;
 }
 
 fieldset input[type=text]:focus,
@@ -1191,7 +1186,8 @@ a.button {
     position: relative;
     height: 25px;
     width: 150px;
-    margin: 0 10px 18px 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
     text-decoration: none;
     font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: bold;
@@ -1650,7 +1646,7 @@ hr.split {
 /*****************************************************************/
 
 
-/*	pagination																			  */
+/*  pagination                                                                            */
 
 
 /*****************************************************************/
@@ -1710,67 +1706,308 @@ ul.paginationA01 li a:active {
 
 
 /*common css*/
-<<<<<<< HEAD
-.l{float:left;}.r{float:right;}.cl{clear:both;}
-.n{font-weight:normal; font-style:normal;}.b{font-weight:bold;}.i{font-style:italic;}
-.fa{font-family:Arial;}.fg{font-family:Georgia;}.ft{font-family:Tahoma;}.fl{font-family:Lucida Console;}.fs{font-family:'宋体';}.fw{font-family:'微软雅黑';}.fe{font-family:'serif';} 
-.tc{text-align:center;}.tr{text-align:right;}.tl{text-align:left;}
-.g0{color:#000000;}.g3{color:#333333;}.g6{color:#666666;}.g9{color:#999999;}.red{color:red;}.wh{color:white;}
-.f0{font-size:0}.f10{font-size:.625em}.f11{font-size:.688em}.f12{font-size:.75em;}.f13{font-size:.813em}.f14{font-size:.875em}.f15{font-size:.938em}.f16{font-size:1em}.f18{font-size:1.125em}.f20{font-size:1.25em}.f24{font-size:1.5em}.f30{font-size:1.875em}.f32{font-size:2em}.f48{font-size:3em}
-.vm{vertical-align:middle;}.vtb{vertical-align:text-bottom;}.vt{vertical-align:top;}.vb{vertical-align:bottom;}.vn{vertical-align:-2px;}.vimg{margin-bottom:-3px;}
-.rel{position:relative;}.abs{position:absolute;}.fixed{position:fixed;}
-.db{display:block;}.dib{-moz-inline-stack:inline-block; display:inline-block;}.di{display:inline;}.dn{display:none;}
-.ovh{overflow:hidden;}.ovs{overflow:scroll;}.vh{visibility:hidden;}.vv{visibility:visible;}
-.fix{*zoom:1;}.fix:after,.fix:before{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}.z{_zoom:1;}
-.min_fix{overflow:hidden;_zoom:1}
-.mc{margin:0 auto}
-.mt20{margin-top:20px}
-.h30{height:30px}
-.w500{width:500px}
-.wperect{width:100%}
-.wperect50{width:50%}
 
-        .fileinput-button {
-            position: relative;
-            display: inline-block;
-            overflow: hidden;
-        }
+.l {
+    float: left;
+}
 
-        .fileinput-button input{
-            position:absolute;
-            right: 0px;
-            top: 0px;
-            opacity: 0;
-            -ms-filter: 'alpha(opacity=0)';
-            font-size: 200px;
-        }
-#divbg
-        {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            z-index: 999;
-            top: 0px;
-            left: 0px;
-            filter: alpha(opacity=50);
-            opacity: 0.5;
-            background-color: #AAAAAA;
-        }
-        #diveditcontent
-        {
-            width: 630px;
-            height: 150px;
-            position: absolute;
-            z-index: 1000;
-            background-color: #444444;
-        }
-        #divheader
-        {
-            width: 100%;
-            height: 25px;
-            background-color: #BB5500;
-        }
-=======
+.r {
+    float: right;
+}
+
+.cl {
+    clear: both;
+}
+
+.n {
+    font-weight: normal;
+    font-style: normal;
+}
+
+.b {
+    font-weight: bold;
+}
+
+.i {
+    font-style: italic;
+}
+
+.fa {
+    font-family: Arial;
+}
+
+.fg {
+    font-family: Georgia;
+}
+
+.ft {
+    font-family: Tahoma;
+}
+
+.fl {
+    font-family: Lucida Console;
+}
+
+.fs {
+    font-family: '宋体';
+}
+
+.fw {
+    font-family: '微软雅黑';
+}
+
+.fe {
+    font-family: 'serif';
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}
+
+.tl {
+    text-align: left;
+}
+
+.g0 {
+    color: #000000;
+}
+
+.g3 {
+    color: #333333;
+}
+
+.g6 {
+    color: #666666;
+}
+
+.g9 {
+    color: #999999;
+}
+
+.red {
+    color: red;
+}
+
+.wh {
+    color: white;
+}
+
+.f0 {
+    font-size: 0
+}
+
+.f10 {
+    font-size: .625em
+}
+
+.f11 {
+    font-size: .688em
+}
+
+.f12 {
+    font-size: .75em;
+}
+
+.f13 {
+    font-size: .813em
+}
+
+.f14 {
+    font-size: .875em
+}
+
+.f15 {
+    font-size: .938em
+}
+
+.f16 {
+    font-size: 1em
+}
+
+.f18 {
+    font-size: 1.125em
+}
+
+.f20 {
+    font-size: 1.25em
+}
+
+.f24 {
+    font-size: 1.5em
+}
+
+.f30 {
+    font-size: 1.875em
+}
+
+.f32 {
+    font-size: 2em
+}
+
+.f48 {
+    font-size: 3em
+}
+
+.vm {
+    vertical-align: middle;
+}
+
+.vtb {
+    vertical-align: text-bottom;
+}
+
+.vt {
+    vertical-align: top;
+}
+
+.vb {
+    vertical-align: bottom;
+}
+
+.vn {
+    vertical-align: -2px;
+}
+
+.vimg {
+    margin-bottom: -3px;
+}
+
+.rel {
+    position: relative;
+}
+
+.abs {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.db {
+    display: block;
+}
+
+.dib {
+    -moz-inline-stack: inline-block;
+    display: inline-block;
+}
+
+.di {
+    display: inline;
+}
+
+.dn {
+    display: none;
+}
+
+.ovh {
+    overflow: hidden;
+}
+
+.ovs {
+    overflow: scroll;
+}
+
+.vh {
+    visibility: hidden;
+}
+
+.vv {
+    visibility: visible;
+}
+
+.fix {
+    *zoom: 1;
+}
+
+.fix:after,
+.fix:before {
+    display: block;
+    content: "clear";
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.z {
+    _zoom: 1;
+}
+
+.min_fix {
+    overflow: hidden;
+    _zoom: 1
+}
+
+.mc {
+    margin: 0 auto
+}
+
+.mt20 {
+    margin-top: 20px
+}
+
+.h30 {
+    height: 30px
+}
+
+.w500 {
+    width: 500px
+}
+
+.wperect {
+    width: 100%
+}
+
+.wperect50 {
+    width: 50%
+}
+
+.fileinput-button {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.fileinput-button input {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+}
+
+#divbg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+    top: 0px;
+    left: 0px;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    background-color: #AAAAAA;
+}
+
+#diveditcontent {
+    width: 630px;
+    height: 150px;
+    position: absolute;
+    z-index: 1000;
+    background-color: #444444;
+}
+
+#divheader {
+    width: 100%;
+    height: 25px;
+    background-color: #BB5500;
+}
 
 .l {
     float: left;
@@ -2058,14 +2295,36 @@ ul.paginationA01 li a:active {
     height: 25px;
     background-color: #BB5500;
 }
-.product-detail p{
-	padding-left: 8px;
+
+.product-detail p {
+    padding-left: 8px;
 }
+
 .product-detail p input {
     display: inline-block;
     float: inherit;
 }
-#imgUrl{
-	padding-left: 8px;
+
+#imgUrl {
+    padding-left: 8px;
 }
->>>>>>> origin/HEAD
+.group-item{
+    display: inline-block;
+    width: 48%;
+        text-indent: 10px;
+}
+fieldset input[type=text], fieldset input[type=password], .common_input{
+    margin-left: 3px;
+}
+.select-pic{
+   margin:0 10px; 
+   cursor: pointer;
+}
+.select-pic i{
+    font-style: normal;
+}
+
+
+
+
+
