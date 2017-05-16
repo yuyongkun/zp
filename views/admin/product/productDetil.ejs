@@ -163,9 +163,9 @@
             	   var html="";
             	   $.each(data, function(i, obj) {
             		   if(i==0){
-            			   html=html+"<option value=''"+obj.productCode+"' selected>"+obj.productNameCh+"</option>";
+            			   html=html+"<option value='"+obj.productCode+"' selected>"+obj.productNameCh+"</option>";
             		   }else{
-            			   html=html+"<option value=''"+obj.productCode+"' >"+obj.productNameCh+"</option>";
+            			   html=html+"<option value='"+obj.productCode+"' >"+obj.productNameCh+"</option>";
             		   }
             		});
             	   $("#secondCode").html(html);
