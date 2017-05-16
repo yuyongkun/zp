@@ -183,7 +183,7 @@ router.post('/saveProduct', function(req, res, next) {
 	}else{
 		sql=model.productModel.insertProduct;
 	}
-	
+	console.log(req.body.firstCode);
 	var arr=[req.body.nameEn,req.body.nameCh,req.body.code,req.body.firstCode,req.body.secondCode,req.body.description,req.body.descriptionEn,req.body.brandZh,
 	         req.body.brandEn,req.body.modelZh,req.body.modelEn,req.body.applicationFieldZh,req.body.applicationFieldEn,req.body.filterMaterialZh,req.body.filterMaterialEn,
 	         req.body.filtrationPrecision,req.body.operatingTemperature,req.body.nominalPressure,req.body.id];
