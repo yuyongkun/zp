@@ -10,7 +10,7 @@ var controller=require('../controller/controller');
 var pagination = require('../public/static/admin/js/pagination.js');
 
 var secondList={};
-var AVATAR_UPLOAD_FOLDER = '/upload/image/';
+var AVATAR_UPLOAD_FOLDER = '/images/ueditor/';
 
 
 router.get('/secondList', function(req, res, next) {
@@ -113,7 +113,6 @@ router.get('/getSecondProductList/:fCode', function(req, res, next) {
 
 
 router.post('/upload', function(req, res) {
-	console.log('upload-----------------------------');
 	    var form = new multiparty.Form({
 	    	uploadDir :'../public'+ AVATAR_UPLOAD_FOLDER,
 	    	encoding:"utf-8",//设置编辑

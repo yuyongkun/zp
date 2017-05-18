@@ -10,14 +10,16 @@ $ forever start app.js          #启动
 $ forever stop app.js           #关闭
 $ forever start -l forever.log -o out.log -e err.log /root/zp/bin/www   #输出日志和错误
 
-forever stopall;
+forever stopall
 forever restartall
 
 
-forever start -a -l forever.log -o out.log -e err.log /root/zp/bin/www
+forever start -a -l forever.log ./www
 forever stop -a -l forever.log -o out.log   -e err.log /root/zp/bin/www
 
-
+//查看日志
+cd .forever
+tail -f forever.log
 
 重启:
 方式一:
