@@ -10,7 +10,7 @@ var controller=require('../controller/controller');
 var pagination = require('../public/static/admin/js/pagination.js');
 
 var secondList={};
-var AVATAR_UPLOAD_FOLDER = '/images/ueditor/';
+var AVATAR_UPLOAD_FOLDER = '/upload/image/';
 
 
 router.get('/secondList', function(req, res, next) {
