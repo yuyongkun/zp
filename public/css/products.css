@@ -106,8 +106,7 @@ right: 0;
     margin-bottom: 15px;
     background: #fff;
     overflow: hidden;
-   box-shadow: 0px 0 4px #ddd;
-        border: 1px solid #e5e5e5;
+      box-shadow: 0px 0 4px #bfbdbd;
 }
 
 .products-center-item:nth-child(6n) {
@@ -115,13 +114,25 @@ right: 0;
 }
 
 .products-center-item .products-icon {
-    display: block;
+       display: block;
+    position: relative;
     width: 170px;
     height: 170px;
 }
-
+.products-center-item .products-icon img {
+       width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
 .products-center-item .products-desc {
-    padding: 5px;
+        padding: 5px;
+    height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .products-wrap{
     min-height: 600px;
