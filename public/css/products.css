@@ -261,18 +261,14 @@ ul.paginationA01 li a {
     color: #474747;
     border: solid 1px #B6B6B6;
     padding: 6px 9px 6px 9px;
-    background: #E6E6E6;
-    background: -moz-linear-gradient(top, #FFFFFF 1px, #F3F3F3 1px, #E6E6E6);
-    background: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.02, #FFFFFF), color-stop(0.02, #F3F3F3), color-stop(1, #E6E6E6));
+    background: #fff;
 }
 
 ul.paginationA01 li a:hover,
 ul.paginationA01 li a.current {
-    background: #FFFFFF;
+        background: #e0dedf;
 }
 
 ul.paginationA01 li a:active {
     background: #D9D9D9;
-    background: -moz-linear-gradient(top, #FFFFFF 1px, #EAEAEA 1px, #b6b6b6);
-    background: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.02, #FFFFFF), color-stop(0.02, #EAEAEA), color-stop(1, #b6b6b6));
 }

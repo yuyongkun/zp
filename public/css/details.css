@@ -32,7 +32,6 @@
 }
 
 .details-content-nav {
-    border-top: 4px solid #23aae4;
 }
 
 .details-content-nav:after {
@@ -58,7 +57,7 @@
 }
 .details-content-nav .details-cur {
     background: #fff;
-    border-bottom: none;
+    border-bottom: 2px solid #23aae4;
 }
 
 .details-content-body {
@@ -126,7 +125,7 @@
 .products-js{
        width: 600px;
     padding: 3px 5px;
-    background: #76929e;
+    background: #045EA9;
 }
 .products-js p{
     display: inline-block;

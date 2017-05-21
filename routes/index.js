@@ -133,6 +133,11 @@ router.get('/contactus',function(req,res,next){
         type:4
     });
 });
-
+/*新闻中心*/
+router.get('/news',function(req,res,next){
+    res.render('home/news',{
+        title:'新闻中心',
+    });
+});
 
 module.exports = router;
