@@ -134,10 +134,40 @@ router.get('/contactus',function(req,res,next){
     });
 });
 /*新闻中心*/
-router.get('/news',function(req,res,next){
-    res.render('home/news',{
-        title:'新闻中心',
-    });
-});
+router.get('/news/:who',function(req,res,next){
+    var who=req.params.who;
+    console.log('新闻中心列表页面:',who);
+    var _title,_type;
+    if(who==='enterprisedynamic'){
+        _title='企业动态';
+        _type=1;
+    }else if(who==='productinformation'){
+        _title='产品资讯';
+        _type=2;
+    }
 
+    res.render('home/news',{
+        title:_title,
+        type:_type,
+    });
+    
+});
+//新闻详情
+router.get('/news/:who1/:who2',function(req,res,next){
+    console.log('newdetails-----',req.params);
+    var who1=req.params.who1;
+    var who2=req.params.who2;
+    if(who1==='enterprisedynamic'){//企业动态
+
+    }else if(who1==='productinformation'){//产品资讯
+
+    }
+   
+
+    res.render('home/news-detail',{
+        title:'新闻详情',
+        type:2
+    });
+    
+});
 module.exports = router;

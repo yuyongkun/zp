@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/css/base.css' />
+    <link rel='stylesheet' href='/css/news.css' />
+</head>
+
+<body>
+    <%include ../public/header.ejs%>
+        <div class="news">
+            <div class="zp-wrap">
+                <%include ../public/news.ejs%>
+                 <div class="servicesupport-container">
+                       <div class="bread">您的位置：<a href="/">首页</a>&gt;<a href="/servicesupport/"><%=title%></a></div>
+                       <p>
+                        日期:2014-08-26     来源:艾达滤器    
+                        各界同仁，你们好！
+                        艾达机械为了迎接中秋节，特组织大家本周末出外拓展训练，增加企业集体荣誉感，加强团队合作精神，在现代社会，人类的智慧和技能只有在这种人格力量的驾驭下，才会迸发出耀眼的光芒。
+                        时间本周六与周日两天。
+                        地点：开封。
+                        祝各位同事工作愉快，身心健康！
+                        </p>
+                </div>
+            </div>
+        </div>
+        <%include ../public/footer.ejs%>
+            <script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
+            <script type="text/javascript" src="/js/global/common.js"></script>
+</body>
+
+</html>
