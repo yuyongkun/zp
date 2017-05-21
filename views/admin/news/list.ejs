@@ -5,14 +5,18 @@
 <script type="text/javascript">
 	function deleteNews(id){
         $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function(){
+        	var type=$("#type").value;
         	 $.ajax({    
                  type:'get',        
-                 url:'/news/delete?id='+id,    
+                 url:'/adminNews/delete?id='+id,    
                  cache:false,    
                  dataType:'json',    
                  success:function(data){
                 	 alert("你居然真的删除了..."); 
-                	 var url="/news/query";
+                	 var url="/adminNews/query/productInformation";
+  	 			   if(type=='1'){
+  	 				  url="/adminNews/query/entrepriseNews";
+  	 			   }
        		         location.href =url;
                  }    
              });
@@ -21,7 +25,7 @@
 </script>
 <section id="main" class="column">
 <div style="width: 100px;display: inline;float: left;margin-top: 15px;">
-<h3>新闻列表</h3>
+<h3><%=title %></h3>
 </div>
 	<hr class="split"> 
 	<article class="stats_overview"
@@ -43,11 +47,11 @@
 						list.forEach(function(pro){ 
 						i++; %>
 						<tr>
-							<td class="tc"><%=i%></td>
+							<td class="tc"><%=i%><input type="hidden" id="type" value="<%= pro.type%>"></td>
 							<td><%= pro.name%></td> 
 							<td><%= pro.createBy%></td>
 							<td><%= pro.createDate%></td> 
-							<td><a href="/news/detail?id=<%= pro.id%>" title="编辑"><font class="ficomoon icon-edit"></font></a>
+							<td><a href="/adminNews/detail?id=<%= pro.id%>" title="编辑"><font class="ficomoon icon-edit"></font></a>
 							<a href="javascript:void(0)" onclick="deleteNews('<%= pro.id%>')" title="删除" ><font class="ficomoon icon-delete"></font></a></td> 
 						</tr>
 		<%})%>

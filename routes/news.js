@@ -14,9 +14,9 @@ router.post('/saveNews', function(req, res, next) {
 	if(req.body.id){
 		   sql=model.news.updateNews;
 		}else{
-			sql=model.news.insertNews;
+		   sql=model.news.insertNews;
 		}
-	var arr=[req.body.nameCh,req.body.nameEn,req.body.descriptionCh,req.body.descriptionEn,req.body.id];
+	var arr=[req.body.nameCh,req.body.nameEn,req.body.descriptionCh,req.body.descriptionEn,req.body.type,req.body.id];
 	controller.selectFun(res,sql,arr,function(result){
 	    console.log(result);
 	    res.send(JSON.stringify("Success"));
@@ -37,7 +37,7 @@ router.get('/delete', function(req, res, next) {
 	    res.send(JSON.stringify("Success"));
 	});
 });
-router.get('/query', function(req, res, next) {
+router.get('/query/:type', function(req, res, next) {
 	console.log("------------1");
 	var page={limit:10,num:1};
 	if(req.query.p){
@@ -45,18 +45,23 @@ router.get('/query', function(req, res, next) {
 	}
 	var startp=(page.num-1)*page.limit;
 	var endp=page.limit;
-	var href='/news/query?n=10';
+	var href='/news/query/'+req.params.type+'?n=10';
 	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
 	var queryCount=model.news.queryCount;
-	
-	controller.selectFun(res,queryCount,[],function(count){
+	var type='1';
+	var title="企业动态";
+	if(req.params.type=='productInformation'){
+		type='2';
+		title="产品资讯";
+	}
+	controller.selectFun(res,queryCount,[type],function(count){
 		pagehelp['pagecount']=count[0].count;
 	    var pagehtml=pagination.pagehtml(pagehelp);
 	    console.log("------------2");
 	    var sql=model.news.queryNewsList;
-	    controller.selectFun(res,sql,[startp,endp],function(result){
+	    controller.selectFun(res,sql,[type,startp,endp],function(result){
 		    console.log(result);
-			res.render('admin/news/list', { title: '产品列表',list:result,locals:pagehtml});
+			res.render('admin/news/list', {list:result,locals:pagehtml,title:title});
 		});
 	});
 });

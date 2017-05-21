@@ -18,6 +18,13 @@
 					<input type="text" id="nameEn" name="nameEn" value="<%=result.nameEn%>"/>
 				</fieldset>
 				<fieldset>
+					<label for="txtName">新闻类别</label>
+					<select id="type" name="type" >
+					<option value="1" >企业动态</option>
+					<option value="2" >产品资讯</option>
+					</select>
+				</fieldset>
+				<fieldset>
 				<div>
 				<label for="txtButton">详细信息</label>
 				<script id="editor" type="text/plain" style="width:100%;height:300px;"></script>
@@ -53,6 +60,8 @@
 	            //ue.setContent(conntent);  //赋值给UEditor  
 	            ueEn.execCommand( 'inserthtml', rep(conntentEn));
 	        }); 
+		  var type="<%=result.type%>";
+		  $("#type option[value='"+type+"']").attr("selected","selected");
 	});
 	
 	function rep(conntent){
@@ -64,13 +73,14 @@
 		   var id=$("#id").val();
 	       var nameEn=$("#nameEn").val();
 	 	   var nameCh=$("#nameCh").val();
+	 	   var type=$("#type").val();
 	 	   var descriptionCh=ue.getContent();
 	 	   var descriptionEn=ueEn.getContent();
 	 	  descriptionCh=descriptionCh.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
 	 	  descriptionEn=descriptionEn.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
-	 	   var data={id:id,nameEn:nameEn,nameCh:nameCh,descriptionCh:descriptionCh,descriptionEn:descriptionEn};
+	 	   var data={id:id,nameEn:nameEn,nameCh:nameCh,descriptionCh:descriptionCh,descriptionEn:descriptionEn,type:type};
 	 	   $.ajax({
-	 		   url:"/news/saveNews",
+	 		   url:"/adminNews/saveNews",
 	 		   type: "post",
 	 		   data: data,
 	 		   dataType:'json',
@@ -78,7 +88,10 @@
 	 		      alert("error message : "+errorThrown.toString());
 	 		      },
 	 		   success: function(data){
-	 		      var url="/news/query";
+	 			  var url="/adminNews/query/productInformation";
+	 			   if(type=='1'){
+	 				  url="/adminNews/query/entrepriseNews";
+	 			   }
 	 		      location.href =url;
 	 		   }
 	 		  }); 
