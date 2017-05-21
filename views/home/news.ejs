@@ -15,7 +15,8 @@
         <div class="zp-wrap">
             <%include ../public/news.ejs%>
             <div class="servicesupport-container">
-                <div class="bread">您的位置：<a href="/">首页</a>&gt;<a href="/servicesupport/"><%=title%></a></div>
+
+                <div class="bread">您的位置：<a href="/">首页</a>&gt;<a href="/news/list?type=productInformation"><%=title%></a></div>
                 <ul class="news-list">
                    <% list.forEach(function(news){%>
 				<li><a  href="/news/detail?id=<%=news.id%>&type=<%=type%>"><%=news.name%></a></li>
