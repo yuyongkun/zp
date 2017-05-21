@@ -130,6 +130,16 @@
                 }, 120);
             }
         },
+         /*百度统计*/
+        bdHM: function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?271e81312a4cee99e3ea081f73a588d9";
+            document.body.appendChild(hm);
+
+            var hm2 = document.createElement("script");
+            hm2.src = "//hm.baidu.com/hm.js?b02070d558abca9a01a875104381a593";
+            document.body.appendChild(hm2);
+        }(),
          appendHTML: function (container, htm) {
             var pnode = document.createElement('div'),
                 nodes = null,

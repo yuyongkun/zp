@@ -1,8 +1,8 @@
 .servicesupport {
-    padding: 20px 0;
-    background: #f5f5f5 url(/images/service_bg.jpg) no-repeat center top;
-        padding: 60px 0 20px;
+       padding: 20px 0;
+    background: #fefefe url(/images/bg/service_bg.jpg) no-repeat center bottom;
     margin-top: -15px;
+    background-size: contain;
 }
 
 .servicesupport-slider {
@@ -14,10 +14,10 @@
 }
 
 .servicesupport-container {
-    margin-left: 210px;
+      margin-left: 210px;
     padding: 20px;
     background: #fff;
-    box-shadow: 0px 3px 5px #ddd;
+    box-shadow: 0px 0px 4px #d0d0d0;
 }
 
 .servicesupport-slider ul li {

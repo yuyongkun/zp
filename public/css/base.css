@@ -384,8 +384,9 @@ font-weight: 100;
 .fotter h3 {
     font-size: 20px;
     color: #00aeef;
-    line-height: 50px;
-        margin: 0px;
+    line-height: 1;
+    padding: 12px 0;
+    margin: 0px;
 }
 
 .fotter a {
@@ -397,7 +398,7 @@ font-weight: 100;
 }
 
 .fotter ul.fotter-size-nav {
-    margin-bottom: 32px;
+    margin-bottom: 15px;
 }
 
 .fotter ul.fotter-size-nav:after {
@@ -413,8 +414,10 @@ font-weight: 100;
 
 .fotter ul.fotter-size-nav li h4 {
     font-size: 14px;
-    line-height: 28px;
+    line-height: 1;
+    padding-bottom: 8px;
     margin:0px;
+    font-weight: bold;
 }
 
 .fotter ul.fotter-size-nav li a {
@@ -424,6 +427,7 @@ font-weight: 100;
 
 .fotter p {
     color: #ccc;
+    margin: 0;
 }
 
 .footer-related-link a {

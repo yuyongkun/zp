@@ -169,6 +169,7 @@ ul>li.product-cur>a {
 }
 
 .products-center-item .products-icon img {
+    display: block;
     width: 100%;
 }
 

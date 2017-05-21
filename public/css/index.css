@@ -249,7 +249,7 @@
 .hot-recommended h2 {
     float: left;
     width: 154px;
-    padding-top: 50px;
+    padding-top: 30px;
     padding-left: 32px;
     font-size: 16px;
     color: #fff;
@@ -264,7 +264,7 @@
     height: 100%;
     margin-right: 25px;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 15px;
     font-size: 14px;
     color: #fff;
     position: relative;
@@ -275,7 +275,10 @@
 }
 
 .hot-recommended a img {
-    height: 45px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    box-shadow: 0 0 5px #027eb5;
 }
 .hot-recommended p{
         overflow: hidden;
