@@ -8,6 +8,7 @@ function  selectFun(res,sql,array,callbacks){
 		connection.query(sql,array,function(err,result){
 			if(err){
 	    		console.log('－－－－－－查询出错－－－－－－');
+	    		console.log(err);
 				res.json({
 					responseCode:'-1',
 					responseMsg:err

@@ -10,7 +10,7 @@
         <div class="zp-wrap">
             <div class="details-wrap">
                 <div class="details-head">
-                    <span class="products-icon" title="<%=pro.nameCh%>" alt="<%=pro.nameCh%>"><img src="<%=pro.imgUrl%>"></span>
+                    <span class="products-icon" title="<%=pro.name%>" alt="<%=pro.name%>"><img src="<%=pro.imgUrl%>"></span>
                     <div class="details-info">
                          <h1 class="products-desc"><%= pro.name%></h1>
                         <p><%= __('Author') %>：<%=pro.createdBy%> <%= __('Date') %>：<%=pro.createdDate%></p>
@@ -37,26 +37,17 @@
                         </div>
                         <div id="details-related-products" class="details-func" style="display: none">
                             <div class="products-list">
-                                <div class="products-center-item">
-                                    <a href="/details" title="阿特拉斯压缩机油分1622 3140 00" alt="阿特拉斯压缩机油分1622 3140 00"><img class="products-icon" src="/images/test/t1.jpg"></a>
-                                    <p class="products-desc">多米尼克Domnick Hunter精密过滤器AO001</p>
-                                </div>
-                                <div class="products-center-item">
-                                    <a href="/details" title="阿特拉斯压缩机油分1622 3140 00" alt="阿特拉斯压缩机油分1622 3140 00"><img class="products-icon" src="/images/test/t2.jpg"></a>
-                                    <p class="products-desc">多米尼克Domnick Hunter精密过滤器AO001</p>
-                                </div>
-                                <div class="products-center-item">
-                                    <a href="/details" title="阿特拉斯压缩机油分1622 3140 00" alt="阿特拉斯压缩机油分1622 3140 00"><img class="products-icon" src="/images/test/t3.jpg"></a>
-                                    <p class="products-desc">阿特拉斯压缩机油分1622 3140 00</p>
-                                </div>
-                                <div class="products-center-item">
-                                    <a href="/details" title="阿特拉斯压缩机油分1622 3140 00" alt="阿特拉斯压缩机油分1622 3140 00"><img class="products-icon" src="/images/test/t1.jpg"></a>
-                                    <p class="products-desc">阿特拉斯压缩机油分1622 3140 00</p>
-                                </div>
-                                <div class="products-center-item">
-                                    <a href="/details" title="阿特拉斯压缩机油分1622 3140 00" alt="阿特拉斯压缩机油分1622 3140 00"><img class="products-icon" src="/images/test/t3.jpg"></a>
-                                    <p class="products-desc">阿特拉斯压缩机油分1622 3140 00</p>
-                                </div>
+                                          <%if(list){
+						    			list.forEach(function(link){ %>
+						    			<div class="products-center-item">
+						                    <a href="/details?id=<%= link.id%>&sCode=<%= secondCode%>" title="<%= link.name%>"  alt="<%= link.name%>">
+						                        <div class="products-icon">
+						                            <img src="<%= link.imgUrl%>">
+						                        </div>
+						                    </a>
+						                    <p class="products-desc"><%= link.name%></p>
+						                </div>
+						            <%})}%>
                             </div>
                         </div>
                         <div id="details-industryapplication" class="details-func" style="display: none">

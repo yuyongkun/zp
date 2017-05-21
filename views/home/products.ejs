@@ -131,7 +131,7 @@
             <%if(list){
     			list.forEach(function(pro){ %>
     			<div class="products-center-item">
-                    <a href="/details?id=<%= pro.id%>" title="<%= pro.name%>"  alt="<%= pro.name%>">
+                    <a href="/details?id=<%= pro.id%>&sCode=<%= secondCode%>" title="<%= pro.name%>"  alt="<%= pro.name%>">
                         <div class="products-icon">
                             <img src="<%= pro.imgUrl%>">
                         </div>

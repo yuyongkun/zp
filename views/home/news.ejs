@@ -17,8 +17,9 @@
             <div class="servicesupport-container">
                 <div class="bread">您的位置：<a href="/">首页</a>&gt;<a href="/servicesupport/"><%=title%></a></div>
                 <ul class="news-list">
-                   <li><a href="/news/enterprisedynamic/1.html">艾达机械中秋拓展训练安排</a></li> 
-                   <li><a href="/news/enterprisedynamic/1.html">艾达机械中秋拓展训练</a></li> 
+                   <% list.forEach(function(news){%>
+				<li><a  href="/news/detail?id=<%=news.id%>&type=<%=type%>"><%=news.name%></a></li>
+				<%})%>
                 </ul>
             </div>
         </div>

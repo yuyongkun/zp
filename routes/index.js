@@ -72,15 +72,22 @@ router.get('/products/list', function(req, res, next) {
 /*产品详情*/
 router.get('/details', function(req, res, next) {
 	var sql;
+	var listSql;
 	if(res.locals.inlanguage=='en'){
 		sql=model.productModel.queryProductEn;
+		listSql=model.productModel.queryProductListEn;
 	}else{
 		sql=model.productModel.queryProductZh;
+		listSql=model.productModel.queryProductListZh;
 	}
-	controller.selectFun(res,sql,[req.query.id],function(result){
-		console.log(result);
-        res.render('home/details', { title: '新乡市艾达机械设备有限公司', pro:result[0],locale:req.cookies.locale});
-	});
+	 controller.selectFun(res,listSql,[req.query.sCode,0,12],function(list){
+		 console.log(list);
+		 controller.selectFun(res,sql,[req.query.id],function(result){
+				console.log(result);
+		        res.render('home/details', { title: '新乡市艾达机械设备有限公司', pro:result[0],locale:req.cookies.locale,list:list,secondCode:req.query.sCode});
+			});
+ 	});
+	
 });
 /*服务支持*/
 router.get('/service/:who', function(req, res, next) {
@@ -134,40 +141,60 @@ router.get('/contactus',function(req,res,next){
     });
 });
 /*新闻中心*/
-router.get('/news/:who',function(req,res,next){
-    var who=req.params.who;
+router.get('/news/list',function(req,res,next){
+    var who=req.query.type;
     console.log('新闻中心列表页面:',who);
+    console.log("------------1");
+	var page={limit:10,num:1};
+	if(req.query.p){
+		page['num']=req.query.p<1?1:req.query.p;
+	}
+	var startp=(page.num-1)*page.limit;
+	var endp=page.limit;
+	var href='/news/query/'+who+'?n=10';
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
+	var queryCount=model.news.queryCount;
+	
     var _title,_type;
-    if(who==='enterprisedynamic'){
+    if(who==='entrepriseNews'){
         _title='企业动态';
         _type=1;
-    }else if(who==='productinformation'){
+    }else if(who==='productInformation'){
         _title='产品资讯';
         _type=2;
     }
-
-    res.render('home/news',{
-        title:_title,
-        type:_type,
-    });
     
+    controller.selectFun(res,queryCount,[_type],function(count){
+		pagehelp['pagecount']=count[0].count;
+	    var pagehtml=pagination.pagehtml(pagehelp);
+	    console.log("------------2");
+	    var sql;
+	    if(res.locals.inlanguage=='en'){
+     		sql=model.news.queryNewsListEn;
+     	}else{
+     		sql=model.news.queryNewsListZh;
+     	}
+	    
+	    controller.selectFun(res,sql,[_type,startp,endp],function(result){
+		    console.log(result);
+			res.render('home/news', { title: _title,list:result,locals:pagehtml,type:_type});
+		});
+	});
 });
 //新闻详情
-router.get('/news/:who1/:who2',function(req,res,next){
-    console.log('newdetails-----',req.params);
-    var who1=req.params.who1;
-    var who2=req.params.who2;
-    if(who1==='enterprisedynamic'){//企业动态
-
-    }else if(who1==='productinformation'){//产品资讯
-
-    }
-   
-
-    res.render('home/news-detail',{
-        title:'新闻详情',
-        type:2
-    });
-    
+router.get('/news/detail',function(req,res,next){
+    var id=req.query.id;
+    var type=req.query.type;
+    console.log('newdetails-----',id);
+    var sql;
+    if(res.locals.inlanguage=='en'){
+ 		sql=model.news.queryNewEn;
+ 	}else{
+ 		sql=model.news.queryNewZh;
+ 	}
+    controller.selectFun(res,sql,[id],function(result){
+	    console.log(result);
+		res.render('home/news-detail', {title: '新闻详情',news:result[0],type:type});
+	});
 });
 module.exports = router;
