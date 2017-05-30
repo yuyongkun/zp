@@ -10,7 +10,15 @@ var uuid = require('node-uuid');
 
 /* 首页 */
 router.get('/', function(req, res, next) {
-    res.render('home/index', { title:  res.__('Company') });
+    if(res.locals.inlanguage=='en'){
+ 		listSql=model.news.queryLastTwoEn;
+ 	}else{
+ 		listSql=model.news.queryLastTwoZh;
+ 	}
+    controller.selectFun(res,listSql,[],function(newsList){
+	    console.log(newsList);
+	    res.render('home/index', { title:  res.__('Company') ,news:newsList});
+	});
 });
 // //allow MANUAL locale selection
  router.get("/i18n/:locale", function (req, res) {
@@ -141,8 +149,8 @@ router.get('/contactus',function(req,res,next){
     });
 });
 /*新闻中心*/
-router.get('/news/list',function(req,res,next){
-    var who=req.query.type;
+router.get('/news/list/:type',function(req,res,next){
+    var who=req.params.type;
     console.log('新闻中心列表页面:',who);
     console.log("------------1");
 	var page={limit:10,num:1};
@@ -182,19 +190,57 @@ router.get('/news/list',function(req,res,next){
 	});
 });
 //新闻详情
-router.get('/news/detail',function(req,res,next){
-    var id=req.query.id;
-    var type=req.query.type;
+router.get('/news/detail/:id/:type',function(req,res,next){
+    var id=req.params.id;
+    var type=req.params.type;
     console.log('newdetails-----',id);
-    var sql;
+    var sql,listSql;
     if(res.locals.inlanguage=='en'){
  		sql=model.news.queryNewEn;
+ 		listSql=model.news.queryNewsListEn;
  	}else{
  		sql=model.news.queryNewZh;
+ 		listSql=model.news.queryNewsListEn;
  	}
     controller.selectFun(res,sql,[id],function(result){
 	    console.log(result);
-		res.render('home/news-detail', {title: '新闻详情',news:result[0],type:type});
+	    controller.selectFun(res,listSql,[type,0,5],function(list){
+		    console.log(list);
+		    res.render('home/news-detail', {title: '新闻详情',news:result[0],type:type,list:list});
+		});
+		
 	});
 });
+//新闻详情下一个
+router.get('/news/next/:id/:type',function(req,res,next){
+	var id=req.params.id;
+    var type=req.params.type;
+    console.log('newdetails-----',id);
+    var sql=model.news.queryNext;
+    controller.selectFun(res,sql,[id,type],function(result){
+	    console.log(result);
+	    if(result[0]){
+	        res.redirect('/news/detail/'+result[0].id+'/'+type);
+	    }else{
+	    	res.redirect('/news/detail/'+id+'/'+type);
+	    }
+	});
+});
+
+//新闻详情上一个
+router.get('/news/last/:id/:type',function(req,res,next){
+	var id=req.params.id;
+    var type=req.params.type;
+    console.log('newdetails-----',id);
+    var sql=model.news.queryLast;
+    controller.selectFun(res,sql,[id,type],function(result){
+	    console.log(result);
+	    if(result[0]){
+	        res.redirect('/news/detail/'+result[0].id+'/'+type);
+	    }else{
+	    	res.redirect('/news/detail/'+id+'/'+type);
+	    }
+	});
+});
+
 module.exports = router;

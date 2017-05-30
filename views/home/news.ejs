@@ -7,6 +7,7 @@
     </title>
     <link rel='stylesheet' href='/css/base.css' />
     <link rel='stylesheet' href='/css/news.css' />
+    <link rel='stylesheet' href='/css/products.css' />
 </head>
 
 <body>
@@ -19,10 +20,15 @@
                 <div class="bread">您的位置：<a href="/">首页</a>&gt;<a href="/news/list?type=productInformation"><%=title%></a></div>
                 <ul class="news-list">
                    <% list.forEach(function(news){%>
-				<li><a  href="/news/detail?id=<%=news.id%>&type=<%=type%>"><%=news.name%></a></li>
+				<li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a></li>
 				<%})%>
                 </ul>
             </div>
+                <nav class="nav">
+					<ul class="pagination paginationA paginationA01" id="pagination">
+						<%- locals %>
+					</ul>
+				</nav>
         </div>
     </div>
 <%include ../public/footer.ejs%>

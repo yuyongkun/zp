@@ -29,12 +29,16 @@ var news = {
 		queryNew:'SELECT t.id,t.nameCh,t.nameEn,t.type,t.descriptionEn,t.descriptionCh FROM news t WHERE t.id= ?',
 		queryNewEn:'SELECT t.id,t.nameEn name,t.descriptionEn description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.id= ?',
 		queryNewZh:'SELECT t.id,t.nameCh name,t.descriptionCh description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.id= ?',
-		queryNewsList:'SELECT t.id,t.nameCh name,t.type,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t where t.type=? ORDER BY t.createDate LIMIT ? , ? ',
-		queryNewsListEn:'SELECT t.id,t.nameEn name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t where t.type=? ORDER BY t.createDate LIMIT ? , ? ',
-		queryNewsListZh:'SELECT t.id,t.nameCh name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t where t.type=? ORDER BY t.createDate LIMIT ? , ? ',
+		queryNewsList:'SELECT t.id,t.nameCh name,t.type,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t where t.type=? ORDER BY t.createDate desc LIMIT ? , ? ',
+		queryNewsListEn:'SELECT t.id,t.nameEn name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t where t.type=? ORDER BY t.createDate DESC LIMIT ? , ? ',
+		queryNewsListZh:'SELECT t.id,t.nameCh name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t where t.type=? ORDER BY t.createDate DESC LIMIT ? , ? ',
 		updateNews:'UPDATE news  SET nameCh= ? ,nameEn= ? ,descriptionCh= ? ,descriptionEn= ?,type=?  WHERE id= ? ',
 		insertNews:'INSERT INTO news (id,nameCh,nameEn,descriptionCh,descriptionEn,type,createBy,createDate) VALUES(UUID(),?,?,?,?,?,"aidaFilter",NOW())',
-		del:'DELETE FROM news WHERE id=?'
+		del:'DELETE FROM news WHERE id=?',
+		queryNext:'SELECT t.id FROM news t WHERE t.`createDate`<(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate DESC LIMIT 1',
+		queryLast:'SELECT t.id FROM news t WHERE t.`createDate`>(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate LIMIT 1',
+		queryLastTwoEn:'SELECT  s1.id,s1.nameEn name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=2',
+		queryLastTwoZh:'SELECT  s1.id,s1.nameCh name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=2'
 };
 
 exports.news = news;

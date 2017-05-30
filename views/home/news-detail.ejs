@@ -22,7 +22,16 @@
 				                        日期:    <%= news.createDate%>     来源:   <%= news.createBy%>
                         <%-news.description%>
                         </p>
+                        
+                         <a href="/news/last/<%= news.id%>/<%= type%>">上一篇</a>     <a href="/news/next/<%= news.id%>/<%= type%>">下一篇</a> 
+                         
+                          <ul class="news-list">
+                   <% list.forEach(function(news){%>
+				<li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a></li>
+				<%})%>
+                </ul> 
                 </div>
+              
             </div>
         </div>
         <%include ../public/footer.ejs%>
