@@ -245,7 +245,6 @@ ul.zp-wrap>li .about_nav {
     position: absolute;
     width: 20%;
     top: 38px;
-    margin-left: -1px;
     margin-top: 0px;
     border-bottom: 3px solid #009ce0;
     background: #fff;
@@ -273,6 +272,8 @@ ul.zp-wrap>li .about_nav .zp-product-list a:hover {
 ul.zp-wrap>li .products-nav {
     width: 100%;
     left: 0px;
+        border-left: 1px solid gray;
+    border-right: 1px solid gray;
     overflow: hidden;
 }
 
@@ -298,8 +299,11 @@ ul.zp-wrap>li .products-nav>ul>li:hover .zp-product-list {
 
 ul.zp-wrap>li .about_nav>ul>li>a {
     padding: 7px 15px;
-    border-bottom: 1px solid #e0dedf;
+    border-bottom: 1px solid rgba(224, 222, 223, 0.5);
     color: #3a3a3a;
+}
+ul.zp-wrap>li .about_nav>ul>li:last-child a{
+    border-bottom: none;
 }
 
 ul.zp-wrap>li .about_nav>ul>li>a:hover {
