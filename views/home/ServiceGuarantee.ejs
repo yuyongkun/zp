@@ -2,20 +2,19 @@
 <html>
 
 <head>
-    <title>
-        <%= title %>
-    </title>
-    <link rel='stylesheet' href='/css/base.css' />
+    <%include ../public/headerchild.ejs%>
     <link rel='stylesheet' href='/css/servicesupport.css' />
 </head>
 
 <body>
     <%include ../public/header.ejs%>
         <div class="servicesupport">
+       <div class="bread">
+            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/service/guarantee/">服务保障</a></p>
+        </div>
             <div class="zp-wrap">
                 <%include ../public/service.ejs%>
                     <div class="servicesupport-container">
-                        <div class="bread">您的位置：<a href="/">首页</a>><a href="/ServiceGuarantee/">服务保障</a></div>
                         <p>
                             <span style="font-size: 12px;"></span>
                         </p>

@@ -5,17 +5,18 @@
     <title>
         <%= title %>
     </title>
-    <link rel='stylesheet' href='/css/base.css' />
     <link rel='stylesheet' href='/css/news.css' />
 </head>
 
 <body>
     <%include ../public/header.ejs%>
         <div class="news">
+        <div class="bread">
+            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/news/list?type=productInformation">新闻中心</a>&gt;<a href="/news/list?type=productInformation">新闻中心</a></p>
+        </div>
             <div class="zp-wrap">
                 <%include ../public/news.ejs%>
                  <div class="servicesupport-container">
-                       <div class="bread">您的位置：<a href="/">首页</a>&gt;<a href="/servicesupport/"><%= title%></a></div>
                        <h1>   标题:     <%= news.name%></h1>
                        <p>
 				                    

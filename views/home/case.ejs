@@ -2,11 +2,8 @@
 <html>
 
 <head>
-    <title>
-        <%= title %>
-    </title>
-    <link rel='stylesheet' href='/css/base.css' />
-    <link rel='stylesheet' href='/css/products.css' />
+    <%include ../public/headerchild.ejs%>
+    <link rel='stylesheet' href='/css/case.css' />
     <style type="text/css">
     .products-center-item{
         width: 200px;
@@ -21,8 +18,10 @@
 
 <body>
     <%include ../public/header.ejs%>
+        <div class="bread">
+            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/case">解决方案</a></p>
+        </div>
         <div class="zp-wrap" style=" margin-bottom: 20px;">
-            <h3 class="case-title" style="margin-bottom: 15px;line-height: 1">解决方案</h3>
             <div class="products-list">
                 <div class="products-center-item">
                     <a href="/case-detail.html" title="山东化工厂滤器产品使用经典案例" alt="山东化工厂滤器产品使用经典案例">
