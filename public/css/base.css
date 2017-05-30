@@ -237,6 +237,7 @@ ul.zp-wrap >li>a {
           line-height: 1;
     color: #fff;
     font-size: 18px;
+        text-decoration: none;
 }
 
 ul.zp-wrap>li .about_nav {
@@ -248,7 +249,6 @@ ul.zp-wrap>li .about_nav {
     margin-top: 0px;
     border-bottom: 3px solid #009ce0;
     background: #fff;
-    box-shadow: 0px 1px 3px #ddd;
     z-index: 9999;
     transition: opacity 0.2s;
     -webkit-transition: opacity 0.2s;
@@ -263,6 +263,7 @@ ul.zp-wrap>li .about_nav a {
 ul.zp-wrap>li .about_nav .zp-product-list a:hover {
     color: #fff!important;
     background: #009ce0;
+    text-decoration: none;
     transition: background 0.2s;
     -webkit-transition: background 0.2s;
     -moz-transition: background 0.2s;
@@ -311,6 +312,7 @@ ul.zp-wrap>li .products-nav>ul>li>h3 {
     padding: 8px 0 8px 5px;
     border-right: 1px solid #a1a1a1;
     background: #727186;
+        font-size: 14px;
 }
 
 ul.zp-wrap>li .products-nav>ul>li:last-child>h3 {
@@ -322,6 +324,7 @@ ul.zp-wrap>li .products-nav>ul>li>h3>a {
 }
 ul.zp-wrap>li .products-nav>ul>li>h3>a:hover{
         color: #004780!important;
+        text-decoration: none;
 }
 ul.zp-wrap>li .products-nav>ul>li>.zp-product-list ul li {
     border-bottom: 1px solid #e0dedf;
@@ -347,13 +350,12 @@ ul.zp-wrap>li:hover .about_nav {
 }
 
 ul.zp-wrap>li .servicesupport-nav>ul>li {
-    display: inline-block;
-    width: 30%;
-    padding: 10px;
+    
 }
 
 ul.zp-wrap>li .servicesupport-nav {
-    width: 40%;
+     width: 20%;
+    background: #727186;
 }
 
 .servicesupport-s1 {
@@ -366,11 +368,13 @@ ul.zp-wrap>li .servicesupport-nav {
     padding: 5px 0;
 }
 
-ul.zp-wrap>li .products-nav ul li a,
-ul.zp-wrap>li .servicesupport-nav ul li a {
+ul.zp-wrap>li .products-nav ul li a{
     font-weight: 100;
 }
-
+ul.zp-wrap>li .servicesupport-nav ul li a{
+    display: block;
+        color: #fff;
+}
 .bread {
     margin-bottom: 15px;
     padding: 5px 0;

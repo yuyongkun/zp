@@ -352,6 +352,7 @@ article.breadcrumbs {
 
 aside#sidebar {
     width: 23%;
+        margin-top: 15px;
     background: #444;
     float: left;
     min-height: 950px;
@@ -366,7 +367,8 @@ div#footer {
 #sidebar hr {
     border: none;
     outline: none;
-    background: url(../img/sidebar_divider.png) repeat-x;
+    /*background: url(../img/sidebar_divider.png) repeat-x;*/
+        border-bottom: 1px solid #fff;
     display: block;
     width: 100%;
     height: 2px;
