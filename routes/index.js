@@ -159,7 +159,7 @@ router.get('/news/list/:type',function(req,res,next){
 	}
 	var startp=(page.num-1)*page.limit;
 	var endp=page.limit;
-	var href='/news/query/'+who+'?n=10';
+	var href='/news/list/'+who+'?n=10';
 	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
 	var queryCount=model.news.queryCount;
 	
