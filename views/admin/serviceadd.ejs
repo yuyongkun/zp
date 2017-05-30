@@ -26,17 +26,23 @@
 		 	margin-left: 301px;
 		 }
 		.group-item{
+			width: 100%;
 			padding-bottom: 20px;
 			color:#3a3a3a;
-		}
-		.group-item label{
-			padding-right:5px;
-			vertical-align: middle;
+			text-indent: 0px;
+			    margin-bottom: 5px;
 		}
 		.group-item select{
-			padding:5px;
-			vertical-align: top;
+			padding: 5px;
+    		color: #3a3a3a;
 		}
+		.group-item label{
+			    display: inline-block;
+			        margin-bottom: 5px;
+			padding-right:5px;
+			    vertical-align: text-bottom;
+		}
+		
 		.group-item .editor{
 			display: inline-block;
 			vertical-align: top;
@@ -73,7 +79,7 @@
 		</select>
 	</div>
 	<div class="group-item">
-		<label>服务内容:</label>
+		<label>服务内容:</label><br>
 		<div id="editor" class="editor"></div>
 	</div>
 	<div class="group-item">
@@ -90,7 +96,7 @@
  var editor=UE.getEditor("editor", {
                     "initialFrameHeight": 500,
                     "initialFrameWidth": 949
-                })
+                });
 $('#submit').click(function(){
 	var content=editor.getContent();
 	// if(content===''){

@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
  	}
     controller.selectFun(res,listSql,[],function(newsList){
 	    console.log(newsList);
-	    res.render('home/index', { title:  res.__('Company') ,newsList:newsList});
+        console.log('indexTitle---->',res.__('indexTitle'));
+	    res.render('home/index', { title:  res.__('indexTitle') ,newsList:newsList});
 	});
 });
 // //allow MANUAL locale selection
@@ -30,7 +31,7 @@ router.get('/', function(req, res, next) {
  });
 /*解决方案*/
 router.get('/case', function(req, res, next) {
-    res.render('home/case', { title: '解决方案' });
+    res.render('home/case', { title: res.__('caseTitle') });
 });
 
 /*联系我们*/
@@ -62,7 +63,7 @@ router.get('/products/list', function(req, res, next) {
          pagehelp['pagecount'] = pagecount;
          var pagehtml = pagination.pagehtml(pagehelp);
          if (pagecount == 0) {
-             res.render('home/products', { title: '新乡市艾达机械设备有限公司', secondCode: req.query.code, list: [], locals: pagehtml, firstCode: req.query.fCode });
+             res.render('home/products', { title: res.__('productsTitle'), secondCode: req.query.code, list: [], locals: pagehtml, firstCode: req.query.fCode });
          }
          var sql;
          if(res.locals.inlanguage=='en'){
@@ -72,7 +73,7 @@ router.get('/products/list', function(req, res, next) {
      	}
          controller.selectFun(res,sql,[req.query.code,startp,endp],function(result){
         	 console.log(result);
-             res.render('home/products', { title: '新乡市艾达机械设备有限公司', secondCode: req.query.code, list: result, locals: pagehtml, firstCode: req.query.fCode });
+             res.render('home/products', { title: res.__('productsTitle'), secondCode: req.query.code, list: result, locals: pagehtml, firstCode: req.query.fCode });
      	});
 	});
 });
@@ -92,7 +93,7 @@ router.get('/details', function(req, res, next) {
 		 console.log(list);
 		 controller.selectFun(res,sql,[req.query.id],function(result){
 				console.log(result);
-		        res.render('home/details', { title: '新乡市艾达机械设备有限公司', pro:result[0],locale:req.cookies.locale,list:list,secondCode:req.query.sCode});
+		        res.render('home/details', { title: res.__('ProductDetails')+'-'+'xxxxx', pro:result[0],locale:req.cookies.locale,list:list,secondCode:req.query.sCode});
 			});
  	});
 	
@@ -118,7 +119,8 @@ router.get('/service/:who', function(req, res, next) {
             content=result[0].content;
         }
         res.render('home/servicesupport', {
-            serviceContent:content
+            title:res.__('serviceSupportTitle'),
+            serviceContent:content,
         });
         
     });
@@ -126,25 +128,25 @@ router.get('/service/:who', function(req, res, next) {
 /*公司简介,公司荣誉,公司文化*/
 router.get('/companyinfo',function(req,res,next){
     res.render('home/companyinfo',{
-        title:'公司简介',
+        title:res.__('CompanyProfile')+'-'+res.__('Company'),
         type:1
     });
 });
 router.get('/companyhonor',function(req,res,next){
     res.render('home/companyhonor',{
-        title:'公司荣誉',
+       title:res.__('CompanyHonor')+'-'+res.__('Company'),
         type:2
     });
 });
 router.get('/companyculture',function(req,res,next){
     res.render('home/companyculture',{
-        title:'公司文化',
+        title:res.__('CompanyCulture')+'-'+res.__('Company'),
         type:3
     });
 });
 router.get('/contactus',function(req,res,next){
     res.render('home/contactus',{
-        title:'联系我们',
+        title:res.__('ContactUs')+'-'+res.__('Company'),
         type:4
     });
 });
@@ -165,10 +167,10 @@ router.get('/news/list/:type',function(req,res,next){
 	
     var _title,_type;
     if(who==='entrepriseNews'){
-        _title='企业动态';
+        _title=res.__('EntreprisesNews')+'-'+res.__('Company');
         _type=1;
     }else if(who==='productInformation'){
-        _title='产品资讯';
+        _title=res.__('ProductInformation')+'-'+res.__('Company');
         _type=2;
     }
     
@@ -206,7 +208,7 @@ router.get('/news/detail/:id/:type',function(req,res,next){
 	    console.log(result);
 	    controller.selectFun(res,listSql,[type,0,5],function(list){
 		    console.log(list);
-		    res.render('home/news-detail', {title: '新闻详情',news:result[0],type:type,list:list});
+		    res.render('home/news-detail', {title: res.__('NewsDetails')+'-'+res.__('Company'),news:result[0],type:type,list:list});
 		});
 		
 	});
