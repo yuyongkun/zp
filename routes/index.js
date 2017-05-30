@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
  	}
     controller.selectFun(res,listSql,[],function(newsList){
 	    console.log(newsList);
-	    res.render('home/index', { title:  res.__('Company') ,news:newsList});
+	    res.render('home/index', { title:  res.__('Company') ,newsList:newsList});
 	});
 });
 // //allow MANUAL locale selection

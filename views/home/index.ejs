@@ -106,16 +106,13 @@
                     <a href="/news/list/enterprisedynamic"><%= __('More') %>&gt;</a>
                 </div>
                 <div class="zp-info-list-content zp-info-news">
-                    <div class="zp-info-news-list">
+                   <% newsList.forEach(function(news){%>
+                   <div class="zp-info-news-list">
                         <img src="/images/cc.png">
-                        <a href="/news/enterprisedynamic/1.html">艾达机械中秋拓展训练安排</a>
-                        <span>2017-03-07</span>
+                        <a href="/news/detail/<%=news.id%>/<%=news.type%>"><%=news.name%></a>
+                        <span><%=news.createDate%></span>
                     </div>
-                    <div class="zp-info-news-list">
-                        <img src="/images/cc.png">
-                       <a href="/news/enterprisedynamic/1.html">艾达机械中秋拓展训练安排</a>
-                        <span>2017-03-07</span>
-                    </div>
+				<%})%>
                 </div>
             </div>
             <div class="zp-info-list">
