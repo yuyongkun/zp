@@ -93,7 +93,7 @@ router.get('/details', function(req, res, next) {
 		 console.log(list);
 		 controller.selectFun(res,sql,[req.query.id],function(result){
 				console.log(result);
-		        res.render('home/details', { title: res.__('ProductDetails')+'-'+'xxxxx', pro:result[0],locale:req.cookies.locale,list:list,secondCode:req.query.sCode});
+		        res.render('home/details', { title: 'xxxxx'+'-'+res.__('Company'), pro:result[0],locale:req.cookies.locale,list:list,secondCode:req.query.sCode});
 			});
  	});
 	
