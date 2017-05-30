@@ -1,12 +1,11 @@
 .aboutus-wrap {
-        padding-top: 20px;
-            margin-top: -15px;
-                margin-bottom: 20px;
-     background: url(/images/bg/ny_about.jpg) no-repeat -180px 0;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    background: url(/images/bg/ny_about.jpg) no-repeat -180px 0;
 }
 
 .aboutus-content {
-          background: rgb(255, 255, 255);
+    background: rgb(255, 255, 255);
 }
 
 .aboutus-content h2 {
@@ -17,20 +16,39 @@
 }
 
 .aboutus-content p {
-        width: 500px;
-        padding-left: 20px;
-        background: rgba(242, 242, 242, 0.5);
+    width: 500px;
+    padding-left: 20px;
+    background: rgba(242, 242, 242, 0.5);
 }
 
 .aboutus-c1 {
-        background: url(/images/bg/about_bg.jpg) 530px 0 no-repeat;
+    background: url(/images/bg/about_bg.jpg) 530px 0 no-repeat;
 }
-.aboutus-c2{
-   display: inline-block;
+
+.aboutus-c2 {
+    display: inline-block;
     width: 49%;
-    padding:0px 30px;
+    padding: 0px 30px;
     vertical-align: top;
 }
-.aboutus-c2 img{
-    width:90%;
+
+.aboutus-c2 img {
+    width: 90%;
+}
+
+.aboutus-c3:before{
+      content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -90px;
+    width: 371px;
+    height: 99px;
+    background: url(/images/bg/1-140603230305414.jpg) no-repeat;
+    background-size: contain;
+}
+.aboutus-c3{
+    position: relative;
+        margin-top: 50px;
+   
 }

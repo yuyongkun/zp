@@ -15,11 +15,13 @@
     margin-right: 15px;
     overflow: hidden;
 }
-.details-head .products-icon img{
+
+.details-head .products-icon img {
     width: 100%;
 }
+
 .details-info>p {
-        color: #888;
+    color: #888;
     line-height: 1;
     padding-top: 8px;
     margin-bottom: 8px;
@@ -31,8 +33,7 @@
     border: 1px solid #e5e5e5;
 }
 
-.details-content-nav {
-}
+.details-content-nav {}
 
 .details-content-nav:after {
     content: '';
@@ -52,9 +53,11 @@
     text-align: center;
     cursor: pointer;
 }
-.details-content-nav span:last-child{
+
+.details-content-nav span:last-child {
     border-right: none;
 }
+
 .details-content-nav .details-cur {
     background: #fff;
     border-bottom: 2px solid #23aae4;
@@ -63,7 +66,7 @@
 .details-content-body {
     min-height: 300px;
     padding: 15px;
-        background: #fff;
+    background: #fff;
 }
 
 .details-func p {
@@ -78,11 +81,13 @@
 .details-func table tr td {
     padding-left: 5px;
 }
-.products-list:after{
+
+.products-list:after {
     content: '';
-    clear:both;
+    clear: both;
     display: block;
 }
+
 .products-center-item {
     float: left;
     width: 166px;
@@ -107,29 +112,34 @@
 .products-center-item .products-desc {
     padding: 5px;
 }
-.details-info{
-        display: inline-block;
+
+.details-info {
+    display: inline-block;
 }
-.details-head{
+
+.details-head {
     padding: 15px;
     box-shadow: 0 0 5px #d4d4d4;
     background: #fff;
 }
-.details-head h1{
-       line-height: 1;
+
+.details-head h1 {
+    line-height: 1;
     font-size: 16px;
     font-family: "Microsoft Yahei", Arial, 宋体, Helvetica;
     padding-bottom: 8px;
     border-bottom: 1px dotted rgb(204, 204, 204);
 }
-.products-js{
-       width: 600px;
+
+.products-js {
+    width: 600px;
     padding: 3px 5px;
     background: #045EA9;
 }
-.products-js p{
+
+.products-js p {
     display: inline-block;
-        line-height: 1;
+    line-height: 1;
     padding-bottom: 6px;
     color: #fff;
     width: 49%;

@@ -2,10 +2,7 @@
 <html>
 
 <head>
-    <title>
-        <%= title %>
-    </title>
-    <link rel='stylesheet' href='/css/base.css' />
+    <%include ../public/headerchild.ejs%>
     <link rel='stylesheet' href='/css/news.css' />
     <link rel='stylesheet' href='/css/products.css' />
 </head>
@@ -13,11 +10,12 @@
 <body>
 <%include ../public/header.ejs%>
     <div class="news">
+        <div class="bread">
+            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/news/list?type=productInformation"><%=title%></a></p>
+        </div>
         <div class="zp-wrap">
             <%include ../public/news.ejs%>
             <div class="servicesupport-container">
-
-                <div class="bread">您的位置：<a href="/">首页</a>&gt;<a href="/news/list?type=productInformation"><%=title%></a></div>
                 <ul class="news-list">
                    <% list.forEach(function(news){%>
 				<li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a></li>

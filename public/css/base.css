@@ -14,10 +14,10 @@ img {
 }
 
 body {
-    font: 12px/1.67 "微软雅黑", tahoma, arial;
+    font: 12px/1.5 arial, tahoma, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
     height: 100%;
     color: #333;
-    background: #f2f2f2;
+    background: #fff;
 }
 
 html {
@@ -32,7 +32,7 @@ p {
 }
 
 a:hover {
-     color: #009ce0!important; 
+    color: #009ce0!important;
     text-decoration: none;
 }
 
@@ -43,11 +43,14 @@ i {
 li {
     list-style: none;
 }
-.cur,.cur a{
+
+.cur,
+.cur a {
     color: #009ce0!important;
 }
+
 .zp-head {
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     box-shadow: 0px 3px 5px #ddd;
 }
 
@@ -56,11 +59,13 @@ li {
     width: 1080px;
     margin: 0px auto;
 }
-.zp-wrap:after{
+
+.zp-wrap:after {
     content: '';
-    clear:both;
+    clear: both;
     display: block;
 }
+
 .zp-top {
     background: #eee;
 }
@@ -70,29 +75,31 @@ li {
     clear: both;
     display: block;
 }
-.language-setting{
-         position: relative;
+
+.language-setting {
+    position: relative;
     width: 60px;
-       text-align: center;
+    text-align: center;
     cursor: pointer;
 }
-.language-s1:after{
-    content:'';
+
+.language-s1:after {
+    content: '';
     position: absolute;
-       left: 52px;
+    left: 52px;
     top: 15px;
     width: 14px;
     height: 14px;
     background: url(/images/lan.gif) no-repeat;
 }
 
-.language-setting:hover ul{
-  display: block;
-    
+.language-setting:hover ul {
+    display: block;
 }
-.language-setting ul{
+
+.language-setting ul {
     display: none;
-   position: absolute;
+    position: absolute;
     width: 100%;
     top: 32px;
     text-align: center;
@@ -100,9 +107,11 @@ li {
     z-index: 1;
     border: 1px solid #e1e1e1;
 }
-.language-setting ul li{
+
+.language-setting ul li {
     width: 100%
 }
+
 .zp-top ul {
     float: right;
     margin-bottom: 0px;
@@ -170,15 +179,16 @@ li {
     padding-right: 30px;
     border-right: 1px solid #ccc;
 }
-.zp-md .zp-contact-style .zp-hot-line p{
+
+.zp-md .zp-contact-style .zp-hot-line p {
     line-height: 1;
-    margin:0px;
+    margin: 0px;
 }
+
 .zp-md .zp-contact-style .zp-hot-line p:first-child {
     font-weight: bold;
     color: #a1a1a1;
-    
-        padding-bottom: 8px;
+    padding-bottom: 8px;
 }
 
 .zp-md .zp-contact-style .zp-hot-line p:last-child {
@@ -186,7 +196,7 @@ li {
     font-size: 26px;
     color: #ed1b23;
     font-family: Arial;
-        text-indent: -2px;
+    text-indent: -2px;
 }
 
 .zp-md .zp-contact-style .zp-online-service {
@@ -194,10 +204,12 @@ li {
     padding-top: 14px;
     padding-left: 30px;
 }
-.zp-md .zp-contact-style .online-service{
-        padding-right: 30px;
+
+.zp-md .zp-contact-style .online-service {
+    padding-right: 30px;
     border-right: 1px solid #ccc;
 }
+
 .zp-site-nav:after {
     content: '';
     clear: both;
@@ -211,7 +223,7 @@ li {
 ul.zp-wrap >li {
     float: left;
     width: 20%;
-    padding: 5px 0;
+    padding: 10px 0;
     text-align: center;
     cursor: pointer;
     transition: border-top 0.2s;
@@ -220,12 +232,10 @@ ul.zp-wrap >li {
     -o-transition: border-top 0.2s;
 }
 
-ul.zp-wrap >li a {
-    display: block;
-    color: #fff;
-}
-
 ul.zp-wrap >li>a {
+      display: block;
+          line-height: 1;
+    color: #fff;
     font-size: 18px;
 }
 
@@ -233,12 +243,12 @@ ul.zp-wrap>li .about_nav {
     display: none;
     position: absolute;
     width: 20%;
-    top: 40px;
+    top: 38px;
     margin-left: -1px;
     margin-top: 0px;
-        border-bottom: 3px solid #009ce0;
+    border-bottom: 3px solid #009ce0;
     background: #fff;
-        box-shadow: 0px 1px 3px #ddd;
+    box-shadow: 0px 1px 3px #ddd;
     z-index: 9999;
     transition: opacity 0.2s;
     -webkit-transition: opacity 0.2s;
@@ -261,13 +271,15 @@ ul.zp-wrap>li .about_nav .zp-product-list a:hover {
 
 ul.zp-wrap>li .products-nav {
     width: 100%;
-    left:0px;
+    left: 0px;
     overflow: hidden;
 }
-ul.zp-wrap>li .products-nav>ul{
-        display: table;
+
+ul.zp-wrap>li .products-nav>ul {
+    display: table;
     width: 100%;
 }
+
 ul.zp-wrap>li .products-nav>ul>li {
     display: table-cell;
     position: relative;
@@ -288,25 +300,29 @@ ul.zp-wrap>li .about_nav>ul>li>a {
     border-bottom: 1px solid #e0dedf;
     color: #3a3a3a;
 }
-ul.zp-wrap>li .about_nav>ul>li>a:hover{
+
+ul.zp-wrap>li .about_nav>ul>li>a:hover {
     color: #009ce0;
 }
+
 ul.zp-wrap>li .products-nav>ul>li>h3 {
-        line-height: 1;
+    line-height: 1;
     margin: 0px;
     padding: 8px 0 8px 5px;
-    border-bottom: 1px solid #eaeaea;
-    border-right: 1px solid #eaeaea;
-    background: #ccc;
+    border-right: 1px solid #a1a1a1;
+    background: #727186;
 }
-ul.zp-wrap>li .products-nav>ul>li:last-child>h3{
+
+ul.zp-wrap>li .products-nav>ul>li:last-child>h3 {
     border-right: none;
 }
+
 ul.zp-wrap>li .products-nav>ul>li>h3>a {
-    color: #464646;
+    color: #fff;
 }
-
-
+ul.zp-wrap>li .products-nav>ul>li>h3>a:hover{
+        color: #004780!important;
+}
 ul.zp-wrap>li .products-nav>ul>li>.zp-product-list ul li {
     border-bottom: 1px solid #e0dedf;
     line-height: 1;
@@ -314,9 +330,11 @@ ul.zp-wrap>li .products-nav>ul>li>.zp-product-list ul li {
     text-indent: 15px;
     margin-right: 8px;
 }
-ul.zp-wrap>li .products-nav>ul>li>.zp-product-list ul li:last-child{
+
+ul.zp-wrap>li .products-nav>ul>li>.zp-product-list ul li:last-child {
     border-bottom: none;
 }
+
 ul.zp-wrap>li .products-nav>ul>li>.zp-product-list a {
     display: block;
     color: #666;
@@ -339,7 +357,7 @@ ul.zp-wrap>li .servicesupport-nav {
 }
 
 .servicesupport-s1 {
-          margin-top: -12px;
+    margin-top: -12px;
     cursor: default;
 }
 
@@ -348,26 +366,29 @@ ul.zp-wrap>li .servicesupport-nav {
     padding: 5px 0;
 }
 
-
 ul.zp-wrap>li .products-nav ul li a,
 ul.zp-wrap>li .servicesupport-nav ul li a {
-font-weight: 100;
+    font-weight: 100;
 }
 
 .bread {
-    padding-bottom: 10px;
-    text-align: right;
-    color: #959595;
+    margin-bottom: 15px;
+    padding: 5px 0;
     font-family: "新宋体";
+    background: url('/images/bg/txbg.png');
+    border-bottom: 1px solid #ccc;
 }
 
 .bread a {
     padding: 0 4px;
-    color: #959595;
+}
+
+.bread * {
+    color: #666;
 }
 
 .bread a:hover {
-    color: #009ce0;
+    text-decoration: underline;
 }
 
 
@@ -409,14 +430,14 @@ font-weight: 100;
 
 .fotter ul.fotter-size-nav li {
     float: left;
-        width: 16.66%;
+    width: 16.66%;
 }
 
 .fotter ul.fotter-size-nav li h4 {
     font-size: 14px;
     line-height: 1;
     padding-bottom: 8px;
-    margin:0px;
+    margin: 0px;
     font-weight: bold;
 }
 
@@ -560,8 +581,8 @@ font-weight: 100;
 }
 
 
-
 /* 提示框 */
+
 ._tips {
     position: fixed;
     width: 100%;
@@ -596,11 +617,9 @@ font-weight: 100;
         -o-transform: translateY(0);
         transform: translateY(0);
     }
-
     20% {
         opacity: 1;
     }
-
     80% {
         opacity: 1;
         -webkit-transform: translateY(0);
@@ -608,7 +627,6 @@ font-weight: 100;
         -o-transform: translateY(0);
         transform: translateY(0);
     }
-
     100% {
         opacity: 0;
         -webkit-transform: translateY(-100%);
@@ -622,16 +640,13 @@ font-weight: 100;
     0% {
         -webkit-transform: translateY(0);
     }
-
     20% {
         opacity: 1;
     }
-
     80% {
         opacity: 1;
         -webkit-transform: translateY(0);
     }
-
     100% {
         opacity: 0;
         -webkit-transform: translateY(-100%);
@@ -643,16 +658,13 @@ font-weight: 100;
     0% {
         -moz-transform: translateY(0);
     }
-
     20% {
         opacity: 1;
     }
-
     80% {
         opacity: 1;
         -moz-transform: translateY(0);
     }
-
     100% {
         opacity: 0;
         -moz-transform: translateY(-100%);
@@ -664,16 +676,13 @@ font-weight: 100;
     0% {
         -o-transform: translateY(0);
     }
-
     20% {
         opacity: 1;
     }
-
     80% {
         opacity: 1;
         -o-transform: translateY(0);
     }
-
     100% {
         opacity: 0;
         -o-transform: translateY(-100%);

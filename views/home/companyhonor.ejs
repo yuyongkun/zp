@@ -2,20 +2,19 @@
 <html>
 
 <head>
-    <title>
-        <%= title %>
-    </title>
-    <link rel='stylesheet' href='/css/base.css' />
+   <%include ../public/headerchild.ejs%>
     <link rel='stylesheet' href='/css/servicesupport.css' />
 </head>
 
 <body>
     <%include ../public/header.ejs%>
         <div class="servicesupport companyrelative">
+        <div class="bread">
+            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/aboutus">关于AIDA</a>&gt;<a href="/companyhonor">公司荣誉</a></p>
+        </div>
             <div class="zp-wrap">
                 <%include ../public/companyrelative.ejs%>
                     <div class="servicesupport-container">
-                        <div class="bread">您的位置：<a href="/" target="_blank">首页</a>><a href="/aboutus">关于AIDA</a>><a href="/companyculture/"><%= title %></a></div>
                        <div class="ny_right">
       <div class="ny_right_tit">
          <h3>公司荣誉</h3>

@@ -1,7 +1,7 @@
 .servicesupport {
-       padding: 20px 0;
+    min-height: 600px;
+        padding-bottom: 20px;
     background: #fefefe url(/images/bg/service_bg.jpg) no-repeat center bottom;
-    margin-top: -15px;
     background-size: contain;
 }
 
@@ -23,6 +23,7 @@
 .servicesupport-slider ul li {
     position: relative;
     border-bottom: 1px dotted #c2c2c2;
+        font-family: serif;
 }
 
 .servicesupport-slider ul li:hover {
@@ -61,10 +62,7 @@
 .service-cur a {
     color: #009ce0;
 }
-.bread a {
-    padding:0 10px;
-    color: #009ce0;
-}
+
 /* 关于公司 */
 .companyrelative ul li.newscenter{
 background: url(/images/abouticon.gif) no-repeat 20px center;
