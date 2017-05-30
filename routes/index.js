@@ -93,7 +93,7 @@ router.get('/details', function(req, res, next) {
 		 console.log(list);
 		 controller.selectFun(res,sql,[req.query.id],function(result){
 				console.log(result);
-		        res.render('home/details', { title: '新乡市艾达机械设备有限公司', pro:result[0],locale:req.cookies.locale,list:list,secondCode:req.query.sCode});
+		        res.render('home/details', { title: res.__('ProductDetails')+'-'+'xxxxx', pro:result[0],locale:req.cookies.locale,list:list,secondCode:req.query.sCode});
 			});
  	});
 	
@@ -208,7 +208,7 @@ router.get('/news/detail/:id/:type',function(req,res,next){
 	    console.log(result);
 	    controller.selectFun(res,listSql,[type,0,5],function(list){
 		    console.log(list);
-		    res.render('home/news-detail', {title: res.__('ProductDetails')+'-'+'xxxxx',news:result[0],type:type,list:list});
+		    res.render('home/news-detail', {title: res.__('NewsDetails')+'-'+res.__('Company'),news:result[0],type:type,list:list});
 		});
 		
 	});
