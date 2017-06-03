@@ -109,12 +109,15 @@ router.get('/service/:who', function(req, res, next) {
 
     res.locals.title='服务支持';
     res.locals.type=1;
+    var lasturl='servicesupport';
     if(param==='guarantee'){
         res.locals.title='服务保障';
         res.locals.type=2;
+        lasturl='serviceguarantee';
     }else if(param==='process'){
         res.locals.title='服务流程';
         res.locals.type=3;
+        lasturl='serviceprocess';
     }
     req.type=res.locals.type;
     service_controller.queryService(req,res,function(result){
@@ -122,7 +125,7 @@ router.get('/service/:who', function(req, res, next) {
         if(result.length>0){
             content=result[0].content;
         }
-        res.render('home/servicesupport', {
+        res.render('home/'+lasturl, {
             title:res.__('serviceSupportTitle'),
             serviceContent:content,
         });
