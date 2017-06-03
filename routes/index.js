@@ -115,12 +115,15 @@ router.get('/service/:who', function(req, res, next) {
 
     res.locals.title='服务支持';
     res.locals.type=1;
+    var lasturl='servicesupport';
     if(param==='guarantee'){
         res.locals.title='服务保障';
         res.locals.type=2;
+        lasturl='serviceguarantee';
     }else if(param==='process'){
         res.locals.title='服务流程';
         res.locals.type=3;
+        lasturl='serviceprocess';
     }
     req.type=res.locals.type;
     service_controller.queryService(req,res,function(result){
@@ -128,7 +131,7 @@ router.get('/service/:who', function(req, res, next) {
         if(result.length>0){
             content=result[0].content;
         }
-        res.render('home/servicesupport', {
+        res.render('home/'+lasturl, {
             title:res.__('serviceSupportTitle'),
             serviceContent:content,
         });
@@ -161,7 +164,7 @@ router.get('/contactus',function(req,res,next){
     });
 });
 /*新闻中心*/
-router.get('/news/list/:type',function(req,res,next){
+router.get('/:type',function(req,res,next){
     var who=req.params.type;
     console.log('新闻中心列表页面:',who);
     console.log("------------1");
@@ -202,7 +205,7 @@ router.get('/news/list/:type',function(req,res,next){
 	});
 });
 //新闻详情
-router.get('/news/detail/:id/:type',function(req,res,next){
+router.get('/:type/:id/',function(req,res,next){
     var id=req.params.id;
     var type=req.params.type;
     console.log('newdetails-----',id);

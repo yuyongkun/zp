@@ -23,10 +23,10 @@
                     <div class="news-content"><%-news.description%></div>
                     <div class="news-handover">
                     <%if(last){%>
-                        <a href="/news/detail/<%= last.id%>/<%= type%>">上一篇：<%= last.name%></a> 
+                        <a href="/<%= type%>/<%= last.id%>">上一篇：<%= last.name%></a> 
                         <%}%>
                      <%if(next){%>
-                        <a href="/news/detail/<%= next.id%>/<%= type%>">下一篇：<%= next.name%></a> 
+                        <a href="/<%= type%>/<%= next.id%>">下一篇：<%= next.name%></a> 
                         <%}%>
                     </div>
                     <div class="news-recommended">

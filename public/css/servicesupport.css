@@ -43,6 +43,7 @@ text-align: center;
 }
 .servicesupport-slider ul li.newscenter {
         width: 100%;
+        font-size: 14px;
        border-bottom: 1px solid #9299a5;
     color: #fff;
     font-weight: bold;
