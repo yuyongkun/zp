@@ -16,10 +16,13 @@
         <div class="zp-wrap">
             <%include ../public/news.ejs%>
             <div class="servicesupport-container">
+                <div class="news_class">
+                     <span class="n_span1"><font class="red">产品</font>资讯</span>
+                 </div>
                 <ul class="news-list">
                    <% list.forEach(function(news){%>
-				<li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a></li>
-				<%})%>
+				    <li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr">2017-06-03</label></li>
+				    <%})%>
                 </ul>
             </div>
                 <nav class="nav">

@@ -83,16 +83,15 @@
 	"Product6_Second_product6":"Plate-type Seal filter",
 	"Product6_Second_product7":"Pipeline Filter",
 
-	"Home": "HomeNewsCenter	"ProductCenter": "ProductCenter",
+	"Home": "Home",
+	"ProductCenter": "ProductCenter",
 	"Solution": "Solution",
 	"ServiceSupport": "ServiceSupport",
 	"ServiceGuarantee": "ServiceGuarantee",
 	"ServiceProcess": "ServiceProcess",
 	"NewsCenter": "NewsCenter",
-	"NewsDetails": "NewsDetails",
 	"EntreprisesNews": "EntreprisesNews",
 	"ProductInformation": "ProductInformation",
-	"ProductDetails": "ProductDetails",
 
     "HotRecommended": "Hot recommended",
 	"More": "More",
@@ -112,8 +111,8 @@
 	"Links": "Links",
 	"Hello": "Site navigation",
 
-	"indexTitle":" hydraulic filter,filter element,oil separator-Xinxiang Aida Machinery Equipment Corporation",
-	"productsTitle":"oil filter, coalescer filter,Oil purifier-Xinxiang Aida Machinery Equipment Corporation",
+	"indexTitle":" hydraulic filter,filter element,oil separator,Filter Cartridge -Xinxiang Aida Machinery Equipment Corporation",
+	"productsTitle":"oil filter, coalescer filter,Oil purifier,Filter Cartridge -Xinxiang Aida Machinery Equipment Corporation",
 	"caseTitle":"Solution (shanxi, henan, hunan, chongqing, jiangsu, hubei, guangdong, shanxi) filter oil machine, filter, filter, compressor oil, melt sintering filter-Xinxiang Aida Machinery Equipment Corporation",
  	"serviceSupportTitle":"ServiceSupport-Xinxiang Aida Machinery Equipment Corporation"
 }

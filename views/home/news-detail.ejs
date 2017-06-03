@@ -14,23 +14,37 @@
         </div>
             <div class="zp-wrap">
                 <%include ../public/news.ejs%>
-                 <div class="servicesupport-container">
-                       <h1>   标题:     <%= news.name%></h1>
-                       <p>
-				                    
-				                        日期:    <%= news.createDate%>     来源:   <%= news.createBy%>
-                        <%-news.description%>
-                        </p>
-                        
-                         <a href="/news/last/<%= news.id%>/<%= type%>">上一篇</a>     <a href="/news/next/<%= news.id%>/<%= type%>">下一篇</a> 
-                         
-                          <ul class="news-list">
-                   <% list.forEach(function(news){%>
-				<li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a></li>
-				<%})%>
-                </ul> 
+                 <div class="servicesupport-container news-details">
+                 <div class="news_class">
+                     <span class="n_span1"><font class="red">产品</font>资讯</span>
+                 </div>
+                    <h1>标题:<%= news.name%></h1>
+                    <p>日期:<%= news.createDate%>&nbsp;来源:<%= news.createBy%></p>
+                    <div class="news-content"><%-news.description%></div>
+                    <div class="news-handover">
+                        <a href="/news/last/<%= news.id%>/<%= type%>">上一篇：xxxx</a> 
+                        <a href="/news/next/<%= news.id%>/<%= type%>">下一篇：xxxx</a> 
+                    </div>
+                    <div class="news-recommended">
+                        <div class="news-recommended-col1">
+                            <h5>最新动态</h5>
+                            <ul class="news-list">
+                            <% list.forEach(function(news){%>
+                               <li><a href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr">2017-06-03</label></li>
+                            <%})%>
+                            </ul> 
+                        </div>
+                        <div class="news-recommended-col1">
+                         <h5>最新资讯</h5>
+                            <ul class="news-list">
+                            <% list.forEach(function(news){%>
+                               <li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr">2017-06-03</label></li>
+                            <%})%>
+                            </ul> 
+                        </div>
+                    </div>
+                    
                 </div>
-              
             </div>
         </div>
         <%include ../public/footer.ejs%>

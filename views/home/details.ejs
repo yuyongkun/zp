@@ -13,7 +13,7 @@
         <div class="zp-wrap">
             <div class="details-wrap">
                 <div class="details-head">
-                    <span class="products-icon" title="<%=pro.name%>" alt="<%=pro.name%>"><img src="<%=pro.imgUrl%>"></span>
+                    <span class="products-icon"><img src="<%=pro.imgUrl%>" title="<%=pro.name%>" alt="<%=pro.name%>"></span>
                     <div class="details-info">
                          <h1 class="products-desc"><%= pro.name%></h1>
                         <p><%= __('Author') %>：<%=pro.createdBy%> <%= __('Date') %>：<%=pro.createdDate%></p>
@@ -43,9 +43,9 @@
                                           <%if(list){
 						    			list.forEach(function(link){ %>
 						    			<div class="products-center-item">
-						                    <a href="/details?id=<%= link.id%>&sCode=<%= secondCode%>" title="<%= link.name%>"  alt="<%= link.name%>">
+						                    <a href="/details?id=<%= link.id%>&sCode=<%= secondCode%>">
 						                        <div class="products-icon">
-						                            <img src="<%= link.imgUrl%>">
+						                            <img src="<%= link.imgUrl%>" title="<%= link.name%>"  alt="<%= link.name%>">
 						                        </div>
 						                    </a>
 						                    <p class="products-desc"><%= link.name%></p>

@@ -43,7 +43,15 @@ i {
 li {
     list-style: none;
 }
-
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.red{
+        color: #F00!important;
+}
 .cur,
 .cur a {
     color: #009ce0!important;
@@ -233,11 +241,11 @@ ul.zp-wrap >li {
 }
 
 ul.zp-wrap >li>a {
-      display: block;
-          line-height: 1;
+    display: block;
+    line-height: 1;
     color: #fff;
     font-size: 18px;
-        text-decoration: none;
+    text-decoration: none;
 }
 
 ul.zp-wrap>li .about_nav {
@@ -272,7 +280,7 @@ ul.zp-wrap>li .about_nav .zp-product-list a:hover {
 ul.zp-wrap>li .products-nav {
     width: 100%;
     left: 0px;
-        border-left: 1px solid gray;
+    border-left: 1px solid gray;
     border-right: 1px solid gray;
     overflow: hidden;
 }
@@ -302,7 +310,8 @@ ul.zp-wrap>li .about_nav>ul>li>a {
     border-bottom: 1px solid rgba(224, 222, 223, 0.5);
     color: #3a3a3a;
 }
-ul.zp-wrap>li .about_nav>ul>li:last-child a{
+
+ul.zp-wrap>li .about_nav>ul>li:last-child a {
     border-bottom: none;
 }
 
@@ -314,9 +323,9 @@ ul.zp-wrap>li .products-nav>ul>li>h3 {
     line-height: 1;
     margin: 0px;
     padding: 8px 0 8px 5px;
-    border-right: 1px solid #a1a1a1;
+    border-right: 1px solid #4f515a;
     background: #727186;
-        font-size: 14px;
+    font-size: 14px;
 }
 
 ul.zp-wrap>li .products-nav>ul>li:last-child>h3 {
@@ -326,10 +335,12 @@ ul.zp-wrap>li .products-nav>ul>li:last-child>h3 {
 ul.zp-wrap>li .products-nav>ul>li>h3>a {
     color: #fff;
 }
-ul.zp-wrap>li .products-nav>ul>li>h3>a:hover{
-        color: #004780!important;
-        text-decoration: none;
+
+ul.zp-wrap>li .products-nav>ul>li>h3>a:hover {
+    color: #004780!important;
+    text-decoration: none;
 }
+
 ul.zp-wrap>li .products-nav>ul>li>.zp-product-list ul li {
     border-bottom: 1px solid #e0dedf;
     line-height: 1;
@@ -353,12 +364,10 @@ ul.zp-wrap>li:hover .about_nav {
     display: block;
 }
 
-ul.zp-wrap>li .servicesupport-nav>ul>li {
-    
-}
+ul.zp-wrap>li .servicesupport-nav>ul>li {}
 
 ul.zp-wrap>li .servicesupport-nav {
-     width: 20%;
+    width: 20%;
     background: #727186;
 }
 
@@ -372,13 +381,15 @@ ul.zp-wrap>li .servicesupport-nav {
     padding: 5px 0;
 }
 
-ul.zp-wrap>li .products-nav ul li a{
+ul.zp-wrap>li .products-nav ul li a {
     font-weight: 100;
 }
-ul.zp-wrap>li .servicesupport-nav ul li a{
+
+ul.zp-wrap>li .servicesupport-nav ul li a {
     display: block;
-        color: #fff;
+    color: #fff;
 }
+
 .bread {
     margin-bottom: 15px;
     padding: 5px 0;
@@ -404,8 +415,8 @@ ul.zp-wrap>li .servicesupport-nav ul li a{
 
 .fotter {
     width: 100%;
-    padding-bottom: 32px;
-    background: #666464;
+    padding: 30px 0;
+    background: #011f3e;
     overflow: hidden;
     color: #ccc;
 }
@@ -427,6 +438,8 @@ ul.zp-wrap>li .servicesupport-nav ul li a{
 }
 
 .fotter ul.fotter-size-nav {
+    display: table;
+    width: 100%;
     margin-bottom: 15px;
 }
 
@@ -437,8 +450,13 @@ ul.zp-wrap>li .servicesupport-nav ul li a{
 }
 
 .fotter ul.fotter-size-nav li {
-    float: left;
-    width: 16.66%;
+    display: table-cell;
+    padding: 0 20px;
+    border-right: 1px solid #507193;
+}
+
+.fotter ul.fotter-size-nav li:last-child {
+    border-right: none;
 }
 
 .fotter ul.fotter-size-nav li h4 {
@@ -450,17 +468,20 @@ ul.zp-wrap>li .servicesupport-nav ul li a{
 }
 
 .fotter ul.fotter-size-nav li a {
-    font-family: "新宋体";
-    line-height: 20px;
+    font-size: 12px;
 }
 
 .fotter p {
-    color: #ccc;
     margin: 0;
+    font-size: 12px;
+    line-height: 1;
+    padding-bottom: 6px;
+    color: #ccc;
 }
 
 .footer-related-link a {
     padding: 0px 5px;
+    font-size: 12px;
 }
 
 
@@ -713,4 +734,44 @@ ul.zp-wrap>li .servicesupport-nav ul li a{
     margin-top: 28px;
     padding-top: 5px;
     text-align: center;
+}
+
+
+.news_class {
+    width: 780px;
+    display: block;
+    overflow: hidden;
+    border-bottom: 1px #dcdcdc solid;
+    padding-bottom: 8px;
+    font-family: sans-serif;
+}
+
+.news_class .n_span1 {
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    height: 28px;
+    color: #3a3a3a;
+}
+
+.news_class .n_span2 {
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    height: 20px;
+    color: #CCC;
+    padding-top: 5px;
+    padding-left: 8px;
+}
+
+.news_class .xc_word {
+    display: block;
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #999;
 }
