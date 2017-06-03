@@ -240,9 +240,17 @@ router.get('/deleteHot/:id', function(req, res, next) {
 router.post('/saveHot', function(req, res, next) {
 	console.log(req.body.id);
 	var sql=model.hot.insert;
-	 controller.selectFun(res,sql,[req.body.id],function(result){
-			res.send(JSON.stringify("SUCESS"));
-		});
+	var query=model.hot.queryOne;
+	controller.selectFun(res,query,[req.body.id],function(count){
+		if(count[0]==0){
+			controller.selectFun(res,sql,[req.body.id],function(result){
+				res.send(JSON.stringify("SUCESS"));
+			});
+		}else{
+		        res.send(JSON.stringify("FAILE"));
+		}
+	});
+	 
 });
 
 router.get('/newHot', function(req, res, next) {

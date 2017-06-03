@@ -73,27 +73,12 @@
             <div id="demo">
                 <div id="indemo">
                     <div id="demo1">
-                     <a href="/details?id=8dfd2c60-34d4-11e7-bca4-db473544646c" title="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#" alt="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#">
-                     <img src="/images/ad-0.jpg">
-                    </a>
-                    <a href="/details?id=1b513f30-34d4-11e7-bca4-db473544646c" title="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#" alt="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#">
-                     <img src="/images/ad-1.jpg">
-                    </a>
-                    <a href="/details?id=d535ce30-34ce-11e7-a3ed-558af64c7b98" title="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#" alt="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#">
-                     <img src="/images/ad-2.jpg">
-                    </a>
-                    <a href="/details?id=2c93d120-34d6-11e7-a371-49773c9d768e" title="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#" alt="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#">
-                     <img src="/images/ad-3.jpg">
-                    </a>
-                    <a href="/details?id=f2e9cfee-34d8-11e7-9a5a-00163e012b7a" title="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#" alt="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#">
-                     <img src="/images/ad-4.jpg">
-                    </a>
-                    <a href="/details?id=11373c70-3583-11e7-bf04-3d3d02d69edf" title="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#" alt="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#">
-                     <img src="/images/ad-5.jpg">
-                    </a>
-                    <a href="/details?id=a2d268b0-34db-11e7-bf04-3d3d02d69edf" title="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#" alt="国标黎明 LUC，LUCA，LUCB系列滤油车 LUC-16x※#">
-                     <img src="/images/ad-6.jpg">
-                    </a>
+                     <%if(hotList){
+			    			hotList.forEach(function(pro){ %>
+			                    <a href="/details?id=<%= pro.id%>&sCode=<%= pro.sCode%>" title="<%= pro.name%>" alt="<%= pro.name%>">
+			                     <img src="<%= pro.imgUrl%>">
+			                    </a>
+			            <%})}%>
                     </div>
                     <div id="demo2"></div>
                 </div>

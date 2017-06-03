@@ -143,8 +143,12 @@
  		      alert("error message : "+errorThrown.toString());
  		      },
  		   success: function(data){
- 		      var url="/product/hot/product";
- 		      location.href =url;
+ 			   if(data=='SUCESS'){
+	 		      var url="/product/hot/product";
+	 		      location.href =url;
+ 			   }else{
+ 				  alert("该产品已经是热门推荐了，清添加非热门推荐类产品！"); 
+ 			   }
  		   }
  		  }); 
     }

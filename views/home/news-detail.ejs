@@ -22,23 +22,27 @@
                     <p>日期:<%= news.createDate%>&nbsp;来源:<%= news.createBy%></p>
                     <div class="news-content"><%-news.description%></div>
                     <div class="news-handover">
-                        <a href="/news/last/<%= news.id%>/<%= type%>">上一篇：xxxx</a> 
-                        <a href="/news/next/<%= news.id%>/<%= type%>">下一篇：xxxx</a> 
+                    <%if(last){%>
+                        <a href="/news/detail/<%= last.id%>/<%= type%>">上一篇：<%= last.name%></a> 
+                        <%}%>
+                     <%if(next){%>
+                        <a href="/news/detail/<%= next.id%>/<%= type%>">下一篇：<%= next.name%></a> 
+                        <%}%>
                     </div>
                     <div class="news-recommended">
                         <div class="news-recommended-col1">
                             <h5>最新动态</h5>
                             <ul class="news-list">
-                            <% list.forEach(function(news){%>
-                               <li><a href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr">2017-06-03</label></li>
+                            <% entrepriseNewsList.forEach(function(news){%>
+                               <li><a href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr"><%=news.createDate%></label></li>
                             <%})%>
                             </ul> 
                         </div>
                         <div class="news-recommended-col1">
                          <h5>最新资讯</h5>
                             <ul class="news-list">
-                            <% list.forEach(function(news){%>
-                               <li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr">2017-06-03</label></li>
+                            <% productInformationList.forEach(function(news){%>
+                               <li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr"><%=news.createDate%></label></li>
                             <%})%>
                             </ul> 
                         </div>

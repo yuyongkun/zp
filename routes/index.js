@@ -10,15 +10,21 @@ var uuid = require('node-uuid');
 
 /* 首页 */
 router.get('/', function(req, res, next) {
+	var newsListSql,hotListSql;
     if(res.locals.inlanguage=='en'){
- 		listSql=model.news.queryLastTwoEn;
+    	newsListSql=model.news.queryLastTwoEn;
+    	hotListSql=model.hot.queryProductEn;
  	}else{
- 		listSql=model.news.queryLastTwoZh;
+ 		newsListSql=model.news.queryLastTwoZh;
+ 		hotListSql=model.hot.queryProductZh;
  	}
-    controller.selectFun(res,listSql,[],function(newsList){
+    controller.selectFun(res,newsListSql,[],function(newsList){
 	    console.log(newsList);
-        console.log('indexTitle---->',res.__('indexTitle'));
-	    res.render('home/index', { title:  res.__('indexTitle') ,newsList:newsList});
+        controller.selectFun(res,hotListSql,[],function(hotList){
+    	    console.log(hotList);
+            console.log('indexTitle---->',res.__('indexTitle'));
+    	    res.render('home/index', { title:  res.__('indexTitle') ,newsList:newsList,hotList:hotList});
+    	});
 	});
 });
 // //allow MANUAL locale selection
@@ -200,52 +206,42 @@ router.get('/news/detail/:id/:type',function(req,res,next){
     var id=req.params.id;
     var type=req.params.type;
     console.log('newdetails-----',id);
-    var sql,listSql;
+    var sql,listSql,nextSql,lastSql;
     if(res.locals.inlanguage=='en'){
  		sql=model.news.queryNewEn;
  		listSql=model.news.queryNewsListEn;
+ 		nextSql=model.news.queryNextEn;
+ 		lastSql=model.news.queryLastEn;
  	}else{
  		sql=model.news.queryNewZh;
- 		listSql=model.news.queryNewsListEn;
+ 		listSql=model.news.queryNewsListZh;
+ 		nextSql=model.news.queryNextZh;
+ 		lastSql=model.news.queryLastZh;
  	}
     controller.selectFun(res,sql,[id],function(result){
 	    console.log(result);
-	    controller.selectFun(res,listSql,[type,0,5],function(list){
-		    console.log(list);
-		    res.render('home/news-detail', {title: res.__('NewsDetails')+'-'+res.__('Company'),news:result[0],type:type,list:list});
+	    controller.selectFun(res,listSql,[1,0,5],function(entrepriseNewsList){
+		    console.log(entrepriseNewsList);
+		    controller.selectFun(res,listSql,[2,0,5],function(productInformationList){
+			    console.log(productInformationList);
+			    controller.selectFun(res,nextSql,[id,type],function(nextlist){
+				    console.log(nextlist);
+				    var next;
+				    if(nextlist[0]){
+				    	next=nextlist[0];
+				    }
+				    controller.selectFun(res,lastSql,[id,type],function(lastlist){
+					    var last;
+					    if(lastlist[0]){
+					    	last=lastlist[0];
+					    }
+				    res.render('home/news-detail', {title: res.__('NewsDetails')+'-'+res.__('Company'),last:last,next:next,
+				    	news:result[0],type:type,entrepriseNewsList:entrepriseNewsList,productInformationList:productInformationList});
+				});
+			    });
+			});
 		});
 		
-	});
-});
-//新闻详情下一个
-router.get('/news/next/:id/:type',function(req,res,next){
-	var id=req.params.id;
-    var type=req.params.type;
-    console.log('newdetails-----',id);
-    var sql=model.news.queryNext;
-    controller.selectFun(res,sql,[id,type],function(result){
-	    console.log(result);
-	    if(result[0]){
-	        res.redirect('/news/detail/'+result[0].id+'/'+type);
-	    }else{
-	    	res.redirect('/news/detail/'+id+'/'+type);
-	    }
-	});
-});
-
-//新闻详情上一个
-router.get('/news/last/:id/:type',function(req,res,next){
-	var id=req.params.id;
-    var type=req.params.type;
-    console.log('newdetails-----',id);
-    var sql=model.news.queryLast;
-    controller.selectFun(res,sql,[id,type],function(result){
-	    console.log(result);
-	    if(result[0]){
-	        res.redirect('/news/detail/'+result[0].id+'/'+type);
-	    }else{
-	    	res.redirect('/news/detail/'+id+'/'+type);
-	    }
 	});
 });
 
