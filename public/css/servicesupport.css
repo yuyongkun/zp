@@ -1,59 +1,55 @@
 .servicesupport {
     min-height: 600px;
         padding-bottom: 20px;
-    background: #fefefe url(/images/bg/service_bg.jpg) no-repeat center bottom;
-    background-size: contain;
+    /*background: #fefefe url(/images/bg/service_bg.jpg) no-repeat center bottom;*/
+    /*background-size: contain;*/
 }
 
 .servicesupport-slider {
-    float: left;
+           float: left;
     width: 195px;
-    background: #fff;
-    box-shadow: 2px 2px 6px #d3d3d3;
-    border-left: 1px solid #e5e5e5;
+    min-height: 300px;
+    background: #273c51;
+    border: 1px solid #e5e5e5;
+        
 }
 
 .servicesupport-container {
       margin-left: 210px;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0px 0px 4px #d0d0d0;
+    /*padding: 20px;*/
+    /*background: #fff;*/
+}
+.servicesupport-slider ul{
+text-align: center;
 }
 
 .servicesupport-slider ul li {
-    position: relative;
-    border-bottom: 1px dotted #c2c2c2;
-        font-family: serif;
+    display: inline-block;
+    width: 130px;
+    margin-bottom: 10px;
 }
 
-.servicesupport-slider ul li:hover {
-    color: #009ce0;
-}
-
-.servicesupport-slider ul li:after {
-    content: '>';
-    position: absolute;
-    right: 15px;
-    top: 10px;
-}
 
 .servicesupport-slider ul li a {
-    display: block;
-    padding: 10px 0 10px 30px;
+       display: block;
+    height: 27px;
+    line-height: 27px;
+    background: url(/images/news_leftnav.jpg) repeat-x;
+    text-align: center;
+    border-left: 1px #dcdcdc solid;
 }
-
+.servicesupport-slider ul li a:hover{
+    text-decoration: underline;
+}
 .servicesupport-slider ul li.newscenter {
-    font-weight: normal;
-    padding: 20px 0 20px 90px;
-    background: url(/images/servicenav.png) no-repeat 20px center;
-    border-top: 4px solid #009ce0;
-    font-size: 20px;
-    color: #464646;
+        width: 100%;
+       border-bottom: 1px solid #9299a5;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
 }
 
-.servicesupport-slider ul li.newscenter:after {
-    content: '';
-}
 
 .service-cur {
     color: #009ce0;
@@ -62,10 +58,10 @@
 .service-cur a {
     color: #009ce0;
 }
-
+.service-content{
+    margin-top: 15px;
+}
 /* 关于公司 */
 .companyrelative ul li.newscenter{
-background: url(/images/abouticon.gif) no-repeat 20px center;
-padding-left: 70px;
 }
 

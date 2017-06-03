@@ -43,7 +43,15 @@ i {
 li {
     list-style: none;
 }
-
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.red{
+        color: #F00!important;
+}
 .cur,
 .cur a {
     color: #009ce0!important;
@@ -315,7 +323,7 @@ ul.zp-wrap>li .products-nav>ul>li>h3 {
     line-height: 1;
     margin: 0px;
     padding: 8px 0 8px 5px;
-    border-right: 1px solid #a1a1a1;
+    border-right: 1px solid #4f515a;
     background: #727186;
     font-size: 14px;
 }
@@ -726,4 +734,44 @@ ul.zp-wrap>li .servicesupport-nav ul li a {
     margin-top: 28px;
     padding-top: 5px;
     text-align: center;
+}
+
+
+.news_class {
+    width: 780px;
+    display: block;
+    overflow: hidden;
+    border-bottom: 1px #dcdcdc solid;
+    padding-bottom: 8px;
+    font-family: sans-serif;
+}
+
+.news_class .n_span1 {
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    height: 28px;
+    color: #3a3a3a;
+}
+
+.news_class .n_span2 {
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    height: 20px;
+    color: #CCC;
+    padding-top: 5px;
+    padding-left: 8px;
+}
+
+.news_class .xc_word {
+    display: block;
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #999;
 }
