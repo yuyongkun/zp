@@ -17,7 +17,6 @@ function  selectFun(res,sql,array,callbacks){
 	    	}
 			if(result){
 				console.log('－－－－－－查询内容成功－－－－－－');
-				console.log(result);
 				callbacks(result);
 			}
 			connection.release();
@@ -39,7 +38,6 @@ function insertFun(res,sql,array,callbacks){
 	    	}
     	 if(result){
 				console.log('－－－－－－新增成功－－－－－－');
-				console.log(result);
 				callbacks(result);
 			}
 			connection.release();
