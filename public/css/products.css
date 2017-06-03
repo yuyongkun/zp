@@ -3,7 +3,6 @@
     width: 240px;
     margin-bottom: 15px;
     background: #fff;
-    box-shadow: 1px 1px 3px #c7c7c7;
 }
 
 .products-nav-content>h3 {
@@ -171,7 +170,7 @@ ul>li.product-cur>a {
     width: 100%;
     background: #fff;
     padding: 15px 15px 0px;
-    border: 1px solid #a1a1a1;
+    border: 1px solid #666;
 }
 
 .products-list:after {
@@ -179,7 +178,9 @@ ul>li.product-cur>a {
     clear: both;
     display: block;
 }
-
+.products-content{
+    border-bottom: 1px solid #e5e5e5;
+}
 .nav {
     float: right;
     margin-top: 15px;

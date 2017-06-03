@@ -21,7 +21,7 @@
                  </div>
                 <ul class="news-list">
                    <% list.forEach(function(news){%>
-				    <li><a  href="/news/detail/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr">2017-06-03</label></li>
+				    <li><a  href="/<%=type%>/<%=news.id%>"><%=news.name%></a><label class="fr">2017-06-03</label></li>
 				    <%})%>
                 </ul>
             </div>

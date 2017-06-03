@@ -155,7 +155,7 @@ router.get('/contactus',function(req,res,next){
     });
 });
 /*新闻中心*/
-router.get('/news/list/:type',function(req,res,next){
+router.get('/:type',function(req,res,next){
     var who=req.params.type;
     console.log('新闻中心列表页面:',who);
     console.log("------------1");
@@ -196,7 +196,7 @@ router.get('/news/list/:type',function(req,res,next){
 	});
 });
 //新闻详情
-router.get('/news/detail/:id/:type',function(req,res,next){
+router.get('/:type/:id/',function(req,res,next){
     var id=req.params.id;
     var type=req.params.type;
     console.log('newdetails-----',id);

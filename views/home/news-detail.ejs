@@ -22,8 +22,8 @@
                     <p>日期:<%= news.createDate%>&nbsp;来源:<%= news.createBy%></p>
                     <div class="news-content"><%-news.description%></div>
                     <div class="news-handover">
-                        <a href="/news/last/<%= news.id%>/<%= type%>">上一篇：xxxx</a> 
-                        <a href="/news/next/<%= news.id%>/<%= type%>">下一篇：xxxx</a> 
+                        <a href="/<%= type%>/<%= news.id%>">上一篇：xxxx</a> 
+                        <a href="/<%= type%>/<%= news.id%>">下一篇：xxxx</a> 
                     </div>
                     <div class="news-recommended">
                         <div class="news-recommended-col1">
