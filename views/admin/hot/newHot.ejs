@@ -1,0 +1,153 @@
+    <%include ../header.ejs%>
+    <body>
+       <%include ../left.ejs%>
+      <section id="main" class="column">
+    <article class="module width_full">
+			<div class="module_content">
+				<fieldset class="product-detail">
+					<label for="txtName">产品名称</label>
+					<input type="hidden" id="id" name="id"/>
+					<div class="group-item">中文:<input type="text" id="nameCh" name="nameCh"/></div>
+					<div class="group-item">英文:<input type="text" id="nameEn" name="nameEn"/></div>
+				</fieldset>
+				<fieldset class="product-detail">
+					<label for="txtButton">一级产品名称</label>
+						<select name="firstCode" id="firstCode" onchange="getSecondProductList()">
+					<% var i=0;
+					firstList.forEach(function(flist){
+					   if(i==0){%>
+					   <option value="<%=flist.productCode%>" selected><%=flist.productNameCh%></option>
+					   <%}else{%>
+					  <option value="<%=flist.productCode%>"><%=flist.productNameCh%></option>
+					<%}
+					i++;
+					})%>   
+			        </select>
+				</fieldset>
+				<fieldset class="product-detail">
+					<label for="txtButton">二级产品名称</label>
+					<select name="secondCode" id="secondCode">
+					
+					<% var k=0;
+					secondList.forEach(function(slist){
+					   if(k==0){%>
+					   <option value="<%=slist.productCode%>" selected><%=slist.productNameCh%></option>
+					   <%}else{%>
+					  <option value="<%=slist.productCode%>"><%=slist.productNameCh%></option>
+					<%}
+					  k++;
+					})%>   
+			        </select>
+				</fieldset>
+				<div class="tc mt20">
+					<a onclick="queryProduct()" class="button green" id="btnAdd">查询产品</a>
+				</div>
+			</div>
+			
+		</article><!-- end of post new article -->
+		
+		<article class="stats_overview"
+		style="float: left; width: 100%;height: auto; border: none;text-align: center;min-height: 500px;">
+		<article class="module width_full">
+			<div class="tab_container">
+				<table cellspacing="0" class="tablesorter"> 
+					<thead> 
+						<tr style="text-align: center;"> 
+							<th width="4%" class="tc">行号</th> 
+							<th width="6%">产品编码</th> 
+							<th width="20%">产品名称</th> 
+							<th width="20%">一级列表</th>
+							<th width="20%">二级列表</th> 
+							<th width="20%">图片</th>
+							<th width="15%">操作</th>
+						</tr> 
+					</thead> 
+					<tbody id="tbody"> 
+					</tbody> 
+				</table>
+			</div>
+		</article><!-- end of post new article -->
+		<nav class="nav">
+			<ul class="pagination paginationA paginationA01" id="pagination">
+			</ul>
+		</nav>
+	</article>
+		</section>
+		
+		<script type="text/javascript">
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    function getSecondProductList(){
+ 	   var fCode=$("#firstCode").val();
+ 	   $.ajax({    
+            type:'get',        
+            url:'/product/getSecondProductList/'+fCode,    
+            cache:false,    
+            dataType:'json',    
+            success:function(data){
+                if(data){
+             	   var html="";
+             	   $.each(data, function(i, obj) {
+             		   if(i==0){
+             			   html=html+"<option value='"+obj.productCode+"' selected>"+obj.productNameCh+"</option>";
+             		   }else{
+             			   html=html+"<option value='"+obj.productCode+"' >"+obj.productNameCh+"</option>";
+             		   }
+             		});
+             	   $("#secondCode").html(html);
+                }
+            }    
+        });    
+    }
+   
+    function queryProduct(){
+       var nameCh=$("#nameCh").val();
+       var nameEn=$("#nameEn").val();
+  	   var firstCode=$("#firstCode").val();
+  	   var secondCode=$("#secondCode").val();
+  	   var data ={nameEn:nameEn,nameCh:nameCh,secondCode:secondCode,firstCode:firstCode};
+  	 $.ajax({    
+         type:'get',        
+         url:'/product/hot/queryProduct',
+         data: data,
+         cache:false,    
+         dataType:'json',    
+         success:function(data){
+             if(data){
+               var products=data.list;
+          	   var html="";
+          	   $.each(products, function(i, obj) {
+          		 html=html+'<tr>'+
+					'<td class="tc">'+(i+1)+'</td>'+
+					'<td>'+obj.code+'</td>'+
+					'<td>'+obj.nameCh+'</td>'+ 
+					'<td>'+obj.fName+'</td>'+
+					'<td>'+obj.sName+'</td>'+
+					'<td><img class="product_img" src="'+obj.imgUrl+'"></img></td>'+
+					'<td><a href="javascript:void(0)" onclick=saveProduct("'+obj.id+'") title="添加热门产品" ><font class="ficomoon icon-menu"></font></a></td>'+ 
+				    '</tr>';
+          		});
+          	   $("#tbody").empty().html(html);
+          	  // $("#pagination").empty().html(data.locals);
+             }
+         }    
+     });
+    }
+    function saveProduct(id){
+	   $.ajax({
+ 		   url:"/product/saveHot",
+ 		   type: "post",
+ 		   data: {id:id},
+ 		   dataType:'json',
+ 		   error: function(XMLHttpRequest, textStatus, errorThrown){
+ 		      alert("error message : "+errorThrown.toString());
+ 		      },
+ 		   success: function(data){
+ 		      var url="/product/hot/product";
+ 		      location.href =url;
+ 		   }
+ 		  }); 
+    }
+</script>
+</body>
+        <%include ../footer.ejs%>

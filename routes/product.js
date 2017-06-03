@@ -205,4 +205,108 @@ router.get('/newProduct', function(req, res, next) {
 		});
 
 });
+
+router.get('/hot/product', function(req, res, next) {
+	var page={limit:10,num:1};
+	if(req.query.p){
+		page['num']=req.query.p<1?1:req.query.p;
+	}
+	var startp=(page.num-1)*page.limit;
+	var endp=page.limit;
+	var href='/product/hot/product';
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
+	
+	var sql=model.hot.query;
+	var queryCount=model.hot.queryCount;
+	 
+	 controller.selectFun(res,queryCount,[],function(count){
+			pagehelp['pagecount']=count[0].count;
+		    var pagehtml=pagination.pagehtml(pagehelp);
+		    controller.selectFun(res,sql,[startp,endp],function(result){
+			    console.log(result);
+				res.render('admin/hot/list', { title: '热门列表',list:result,locals:pagehtml});
+			});
+		});
+});
+
+router.get('/deleteHot/:id', function(req, res, next) {
+	console.log(req.params.id);
+	var sql=model.hot.del;
+	 controller.selectFun(res,sql,[req.params.id],function(result){
+			res.send(JSON.stringify("SUCESS"));
+		});
+});
+
+router.post('/saveHot', function(req, res, next) {
+	console.log(req.body.id);
+	var sql=model.hot.insert;
+	 controller.selectFun(res,sql,[req.body.id],function(result){
+			res.send(JSON.stringify("SUCESS"));
+		});
+});
+
+router.get('/newHot', function(req, res, next) {
+	var firstSql=model.productModel.firstList;
+	var secondSql=model.productModel.secondList;
+	controller.selectFun(res,firstSql,[],function(firstList){
+		var code=firstList[0].productCode;
+			controller.selectFun(res,secondSql,[code],function(secondList){
+				console.log(secondList);
+				res.render('admin/hot/newHot', { title: '新增热门' ,firstList:firstList,secondList:secondList});
+				});
+		});
+});
+
+router.get('/hot/queryProduct', function(req, res, next) {
+	console.log(req.query.secondCode);
+	
+	var page={limit:10,num:1};
+	if(req.query.p){
+		page['num']=req.query.p<1?1:req.query.p;
+	}
+	var startp=(page.num-1)*page.limit;
+	var endp=page.limit;
+	var href='/product/hot/queryProduct?1=1';
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
+	
+	var queryProCount=model.hot.queryProCount;
+
+	var sql=model.hot.queryProduct;
+	var arr=[];
+
+	if(req.query.nameCh){
+		sql=sql+' and t.nameCh like CONCAT ("%",?,"%") ';
+		queryProCount=queryProCount+' and t.nameCh like CONCAT ("%",?,"%") ';
+		arr.push(req.query.nameCh);
+	}
+	if(req.query.nameEn){
+		sql=sql+' and t.nameEn like CONCAT ("%",?,"%") ';
+		queryProCount=queryProCount+' and t.nameEn like CONCAT ("%",?,"%") ';
+		arr.push(req.query.nameEn);
+	}
+	if(req.query.firstCode){
+		sql=sql+' and t.firstCode= ? ';
+		queryProCount=queryProCount+' and t.firstCode= ? ';
+		arr.push(req.query.firstCode);
+	}
+	if(req.query.secondCode){
+		sql=sql+'and t.secondCode= ? ';
+		queryProCount=queryProCount+'and t.secondCode= ? ';
+		arr.push(req.query.secondCode);
+	}
+	 controller.selectFun(res,queryProCount,arr,function(count){
+		    pagehelp['pagecount']=count[0].count;
+		    var pagehtml=pagination.pagehtml(pagehelp);
+		    sql=sql+' ORDER BY t.code LIMIT ?,? ';
+			arr.push(startp);
+			arr.push(endp);
+			 controller.selectFun(res,sql,arr,function(result){
+				 console.log(result);
+				 var obj={list:result,locals:pagehtml};
+				 res.send(JSON.stringify(obj));
+				});
+	});
+	
+});
+
 module.exports = router;

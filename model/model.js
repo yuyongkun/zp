@@ -41,7 +41,17 @@ var news = {
 		queryLastTwoZh:'SELECT  s1.id,s1.nameCh name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate,s1.type FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=5'
 };
 
+var hot={
+		queryCount:'select count(1) from hotProduct',
+		insert:'INSERT  INTO hotProduct (id,proId,createDate) VALUES (UUID(),?,NOW())',
+		del:'DELETE FROM hotProduct WHERE id=?',
+		query:'SELECT h.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT ?,? ',
+		queryProduct:'SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode=s.productCode AND t.firstCode = f.productCode ',
+		queryProCount:'SELECT count(1) FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode=s.productCode AND t.firstCode = f.productCode '
+};
+
 exports.news = news;
+exports.hot = hot;
 exports.loginModel = loginModel;
 exports.productModel = productModel;
 
