@@ -5,14 +5,15 @@
     <article class="module width_full">
 			<div class="module_content">
 				<fieldset class="product-detail">
-					<label for="txtName">产品名称</label>
+				<label for="txtName">产品名称</label>
 					<input type="hidden" id="id" name="id"/>
-					<div class="group-item">中文:<input type="text" id="nameCh" name="nameCh"/></div>
-					<div class="group-item">英文:<input type="text" id="nameEn" name="nameEn"/></div>
+					<div class="group-item">中文名称:<input type="text" id="nameCh" name="nameCh"/></div>
+					<div class="group-item">英文名称:<input type="text" id="nameEn" name="nameEn"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
-					<label for="txtButton">一级产品名称</label>
-						<select name="firstCode" id="firstCode" onchange="getSecondProductList()">
+				<label for="txtName">产品列表</label>
+					<div class="group-item">一级列表:
+						<select name="firstCode" id="firstCode" onchange="getSecondProductList()" style="width: 400px;margin-left: 3px">
 					<% var i=0;
 					firstList.forEach(function(flist){
 					   if(i==0){%>
@@ -23,10 +24,9 @@
 					i++;
 					})%>   
 			        </select>
-				</fieldset>
-				<fieldset class="product-detail">
-					<label for="txtButton">二级产品名称</label>
-					<select name="secondCode" id="secondCode">
+			        </div>
+			        <div class="group-item">二级列表:
+			        <select name="secondCode" id="secondCode" style="width: 400px;margin-left: 3px">
 					
 					<% var k=0;
 					secondList.forEach(function(slist){
@@ -38,6 +38,7 @@
 					  k++;
 					})%>   
 			        </select>
+			        </div>
 				</fieldset>
 				<div class="tc mt20">
 					<a onclick="queryProduct()" class="button green" id="btnAdd">查询产品</a>
@@ -75,8 +76,6 @@
 		</section>
 		
 		<script type="text/javascript">
-    //实例化编辑器
-    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     function getSecondProductList(){
  	   var fCode=$("#firstCode").val();
  	   $.ajax({    

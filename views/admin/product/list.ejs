@@ -12,23 +12,76 @@
                  dataType:'json',    
                  success:function(data){
                 	 alert("你居然真的删除了..."); 
-                	 var url="/product/secondList?code="+code+'&sCode='+sCode;
+                	 var url="/product/productList?code="+code+'&sCode='+sCode;
        		         location.href =url;
                  }    
              });
         });
-    }
+    };
+	 function queryProduct(){
+		 var firstCode=$("#firstCode").val();
+	  	 var secondCode=$("#secondCode").val();
+	  	 var url="/product/productList?code="+firstCode+'&sCode='+secondCode;
+	         location.href =url;
+	    };
+	    function getSecondProductList(){
+	 	   var fCode=$("#firstCode").val();
+	 	   $.ajax({    
+	            type:'get',        
+	            url:'/product/getSecondProductList/'+fCode,    
+	            cache:false,    
+	            dataType:'json',    
+	            success:function(data){
+	                if(data){
+	             	   var html="";
+	             	   $.each(data, function(i, obj) {
+	             		   if(i==0){
+	             			   html=html+"<option value='"+obj.productCode+"' selected>"+obj.productNameCh+"</option>";
+	             		   }else{
+	             			   html=html+"<option value='"+obj.productCode+"' >"+obj.productNameCh+"</option>";
+	             		   }
+	             		});
+	             	   $("#secondCode").html(html);
+	                }
+	            }    
+	        });    
+	    }
 </script>
 <section id="main" class="column">
-	<div style="width: 95%;display: inline;float: left;	margin-top: 10px;">
-	<ul>
-		<% secondList.forEach(function(slist){%>
-		<li class="product_name">
-		<a class="button blue" href="/product/secondList?code=<%=fCode%>&sCode=<%=slist.productCode%>"><%=slist.productNameCh%></a> 
-		</li>
-		<%})%>
-	    </ul>
-	</div>
+<div class="module_content">
+				<fieldset class="product-detail">
+				<label for="txtName">产品列表</label>
+					<div class="group-item">一级列表:
+					<select name="firstCode" id="firstCode" onchange="getSecondProductList()" style="width: 400px;margin-left: 3px">
+										<% var i=0;
+										firstList.forEach(function(flist){
+										   if(flist.productCode==code){%>
+										   <option value="<%=flist.productCode%>" selected><%=flist.productNameCh%></option>
+										   <%}else{%>
+										  <option value="<%=flist.productCode%>"><%=flist.productNameCh%></option>
+										<%}
+										i++;
+										})%>   
+								        </select>
+                    </div>
+					<div class="group-item">二级列表:
+					<select name="secondCode" id="secondCode" style="width: 400px;margin-left: 3px"> 
+							<% var k=0;
+							secondList.forEach(function(slist){
+							   if(slist.productCode==secondCode){%>
+							   <option value="<%=slist.productCode%>" selected><%=slist.productNameCh%></option>
+							   <%}else{%>
+							  <option value="<%=slist.productCode%>"><%=slist.productNameCh%></option>
+							<%}
+							  k++;
+							})%>   
+			        </select>
+					</div>
+				</fieldset>
+				<div class="tc mt20">
+					<a onclick="queryProduct()" class="button green" id="btnAdd">查询产品</a>
+				</div>
+			</div>
 	
 	<article class="stats_overview"
 		style="float: left; width: 100%;height: auto; border: none;text-align: center;min-height: 500px;">

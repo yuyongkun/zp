@@ -9,23 +9,41 @@ var controller=require('../controller/controller');
 
 var pagination = require('../public/static/admin/js/pagination.js');
 
-var secondList={};
 var AVATAR_UPLOAD_FOLDER = '/images/ueditor/';
 
 
-router.get('/secondList', function(req, res, next) {
+router.get('/productList', function(req, res, next) {
 	console.log(req.query.code);
 	console.log(req.query.sCode);
-	var sql=model.productModel.secondList;
+	var code=req.query.code;
+	var secondCode=req.query.sCode;
+	var page={limit:10,num:1};
+	if(req.query.p){
+		page['num']=req.query.p<1?1:req.query.p;
+	}
+	var startp=(page.num-1)*page.limit;
+	var endp=page.limit;
+	var href='/product/productList?code='+req.query.code+'&sCode='+req.query.sCode;
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
+	var queryCount=model.productModel.queryProductCount;
+	var firstSql=model.productModel.firstList;
+	var secondSql=model.productModel.secondList;
 	
-	controller.selectFun(res,model.productModel.secondList,[req.query.code],function(result){
-		console.log(result);
-		secondList=result;
-		var code=result[0].productCode;
-		if(req.query.sCode){
-			code=req.query.sCode;
-		}
-		res.redirect('/product/threeList?code='+req.query.code+'&sCode='+code);
+	controller.selectFun(res,firstSql,[code],function(firstList){
+		console.log(firstList);
+		controller.selectFun(res,secondSql,[code],function(secondList){
+			console.log(secondList);
+			controller.selectFun(res,queryCount,[secondCode],function(count){
+				pagehelp['pagecount']=count[0].count;
+			    var pagehtml=pagination.pagehtml(pagehelp);
+			    var sql=model.productModel.list;
+			    controller.selectFun(res,sql,[secondCode,startp,endp],function(result){
+				    console.log(result);
+					res.render('admin/product/list', { title: '产品列表',code:code,secondCode:secondCode,
+						secondList:secondList,list:result,locals:pagehtml,firstList:firstList});
+				});
+			});
+		});
 	});
 });
 
@@ -318,4 +336,133 @@ router.get('/hot/queryProduct', function(req, res, next) {
 	
 });
 
+router.get('/first/delete', function(req, res, next) {
+	var sql=model.column.deleteFirst;
+	var id=req.query.id;
+	console.log(id);
+	controller.selectFun(res,sql,[id],function(result){
+		      res.send(JSON.stringify("SUCESS"));
+		});
+});
+
+router.get('/first/list', function(req, res, next) {
+	var page={limit:10,num:1};
+	if(req.query.p){
+		page['num']=req.query.p<1?1:req.query.p;
+	}
+	var startp=(page.num-1)*page.limit;
+	var endp=page.limit;
+	var href='/product/first/list?1=1';
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
+	
+	var queryfirstCount=model.column.queryfirstCount;
+	var sql=model.column.firstList;
+	controller.selectFun(res,queryfirstCount,[],function(count){
+		 pagehelp['pagecount']=count[0].count;
+		 var pagehtml=pagination.pagehtml(pagehelp);
+		 controller.selectFun(res,sql,[startp,endp],function(result){
+			 console.log(result);
+			 res.render('admin/column/firstList', { title: '一级产品列表' ,list:result,locals:pagehtml});
+			});
+				
+		});
+});
+
+router.post('/first/save', function(req, res, next) {
+	var sql=model.column.insertFirst;
+	var id=req.body.id;
+	console.log(id);
+	if(id){
+		sql=model.column.updateFirst;
+	}
+	var arr=[req.body.productCode,req.body.productNameEn,req.body.productNameCh,id];
+	controller.selectFun(res,sql,arr,function(result){
+		      res.send(JSON.stringify("SUCESS"));
+		});
+});
+
+router.get('/first/query', function(req, res, next) {
+	var sql=model.column.queryFirst;
+	var id=req.query.id;
+	controller.selectFun(res,sql,[id],function(result){
+		console.log(result);
+		  res.render('admin/column/editFirst', { title: '一级产品列表' ,result:result[0]});
+		});
+});
+
+router.get('/first/new', function(req, res, next) {
+	  res.render('admin/column/newFirst', { title: '新增一级栏目' });
+});
+
+router.get('/second/delete', function(req, res, next) {
+	var sql=model.column.deleteSecond;
+	var id=req.query.id;
+	console.log(id);
+	controller.selectFun(res,sql,[id],function(result){
+		      res.send(JSON.stringify("SUCESS"));
+		});
+});
+
+router.get('/second/list', function(req, res, next) {
+	var page={limit:10,num:1};
+	var code=req.query.code;
+	console.log(code);
+	if(req.query.p){
+		page['num']=req.query.p<1?1:req.query.p;
+	}
+	var startp=(page.num-1)*page.limit;
+	var endp=page.limit;
+	var href='/product/second/list?code='+code;
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
+	
+	var querySecondCount=model.column.querySecondCount;
+	var sql=model.column.secondList;
+	var firstListSql=model.productModel.firstList;
+	controller.selectFun(res,querySecondCount,[code],function(count){
+		 pagehelp['pagecount']=count[0].count;
+		 var pagehtml=pagination.pagehtml(pagehelp);
+		 controller.selectFun(res,sql,[code,startp,endp],function(result){
+			 console.log(result);
+			 controller.selectFun(res,firstListSql,[],function(firstList){
+				 console.log(firstList);
+				 res.render('admin/column/secondList', { title: '一级产品列表' ,list:result,locals:pagehtml,firstList:firstList});
+				});
+			});
+				
+		});
+});
+
+router.post('/second/save', function(req, res, next) {
+	var sql=model.column.insertSecond;
+	var id=req.body.id;
+	console.log(id);
+	if(id){
+		sql=model.column.updateSecond;
+	}
+	var arr=[req.body.productCode,req.body.productNameEn,req.body.productNameCh,req.body.firstCode,req.body.id];
+	controller.selectFun(res,sql,arr,function(result){
+		      res.send(JSON.stringify("SUCESS"));
+		});
+});
+
+router.get('/second/query', function(req, res, next) {
+	var sql=model.column.querySecond;
+	var firstListSql=model.productModel.firstList;
+	var id=req.query.id;
+	console.log(id);
+	controller.selectFun(res,sql,[id],function(result){
+		 console.log(result);
+		controller.selectFun(res,firstListSql,[],function(firstList){
+			 console.log(firstList);
+			 res.render('admin/column/editSecond', { title: '二级产品列表' ,firstList:firstList,result:result[0]});
+			});
+		});
+});
+router.get('/second/new', function(req, res, next) {
+	var firstListSql=model.productModel.firstList;
+	controller.selectFun(res,firstListSql,[],function(firstList){
+		 console.log(firstList);
+		 res.render('admin/column/newSecond', { title: '新增二级栏目' ,firstList:firstList});
+		});
+});
 module.exports = router;

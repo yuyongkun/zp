@@ -55,8 +55,24 @@ var hot={
 		queryProductZh:'SELECT h.id,t.code,t.nameCh name,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code ',
 };
 
+var column={
+		deleteFirst:'delete from first_product_list where id= ?',
+		firstList:'select id,productCode,productNameCh,productNameEn from first_product_list order by productCode  limit ?,? ',
+		queryFirst:'select id,productCode,productNameEn,productNameCh from first_product_list where id= ?',
+		queryfirstCount:'select count(1) count from first_product_list',
+		insertFirst:'INSERT INTO first_product_list (productCode,productNameEn,productNameCh,id,status,createdby,createdDate) VALUES (?,?,?,UUID(),"1","aidaFilter",NOW())',
+		updateFirst:'UPDATE first_product_list SET productCode =?,productNameEn=?,productNameCh=? WHERE id=?',
+		deleteSecond:'delete from second_product_list where id= ?',
+		querySecondCount:'select count(1) count from second_product_list where firstCode=?',
+		secondList:'SELECT t.id,t.productCode,t.productNameCh,t.productNameEn,f.productNameCh fName,f.productCode fCode FROM first_product_list f,second_product_list t WHERE t.FirstCode=f.productCode AND t.FirstCode=? order by t.productCode LIMIT ?,? ',
+		insertSecond:'INSERT INTO second_product_list (productCode,productNameEn,productNameCh,FirstCode,id,status,createdby,createdDate) VALUES (?,?,?,?,UUID(),"1","aidaFilter",NOW())',
+		updateSecond:'UPDATE second_product_list SET productCode =?,productNameEn=?,productNameCh=?,FirstCode=? WHERE id=?',
+		querySecond:'SELECT t.id,t.productCode,t.productNameCh,t.productNameEn,f.productNameCh fName,f.productCode fCode FROM first_product_list f,second_product_list t WHERE t.FirstCode=f.productCode AND t.id=?'
+};
+
 exports.news = news;
 exports.hot = hot;
+exports.column = column;
 exports.loginModel = loginModel;
 exports.productModel = productModel;
 
