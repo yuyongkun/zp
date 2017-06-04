@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>设置关键词</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" href="/static/admin/css/layout.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js" ></script>
+	<style type="text/css">
+		 .service-wrap{
+		 	padding:20px;
+		 	margin-left: 301px;
+		 }
+		 	.group-item{
+		 	    width: 100%;
+			    padding-bottom: 15px;
+			    color: #3a3a3a;
+			    text-indent: 0px;
+			    border-bottom: 1px solid #e5e5e5;
+			    margin-bottom: 15px;
+		}
+		.group-item select,.group-item textarea {
+			padding: 3px;
+    		color: #3a3a3a;
+		}
+		.group-item textarea{
+			width: 400px;
+			height: 150px;
+		}
+		.group-item label{
+		    display: inline-block;
+		    width: 60px;
+			padding-right:5px;
+		    vertical-align: top;
+		}
+	
+		.group-item .editor{
+			display: inline-block;
+			vertical-align: top;
+		}
+		.submit{
+			padding:6px 12px;
+			margin-left: 58px;
+			border-radius:3px;
+			background: gray;
+			color:#fff;
+			cursor: pointer;
+		}
+	 </style>
+</head>
+<body>
+<%include left.ejs%>
+<section class="column">
+<div class="service-wrap">
+<div class="group-item">
+		<label>网站页面:</label>
+		<select id="change_page">
+			<option value="001" <%=cpage=='001'?'selected':''%>>首页</option>
+			<option value="002" <%=cpage=='002'?'selected':''%>>产品中心</option>
+			<option value="003" <%=cpage=='003'?'selected':''%>>产品详情</option>
+		</select>
+	</div>
+	<div class="group-item">
+		<label style="padding-bottom: 10px">关键词:</label>
+		<textarea id="keyword" placeholder="请输入关键词"><%=keyword%></textarea>
+	</div>
+	<div class="group-item">
+		<label style="padding-bottom: 10px">描述:</label>
+		<textarea id="describe" placeholder="请输入描述"><%=describes%></textarea>
+	</div>
+	<p>
+		<span id="submit" class="submit">提交</span>
+	</p>
+</div>
+</section>
+<script type="text/javascript" src="/js/libs/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" src="/js/global/common.js"></script>
+<script type="text/javascript">
+$('#change_page').change(function(){
+	location.href='/keyword/'+this.value;
+});
+$('#submit').click(function(){
+	var keyword=$('#keyword').val();
+	var describe=$('#describe').val();
+	if(keyword===''){
+		Common.msg.warning('请输入关键词');
+		return;
+	}
+	if(describe===''){
+		Common.msg.warning('请输入描述');
+		return;
+	}
+	var number=$('#change_page').val();
+	var formdata=new FormData();
+	formdata.append('number',number);
+	formdata.append('keyword',keyword);
+	formdata.append('describes',describe);
+	$.ajax({
+		url:'/addKeyword',
+		type:'post',
+		dataType:'json',
+		data:formdata,
+		processData: false,  
+        contentType: false, 
+		success:function(result){
+			if(result.responseCode==='000000'){
+				Common.msg.success('发布成功');
+			}else{
+				Common.msg.error(result.responseMsg);
+			}
+		},
+		error:function(xhr,statustext){
+			Common.msg.error(result.statustext);
+		}
+	});
+});
+</script>
+</body>
+</html>
