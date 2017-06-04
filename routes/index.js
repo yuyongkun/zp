@@ -180,10 +180,10 @@ router.get('/:type',function(req,res,next){
 	
     var _title,_type;
     if(who==='entrepriseNews'){
-        _title=res.__('EntreprisesNews')+'-'+res.__('Company');
+        _title=res.__('EntreprisesNews');
         _type=1;
     }else if(who==='productInformation'){
-        _title=res.__('ProductInformation')+'-'+res.__('Company');
+        _title=res.__('ProductInformation');
         _type=2;
     }
     
