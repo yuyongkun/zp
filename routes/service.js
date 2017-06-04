@@ -1,42 +1,38 @@
-var express=require('express');
-var router=express.Router();
-var service_controller=require('../controller/serviceCtr');
-//新建服务页面
-router.get('/',function(req,res,next){
-	res.render('admin/serviceadd',{
-		title:"新建服务",
-	});
-});
+var express = require('express');
+var router = express.Router();
+var service_controller = require('../controller/serviceCtr');
+//设置服务页面
+router.get('/setservice/:who', function(req, res, next) {
+    res.locals.title = '修改服务';
+    var param = req.params;
 
-//修改服务页面
-router.get('/edit/:who',function(req,res,next){
-	res.locals.title='修改服务';
-	var param=req.params;
+    param = param.who;
+    res.locals.type = 1;
 
-	param=param.who;
-	res.locals.type=1;
-	
-	if(param==2){
-		res.locals.type=2;
-	}else if(param==3){
-		res.locals.type=3;
-	}
-	req.type=res.locals.type;
-	service_controller.queryService(req,res,function(result){
-		if(result.length>0){
-			content=result[0].content;
-			res.render('admin/serviceedit',{
-				title:"修改服务",
-				serviceContent:content
-			});
-		}
-	});
-	
+    if (param == 2) {
+        res.locals.type = 2;
+    } else if (param == 3) {
+        res.locals.type = 3;
+    }
+    req.type = res.locals.type;
+    service_controller.queryService(req, res, function(result) {
+        if (result.length <= 0) {
+			content = '';
+        }else{
+        	content = result[0].content;
+        }
+        res.render('admin/setservice', {
+            title: "修改服务",
+            serviceContent: content
+        });
+    });
+
 });
-//添加服务
-router.post('/addservice',function(req,res,next){
-	service_controller.addService(req,res,next);
+//添加服务-接口
+router.post('/add_service', function(req, res, next) {
+    console.log('添加服务-接口');
+    service_controller.addService(req, res, next);
 });
 
 
-module.exports=router;
+module.exports = router;

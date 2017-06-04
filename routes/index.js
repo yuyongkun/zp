@@ -40,10 +40,6 @@ router.get('/case', function(req, res, next) {
     res.render('home/case', { title: res.__('caseTitle') });
 });
 
-/*联系我们*/
-router.get('/contact', function(req, res, next) {
-    res.render('home/contact', { title: '联系我们' });
-});
 /*关于我们*/
 router.get('/aboutus', function(req, res, next) {
     res.render('home/aboutus', { title: '关于我们' });
@@ -109,18 +105,18 @@ router.get('/details', function(req, res, next) {
 	
 });
 /*服务支持*/
-router.get('/service/:who', function(req, res, next) {
+router.get('/servicenav/:who', function(req, res, next) {
     var param=req.params;
     param=param.who;
 
     res.locals.title='服务支持';
     res.locals.type=1;
     var lasturl='servicesupport';
-    if(param==='guarantee'){
+    if(param==='serviceguarantee'){
         res.locals.title='服务保障';
         res.locals.type=2;
         lasturl='serviceguarantee';
-    }else if(param==='process'){
+    }else if(param==='serviceprocess'){
         res.locals.title='服务流程';
         res.locals.type=3;
         lasturl='serviceprocess';
@@ -164,7 +160,7 @@ router.get('/contactus',function(req,res,next){
     });
 });
 /*新闻中心*/
-router.get('/:type',function(req,res,next){
+router.get('/news/:type',function(req,res,next){
     var who=req.params.type;
     console.log('新闻中心列表页面:',who);
     console.log("------------1");

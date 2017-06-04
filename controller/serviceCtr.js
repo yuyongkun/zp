@@ -16,7 +16,7 @@ var callback=function(res,result){
 	}
 }
 module.exports={
-	//添加数据
+	//添加数据-接口
 	addService:function(req,res){
 		pool.getConnection(function(err,connection){
 			// 解析一个文件上传
