@@ -242,7 +242,8 @@ router.post('/saveHot', function(req, res, next) {
 	var sql=model.hot.insert;
 	var query=model.hot.queryOne;
 	controller.selectFun(res,query,[req.body.id],function(count){
-		if(count[0]==0){
+		console.log(count[0]);
+		if(count[0].count==0){
 			controller.selectFun(res,sql,[req.body.id],function(result){
 				res.send(JSON.stringify("SUCESS"));
 			});

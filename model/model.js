@@ -44,8 +44,8 @@ var news = {
 };
 
 var hot={
-		queryCount:'select count(1) from hotProduct',
-		queryOne:'select count(1) from hotProduct where  proId=?',
+		queryCount:'select count(1) count from hotProduct',
+		queryOne:'select count(1) count from hotProduct where  proId=?',
 		insert:'INSERT  INTO hotProduct (id,proId,createDate) VALUES (UUID(),?,NOW())',
 		del:'DELETE FROM hotProduct WHERE id=?',
 		query:'SELECT h.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT ?,? ',
