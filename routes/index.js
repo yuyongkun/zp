@@ -205,7 +205,7 @@ router.get('/:type',function(req,res,next){
 	});
 });
 //新闻详情
-router.get('/:type/:id/',function(req,res,next){
+router.get('/archives/:id/:type',function(req,res,next){
     var id=req.params.id;
     var type=req.params.type;
     console.log('newdetails-----',id);
