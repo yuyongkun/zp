@@ -1,0 +1,46 @@
+    <%include ../header.ejs%>
+    <body>
+       <%include ../left.ejs%>
+      <section id="main" class="column">
+    <article class="module width_full">
+			<div class="module_content">
+				<fieldset class="product-detail">
+					<label for="txtName">一级产品名称</label>
+					<div class="group-item">中文:<input type="text" id="nameCh" name="nameCh"/></div>
+					<div class="group-item">英文:<input type="text" id="nameEn" name="nameEn"/></div>
+				</fieldset>
+				<fieldset class="product-detail">
+					<label for="txtModule">产品编码</label>
+					<div class="group-item"><input type="text" id="code" name="code"/></div>
+				</fieldset>
+				<div class="tc mt20">
+					<a onclick="saveProduct()" class="button green" id="btnAdd">保存</a>
+				</div>
+			</div>
+			
+		</article><!-- end of post new article -->
+		</section>
+		
+		<script type="text/javascript">
+    function saveProduct(){
+       var nameEn=$("#nameEn").val();
+ 	   var nameCh=$("#nameCh").val();
+ 	   var code=$("#code").val();
+	   var data={productNameEn:nameEn,productNameCh:nameCh,productCode:code};
+ 	   $.ajax({
+ 		   url:"/product/first/save",
+ 		   type: "post",
+ 		   data: data,
+ 		   dataType:'json',
+ 		   error: function(XMLHttpRequest, textStatus, errorThrown){
+ 		      alert("error message : "+errorThrown.toString());
+ 		      },
+ 		   success: function(data){
+ 		      var url="/product/firstList";
+ 		      location.href =url;
+ 		   }
+ 		  }); 
+    }
+</script>
+</body>
+        <%include ../footer.ejs%>

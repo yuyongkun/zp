@@ -202,7 +202,7 @@
 		      alert("error message : "+errorThrown.toString());
 		      },
 		   success: function(data){
-		      var url="/product/secondList?code="+data.firstCode+'&sCode='+secondCode;
+		      var url="/product/productList?code="+firstCode+'&sCode='+secondCode;
 		      location.href =url;
 		   }
 		  }); 

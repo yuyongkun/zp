@@ -1,0 +1,63 @@
+    <%include ../header.ejs%>
+    <body>
+       <%include ../left.ejs%>
+      <section id="main" class="column">
+    <article class="module width_full">
+			<div class="module_content">
+				<fieldset class="product-detail">
+					<label for="txtName">二级产品名称</label>
+					<input type="hidden" id="id" name="id"/>
+					<div class="group-item">中文:<input type="text" id="nameCh" name="nameCh"/></div>
+					<div class="group-item">英文:<input type="text" id="nameEn" name="nameEn"/></div>
+				</fieldset>
+				<fieldset class="product-detail">
+					<label for="txtModule">产品编码</label>
+					<div class="group-item"><input type="text" id="code" name="code"/></div>
+				</fieldset>
+				<fieldset class="product-detail">
+					<label for="txtButton">一级产品名称</label>
+						<select name="firstCode" id="firstCode" onchange="getSecondProductList()">
+					<% var i=0;
+					firstList.forEach(function(flist){
+					   if(i==0){%>
+					   <option value="<%=flist.productCode%>" selected><%=flist.productNameCh%></option>
+					   <%}else{%>
+					  <option value="<%=flist.productCode%>"><%=flist.productNameCh%></option>
+					<%}
+					i++;
+					})%>   
+			        </select>
+				</fieldset>
+			
+				<div class="tc mt20">
+					<a onclick="saveProduct()" class="button green" id="btnAdd">保存</a>
+				</div>
+			</div>
+			
+		</article><!-- end of post new article -->
+		</section>
+		
+		<script type="text/javascript">
+    function saveProduct(){
+       var nameEn=$("#nameEn").val();
+ 	   var nameCh=$("#nameCh").val();
+ 	   var code=$("#code").val();
+ 	   var firstCode=$("#firstCode").val();
+	   var data={productNameEn:nameEn,productNameCh:nameCh,productCode:code,firstCode:firstCode};
+ 	   $.ajax({
+ 		   url:"/product/second/save",
+ 		   type: "post",
+ 		   data: data,
+ 		   dataType:'json',
+ 		   error: function(XMLHttpRequest, textStatus, errorThrown){
+ 		      alert("error message : "+errorThrown.toString());
+ 		      },
+ 		   success: function(data){
+ 		      var url="/product/second/list?code="+firstCode;
+ 		      location.href =url;
+ 		   }
+ 		  }); 
+    }
+</script>
+</body>
+        <%include ../footer.ejs%>
