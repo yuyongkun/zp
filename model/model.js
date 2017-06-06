@@ -51,8 +51,8 @@ var hot={
 		query:'SELECT h.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT ?,? ',
 		queryProduct:'SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode=s.productCode AND t.firstCode = f.productCode ',
 		queryProCount:'SELECT count(1) FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode=s.productCode AND t.firstCode = f.productCode ',
-		queryProductEn:'SELECT h.id,t.code,t.nameEn name,t.imgUrl,s.productNameEn sName,s.productCode sCode,f.productNameEn fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code ',
-		queryProductZh:'SELECT h.id,t.code,t.nameCh name,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code ',
+		queryProductEn:'SELECT t.id,t.code,t.nameEn name,t.imgUrl,s.productNameEn sName,s.productCode sCode,f.productNameEn fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code ',
+		queryProductZh:'SELECT t.id,t.code,t.nameCh name,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code ',
 };
 
 var column={
