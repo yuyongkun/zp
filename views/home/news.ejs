@@ -11,7 +11,9 @@
 <%include ../public/header.ejs%>
     <div class="news">
         <div class="bread">
-            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/news/list?type=productInformation"><%=title%></a></p>
+            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/entrepriseNews'%>"><%= __('NewsCenter') %></a>
+            &gt;<a href="/<%=type==1?'entrepriseNews':'productInformation'%>"><%=title%></a>
+            </p>
         </div>
         <div class="zp-wrap">
             <%include ../public/news.ejs%>

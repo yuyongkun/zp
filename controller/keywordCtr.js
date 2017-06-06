@@ -1,7 +1,8 @@
 var pool=require('../conf/conn');
-var service_model=require('../model/serviceModel');
+var keyword_model=require('../model/keywordModel');
 var bodyParser = require('body-parser');
 var multiparty = require('multiparty');
+var uuid = require('node-uuid');
 //向前台返回json
 
 var callback=function(res,result){
@@ -17,7 +18,7 @@ var callback=function(res,result){
 }
 module.exports={
 	//添加数据-接口
-	addService:function(req,res){
+	addKeyword:function(req,res){
 		pool.getConnection(function(err,connection){
 			// 解析一个文件上传
 			var form = new multiparty.Form();
@@ -32,11 +33,11 @@ module.exports={
 				if(fields.content==''){
 					res.json({
 						responseCode:'-1',
-						responseMsg:'服务内容不能为空'
+						responseMsg:'关键词内容不能为空'
 					});
 					return;
 				}
-			    connection.query(service_model.queryType,[fields.type],function(err,result){
+			    connection.query(keyword_model.queryKeyword,[fields.number],function(err,result){
 			    	if(err){
 						res.json({
 							responseCode:'-1',
@@ -45,8 +46,10 @@ module.exports={
 						return;
 			    	}
 			    	if(result.length<=0){
-			    		console.log('－－－－－－服务不存在插入数据－－－－－－');
-			    		connection.query(service_model.insert,[fields.type,fields.type,fields.content],function(err,result){
+			    		console.log('－－－－－－关键词不存在插入数据－－－－－－');
+			    		var id=uuid.v1();
+			    		console.log('fields------>',fields);
+			    		connection.query(keyword_model.insert,[id,fields.number,fields.keyword,fields.describes],function(err,result){
 			    			if(err){
 								res.json({
 									responseCode:'-1',
@@ -64,7 +67,7 @@ module.exports={
 						});
 			    	}else{
 			    		console.log('－－－－－－数据已存在更新数据－－－－－－');
-			    		connection.query(service_model.update,[fields.content,fields.type],function(err,result){
+			    		connection.query(keyword_model.update,[fields.keyword,fields.describes,fields.number],function(err,result){
 			    			if(err){
 			    				console.log('－－－－－－更新出错－－－－－－');
 								res.json({
@@ -87,12 +90,15 @@ module.exports={
 		    });
 		});
 	},
-	queryService:function(req,res,callback){
+	queryKeyword:function(req,res,callback){
 		pool.getConnection(function(err,connection){
-     		console.log('－－－－－－查询服务内容－－－－－－');
-			connection.query(service_model.queryContentByType,[req.type],function(err,result){
+     		console.log('－－－－－－查询关键词－－－－－－');
+     		console.log('number--->'+req.number);
+
+			connection.query(keyword_model.queryKeyword,[req.number],function(err,result){
+				console.log('查询关键词---->',result);
 				if(result){
-					console.log('－－－－－－查询服务内容成功－－－－－－');
+					console.log('－－－－－－查询关键词成功－－－－－－');
 					callback(result);
 				}
 				connection.release();
