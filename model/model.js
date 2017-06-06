@@ -19,8 +19,8 @@ var productModel = {
         imgUpdate:'UPDATE three_product_list SET imgUrl= ?,firstCode=?,secondCode=? WHERE id= ? ',
         updateProduct:'UPDATE three_product_list SET nameEn= ? , nameCh= ? ,CODE= ? ,firstCode= ? ,secondCode= ? ,description= ? ,descriptionEn= ?,brandZh= ?,brandEn=?,modelZh=?,modelEn=?,applicationFieldZh=? ,applicationFieldEn=?,'
         	           +'filterMaterialZh=?,filterMaterialEn=?,filtrationPrecision=?,operatingTemperature=?,nominalPressure=? WHERE id=?',
-        insertProduct:'insert into three_product_list (nameEn,nameCh,code,firstCode,secondCode,createdBy,createdDate,description,descriptionEn,brandZh,brandEn,modelZh,modelEn,applicationFieldZh,applicationFieldEn,'+
-                       'filterMaterialZh,filterMaterialEn,filtrationPrecision,operatingTemperature,nominalPressure,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"aidaFilter",NOW(),?,?, uuid())',
+        insertProduct:'insert into three_product_list (nameEn,nameCh,code,firstCode,secondCode,description,descriptionEn,brandZh,brandEn,modelZh,modelEn,applicationFieldZh,applicationFieldEn,'+
+                       'filterMaterialZh,filterMaterialEn,filtrationPrecision,operatingTemperature,nominalPressure,createdBy,createdDate,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"aidaFilter",NOW(), uuid())',
         firstList:'SELECT  productCode,productNameCh FROM first_product_list  order by productCode',
         list:'SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode= ? AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT ? , ? ',
 	};
