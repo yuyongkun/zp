@@ -48,7 +48,6 @@ module.exports={
 			    	if(result.length<=0){
 			    		console.log('－－－－－－关键词不存在插入数据－－－－－－');
 			    		var id=uuid.v1();
-			    		console.log('fields------>',fields);
 			    		connection.query(keyword_model.insert,[id,fields.number,fields.keyword,fields.describes],function(err,result){
 			    			if(err){
 								res.json({

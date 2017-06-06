@@ -1189,6 +1189,9 @@ a.button {
     margin-right: 10px;
     margin-bottom: 10px;
     text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: bold;
     line-height: 25px;
