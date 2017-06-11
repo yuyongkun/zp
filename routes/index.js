@@ -1,4 +1,5 @@
 var express = require('express');
+var _fs = require('fs');
 var router = express.Router();
 var service_controller = require('../controller/serviceCtr');
 var keyword_controller = require('../controller/keywordCtr');
@@ -9,141 +10,174 @@ var secondList = {};
 var firstCode;
 var uuid = require('node-uuid');
 
-function getkeyword(req, res, callback) {
-    keyword_controller.queryKeyword(req, res, function(result) {
-        var keyword = '',
-            describes = '';
-        if (result.length > 0) {
-            keyword = result[0].keyword;
-            describes = result[0].describes;
-        }
-        callback(keyword, describes);
-    });
-}
-
-/* 首页 */
-router.get('/', function(req, res, next) {
-    //查询关键词
-    req.number = '001';
-    getkeyword(req, res, function(keyword, describes) {
-        var newsListSql, hotListSql;
-        if (res.locals.inlanguage == 'en') {
-            newsListSql = model.news.queryLastTwoEn;
-            hotListSql = model.hot.queryProductEn;
-        } else {
-            newsListSql = model.news.queryLastTwoZh;
-            hotListSql = model.hot.queryProductZh;
-        }
-        controller.selectFun(res, newsListSql, [], function(newsList) {
-            controller.selectFun(res, hotListSql, [], function(hotList) {
-                res.render('home/index', {
-                    title: res.__('indexTitle'),
-                    keyword: keyword,
-                    describes: describes,
-                    newsList: newsList,
-                    hotList: hotList
-                });
-            });
-        });
-    });
+router.all('*', function(req, res, next) {
+    res.locals.main = false;
+    var path = req.path;
+    if (path == '/') { //首页
+        res.locals.main = true;
+    }
+    next();
+    // keyword_controller.queryKeyword(req, res, function(result) {
+    //     console.log('查询关键词result------>', result);
+    //     if (result.length > 0) {
+    //         var _result = result[0];
+    //         _keyword = _result.keyword;
+    //         _describe = _result.describes;
+    //         _title = _result.title;
+    //     }
+    //     res.locals.keyword = _keyword;
+    //     res.locals.describes = _describe;
+    //     res.locals.title = _title;
+    //     next();
+    // });
 });
-// //allow MANUAL locale selection
+
+/* 国际化 */
 router.get("/i18n/:locale", function(req, res) {
-    console.log(req.cookies.locale);
     res.cookie('locale', req.params.locale, {
         maxAge: 1000 * 60 * 60 * 24
     });
     res.send(JSON.stringify("Success"));
 });
-/*解决方案*/
-router.get('/case', function(req, res, next) {
-    res.render('home/case', { title: res.__('caseTitle') });
-});
 
-/*关于我们*/
-router.get('/aboutus', function(req, res, next) {
-    res.render('home/aboutus', { title: '关于我们' });
-});
-/*产品中心*/
-router.get('/products/list', function(req, res, next) {
-    //查询关键词
-    req.number = '002';
-    getkeyword(req, res, function(keyword, describes) {
-        res.locals.fcode = req.query.fCode;
-        res.locals.code = req.query.code;
-        var page = { limit: 30, num: 1 };
-        if (req.query.p) {
-            page['num'] = req.query.p < 1 ? 1 : req.query.p;
-        }
-        var startp = (page.num - 1) * page.limit;
-        var endp = page.limit;
-        var href = '/products/list?fCode=' + req.query.fCode + '&code=' + req.query.code;
-        var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
-        controller.selectFun(res, model.productModel.queryProductCount, [req.query.code], function(count) {
-            var pagecount = count[0].count;
-            pagehelp['pagecount'] = pagecount;
-            var pagehtml = pagination.pagehtml(pagehelp);
-            if (pagecount == 0) {
-                res.render('home/products', { title: res.__('productsTitle'), secondCode: req.query.code, list: [], locals: pagehtml, firstCode: req.query.fCode });
-            }
-            var sql;
-            if (res.locals.inlanguage == 'en') {
-                sql = model.productModel.queryProductListEn;
-            } else {
-                sql = model.productModel.queryProductListZh;
-            }
-            controller.selectFun(res, sql, [req.query.code, startp, endp], function(result) {
-                console.log(result);
-                res.render('home/products', {
-                    title: res.__('productsTitle'),
-                    keyword: keyword,
-                    describes: describes,
-                    secondCode: req.query.code,
-                    list: result,
-                    locals: pagehtml,
-                    firstCode: req.query.fCode
-                });
+/* 首页 */
+router.get('/', function(req, res, next) {
+    var newsListSql, hotListSql;
+    if (res.locals.inlanguage == 'en') {
+        newsListSql = model.news.queryLastTwoEn;
+        hotListSql = model.hot.queryProductEn;
+    } else {
+        newsListSql = model.news.queryLastTwoZh;
+        hotListSql = model.hot.queryProductZh;
+    }
+    controller.selectFun(res, newsListSql, [], function(newsList) {
+        controller.selectFun(res, hotListSql, [], function(hotList) {
+            var title = res.__('title_main');
+            var keyword = res.__('keyword_main');
+            var describes = res.__('describes_main');
+            console.log('title---->', title);
+            console.log('keyword---->', keyword);
+            console.log('describes---->', describes);
+            res.render('home/index', {
+                title: title,
+                keyword: keyword,
+                describes: describes,
+                newsList: newsList,
+                hotList: hotList
             });
         });
     });
+});
 
+
+/*产品中心*/
+router.get('/products/list', function(req, res, next) {
+    res.locals.fcode = req.query.fCode;
+    res.locals.code = req.query.code;
+    var page = { limit: 30, num: 1 };
+    if (req.query.p) {
+        page['num'] = req.query.p < 1 ? 1 : req.query.p;
+    }
+    var startp = (page.num - 1) * page.limit;
+    var endp = page.limit;
+    var href = '/products/list?fCode=' + req.query.fCode + '&code=' + req.query.code;
+    var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
+    controller.selectFun(res, model.productModel.queryProductCount, [req.query.code], function(count) {
+        var pagecount = count[0].count;
+        pagehelp['pagecount'] = pagecount;
+        var pagehtml = pagination.pagehtml(pagehelp);
+
+        var title = res.__('title_products');
+        var keyword = res.__('keyword_products');
+        var describes = res.__('describes_products');
+
+        if (pagecount === 0) {
+            res.render('home/products', {
+                title: title,
+                keyword: keyword,
+                describes: describes,
+                secondCode: req.query.code,
+                list: [],
+                locals: pagehtml,
+                firstCode: req.query.fCode
+            });
+        }
+        var sql;
+        if (res.locals.inlanguage == 'en') {
+            sql = model.productModel.queryProductListEn;
+        } else {
+            sql = model.productModel.queryProductListZh;
+        }
+        controller.selectFun(res, sql, [req.query.code, startp, endp], function(result) {
+            res.render('home/products', {
+                title: title,
+                keyword: keyword,
+                describes: describes,
+                secondCode: req.query.code,
+                list: result,
+                locals: pagehtml,
+                firstCode: req.query.fCode
+            });
+        });
+    });
 });
 
 /*产品详情*/
 router.get('/details', function(req, res, next) {
-    //查询关键词
-    req.number = '003';
-    getkeyword(req, res, function(keyword, describes) {
-        var sql;
-        var listSql;
-        if (res.locals.inlanguage == 'en') {
-            sql = model.productModel.queryProductEn;
-            listSql = model.productModel.queryProductListEn;
-        } else {
-            sql = model.productModel.queryProductZh;
-            listSql = model.productModel.queryProductListZh;
-        }
-        controller.selectFun(res, listSql, [req.query.sCode, 0, 12], function(list) {
-            console.log(list);
-            controller.selectFun(res, sql, [req.query.id], function(result) {
-                console.log(result);
-                var hotWord;
-                if (result[0]) {
-                    hotWord = result[0].name;
-                }
-                res.render('home/details', {
-                    title: hotWord + '-' + res.__('Company'),
-                    keyword: keyword,
-                    describes: describes,
-                    pro: result[0],
-                    locale: req.cookies.locale,
-                    list: list,
-                    secondCode: req.query.sCode
-                });
+    var sql;
+    var listSql;
+    if (res.locals.inlanguage == 'en') {
+        sql = model.productModel.queryProductEn;
+        listSql = model.productModel.queryProductListEn;
+    } else {
+        sql = model.productModel.queryProductZh;
+        listSql = model.productModel.queryProductListZh;
+    }
+    controller.selectFun(res, listSql, [req.query.sCode, 0, 12], function(list) {
+        controller.selectFun(res, sql, [req.query.id], function(result) {
+            var title = '';
+            var keyword = '';
+            var describes = '';
+            if (result[0]) {
+                title = result[0].name + '_' + res.__('Company');
+                keyword = result[0].name;
+                describes = res.__('describes_details_1') + result[0].name + res.__('describes_details_2') + result[0].name + res.__('describes_details_3');
+            }
+            res.render('home/details', {
+                title: title,
+                keyword: keyword,
+                describes: describes,
+                pro: result[0],
+                locale: req.cookies.locale,
+                list: list,
+                secondCode: req.query.sCode
+            }, function(err, html) {
+                console.log('content----->', html);
+                _fs.writeFileSync('../public/details/' + req.query.sCode + '.html', html);
+                res.redirect('/details/' + req.query.sCode + '.html');
             });
         });
     });
 });
+
+/*解决方案*/
+router.get('/case', function(req, res, next) {
+    res.render('home/case', {
+        title: res.__('caseTitle'),
+        keyword: res.__('indexTitle'),
+        describes: res.__('indexTitle'),
+    });
+});
+
+/*关于我们*/
+router.get('/aboutus', function(req, res, next) {
+    res.render('home/aboutus', {
+        title: '关于我们',
+        keyword: res.__('indexTitle'),
+        describes: res.__('indexTitle'),
+    });
+});
+
 /*服务支持*/
 router.get('/servicenav/:who', function(req, res, next) {
     var param = req.params;
@@ -169,41 +203,49 @@ router.get('/servicenav/:who', function(req, res, next) {
         }
         res.render('home/' + lasturl, {
             title: res.__('serviceSupportTitle'),
+            keyword: res.__('indexTitle'),
+            describes: res.__('indexTitle'),
             serviceContent: content,
         });
 
     });
 });
+
 /*公司简介,公司荣誉,公司文化*/
 router.get('/companyinfo', function(req, res, next) {
     res.render('home/companyinfo', {
         title: res.__('CompanyProfile') + '-' + res.__('Company'),
-        type: 1
+        keyword: res.__('indexTitle'),
+        describes: res.__('indexTitle'),
+        type: 1,
     });
 });
 router.get('/companyhonor', function(req, res, next) {
     res.render('home/companyhonor', {
         title: res.__('CompanyHonor') + '-' + res.__('Company'),
-        type: 2
+        keyword: res.__('indexTitle'),
+        describes: res.__('indexTitle'),
+        type: 2,
     });
 });
 router.get('/companyculture', function(req, res, next) {
     res.render('home/companyculture', {
         title: res.__('CompanyCulture') + '-' + res.__('Company'),
-        type: 3
+        type: 3,
     });
 });
 router.get('/contactus', function(req, res, next) {
     res.render('home/contactus', {
         title: res.__('ContactUs') + '-' + res.__('Company'),
-        type: 4
+        keyword: res.__('indexTitle'),
+        describes: res.__('indexTitle'),
+        type: 4,
     });
 });
+
 /*新闻中心*/
 router.get('/news/:type', function(req, res, next) {
     var who = req.params.type;
-    console.log('新闻中心列表页面:', who);
-    console.log("------------1");
     var page = { limit: 10, num: 1 };
     if (req.query.p) {
         page['num'] = req.query.p < 1 ? 1 : req.query.p;
@@ -236,10 +278,18 @@ router.get('/news/:type', function(req, res, next) {
 
         controller.selectFun(res, sql, [_type, startp, endp], function(result) {
             console.log(result);
-            res.render('home/news', { title: _title, list: result, locals: pagehtml, type: _type });
+            res.render('home/news', {
+                title: _title,
+                keyword: res.__('indexTitle'),
+                describes: res.__('indexTitle'),
+                list: result,
+                locals: pagehtml,
+                type: _type,
+            });
         });
     });
 });
+
 //新闻详情
 router.get('/archives/:id/:type', function(req, res, next) {
     var id = req.params.id;
@@ -258,13 +308,19 @@ router.get('/archives/:id/:type', function(req, res, next) {
         lastSql = model.news.queryLastZh;
     }
     controller.selectFun(res, sql, [id], function(result) {
-        console.log(result);
+        var describes = '',
+            newsContent = '',
+            newsName = '';
+            console.log('result---->',result[0]);
+        if (result[0]) {
+            describes = result[0].description.substring(0, 200);
+            newsContent = result[0];
+            newsName = result[0].name;
+        }
+        
         controller.selectFun(res, listSql, [1, 0, 5], function(entrepriseNewsList) {
-            console.log(entrepriseNewsList);
             controller.selectFun(res, listSql, [2, 0, 5], function(productInformationList) {
-                console.log(productInformationList);
                 controller.selectFun(res, nextSql, [id, type], function(nextlist) {
-                    console.log(nextlist);
                     var next;
                     if (nextlist[0]) {
                         next = nextlist[0];
@@ -274,14 +330,17 @@ router.get('/archives/:id/:type', function(req, res, next) {
                         if (lastlist[0]) {
                             last = lastlist[0];
                         }
+                        console.log('last---->', last);
                         res.render('home/news-detail', {
-                            title: res.__('NewsDetails') + '-' + res.__('Company'),
+                            title: newsName + '_' + res.__('Company'),
+                            keyword: newsName,
+                            describes: describes,
                             last: last,
                             next: next,
-                            news: result[0],
+                            news: newsContent,
                             type: type,
                             entrepriseNewsList: entrepriseNewsList,
-                            productInformationList: productInformationList
+                            productInformationList: productInformationList,
                         });
                     });
                 });
@@ -298,7 +357,7 @@ router.get('/keyword/:who', function(req, res, next) {
     req.number = param;
     keyword_controller.queryKeyword(req, res, function(result) {
         var content = '';
-        console.log('关键词---->', JSON.stringify(result));
+        // console.log('关键词---->', JSON.stringify(result));
         var keyword = '',
             describes = '';
         if (result.length > 0) {
@@ -308,8 +367,6 @@ router.get('/keyword/:who', function(req, res, next) {
         res.render('admin/keyword', {
             title: '关键词设置',
             cpage: param,
-            keyword: keyword,
-            describes: describes,
         });
     });
 });

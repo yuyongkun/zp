@@ -6,9 +6,13 @@
 </head>
 <body>
    <%include ../public/header.ejs%>
+   
    <div class="bread">
-        <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/products/list?code=2101&fCode=1001">产品中心</a>&gt;<a href="/details?id=8dfd2c60-34d4-11e7-bca4-db473544646c&sCode=2101"><%=pro.name%></a>
-        </p>
+       <p class="zp-wrap">您当前位置：
+           <a href="/">首页</a>&gt;
+           <a href="/products/list?code=2101&fCode=1001">产品中心</a>&gt;
+           <%=pro.name%>
+       </p>
    </div>  
         <div class="zp-wrap">
             <div class="details-wrap">

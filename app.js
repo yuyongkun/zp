@@ -59,7 +59,6 @@ app.use(function(req, res, next) {
     }
     next();
 });
-
 app.use('/', index);
 app.use('/admin', admin);
 app.use('/product', product);
