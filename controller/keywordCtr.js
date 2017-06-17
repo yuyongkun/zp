@@ -40,8 +40,7 @@ module.exports={
 						return;
 			    	}
 			    	if(result.length<=0){
-			    		var id=uuid.v1();
-			    		connection.query(keyword_model.insert,[id,fields.number,fields.keyword,fields.describes],function(err,result){
+			    		connection.query(keyword_model.insert,[fields.number,fields.keyword,fields.describes],function(err,result){
 			    			if(err){
 								res.json({
 									responseCode:'-1',

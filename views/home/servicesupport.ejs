@@ -10,7 +10,7 @@
     <%include ../public/header.ejs%>
         <div class="servicesupport">
          <div class="bread">
-            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/service/support/">服务支持</a></p>
+            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/ServiceSupport">服务支持</a></p>
         </div>
             <div class="zp-wrap">
                 <%include ../public/service.ejs%>
@@ -19,7 +19,11 @@
                         <span class="n_span1"><font class="red">服务</font>支持</span>
                     </div>
                     <div class="service-content">
-                         <%-serviceContent%>
+                        <%if(inlanguage==='en'){%>
+                            <%-content.content_en%>
+                        <%}else{%>
+                            <%-content.content_zh%>
+                        <%}%>
                     </div>
                     </div>
             </div>

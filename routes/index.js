@@ -178,37 +178,32 @@ router.get('/aboutus', function(req, res, next) {
     });
 });
 
-/*服务支持*/
-router.get('/servicenav/:who', function(req, res, next) {
-    var param = req.params;
-    param = param.who;
-
-    res.locals.title = '服务支持';
-    res.locals.type = 1;
-    var lasturl = 'servicesupport';
-    if (param === 'serviceguarantee') {
-        res.locals.title = '服务保障';
-        res.locals.type = 2;
-        lasturl = 'serviceguarantee';
-    } else if (param === 'serviceprocess') {
-        res.locals.title = '服务流程';
-        res.locals.type = 3;
-        lasturl = 'serviceprocess';
-    }
-    req.type = res.locals.type;
+/*服务支持,服务保障,服务流程*/
+function queryService(req, res, title, type, pathname) {
+    req.type=res.locals.type = type;
     service_controller.queryService(req, res, function(result) {
-        var content;
-        if (result.length > 0) {
-            content = result[0].content;
+        if (result.length <=0) {
+            result[0]='';
         }
-        res.render('home/' + lasturl, {
-            title: res.__('serviceSupportTitle'),
+        res.render('home/' + pathname, {
+            title: title + '_'+res.__('Company'),
             keyword: res.__('indexTitle'),
             describes: res.__('indexTitle'),
-            serviceContent: content,
+            content: result[0],
         });
-
     });
+}
+router.get('/ServiceSupport', function(req, res, next) {
+    var title = res.__('ServiceSupport');
+    queryService(req, res, title, 1, 'ServiceSupport');
+});
+router.get('/ServiceGuarantee', function(req, res, next) {
+    var title = res.__('ServiceGuarantee');
+    queryService(req, res, title, 2, 'ServiceGuarantee');
+});
+router.get('/ServiceProcess', function(req, res, next) {
+    var title = res.__('ServiceProcess');
+    queryService(req, res, title, 3, 'ServiceProcess');
 });
 
 /*公司简介,公司荣誉,公司文化*/
@@ -244,31 +239,19 @@ router.get('/contactus', function(req, res, next) {
 });
 
 /*新闻中心*/
-router.get('/news/:type', function(req, res, next) {
-    var who = req.params.type;
+function queryData(res, req, pathname, _type, _title) {
     var page = { limit: 10, num: 1 };
     if (req.query.p) {
         page['num'] = req.query.p < 1 ? 1 : req.query.p;
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
-    var href = '/news/' + who + '?n=10';
+    var href = pathname + '?n=10';
     var pagehelp = { currentpage: page.num, pagesize: 10, pagecount: 10, href: href };
     var queryCount = model.news.queryCount;
-
-    var _title, _type;
-    if (who === 'entrepriseNews') {
-        _title = res.__('EntreprisesNews');
-        _type = 1;
-    } else if (who === 'productInformation') {
-        _title = res.__('ProductInformation');
-        _type = 2;
-    }
-
     controller.selectFun(res, queryCount, [_type], function(count) {
         pagehelp['pagecount'] = count[0].count;
         var pagehtml = pagination.pagehtml(pagehelp);
-        console.log("------------2");
         var sql;
         if (res.locals.inlanguage == 'en') {
             sql = model.news.queryNewsListEn;
@@ -288,6 +271,14 @@ router.get('/news/:type', function(req, res, next) {
             });
         });
     });
+}
+/*新闻中心-企业动态*/
+router.get('/EntreprisesNews', function(req, res, next) {
+    queryData(res, req, 'EntreprisesNews', 1, res.__('EntreprisesNews'));
+});
+/*新闻中心-产品资讯*/
+router.get('/ProductInformation', function(req, res, next) {
+    queryData(res, req, 'ProductInformation', 2, res.__('ProductInformation'));
 });
 
 //新闻详情
@@ -311,13 +302,13 @@ router.get('/archives/:id/:type', function(req, res, next) {
         var describes = '',
             newsContent = '',
             newsName = '';
-            console.log('result---->',result[0]);
+        console.log('result---->', result[0]);
         if (result[0]) {
             describes = result[0].description.substring(0, 200);
             newsContent = result[0];
             newsName = result[0].name;
         }
-        
+
         controller.selectFun(res, listSql, [1, 0, 5], function(entrepriseNewsList) {
             controller.selectFun(res, listSql, [2, 0, 5], function(productInformationList) {
                 controller.selectFun(res, nextSql, [id, type], function(nextlist) {
@@ -356,8 +347,8 @@ router.get('/keyword/:who', function(req, res, next) {
     param = param.who;
     req.number = param;
     keyword_controller.queryKeyword(req, res, function(result) {
+        console.log('关键词---->', reuslt[0]);
         var content = '';
-        // console.log('关键词---->', JSON.stringify(result));
         var keyword = '',
             describes = '';
         if (result.length > 0) {
