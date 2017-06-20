@@ -3,7 +3,10 @@ var loginModel = {
     queryUser: 'select count(1) count from admin where name= ? and password = ? ',
     queryCompany:'SELECT *  FROM company'
 };
-
+var productNameModel={
+	 firstProductName:'SELECT productNameCh,productNameEn FROM first_product_list where productCode=?',
+	 secondProductName:'SELECT productNameCh,productNameEn FROM second_product_list where productCode=?',
+};
 var productModel = {
 	    queryUser: 'select count(1) count from admin where name= ? and password = ? ',
 	    queryProduct:'SELECT t.id,t.code,t.nameEn,t.nameCh,t.imgUrl,t.description,t.introduction,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.descriptionEn,t.firstCode,t.secondCode, t.brandZh,t.brandEn,t.modelZh,t.modelEn,t.applicationFieldZh,t.applicationFieldEn,'+
@@ -75,4 +78,5 @@ exports.hot = hot;
 exports.column = column;
 exports.loginModel = loginModel;
 exports.productModel = productModel;
+exports.productNameModel = productNameModel;
 

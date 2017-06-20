@@ -100,11 +100,13 @@
 	"serviceDescription": "Filtering according to the needs of customers, product characteristics and USES of filtration products, precision, technical parameters, such as type selection reference for users, to provide equipment configuration scheme.",
 
 	"Service": "After sales service, one station is in place",
+	"AfterSalesService": "after-sales service",
 
 	"Date": "Date",
 	"Author": "Author",
 	"ProductDescription": "RelatedProducts",
 	"RelatedProducts": "RelatedProducts",
+	"CurrentLocation": "your current location",
 
 	"footer": "Copyright © xinxiang IDA machinery equipment co., LTD. Address: xinxiang hongqi district no. 1 industrial park, 108 zip code: 453000",
 	"YuCP": "Prepare the CP for 12039160",

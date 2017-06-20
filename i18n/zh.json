@@ -102,12 +102,15 @@
     "IndustryApplication": "行业应用",
     "serviceDescription": "根据顾客的需要，过滤产品的特点以及过滤产品的用途、精度、技术参数等，为用户进行选型参考，提供设备配置方案.",
     
-    "Service": "售后服务，一站到位",
+    "Service": "售后服务，一站到位after-sales service",
+    "AfterSalesService": "售后服务",
     
     "Date": "日期",
     "Author": "作者",
     "ProductDescription": "产品介绍",
     "RelatedProducts": "相关产品",
+    "CurrentLocation": "您当前位置",
+
     
     "footer": "Copyright ©新乡市艾达机械设备有限公司    地址：新乡市红旗区一号工业园108号  邮编：453000 ",
     "YuCP": "豫CP备12039160号",

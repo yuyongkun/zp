@@ -10,13 +10,17 @@
     <%include ../public/header.ejs%>
         <div class="servicesupport">
         <div class="bread">
-            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/ServiceProcess">服务流程</a></p>
+            <p class="zp-wrap"><%=__('CurrentLocation')%>:<a href="/"><%=__('Home')%></a>&gt;<a href="/ServiceProcess"><%=__('ServiceProcess')%></a></p>
         </div>
             <div class="zp-wrap">
                 <%include ../public/service.ejs%>
                     <div class="servicesupport-container">
                          <div class="news_class">
+                            <%if(inlanguage==='en'){%>
+                            <span class="n_span1"><font class="red">Service</font>Process</span>
+                            <%}else{%>
                             <span class="n_span1"><font class="red">服务</font>流程</span>
+                            <%}%>
                         </div>
                         <div class="service-content">
                             <%if(inlanguage==='en'){%>

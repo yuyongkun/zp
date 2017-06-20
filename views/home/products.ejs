@@ -129,17 +129,7 @@
         <%}%>
         
         <div id="products-center" class="clearfix products-content">
-            <%if(list){
-    			list.forEach(function(pro){ %>
-    			<div class="products-center-item">
-                    <a href="/details?id=<%= pro.id%>&sCode=<%= secondCode%>">
-                        <div class="products-icon">
-                            <img src="<%= pro.imgUrl%>" title="<%= pro.name%>"  alt="<%= pro.name%>">
-                        </div>
-                        <p class="products-desc"><%= pro.name%></p>
-                    </a>
-                </div>
-            <%})}%>
+           
         </div>
         <nav class="nav">
     		<ul class="pagination paginationA paginationA01" id="pagination">

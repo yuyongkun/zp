@@ -13,23 +13,14 @@ var uuid = require('node-uuid');
 router.all('*', function(req, res, next) {
     res.locals.main = false;
     var path = req.path;
+    console.log('path', path);
     if (path == '/') { //首页
         res.locals.main = true;
+    } else if (path == '/products/list') { //产品中心
+
+
     }
     next();
-    // keyword_controller.queryKeyword(req, res, function(result) {
-    //     console.log('查询关键词result------>', result);
-    //     if (result.length > 0) {
-    //         var _result = result[0];
-    //         _keyword = _result.keyword;
-    //         _describe = _result.describes;
-    //         _title = _result.title;
-    //     }
-    //     res.locals.keyword = _keyword;
-    //     res.locals.describes = _describe;
-    //     res.locals.title = _title;
-    //     next();
-    // });
 });
 
 /* 国际化 */
@@ -86,16 +77,8 @@ router.get('/products/list', function(req, res, next) {
         var pagecount = count[0].count;
         pagehelp['pagecount'] = pagecount;
         var pagehtml = pagination.pagehtml(pagehelp);
-
-        var title = res.__('title_products');
-        var keyword = res.__('keyword_products');
-        var describes = res.__('describes_products');
-
         if (pagecount === 0) {
             res.render('home/products', {
-                title: title,
-                keyword: keyword,
-                describes: describes,
                 secondCode: req.query.code,
                 list: [],
                 locals: pagehtml,
@@ -108,17 +91,50 @@ router.get('/products/list', function(req, res, next) {
         } else {
             sql = model.productModel.queryProductListZh;
         }
-        controller.selectFun(res, sql, [req.query.code, startp, endp], function(result) {
-            res.render('home/products', {
-                title: title,
-                keyword: keyword,
-                describes: describes,
-                secondCode: req.query.code,
-                list: result,
-                locals: pagehtml,
-                firstCode: req.query.fCode
+
+        //先查询一级目录名称和二级目录名称
+        var firstProductNameSQL = model.productNameModel.firstProductName;
+        var secondProductNameSQL = model.productNameModel.secondProductName;
+        controller.selectFun(res, firstProductNameSQL, [req.query.fCode], function(result) {
+            console.log('firstProductNameSQL------>', result[0]);
+            var firstName;
+            if (res.locals.inlanguage == 'en') {
+                firstName = result[0].productNameEn;
+            } else {
+                firstName = result[0].productNameCh;
+            }
+            console.log('firstName------>', firstName);
+            controller.selectFun(res, secondProductNameSQL, [req.query.code], function(result) {
+                console.log('secondProductNameSQL------>', result[0]);
+                var secondName;
+                if (res.locals.inlanguage == 'en') {
+                    secondName = result[0].productNameEn;
+                } else {
+                    secondName = result[0].productNameCh;
+                }
+                console.log('secondName------>', secondName);
+                var title = firstName + '_' + secondName + '_' + res.__('Company');
+                var keyword = firstName + '_' + secondName;
+                var describes = res.__('describes_details_1') + firstName + '_' + secondName + res.__('describes_details_2') + firstName + '_' + secondName + res.__('describes_details_3');
+                console.log('title------>', title);
+                console.log('keyword------>', keyword);
+                console.log('describes------>', describes);
+                //查询列表
+                controller.selectFun(res, sql, [req.query.code, startp, endp], function(result) {
+                    console.log('查询列表----->',result);
+                    res.render('home/products', {
+                        title: title,
+                        keyword: keyword,
+                        describes: describes,
+                        secondCode: req.query.code,
+                        list: result,
+                        locals: pagehtml,
+                        firstCode: req.query.fCode
+                    });
+                });
             });
         });
+
     });
 });
 
@@ -180,13 +196,13 @@ router.get('/aboutus', function(req, res, next) {
 
 /*服务支持,服务保障,服务流程*/
 function queryService(req, res, title, type, pathname) {
-    req.type=res.locals.type = type;
+    req.type = res.locals.type = type;
     service_controller.queryService(req, res, function(result) {
-        if (result.length <=0) {
-            result[0]='';
+        if (result.length <= 0) {
+            result[0] = '';
         }
         res.render('home/' + pathname, {
-            title: title + '_'+res.__('Company'),
+            title: title + '_' + res.__('Company'),
             keyword: res.__('indexTitle'),
             describes: res.__('indexTitle'),
             content: result[0],
