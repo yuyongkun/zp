@@ -121,7 +121,7 @@ router.get('/products/list', function(req, res, next) {
                 console.log('describes------>', describes);
                 //查询列表
                 controller.selectFun(res, sql, [req.query.code, startp, endp], function(result) {
-                    console.log('查询列表----->',result);
+                    console.log('查询列表----->', result);
                     res.render('home/products', {
                         title: title,
                         keyword: keyword,
@@ -274,7 +274,6 @@ function queryData(res, req, pathname, _type, _title) {
         } else {
             sql = model.news.queryNewsListZh;
         }
-
         controller.selectFun(res, sql, [_type, startp, endp], function(result) {
             console.log(result);
             res.render('home/news', {
@@ -288,6 +287,10 @@ function queryData(res, req, pathname, _type, _title) {
         });
     });
 }
+/*新闻中心*/
+router.get('/NewsCenter', function(req, res, next) {
+    queryData(res, req, 'EntreprisesNews', 'all', res.__('EntreprisesNews'));
+});
 /*新闻中心-企业动态*/
 router.get('/EntreprisesNews', function(req, res, next) {
     queryData(res, req, 'EntreprisesNews', 1, res.__('EntreprisesNews'));

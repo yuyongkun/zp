@@ -43,7 +43,7 @@ var news = {
 		queryLastEn:'SELECT t.id,t.nameEn name FROM news t WHERE t.`createDate`>(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate DESC LIMIT 1',
 		queryLastZh:'SELECT t.id,t.nameCh name FROM news t WHERE t.`createDate`>(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate DESC LIMIT 1',
 		queryLastTwoEn:'SELECT  s1.id,s1.nameEn name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate,s1.type FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=1',
-		queryLastTwoZh:'SELECT  s1.id,s1.nameCh name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate,s1.type FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=1'
+		queryLastTwoZh:'SELECT  s1.id,s1.nameCh name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate,s1.type FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=1',
 };
 
 var hot={
