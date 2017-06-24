@@ -33,16 +33,17 @@
                     </div>
                 </div>
                 <div class="details-content">
-                    <div id="details-content-nav" class="details-content-nav">
+                    <!-- <div id="details-content-nav" class="details-content-nav">
                         <span class="details-cur" data-id='details-products-intro'><%= __('ProductDescription') %></span>
                         <span data-id='details-related-products'><%= __('RelatedProducts') %></span>
                         <span data-id='details-industryapplication'><%= __('IndustryApplication') %></span>
-                    </div>
+                    </div> -->
                     <div id="details-content-body" class="details-content-body">
                        <div id="details-products-intro" class="details-func">
                          <%-pro.description%>
                         </div>
-                        <div id="details-related-products" class="details-func" style="display: none">
+                         <h3><%= __('RelatedProducts') %></h3>
+                        <div id="details-related-products" class="details-func">
                             <div class="products-list">
                                           <%if(list){
 						    			list.forEach(function(link){ %>
@@ -57,9 +58,9 @@
 						            <%})}%>
                             </div>
                         </div>
-                        <div id="details-industryapplication" class="details-func" style="display: none">
+                       <!--  <div id="details-industryapplication" class="details-func" style="display: none">
                             <%include ../public/industryapplication.ejs%>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -319,11 +319,10 @@ router.get('/archives/:id/:type', function(req, res, next) {
             newsName = '';
         console.log('result---->', result[0]);
         if (result[0]) {
-            describes = result[0].description.substring(0, 200);
+            describes = result[0].description.replace(/<[^>]+>/g,"").substring(0, 200);
             newsContent = result[0];
             newsName = result[0].name;
         }
-
         controller.selectFun(res, listSql, [1, 0, 5], function(entrepriseNewsList) {
             controller.selectFun(res, listSql, [2, 0, 5], function(productInformationList) {
                 controller.selectFun(res, nextSql, [id, type], function(nextlist) {
