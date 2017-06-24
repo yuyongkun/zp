@@ -287,10 +287,6 @@ function queryData(res, req, pathname, _type, _title) {
         });
     });
 }
-/*新闻中心*/
-router.get('/NewsCenter', function(req, res, next) {
-    queryData(res, req, 'EntreprisesNews', 'all', res.__('EntreprisesNews'));
-});
 /*新闻中心-企业动态*/
 router.get('/EntreprisesNews', function(req, res, next) {
     queryData(res, req, 'EntreprisesNews', 1, res.__('EntreprisesNews'));
