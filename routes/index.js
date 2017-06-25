@@ -30,7 +30,7 @@ router.all('*', function(req, res, next) {
                 var secondProList=result;
                 console.log('secondProList------>',result);
                 arr.push({
-                    firstProList:firstProList,
+                    firstProList:firstProList[idx],
                     secondProList:secondProList,
                 });
                 if(arr.length==firstProList.length){
@@ -38,7 +38,6 @@ router.all('*', function(req, res, next) {
                     console.log('proList------>',res.locals.proList);
                     next(); 
                 }
-               
             }); 
         });
     });
