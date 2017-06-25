@@ -10,12 +10,12 @@ router.get('/new', function(req, res, next) {
 	res.render('admin/news/newNews', { title: '发布新闻'});
 });
 router.post('/saveNews', function(req, res, next) {
-	console.log(req.body.id);
+	console.log('req.body.id------>'+req.body.id);
 	if(req.body.id){
-		   sql=model.news.updateNews;
-		}else{
-		   sql=model.news.insertNews;
-		}
+		sql=model.news.updateNews;
+	} else {
+		sql=model.news.insertNews;
+	}
 	var arr=[req.body.nameCh,req.body.nameEn,req.body.descriptionCh,req.body.descriptionEn,req.body.type,req.body.id];
 	controller.selectFun(res,sql,arr,function(result){
 	    console.log(result);

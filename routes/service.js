@@ -3,27 +3,17 @@ var router = express.Router();
 var service_controller = require('../controller/serviceCtr');
 //设置服务页面
 router.get('/setservice/:who', function(req, res, next) {
-    res.locals.title = '修改服务';
     var param = req.params;
-
     param = param.who;
-    res.locals.type = 1;
-
-    if (param == 2) {
-        res.locals.type = 2;
-    } else if (param == 3) {
-        res.locals.type = 3;
-    }
-    req.type = res.locals.type;
+    req.type=res.locals.type=param;
     service_controller.queryService(req, res, function(result) {
+        console.log('result--->',result[0]);
         if (result.length <= 0) {
-			content = '';
-        }else{
-        	content = result[0].content;
+            result[0]='';
         }
         res.render('admin/setservice', {
-            title: "修改服务",
-            serviceContent: content
+            title: "设置服务",
+            content: result[0],
         });
     });
 

@@ -100,11 +100,13 @@
 	"serviceDescription": "Filtering according to the needs of customers, product characteristics and USES of filtration products, precision, technical parameters, such as type selection reference for users, to provide equipment configuration scheme.",
 
 	"Service": "After sales service, one station is in place",
+	"AfterSalesService": "after-sales service",
 
 	"Date": "Date",
 	"Author": "Author",
 	"ProductDescription": "RelatedProducts",
 	"RelatedProducts": "RelatedProducts",
+	"CurrentLocation": "your current location",
 
 	"footer": "Copyright © xinxiang IDA machinery equipment co., LTD. Address: xinxiang hongqi district no. 1 industrial park, 108 zip code: 453000",
 	"YuCP": "Prepare the CP for 12039160",
@@ -114,5 +116,16 @@
 	"indexTitle":" hydraulic filter,filter element,oil separator,Filter Cartridge -Xinxiang Aida Machinery Equipment Corporation",
 	"productsTitle":"oil filter, coalescer filter,Oil purifier,Filter Cartridge -Xinxiang Aida Machinery Equipment Corporation",
 	"caseTitle":"Solution (shanxi, henan, hunan, chongqing, jiangsu, hubei, guangdong, shanxi) filter oil machine, filter, filter, compressor oil, melt sintering filter-Xinxiang Aida Machinery Equipment Corporation",
- 	"serviceSupportTitle":"ServiceSupport-Xinxiang Aida Machinery Equipment Corporation"
+
+ 	"title_main":"filter cartridge filter core,air filter cartridge, the new township alda machinery equipment co., LTD",
+    "keyword_main":"Filter filter, filter core, air filter",
+    "describes_main":"Xinxiang IDA mechanical equipment co., LTD., specializing in the production of filter oil machine, filter and hydraulic filter, oil filter, air filter, such as gb and foreign brands of alternative filter series products. Product filtering is good and accurate. Welcome to inquire and order.",
+    
+    "title_products":"The hydraulic oil filter core,diesel filter,The machine oil filter is full of the new country city Ada machinery equipment co., LTD",
+    "keyword_products":"Diesel filter core, hydraulic oil filter, oil filter core",
+    "describes_products":"Xinxiang IDA machinery equipment co., LTD is a professional production and sales of diesel filter, hydraulic oil filter, oil filter manufacturer, the company produced oil filter products through national standard inspection, welcome calls to order",
+    
+    "describes_details_1":"In the new country, Ada",
+    "describes_details_2":"，The imported quality materials are processed and tested by national standards. Is the production sales",
+    "describes_details_3":"The manufacturer of"
 }

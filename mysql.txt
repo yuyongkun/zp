@@ -143,3 +143,7 @@ alter table table_test add primary key(id);
 
 删除表中的数据
 delete from 表名称 where 删除条件;
+
+
+
+alter table customers change id id int not null auto_increment primary key;

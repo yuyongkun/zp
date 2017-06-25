@@ -118,12 +118,12 @@
 	</div>
 	<div class="group-item">
 		<label style="padding-bottom: 10px">服务内容-中文:</label>
-		<script type="text/plain" id="editor-zh"><%-serviceContent%></script>
+		<script type="text/plain" id="editor-zh"><%-content!==''?content.content_zh:''%></script>
 	</div>
-<!-- 	<div class="group-item">
+	<div class="group-item">
 		<label style="padding-bottom: 10px">服务内容-英文:</label>
-		<script type="text/plain" id="editor-en"><%-serviceContent%></script>
-	</div> -->
+		<script type="text/plain" id="editor-en"><%-content!==''?content.content_en:''%></script>
+	</div>
 	<p>
 		<span id="submit" class="submit">提交</span>
 	</p>
@@ -147,20 +147,18 @@ var editorZH=UE.getEditor("editor-zh", {
               "initialFrameHeight": 500,
               "initialFrameWidth": 949
            });
-// var editorEN=UE.getEditor("editor-en", {
-//               "initialFrameHeight": 500,
-//               "initialFrameWidth": 949
-//            });
+var editorEN=UE.getEditor("editor-en", {
+              "initialFrameHeight": 500,
+              "initialFrameWidth": 949
+           });
 
 $('#submit').click(function(){
-	var content=editorZH.getContent();
-	// if(content===''){
-	// 	alert('服务内容不能为空');
-	// 	return;
-	// }
+	var content_zh=editorZH.getContent();
+	var content_en=editorEN.getContent();
 	var formdata=new FormData();
 	formdata.append('type',$('#service-options').data('type'));
-	formdata.append('content',content);
+	formdata.append('content_zh',content_zh);
+	formdata.append('content_en',content_en);
 	$.ajax({
 		url:'/service/add_service',
 		type:'post',
