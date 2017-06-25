@@ -60,6 +60,18 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(function (req, res, next) {
+    var url = req.originalUrl;//获取浏览器中当前访问的nodejs路由地址；
+    var userCookies=req.cookies.islogin; //获取客户端存取的cookie,userCookies为cookie的名称；//有时拿不到cookie值，可能是因为拦截器位置放错，获取该cookie的方式是依赖于nodejs自带的cookie模块，//因此，获取cookie必须在1,2步之后才能使用，否则拿到的cookie就是undefined.
+    console.log("123"+url);
+    console.log("app获得cookie"+userCookies+"真假11111："+(userCookies==undefined));
+ 
+    if(url=='/login'&&!(userCookies==undefined)){ //通过判断控制用户登录后不能访问登录页面；
+        return res.redirect('/');//页面重定向；
+    }
+    next();
+});
+
 app.use('/', index);
 app.use('/admin', admin);
 app.use('/product', product);
