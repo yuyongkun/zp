@@ -33,7 +33,7 @@ router.all('*', function(req, res, next) {
                     firstProList:firstProList,
                     secondProList:secondProList,
                 });
-                if(idx==arr.length-1){
+                if(arr.length==firstProList.length){
                     res.locals.proList=arr;
                     console.log('proList------>',res.locals.proList);
                     next(); 
