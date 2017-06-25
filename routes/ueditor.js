@@ -2,6 +2,19 @@ var express = require('express'),
     path = require('path'),
     ueditor = require("ueditor"),
     router = express.Router();
+
+
+router.all('*', function(req, res, next) {
+    res.locals.main = false;
+    var path = req.path;
+    console.log('path', path);
+    if (path == '/') { //首页
+        res.locals.main = true;
+    }
+    next();
+});
+
+
 router.use("/",ueditor(path.join(__dirname,'../public'),function (req,res,next){
     //客户端上传文件设置
     var ActionType = req.query.action;

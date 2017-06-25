@@ -10,7 +10,7 @@
    <div class="bread">
        <p class="zp-wrap">您当前位置：
            <a href="/">首页</a>&gt;
-           <a href="/products/list?code=2101&fCode=1001">产品中心</a>&gt;
+           <a href="/products/1001/2101.html">产品中心</a>&gt;
            <%=pro.name%>
        </p>
    </div>  
@@ -48,7 +48,7 @@
                                           <%if(list){
 						    			list.forEach(function(link){ %>
 						    			<div class="products-center-item">
-						                    <a href="/details?id=<%= link.id%>&sCode=<%= secondCode%>">
+						                    <a href="/details/<%= link.id%>/<%= secondCode%>.html">
 						                        <div class="products-icon">
 						                            <img src="<%= link.imgUrl%>" title="<%= link.name%>"  alt="<%= link.name%>">
 						                        </div>

@@ -6,6 +6,20 @@ var controller=require('../controller/controller');
 
 var pagination = require('../public/static/admin/js/pagination.js');
 
+router.all('*', function(req, res, next) {
+    res.locals.main = false;
+    var path = req.path;
+    console.log('path', path);
+    if (req.session.islogin && req.cookies.islogin==req.session.islogin) {
+		res.cookie('islogin', req.session.islogin, {
+			maxAge : 300000
+		});
+	}else{
+		res.send(JSON.stringify("Failed"));
+	}
+    next();
+});
+
 router.get('/new', function(req, res, next) {
 	res.render('admin/news/newNews', { title: '发布新闻'});
 });

@@ -1,16 +1,19 @@
 var express = require('express');
 var router = express.Router();
-
+var uuid = require('node-uuid');
 var model=require('../model/model');
 var controller=require('../controller/controller');
 
+
+
 /*后台*/
 router.get('/index', function(req, res, next) {
-	if (req.cookies.islogin) {
-		req.session.islogin = req.cookies.islogin;
-	}
-	if (req.session.islogin) {
-		res.locals.islogin = req.session.islogin;
+	 console.log('cookies', req.cookies.islogin);
+	 console.log('session', req.session.islogin);
+	if (req.session.islogin && req.cookies.islogin==req.session.islogin) {
+		res.cookie('islogin', req.session.islogin, {
+			maxAge : 300000
+		});
 		res.render('admin/admin', { title: '新乡市艾达机械设备有限公司',test : res.locals.islogin});
 	}else{
 		res.redirect('login');
@@ -27,7 +30,7 @@ router.get('/company', function(req, res, next) {
 router.get('/logout', function(req, res) {
 	res.clearCookie('islogin');
 	req.session.destroy();
-	res.redirect('login');
+	res.render('admin/login', { title: '新乡市艾达机械设备有限公司'});
 });
 
 router.get('/login', function(req, res, next) {
@@ -38,10 +41,10 @@ router.get('/login', function(req, res, next) {
 			res.send('没有该用户');
 		} else {
 			if (result[0].count === 1) {
-				req.session.islogin = req.body.username;
-				res.locals.islogin = req.session.islogin;
-				res.cookie('islogin', res.locals.islogin, {
-					maxAge : 600000
+				var id=uuid.v1();
+				req.session.islogin = id;
+				res.cookie('islogin', id, {
+					maxAge : 300000
 				});
 				res.redirect('index');
 			} else {

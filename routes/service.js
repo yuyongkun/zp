@@ -1,6 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var service_controller = require('../controller/serviceCtr');
+
+router.all('*', function(req, res, next) {
+    res.locals.main = false;
+    var path = req.path;
+    console.log('path', path);
+    if (req.session.islogin && req.cookies.islogin==req.session.islogin) {
+		res.cookie('islogin', req.session.islogin, {
+			maxAge : 300000
+		});
+	}else{
+		res.send(JSON.stringify("Failed"));
+	}
+    next();
+});
 //设置服务页面
 router.get('/setservice/:who', function(req, res, next) {
     var param = req.params;

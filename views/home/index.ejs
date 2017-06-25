@@ -75,7 +75,7 @@
                     <div id="demo1">
                      <%if(hotList){
 			    			hotList.forEach(function(pro){ %>
-			                    <a href="/details?id=<%= pro.code%>&sCode=<%= pro.sCode%>" title="<%= pro.name%>" alt="<%= pro.name%>">
+			                    <a href="/details/<%= pro.code%>/<%= pro.sCode%>.html" title="<%= pro.name%>" alt="<%= pro.name%>">
 			                     <img src="<%= pro.imgUrl%>">
 			                    </a>
 			            <%})}%>

@@ -58,18 +58,18 @@ router.get('/', function(req, res, next) {
 
 
 /*产品中心*/
-router.get('/products/list', function(req, res, next) {
-    res.locals.fcode = req.query.fCode;
-    res.locals.code = req.query.code;
+router.get('/products/FCode/code', function(req, res, next) {
+    var code = req.params.code;
+    var fcode = req.params.FCode;
     var page = { limit: 30, num: 1 };
     if (req.query.p) {
         page['num'] = req.query.p < 1 ? 1 : req.query.p;
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
-    var href = '/products/list?fCode=' + req.query.fCode + '&code=' + req.query.code;
+    var href = '/products/' + fcode + '/' + code;
     var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
-    controller.selectFun(res, model.productModel.queryProductCount, [req.query.code], function(count) {
+    controller.selectFun(res, model.productModel.queryProductCount, [code], function(count) {
         var pagecount = count[0].count;
         pagehelp['pagecount'] = pagecount;
         var pagehtml = pagination.pagehtml(pagehelp);
@@ -84,7 +84,7 @@ router.get('/products/list', function(req, res, next) {
         //先查询一级目录名称和二级目录名称
         var firstProductNameSQL = model.productNameModel.firstProductName;
         var secondProductNameSQL = model.productNameModel.secondProductName;
-        controller.selectFun(res, firstProductNameSQL, [req.query.fCode], function(result) {
+        controller.selectFun(res, firstProductNameSQL, [fcode], function(result) {
             console.log('firstProductNameSQL------>', result[0]);
             var firstName;
             if (res.locals.inlanguage == 'en') {
@@ -93,8 +93,6 @@ router.get('/products/list', function(req, res, next) {
                 firstName = result[0].productNameCh;
             }
             console.log('firstName------>', firstName);
-            var code = req.query.code;
-            var fcode = req.query.fcode;
             controller.selectFun(res, secondProductNameSQL, [code], function(result) {
                 console.log('secondProductNameSQL------>', result[0]);
                 var secondName;
@@ -107,7 +105,7 @@ router.get('/products/list', function(req, res, next) {
                 var keyword = firstName + '_' + secondName;
                 var describes = res.__('describes_details_1') + firstName + '_' + secondName + res.__('describes_details_2') + firstName + '_' + secondName + res.__('describes_details_3');
                 //查询列表
-                controller.selectFun(res, sql, [req.query.code, startp, endp], function(result) {
+                controller.selectFun(res, sql, [code, startp, endp], function(result) {
                     var param = {
                         title: title,
                         keyword: keyword,
@@ -131,9 +129,12 @@ router.get('/products/list', function(req, res, next) {
 });
 
 /*产品详情*/
-router.get('/details', function(req, res, next) {
+router.get('/details/:id/:SCode', function(req, res, next) {
     var sql;
     var listSql;
+    var id = req.params.id;
+    var SCode = req.params.SCode.substring(0,req.params.SCode.indexOf('.'));
+    console.log(SCode);
     if (res.locals.inlanguage == 'en') {
         sql = model.index.queryProductEn;
         listSql = model.productModel.queryProductListEn;
@@ -141,8 +142,8 @@ router.get('/details', function(req, res, next) {
         sql = model.index.queryProductZh;
         listSql = model.productModel.queryProductListZh;
     }
-    controller.selectFun(res, listSql, [req.query.sCode, 0, 12], function(list) {
-        controller.selectFun(res, sql, [req.query.id], function(result) {
+    controller.selectFun(res, listSql, [SCode, 0, 12], function(list) {
+        controller.selectFun(res, sql, [id], function(result) {
             var title = '';
             var keyword = '';
             var describes = '';
@@ -158,7 +159,7 @@ router.get('/details', function(req, res, next) {
                 pro: result[0],
                 locale: req.cookies.locale,
                 list: list,
-                secondCode: req.query.sCode
+                secondCode:SCode 
             });
         });
     });
