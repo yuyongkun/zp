@@ -72,9 +72,9 @@
 
 .details-content-body {
     min-height: 300px;
-    padding: 10px;
+    /*padding: 10px;*/
     background: #fff;
-    border: 1px solid #e5e5e5;
+    /*border: 1px solid #e5e5e5;*/
 }
 
 .details-func p {

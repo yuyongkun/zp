@@ -73,17 +73,22 @@ router.get('/products/list', function(req, res, next) {
     var endp = page.limit;
     var href = '/products/list?fCode=' + req.query.fCode + '&code=' + req.query.code;
     var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
+     console.log('-------start-----');
     controller.selectFun(res, model.productModel.queryProductCount, [req.query.code], function(count) {
         var pagecount = count[0].count;
         pagehelp['pagecount'] = pagecount;
         var pagehtml = pagination.pagehtml(pagehelp);
-        if (pagecount === 0) {
+        if (pagecount == 0) {
             res.render('home/products', {
+                title:'',
                 secondCode: req.query.code,
                 list: [],
+                keyword:'dfg',
+                describes:'dfgdf',
                 locals: pagehtml,
                 firstCode: req.query.fCode
             });
+            return;
         }
         var sql;
         if (res.locals.inlanguage == 'en') {
@@ -264,18 +269,35 @@ function queryData(res, req, pathname, _type, _title) {
     var endp = page.limit;
     var href = pathname + '?n=10';
     var pagehelp = { currentpage: page.num, pagesize: 10, pagecount: 10, href: href };
-    var queryCount = model.news.queryCount;
-    controller.selectFun(res, queryCount, [_type], function(count) {
+    var queryCount = model.news.queryCountAll;
+    var arr=[];
+    if(_type==1||_type==2){
+        arr=[_type];
+        queryCount = model.news.queryCount; 
+    }
+    controller.selectFun(res, queryCount, arr, function(count) {
         pagehelp['pagecount'] = count[0].count;
         var pagehtml = pagination.pagehtml(pagehelp);
         var sql;
-        if (res.locals.inlanguage == 'en') {
-            sql = model.news.queryNewsListEn;
-        } else {
-            sql = model.news.queryNewsListZh;
+        var arr=[];
+        if(_type==3){
+            if (res.locals.inlanguage == 'en') {
+                sql = model.news.queryNewsListEnAll;
+            } else {
+                sql = model.news.queryNewsListZhAll;
+            }
+            arr=[startp, endp];
+        }else{
+            if (res.locals.inlanguage == 'en') {
+                sql = model.news.queryNewsListEn;
+            } else {
+                sql = model.news.queryNewsListZh;
+            } 
+            arr=[_type, startp, endp];
         }
-        controller.selectFun(res, sql, [_type, startp, endp], function(result) {
-            console.log(result);
+        console.log('sql----->',sql);
+        controller.selectFun(res, sql, arr, function(result) {
+            console.log('newslist----->',result);
             res.render('home/news', {
                 title: _title,
                 keyword: res.__('indexTitle'),
@@ -287,6 +309,10 @@ function queryData(res, req, pathname, _type, _title) {
         });
     });
 }
+/*新闻中心*/
+router.get('/newsCenter', function(req, res, next) {
+    queryData(res, req, 'newsCenter', 3, res.__('NewsCenter'));
+});
 /*新闻中心-企业动态*/
 router.get('/EntreprisesNews', function(req, res, next) {
     queryData(res, req, 'EntreprisesNews', 1, res.__('EntreprisesNews'));

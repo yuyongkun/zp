@@ -29,12 +29,15 @@ var productModel = {
 	};
 var news = {
 		queryCount:'SELECT COUNT(1) count  FROM news t where t.type=?',
+		queryCountAll:'SELECT COUNT(1) count  FROM news t',
 		queryNew:'SELECT t.id,t.nameCh,t.nameEn,t.type,t.descriptionEn,t.descriptionCh FROM news t WHERE t.id= ?',
 		queryNewEn:'SELECT t.id,t.nameEn name,t.descriptionEn description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.id= ?',
 		queryNewZh:'SELECT t.id,t.nameCh name,t.descriptionCh description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.id= ?',
 		queryNewsList:'SELECT t.id,t.nameCh name,t.type,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t where t.type=? ORDER BY t.createDate desc LIMIT ? , ? ',
 		queryNewsListEn:'SELECT t.id,t.nameEn name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t where t.type=? ORDER BY t.createDate DESC LIMIT ? , ? ',
 		queryNewsListZh:'SELECT t.id,t.nameCh name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t where t.type=? ORDER BY t.createDate DESC LIMIT ? , ? ',
+		queryNewsListEnAll:'SELECT t.id,t.nameEn name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t ORDER BY t.createDate DESC LIMIT ? , ? ',
+		queryNewsListZhAll:'SELECT t.id,t.nameCh name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t ORDER BY t.createDate DESC LIMIT ? , ? ',
 		updateNews:'UPDATE news  SET nameCh= ? ,nameEn= ? ,descriptionCh= ? ,descriptionEn= ?,type=?  WHERE id= ? ',
 		insertNews:'INSERT INTO news (id,nameCh,nameEn,descriptionCh,descriptionEn,type,createBy,createDate) VALUES(UUID(),?,?,?,?,?,"aidaFilter",NOW())',
 		del:'DELETE FROM news WHERE id=?',
