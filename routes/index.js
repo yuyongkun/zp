@@ -7,7 +7,6 @@ var model = require('../model/model');
 var controller = require('../controller/controller');
 var pagination = require('../public/static/admin/js/pagination.js');
 var secondList = {};
-var firstCode;
 var uuid = require('node-uuid');
 
 router.all('*', function(req, res, next) {
@@ -16,9 +15,6 @@ router.all('*', function(req, res, next) {
     console.log('path', path);
     if (path == '/') { //首页
         res.locals.main = true;
-    } else if (path == '/products/list') { //产品中心
-
-
     }
     next();
 });
@@ -73,23 +69,11 @@ router.get('/products/list', function(req, res, next) {
     var endp = page.limit;
     var href = '/products/list?fCode=' + req.query.fCode + '&code=' + req.query.code;
     var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
-     console.log('-------start-----');
     controller.selectFun(res, model.productModel.queryProductCount, [req.query.code], function(count) {
         var pagecount = count[0].count;
         pagehelp['pagecount'] = pagecount;
         var pagehtml = pagination.pagehtml(pagehelp);
-        if (pagecount == 0) {
-            res.render('home/products', {
-                title:'',
-                secondCode: req.query.code,
-                list: [],
-                keyword:'dfg',
-                describes:'dfgdf',
-                locals: pagehtml,
-                firstCode: req.query.fCode
-            });
-            return;
-        }
+
         var sql;
         if (res.locals.inlanguage == 'en') {
             sql = model.productModel.queryProductListEn;
@@ -109,7 +93,9 @@ router.get('/products/list', function(req, res, next) {
                 firstName = result[0].productNameCh;
             }
             console.log('firstName------>', firstName);
-            controller.selectFun(res, secondProductNameSQL, [req.query.code], function(result) {
+            var code = req.query.code;
+            var fcode = req.query.fcode;
+            controller.selectFun(res, secondProductNameSQL, [code], function(result) {
                 console.log('secondProductNameSQL------>', result[0]);
                 var secondName;
                 if (res.locals.inlanguage == 'en') {
@@ -117,25 +103,26 @@ router.get('/products/list', function(req, res, next) {
                 } else {
                     secondName = result[0].productNameCh;
                 }
-                console.log('secondName------>', secondName);
                 var title = firstName + '_' + secondName + '_' + res.__('Company');
                 var keyword = firstName + '_' + secondName;
                 var describes = res.__('describes_details_1') + firstName + '_' + secondName + res.__('describes_details_2') + firstName + '_' + secondName + res.__('describes_details_3');
-                console.log('title------>', title);
-                console.log('keyword------>', keyword);
-                console.log('describes------>', describes);
                 //查询列表
                 controller.selectFun(res, sql, [req.query.code, startp, endp], function(result) {
-                    console.log('查询列表----->', result);
-                    res.render('home/products', {
+                    var param = {
                         title: title,
                         keyword: keyword,
                         describes: describes,
-                        secondCode: req.query.code,
-                        list: result,
+                        firstCode: fcode,
+                        secondCode: code,
                         locals: pagehtml,
-                        firstCode: req.query.fCode
-                    });
+                        firstName:firstName
+                    };
+                    if (pagecount <= 0) {
+                        param.list = [];
+                    } else {
+                        param.list = result;
+                    }
+                    res.render('home/products', param);
                 });
             });
         });
@@ -148,10 +135,10 @@ router.get('/details', function(req, res, next) {
     var sql;
     var listSql;
     if (res.locals.inlanguage == 'en') {
-        sql = model.productModel.queryProductEn;
+        sql = model.index.queryProductEn;
         listSql = model.productModel.queryProductListEn;
     } else {
-        sql = model.productModel.queryProductZh;
+        sql = model.index.queryProductZh;
         listSql = model.productModel.queryProductListZh;
     }
     controller.selectFun(res, listSql, [req.query.sCode, 0, 12], function(list) {
@@ -172,10 +159,6 @@ router.get('/details', function(req, res, next) {
                 locale: req.cookies.locale,
                 list: list,
                 secondCode: req.query.sCode
-            }, function(err, html) {
-                console.log('content----->', html);
-                _fs.writeFileSync('../public/details/' + req.query.sCode + '.html', html);
-                res.redirect('/details/' + req.query.sCode + '.html');
             });
         });
     });
@@ -270,34 +253,34 @@ function queryData(res, req, pathname, _type, _title) {
     var href = pathname + '?n=10';
     var pagehelp = { currentpage: page.num, pagesize: 10, pagecount: 10, href: href };
     var queryCount = model.news.queryCountAll;
-    var arr=[];
-    if(_type==1||_type==2){
-        arr=[_type];
-        queryCount = model.news.queryCount; 
+    var arr = [];
+    if (_type == 1 || _type == 2) {
+        arr = [_type];
+        queryCount = model.news.queryCount;
     }
     controller.selectFun(res, queryCount, arr, function(count) {
         pagehelp['pagecount'] = count[0].count;
         var pagehtml = pagination.pagehtml(pagehelp);
         var sql;
-        var arr=[];
-        if(_type==3){
+        var arr = [];
+        if (_type == 3) {
             if (res.locals.inlanguage == 'en') {
                 sql = model.news.queryNewsListEnAll;
             } else {
                 sql = model.news.queryNewsListZhAll;
             }
-            arr=[startp, endp];
-        }else{
+            arr = [startp, endp];
+        } else {
             if (res.locals.inlanguage == 'en') {
                 sql = model.news.queryNewsListEn;
             } else {
                 sql = model.news.queryNewsListZh;
-            } 
-            arr=[_type, startp, endp];
+            }
+            arr = [_type, startp, endp];
         }
-        console.log('sql----->',sql);
+        console.log('sql----->', sql);
         controller.selectFun(res, sql, arr, function(result) {
-            console.log('newslist----->',result);
+            console.log('newslist----->', result);
             res.render('home/news', {
                 title: _title,
                 keyword: res.__('indexTitle'),
@@ -345,7 +328,7 @@ router.get('/archives/:id/:type', function(req, res, next) {
             newsName = '';
         console.log('result---->', result[0]);
         if (result[0]) {
-            describes = result[0].description.replace(/<[^>]+>/g,"").substring(0, 200);
+            describes = result[0].description.replace(/<[^>]+>/g, "").substring(0, 200);
             newsContent = result[0];
             newsName = result[0].name;
         }

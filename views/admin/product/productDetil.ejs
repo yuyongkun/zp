@@ -11,10 +11,6 @@
 					<div class="group-item">英文:<input type="text" id="nameEn" name="nameEn" value="<%=result.nameEn%>"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
-					<label for="txtModule">产品编码</label>
-					<div class="group-item"><input type="text" id="code" name="code" value="<%=result.code%>"/></div>
-				</fieldset>
-				<fieldset class="product-detail">
 					<label for="txtModule">品牌</label>
 					<div class="group-item">中文:<input type="text" id="brandZh" name="brandZh" value="<%=result.brandEn%>"/></div>
 					<div class="group-item">英文:<input type="text" id="brandEn" name="brandEn" value="<%=result.brandEn%>"/></div>
@@ -171,7 +167,6 @@
 	   var id=$("#id").val();
 	   var nameEn=$("#nameEn").val();
 	   var nameCh=$("#nameCh").val();
-	   var code=$("#code").val();
 	   var imgUrl=$("#imgUrl").val();
 	   var firstCode=$("#firstCode").val();
 	   var secondCode=$("#secondCode").val();
@@ -188,7 +183,7 @@
 	   var filtrationPrecision=$("#filtrationPrecision").val();
 	   var operatingTemperature=$("#operatingTemperature").val();
 	   var nominalPressure=$("#nominalPressure").val();
-	   var data={id:id,nameEn:nameEn,nameCh:nameCh,code:code,imgUrl:imgUrl,firstCode:firstCode,secondCode:secondCode,description:description,descriptionEn:descriptionEn,
+	   var data={id:id,nameEn:nameEn,nameCh:nameCh,imgUrl:imgUrl,firstCode:firstCode,secondCode:secondCode,description:description,descriptionEn:descriptionEn,
 			   brandZh:brandZh,brandEn:brandEn,modelZh:modelZh,modelEn:modelEn,applicationFieldZh:applicationFieldZh,applicationFieldEn:applicationFieldEn,filterMaterialZh:filterMaterialZh,
 			   filterMaterialEn:filterMaterialEn,filtrationPrecision:filtrationPrecision,operatingTemperature:operatingTemperature,nominalPressure:nominalPressure};
 	   

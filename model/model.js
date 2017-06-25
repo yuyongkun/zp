@@ -20,13 +20,19 @@ var productModel = {
         secondList:'select  productCode,productNameCh from second_product_list  where FirstCode= ? order by productCode',
         imgInsert:'INSERT INTO three_product_list (imgUrl,id,firstCode,secondCode,createdBy,createdDate) VALUES(?,?,?,?,"aidaFilter",NOW()); ',
         imgUpdate:'UPDATE three_product_list SET imgUrl= ?,firstCode=?,secondCode=? WHERE id= ? ',
-        updateProduct:'UPDATE three_product_list SET nameEn= ? , nameCh= ? ,CODE= ? ,firstCode= ? ,secondCode= ? ,description= ? ,descriptionEn= ?,brandZh= ?,brandEn=?,modelZh=?,modelEn=?,applicationFieldZh=? ,applicationFieldEn=?,'
+        updateProduct:'UPDATE three_product_list SET nameEn= ? , nameCh= ? ,firstCode= ? ,secondCode= ? ,description= ? ,descriptionEn= ?,brandZh= ?,brandEn=?,modelZh=?,modelEn=?,applicationFieldZh=? ,applicationFieldEn=?,'
         	           +'filterMaterialZh=?,filterMaterialEn=?,filtrationPrecision=?,operatingTemperature=?,nominalPressure=? WHERE id=?',
-        insertProduct:'insert into three_product_list (nameEn,nameCh,code,firstCode,secondCode,description,descriptionEn,brandZh,brandEn,modelZh,modelEn,applicationFieldZh,applicationFieldEn,'+
-                       'filterMaterialZh,filterMaterialEn,filtrationPrecision,operatingTemperature,nominalPressure,createdBy,createdDate,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"aidaFilter",NOW(), uuid())',
+        insertProduct:'insert into three_product_list (nameEn,nameCh,firstCode,secondCode,description,descriptionEn,brandZh,brandEn,modelZh,modelEn,applicationFieldZh,applicationFieldEn,'+
+                       'filterMaterialZh,filterMaterialEn,filtrationPrecision,operatingTemperature,nominalPressure,createdBy,createdDate,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"aidaFilter",NOW(), uuid())',
         firstList:'SELECT  productCode,productNameCh FROM first_product_list  order by productCode',
         list:'SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode= ? AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT ? , ? ',
 	};
+var index = {
+	    queryProductEn:'SELECT t.nameEn name,t.code,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.descriptionEn description,t.brandEn brand,t.modelEn model,t.applicationFieldEn applicationField,t.filterMaterialEn filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure FROM three_product_list t  WHERE t.code=?',
+	    queryProductZh:'SELECT t.nameCh name,t.code,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.brandZh brand,t.modelZh model,t.applicationFieldZh applicationField,t.filterMaterialZh filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure  FROM three_product_list t  WHERE t.code=?',
+	    queryNewEn:'SELECT t.id,t.code,t.nameEn name,t.descriptionEn description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.code= ?',
+		queryNewZh:'SELECT t.id,t.code,t.nameCh name,t.descriptionCh description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.code= ?',
+};
 var news = {
 		queryCount:'SELECT COUNT(1) count  FROM news t where t.type=?',
 		queryCountAll:'SELECT COUNT(1) count  FROM news t',
@@ -41,12 +47,12 @@ var news = {
 		updateNews:'UPDATE news  SET nameCh= ? ,nameEn= ? ,descriptionCh= ? ,descriptionEn= ?,type=?  WHERE id= ? ',
 		insertNews:'INSERT INTO news (id,nameCh,nameEn,descriptionCh,descriptionEn,type,createBy,createDate) VALUES(UUID(),?,?,?,?,?,"aidaFilter",NOW())',
 		del:'DELETE FROM news WHERE id=?',
-		queryNextEn:'SELECT t.id,t.nameEn name FROM news t WHERE t.`createDate`<(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate LIMIT 1',
-		queryNextZh:'SELECT t.id,t.nameCh name FROM news t WHERE t.`createDate`<(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate LIMIT 1',
-		queryLastEn:'SELECT t.id,t.nameEn name FROM news t WHERE t.`createDate`>(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate DESC LIMIT 1',
-		queryLastZh:'SELECT t.id,t.nameCh name FROM news t WHERE t.`createDate`>(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate DESC LIMIT 1',
-		queryLastTwoEn:'SELECT  s1.id,s1.nameEn name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate,s1.type FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=1',
-		queryLastTwoZh:'SELECT  s1.id,s1.nameCh name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate,s1.type FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=1',
+		queryNextEn:'SELECT t.id,t.code,t.nameEn name FROM news t WHERE t.`createDate`<(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate LIMIT 1',
+		queryNextZh:'SELECT t.id,t.code,t.nameCh name FROM news t WHERE t.`createDate`<(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate LIMIT 1',
+		queryLastEn:'SELECT t.id,t.code,t.nameEn name FROM news t WHERE t.`createDate`>(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate DESC LIMIT 1',
+		queryLastZh:'SELECT t.id,t.code,t.nameCh name FROM news t WHERE t.`createDate`>(SELECT createDate FROM news WHERE id= ? ) and t.type= ? ORDER BY t.createDate DESC LIMIT 1',
+		queryLastTwoEn:'SELECT  s1.id,s1.code,s1.nameEn name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate,s1.type FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=1',
+		queryLastTwoZh:'SELECT  s1.id,s1.code,s1.nameCh name,s1.createBy,DATE_FORMAT(s1.createDate,"%Y/%c/%d") createDate,s1.type FROM news s1  WHERE  (SELECT COUNT(1) FROM news s2 WHERE s2.type=s1.type AND s2.createDate >= s1.createDate) <=1',
 };
 
 var hot={
@@ -57,8 +63,8 @@ var hot={
 		query:'SELECT h.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT ?,? ',
 		queryProduct:'SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode=s.productCode AND t.firstCode = f.productCode ',
 		queryProCount:'SELECT count(1) FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode=s.productCode AND t.firstCode = f.productCode ',
-		queryProductEn:'SELECT h.id,t.code,t.nameEn name,t.imgUrl,s.productNameEn sName,s.productCode sCode,f.productNameEn fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code ',
-		queryProductZh:'SELECT h.id,t.code,t.nameCh name,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code ',
+		queryProductEn:'SELECT t.id,t.code,t.nameEn name,t.imgUrl,s.productNameEn sName,s.productCode sCode,f.productNameEn fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code ',
+		queryProductZh:'SELECT t.id,t.code,t.nameCh name,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s,hotProduct h WHERE h.proId= t.id AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code ',
 };
 
 var column={
@@ -77,6 +83,7 @@ var column={
 };
 
 exports.news = news;
+exports.index = index;
 exports.hot = hot;
 exports.column = column;
 exports.loginModel = loginModel;
