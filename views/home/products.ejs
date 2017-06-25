@@ -129,10 +129,10 @@
         <%}%>
         
         <div id="products-center" class="clearfix products-content">
-           <%if(list){
+           <%if(list &&list.length>0){
                 list.forEach(function(pro){ %>
                 <div class="products-center-item">
-                    <a href="/details?id=<%= pro.id%>&sCode=<%= secondCode%>">
+                    <a href="/details?id=<%= pro.code%>&sCode=<%= secondCode%>">
                         <div class="products-icon">
                             <img src="<%= pro.imgUrl%>" title="<%= pro.name%>"  alt="<%= pro.name%>">
                         </div>

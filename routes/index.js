@@ -143,10 +143,10 @@ router.get('/details', function(req, res, next) {
     var sql;
     var listSql;
     if (res.locals.inlanguage == 'en') {
-        sql = model.productModel.queryProductEn;
+        sql = model.index.queryProductEn;
         listSql = model.productModel.queryProductListEn;
     } else {
-        sql = model.productModel.queryProductZh;
+        sql = model.index.queryProductZh;
         listSql = model.productModel.queryProductListZh;
     }
     controller.selectFun(res, listSql, [req.query.sCode, 0, 12], function(list) {
@@ -167,10 +167,6 @@ router.get('/details', function(req, res, next) {
                 locale: req.cookies.locale,
                 list: list,
                 secondCode: req.query.sCode
-            }, function(err, html) {
-                console.log('content----->', html);
-                _fs.writeFileSync('../public/details/' + req.query.sCode + '.html', html);
-                res.redirect('/details/' + req.query.sCode + '.html');
             });
         });
     });
