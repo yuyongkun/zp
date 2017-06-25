@@ -16,7 +16,32 @@ router.all('*', function(req, res, next) {
     if (path == '/') { //首页
         res.locals.main = true;
     }
-    next();
+    var firstSQL=model.productModel.firstList;
+    var secondSQL=model.productModel.secondList;
+    controller.selectFun(res, firstSQL, [], function(result) {
+        var firstProList=result;
+        console.log('result------>',firstProList);
+        var arr=[];
+        firstProList.forEach(function(filename,idx){
+            var code=filename.productCode;
+            controller.selectFun(res, secondSQL, [code], function(result) {
+                console.log('idx------>',idx);
+                console.log('filename------>',filename);
+                var secondProList=result;
+                console.log('secondProList------>',result);
+                arr.push({
+                    firstProList:firstProList[idx],
+                    secondProList:secondProList,
+                });
+                if(arr.length==firstProList.length){
+                    res.locals.proList=arr;
+                    console.log('proList------>',res.locals.proList);
+                    next(); 
+                }
+            }); 
+        });
+    });
+    
 });
 
 /* 国际化 */
