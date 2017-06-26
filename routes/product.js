@@ -11,6 +11,20 @@ var pagination = require('../public/static/admin/js/pagination.js');
 
 var AVATAR_UPLOAD_FOLDER = '/images/ueditor/';
 
+router.all('*', function(req, res, next) {
+    res.locals.main = false;
+    var path = req.path;
+    console.log('path', path);
+    if (req.session.islogin && req.cookies.islogin==req.session.islogin) {
+		res.cookie('islogin', req.session.islogin, {
+			maxAge : 300000
+		});
+	}else{
+		res.send(JSON.stringify("Failed"));
+	}
+    next();
+});
+
 
 router.get('/productList', function(req, res, next) {
 	console.log(req.query.code);
