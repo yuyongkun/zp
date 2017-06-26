@@ -32,6 +32,10 @@ var index = {
 	    queryProductZh:'SELECT t.nameCh name,t.code,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.brandZh brand,t.modelZh model,t.applicationFieldZh applicationField,t.filterMaterialZh filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure  FROM three_product_list t  WHERE t.code=?',
 	    queryNewEn:'SELECT t.id,t.code,t.nameEn name,t.descriptionEn description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.code= ?',
 		queryNewZh:'SELECT t.id,t.code,t.nameCh name,t.descriptionCh description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.code= ?',
+		secondListZh:'select  productCode,productNameCh productName  from second_product_list  where FirstCode= ? order by productCode',
+		secondListEn:'select  productCode,productNameEn productName from second_product_list  where FirstCode= ? order by productCode',
+		firstListZh:'SELECT  productCode,productNameCh productName FROM first_product_list  order by productCode',
+		firstListEn:'SELECT  productCode,productNameEn productName FROM first_product_list  order by productCode',
 };
 var news = {
 		queryCount:'SELECT COUNT(1) count  FROM news t where t.type=?',

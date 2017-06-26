@@ -16,8 +16,17 @@ router.all('*', function(req, res, next) {
     if (path == '/') { //首页
         res.locals.main = true;
     }
-    var firstSQL=model.productModel.firstList;
-    var secondSQL=model.productModel.secondList;
+    var firstSQL;
+    var secondSQL;
+    
+    if (res.locals.inlanguage == 'en') {
+    	firstSQL=model.index.firstListEn;
+    	secondSQL=model.index.secondListEn;
+    } else {
+    	firstSQL=model.index.firstListZh;
+    	secondSQL=model.index.secondListZh;
+    }
+    
     controller.selectFun(res, firstSQL, [], function(result) {
         var firstProList=result;
         console.log('result------>',firstProList);
@@ -30,7 +39,10 @@ router.all('*', function(req, res, next) {
                 var secondProList=result;
                 console.log('secondProList------>',result);
                 arr.push({
-                    firstProList:firstProList[idx],
+                    firstCode:firstProList[idx].productCode,
+                    firstName:firstProList[idx].productName,
+                    secondCode:secondProList[0].productCode,
+                    secondName:secondProList[0].productName,
                     secondProList:secondProList,
                 });
                 if(arr.length==firstProList.length){
@@ -84,7 +96,7 @@ router.get('/', function(req, res, next) {
 
 /*产品中心*/
 router.get('/products/FCode/code', function(req, res, next) {
-    var code = req.params.code;
+    var code = req.params.code.substring(0,req.params.code.indexOf('.'));
     var fcode = req.params.FCode;
     var page = { limit: 30, num: 1 };
     if (req.query.p) {

@@ -7,19 +7,19 @@
 <body>
 <%include ../public/header.ejs%>
 <div class="bread">
-    <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/products/list?code=2101&fCode=1001">产品中心</a></p>
+    <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/products/1001/2101.html">产品中心</a></p>
 </div>
 <div class="zp-wrap">
     <div class="products-nav-content">
     <h3>所有产品分类<span class="icon-everyone icon-menu"></span></h3>
         <div class="products-list">
             <ul>
-              <%proList.forEach(function(obj){%>
+              <%proList.forEach(function(first){%>
                 <li>
-                    <a href="/products/list?code=2101&fCode=1001"><span class="icon-everyone icon-arrow-right"></span><%= obj.firstProList.productNameCh%></a>
+                    <a href="/products/<%= first.firstCode%>/<%= first.secondCode%>.html"><span class="icon-everyone icon-arrow-right"></span><%= first.firstName%></a>
                    <ul>
-                     <%obj.secondProList.forEach(function(obj){%>
-                        <li><a href="/products/list?code=2101&fCode=1001"><%=obj.productNameCh%></a></li>
+                     <%obj.secondProList.forEach(function(second){%>
+                        <li><a href="/products/<%= first.firstCode%>/<%= second.productCode%>.html"><%=second.productName%></a></li>
                      <%});%>
                     </ul>
                 </li>
