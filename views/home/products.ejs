@@ -18,7 +18,7 @@
                 <li>
                     <a href="/products/<%= first.firstCode%>/<%= first.secondCode%>.html"><span class="icon-everyone icon-arrow-right"></span><%= first.firstName%></a>
                    <ul>
-                     <%obj.secondProList.forEach(function(second){%>
+                     <%first.secondProList.forEach(function(second){%>
                         <li><a href="/products/<%= first.firstCode%>/<%= second.productCode%>.html"><%=second.productName%></a></li>
                      <%});%>
                     </ul>

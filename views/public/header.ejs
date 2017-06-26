@@ -45,11 +45,11 @@
                     <ul>
                     <%proList.forEach(function(first){%>
                         <li>
-                            <h3><a href="/products/list?code=2101&fCode=1001"><%= first.firstProList.productNameCh%></a></h3>
+                            <h3><a href="/products/<%= first.firstCode%>/<%= first.secondCode%>.html"><%= first.productName%></a></h3>
                             <div class="zp-product-list">
                                 <ul>
-                                 <%obj.secondProList.forEach(function(obj){%>
-                                    <li><a href="/products/<%= obj.firstProList.productCode%>/<%=obj.productCode%>"><%=obj.productNameCh%></a></li>
+                                 <%first.secondProList.forEach(function(obj){%>
+                                    <li><a href="/products/<%= first.firstCode%>/<%=obj.productCode%>.html"><%=obj.productName%></a></li>
                                  <%});%>
                                 </ul>
                             </div>

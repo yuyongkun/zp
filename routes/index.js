@@ -95,7 +95,7 @@ router.get('/', function(req, res, next) {
 
 
 /*产品中心*/
-router.get('/products/FCode/code', function(req, res, next) {
+router.get('/products/:FCode/:code', function(req, res, next) {
     var code = req.params.code.substring(0,req.params.code.indexOf('.'));
     var fcode = req.params.FCode;
     var page = { limit: 30, num: 1 };
