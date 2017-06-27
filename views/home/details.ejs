@@ -45,17 +45,18 @@
                          <h3><%= __('RelatedProducts') %></h3>
                         <div id="details-related-products" class="details-func">
                             <div class="products-list">
-                                          <%if(list){
-						    			list.forEach(function(link){ %>
-						    			<div class="products-center-item">
-						                    <a href="/details/<%= link.id%>/<%= secondCode%>.html">
-						                        <div class="products-icon">
-						                            <img src="<%= link.imgUrl%>" title="<%= link.name%>"  alt="<%= link.name%>">
-						                        </div>
-                                                <p class="products-desc"><%= link.name%></p>
-						                    </a>
-						                </div>
-						            <%})}%>
+                              <%if(list){
+          						    			list.forEach(function(link,idx){
+                                  if(idx<=5){%>
+                                      <div class="products-center-item">
+                                          <a href="/details/<%= link.id%>/<%= secondCode%>.html">
+                                              <div class="products-icon">
+                                                  <img src="<%= link.imgUrl%>" title="<%= link.name%>"  alt="<%= link.name%>">
+                                              </div>
+                                              <p class="products-desc"><%= link.name%></p>
+                                          </a>
+                                      </div>
+                                <%}})}%>
                             </div>
                         </div>
                        <!--  <div id="details-industryapplication" class="details-func" style="display: none">

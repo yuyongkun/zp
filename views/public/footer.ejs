@@ -10,12 +10,11 @@
             </li>
             <li>
                 <h4><%= __('ProductCenter') %></h4>
-                <p><a href="/products/list?code=2101&fCode=1001"><%= __('Product1') %></a></p>
-                <p><a href="/products/list?code=2201&fCode=1002"><%= __('Product2') %></a></p>
-                <p><a href="/products/list?code=2301&fCode=1003"><%= __('Product3') %></a></p>
-                <p><a href="/products/list?code=2401&fCode=1004"><%= __('Product4') %></a></p>
-                <p><a href="/products/list?code=2501&fCode=1005"><%= __('Product5') %></a></p>
-                <p><a href="/products/list?code=2601&fCode=1006"><%= __('Product6') %></a></p>
+                <%proList.forEach(function(first,idx){%>
+                 <p><a href="/products/<%= first.firstCode%>/<%= first.secondCode%>.html">
+                <%= first.firstName%>
+                </a></p>
+                <%})%>
             </li>
             <li>
                 <h4><%= __('Solution') %></h4>
@@ -23,22 +22,26 @@
             </li>
             <li>
                 <h4><%= __('ServiceSupport') %></h4>
-                <p><a href="/service/support"><%= __('ServiceSupport') %></a></p>
-                <p><a href="/service/guarantee"><%= __('ServiceGuarantee') %></a></p>
-                <p><a href="/service/process"><%= __('ServiceProcess') %></a></p>
+                <p><a href="/ServiceSupport"><%= __('ServiceSupport') %></a></p>
+                <p><a href="/ServiceGuarantee"><%= __('ServiceGuarantee') %></a></p>
+                <p><a href="/ServiceProcess"><%= __('ServiceProcess') %></a></p>
             </li>
             <li>
                 <h4><%= __('NewsCenter') %></h4>
-                <p><a href="/CompanyInfo/"><%= __('EntreprisesNews') %></a></p>
-                <p><a href="/honor/"><%= __('ProductInformation') %></a></p>
+                <p><a href="/EntreprisesNews/"><%= __('EntreprisesNews') %></a></p>
+                <p><a href="/ProductInformation"><%= __('ProductInformation') %></a></p>
             </li>
         </ul>
-        <p><%= __('footer') %>
-            <a href="#" target="blank"><%= __('YuCP') %></a>
-        </p>
+         <%if(main){%>
+         <p><%=__('footer') %><a href="http://www.miitbeian.gov.cn/" target="blank"><%= __('YuCP') %></a></p>
+         <%}%>
         <%if(main){%>
-             <div class='footer-related-link'><%= __('Links') %>：
-                <a href="/Leemin/" target="_blank">国标滤芯</a>|<a href="/AtlasFilter/" target="_blank">阿特拉斯过滤芯</a>|<a href="/HYDAC_filter/" target="_blank">贺德克滤芯</a>|<a href="/MAHLE_filter/" target="_blank">玛勒过滤器滤芯</a>|<a href="/PARKE_filter/" target="_blank">派克滤芯</a>
+             <div class='footer-related-link'><!--<%= __('Links') %>：
+                <a href="/Leemin/" target="_blank">国标滤芯</a>|
+                <a href="/AtlasFilter/" target="_blank">阿特拉斯过滤芯</a>|
+                <a href="/HYDAC_filter/" target="_blank">贺德克滤芯</a>|
+                <a href="/MAHLE_filter/" target="_blank">玛勒过滤器滤芯</a>|
+                <a href="/PARKE_filter/" target="_blank">派克滤芯</a>-->
                 <div class="share-default">
                     <label style="font-size: 14px;color: #868686;"><%= __('AboutUs') %>分享&nbsp;&nbsp;|&nbsp;&nbsp;</label>
                     <div class="bdsharebuttonbox bdshare-button-style0-16" data-tag="share_1" data-bd-bind="1489937138552" style="float:right">
