@@ -9,12 +9,12 @@ var productNameModel={
 };
 var productModel = {
 	    queryUser: 'select count(1) count from admin where name= ? and password = ? ',
-	    queryProduct:'SELECT t.id,t.code,t.nameEn,t.nameCh,t.imgUrl,t.description,t.introduction,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.descriptionEn,t.firstCode,t.secondCode, t.brandZh,t.brandEn,t.modelZh,t.modelEn,t.applicationFieldZh,t.applicationFieldEn,'+
+	    queryProduct:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameEn,t.nameCh,t.imgUrl,t.description,t.introduction,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.descriptionEn,t.firstCode,t.secondCode, t.brandZh,t.brandEn,t.modelZh,t.modelEn,t.applicationFieldZh,t.applicationFieldEn,'+
         't.filterMaterialZh,t.filterMaterialEn,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure FROM three_product_list t  WHERE t.id=?',
-	    queryProductEn:'SELECT t.nameEn name,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.descriptionEn description,t.brandEn brand,t.modelEn model,t.applicationFieldEn applicationField,t.filterMaterialEn filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure FROM three_product_list t  WHERE t.id=?',
-	    queryProductZh:'SELECT t.nameCh name,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.brandZh brand,t.modelZh model,t.applicationFieldZh applicationField,t.filterMaterialZh filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure  FROM three_product_list t  WHERE t.id=?',
-	    queryProductListEn:'SELECT t.id,t.code,t.nameEn name,t.imgUrl FROM three_product_list t WHERE t.secondCode= ?  ORDER BY t.code LIMIT ? ,? ',
-	    queryProductListZh:'SELECT t.id,t.code,t.nameCh name,t.imgUrl FROM three_product_list t WHERE t.secondCode= ?  ORDER BY t.code LIMIT ? ,? ',
+	    queryProductEn:'SELECT t.nameEn name,t.secondCode,t.firstCode,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.descriptionEn description,t.brandEn brand,t.modelEn model,t.applicationFieldEn applicationField,t.filterMaterialEn filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure FROM three_product_list t  WHERE t.id=?',
+	    queryProductZh:'SELECT t.nameCh name,t.secondCode,t.firstCode,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.brandZh brand,t.modelZh model,t.applicationFieldZh applicationField,t.filterMaterialZh filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure  FROM three_product_list t  WHERE t.id=?',
+	    queryProductListEn:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameEn name,t.imgUrl FROM three_product_list t WHERE t.secondCode= ?  ORDER BY t.code LIMIT ? ,? ',
+	    queryProductListZh:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameCh name,t.imgUrl FROM three_product_list t WHERE t.secondCode= ?  ORDER BY t.code LIMIT ? ,? ',
 	    queryProductCount:'SELECT COUNT(1) count  FROM three_product_list t WHERE t.secondCode= ? ',
         del:'DELETE FROM three_product_list WHERE id= ? ',
         secondList:'select  productCode,productNameCh from second_product_list  where FirstCode= ? order by productCode',
@@ -28,8 +28,8 @@ var productModel = {
         list:'SELECT t.id,t.code,t.nameCh,t.imgUrl,s.productNameCh sName,s.productCode sCode,f.productNameCh fName,f.productCode fCode FROM three_product_list t,first_product_list f,second_product_list s WHERE t.secondCode= ? AND t.secondCode=s.productCode AND t.firstCode = f.productCode ORDER BY t.code LIMIT ? , ? ',
 	};
 var index = {
-	    queryProductEn:'SELECT t.nameEn name,t.code,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.descriptionEn description,t.brandEn brand,t.modelEn model,t.applicationFieldEn applicationField,t.filterMaterialEn filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure FROM three_product_list t  WHERE t.code=?',
-	    queryProductZh:'SELECT t.nameCh name,t.code,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.brandZh brand,t.modelZh model,t.applicationFieldZh applicationField,t.filterMaterialZh filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure  FROM three_product_list t  WHERE t.code=?',
+	    queryProductEn:'SELECT t.nameEn name,t.secondCode,t.firstCode,t.code,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.descriptionEn description,t.brandEn brand,t.modelEn model,t.applicationFieldEn applicationField,t.filterMaterialEn filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure FROM three_product_list t  WHERE t.code=?',
+	    queryProductZh:'SELECT t.nameCh name,t.secondCode,t.firstCode,t.code,t.imgUrl,t.createdBy,DATE_FORMAT(t.createdDate,"%Y/%c/%d") createdDate,t.description,t.brandZh brand,t.modelZh model,t.applicationFieldZh applicationField,t.filterMaterialZh filterMaterial,t.filtrationPrecision,t.operatingTemperature,t.nominalPressure  FROM three_product_list t  WHERE t.code=?',
 	    queryNewEn:'SELECT t.id,t.code,t.nameEn name,t.descriptionEn description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.code= ?',
 		queryNewZh:'SELECT t.id,t.code,t.nameCh name,t.descriptionCh description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM news t WHERE t.code= ?',
 		secondListZh:'select  productCode,productNameCh productName  from second_product_list  where FirstCode= ? order by productCode',
@@ -40,7 +40,12 @@ var index = {
 		queryNextZh:'SELECT t.id,t.code,t.nameCh name FROM news t WHERE t.`createDate`<(SELECT createDate FROM news WHERE code= ? ) and t.type= ? ORDER BY t.createDate LIMIT 1',
 		queryLastEn:'SELECT t.id,t.code,t.nameEn name FROM news t WHERE t.`createDate`>(SELECT createDate FROM news WHERE code= ? ) and t.type= ? ORDER BY t.createDate DESC LIMIT 1',
 		queryLastZh:'SELECT t.id,t.code,t.nameCh name FROM news t WHERE t.`createDate`>(SELECT createDate FROM news WHERE code= ? ) and t.type= ? ORDER BY t.createDate DESC LIMIT 1',
-		
+		queryProductListEn:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameEn name,t.imgUrl FROM three_product_list t WHERE t.firstCode= ?  ORDER BY t.code LIMIT ? ,? ',
+		queryProductListZh:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameCh name,t.imgUrl FROM three_product_list t WHERE t.firstCode= ?  ORDER BY t.code LIMIT ? ,? ',
+		queryPListEn:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameEn name,t.imgUrl FROM three_product_list t  ORDER BY t.code LIMIT ? ,? ',
+		queryPListZh:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameCh name,t.imgUrl FROM three_product_list t  ORDER BY t.code LIMIT ? ,? ',
+		queryPFCount:'SELECT COUNT(1) count  FROM three_product_list t WHERE t.firstCode= ? ',
+		queryPCCount:'SELECT COUNT(1) count  FROM three_product_list t ',
 };
 var news = {
 		queryCount:'SELECT COUNT(1) count  FROM news t where t.type=?',
