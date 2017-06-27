@@ -346,19 +346,19 @@ router.get('/ProductInformation', function(req, res, next) {
 //新闻详情
 router.get('/archives/:id/:type', function(req, res, next) {
     var id = req.params.id;
-    var type = req.params.type;
+    var type = req.params.type.substring(0,req.params.type.indexOf('.'));
     console.log('newdetails-----', id);
     var sql, listSql, nextSql, lastSql;
     if (res.locals.inlanguage == 'en') {
-        sql = model.news.queryNewEn;
+        sql = model.index.queryNewEn;
         listSql = model.news.queryNewsListEn;
-        nextSql = model.news.queryNextEn;
-        lastSql = model.news.queryLastEn;
+        nextSql = model.index.queryNextEn;
+        lastSql = model.index.queryLastEn;
     } else {
-        sql = model.news.queryNewZh;
+        sql = model.index.queryNewZh;
         listSql = model.news.queryNewsListZh;
-        nextSql = model.news.queryNextZh;
-        lastSql = model.news.queryLastZh;
+        nextSql = model.index.queryNextZh;
+        lastSql = model.index.queryLastZh;
     }
     controller.selectFun(res, sql, [id], function(result) {
         var describes = '',
