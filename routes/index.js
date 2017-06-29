@@ -92,6 +92,108 @@ router.get('/', function(req, res, next) {
         });
     });
 });
+/*产品中心*/
+router.get('/productsC/:code', function(req, res, next) {
+    var page = { limit: 30, num: 1 };
+    if (req.query.p) {
+        page['num'] = req.query.p < 1 ? 1 : req.query.p;
+    }
+    var startp = (page.num - 1) * page.limit;
+    var endp = page.limit;
+    var href = '/productsC/Center.html';
+    var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
+    controller.selectFun(res, model.index.queryPCCount, [], function(count) {
+        var pagecount = count[0].count;
+        pagehelp['pagecount'] = pagecount;
+        var pagehtml = pagination.pagehtml(pagehelp);
+
+        var sql;
+        if (res.locals.inlanguage == 'en') {
+            sql = model.index.queryPListEn;
+        } else {
+            sql = model.index.queryPListZh;
+        }
+	        var title = '过滤器'  + '_' + res.__('Company');
+	        var keyword = '过滤器';
+            var describes = res.__('describes_details_1') + '过滤器_' + res.__('describes_details_2') + '过滤器__'  + res.__('describes_details_3');
+            
+                //查询列表
+                controller.selectFun(res, sql, [startp, endp], function(result) {
+                    var param = {
+                        title: title,
+                        keyword: keyword,
+                        describes: describes,
+                        locals: pagehtml,
+                        name:res.__('ProductCenter'),
+                    };
+                    if (pagecount <= 0) {
+                        param.list = [];
+                    } else {
+                        param.list = result;
+                    }
+                    res.render('home/products', param);
+                });
+            });
+        });
+
+/*产品中心*/
+router.get('/productsF/:code', function(req, res, next) {
+    var code = req.params.code.substring(0,req.params.code.indexOf('.'));
+    var page = { limit: 30, num: 1 };
+    if (req.query.p) {
+        page['num'] = req.query.p < 1 ? 1 : req.query.p;
+    }
+    var startp = (page.num - 1) * page.limit;
+    var endp = page.limit;
+    var href = '/productsF/' + code+'.html';
+    var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
+    controller.selectFun(res, model.index.queryPFCount, [code], function(count) {
+        var pagecount = count[0].count;
+        pagehelp['pagecount'] = pagecount;
+        var pagehtml = pagination.pagehtml(pagehelp);
+
+        var sql;
+        if (res.locals.inlanguage == 'en') {
+            sql = model.index.queryProductListEn;
+        } else {
+            sql = model.index.queryProductListZh;
+        }
+
+        //先查询一级目录名称和二级目录名称
+        var firstProductNameSQL = model.productNameModel.firstProductName;
+        controller.selectFun(res, firstProductNameSQL, [code], function(result) {
+            console.log('firstProductNameSQL------>', result[0]);
+            var firstName;
+            if (res.locals.inlanguage == 'en') {
+                firstName = result[0].productNameEn;
+            } else {
+                firstName = result[0].productNameCh;
+            }
+            console.log('firstName------>', firstName);
+            var title = firstName  + '_' + res.__('Company');
+            var keyword = firstName;
+            var describes = res.__('describes_details_1') + firstName + '_' + res.__('describes_details_2') + firstName + '_'  + res.__('describes_details_3');
+            
+                //查询列表
+                controller.selectFun(res, sql, [code, startp, endp], function(result) {
+                    var param = {
+                        title: title,
+                        keyword: keyword,
+                        describes: describes,
+                        firstCode: code,
+                        locals: pagehtml,
+                        name:firstName,
+                    };
+                    if (pagecount <= 0) {
+                        param.list = [];
+                    } else {
+                        param.list = result;
+                    }
+                    res.render('home/products', param);
+                });
+            });
+        });
+});
 
 /*产品中心*/
 router.get('/products/:FCode/:code', function(req, res, next) {
@@ -103,7 +205,7 @@ router.get('/products/:FCode/:code', function(req, res, next) {
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
-    var href = '/products/' + fcode + '/' + code;
+    var href = '/products/' + fcode + '/' + code+'.html';
     var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
     controller.selectFun(res, model.productModel.queryProductCount, [code], function(count) {
         var pagecount = count[0].count;
@@ -149,7 +251,8 @@ router.get('/products/:FCode/:code', function(req, res, next) {
                         firstCode: fcode,
                         secondCode: code,
                         locals: pagehtml,
-                        firstName:firstName
+                        firstName:firstName,
+                        name:secondName
                     };
                     if (pagecount <= 0) {
                         param.list = [];
@@ -267,8 +370,6 @@ router.get('/companyhonor', function(req, res, next) {
 router.get('/companyculture', function(req, res, next) {
     res.render('home/companyculture', {
         title: res.__('CompanyCulture') + '-' + res.__('Company'),
-        keyword: res.__('indexTitle'),
-        describes: res.__('indexTitle'),
         type: 3,
     });
 });
@@ -347,19 +448,19 @@ router.get('/ProductInformation', function(req, res, next) {
 //新闻详情
 router.get('/archives/:id/:type', function(req, res, next) {
     var id = req.params.id;
-    var type = req.params.type;
+    var type = req.params.type.substring(0,req.params.type.indexOf('.'));
     console.log('newdetails-----', id);
     var sql, listSql, nextSql, lastSql;
     if (res.locals.inlanguage == 'en') {
-        sql = model.news.queryNewEn;
+        sql = model.index.queryNewEn;
         listSql = model.news.queryNewsListEn;
-        nextSql = model.news.queryNextEn;
-        lastSql = model.news.queryLastEn;
+        nextSql = model.index.queryNextEn;
+        lastSql = model.index.queryLastEn;
     } else {
-        sql = model.news.queryNewZh;
+        sql = model.index.queryNewZh;
         listSql = model.news.queryNewsListZh;
-        nextSql = model.news.queryNextZh;
-        lastSql = model.news.queryLastZh;
+        nextSql = model.index.queryNextZh;
+        lastSql = model.index.queryLastZh;
     }
     controller.selectFun(res, sql, [id], function(result) {
         var describes = '',
