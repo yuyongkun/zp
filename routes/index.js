@@ -370,6 +370,8 @@ router.get('/companyhonor', function(req, res, next) {
 router.get('/companyculture', function(req, res, next) {
     res.render('home/companyculture', {
         title: res.__('CompanyCulture') + '-' + res.__('Company'),
+        keyword: res.__('indexTitle'),
+        describes: res.__('indexTitle'),
         type: 3,
     });
 });
