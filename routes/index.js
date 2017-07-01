@@ -448,9 +448,9 @@ router.get('/ProductInformation', function(req, res, next) {
 });
 
 //新闻详情
-router.get('/archives/:id/:type', function(req, res, next) {
-    var id = req.params.id;
-    var type = req.params.type.substring(0,req.params.type.indexOf('.'));
+router.get('/archives/:type/:id', function(req, res, next) {
+    var type = req.params.type;
+    var id = req.params.id.substring(0,req.params.id.indexOf('.'));
     console.log('newdetails-----', id);
     var sql, listSql, nextSql, lastSql;
     if (res.locals.inlanguage == 'en') {

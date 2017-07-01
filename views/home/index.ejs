@@ -56,14 +56,11 @@
                  <img src="/images/hot/滤油机.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
                  <%}else if(idx==5){%>
                  <img src="/images/hot/其他过滤设备.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
-                 <%}%>
-                <p><%= first.firstName%></p>
-                </a>
-            <%})%>
+             <%}%>
         </div>
         <div class="zp-wrap zp-ad">
-            <a href="#" class="zp-ad-pre"></a>
-            <a href="#" class="zp-ad-next"></a>
+            <a href="javascript:void(0)" class="zp-ad-pre"></a>
+            <a href="javascript:void(0)" class="zp-ad-next"></a>
             <div id="demo">
                 <div id="indemo">
                     <div id="demo1">
@@ -89,7 +86,7 @@
                    <% newsList.forEach(function(news){%>
                    <div class="zp-info-news-list">
                         <img src="/images/cc.png">
-                        <a href="/archives/<%=news.code%>/<%=news.type%>"><%=news.name%></a>
+                        <a href="/archives/<%=news.type%>/<%=news.code%>.html"><%=news.name%></a>
                         <span><%=news.createDate%></span>
                     </div>
 				<%})%>

@@ -24,10 +24,10 @@
                     <div class="news-content"><%-news.description%></div>
                     <div class="news-handover">
                     <%if(last){%>
-                        <a href="/archives/<%= last.id%>/<%= type%>">上一篇：<%= last.name%></a> 
+                        <a href="/archives/<%= type%>/<%= last.code%>.html">上一篇：<%= last.name%></a> 
                         <%}%>
                      <%if(next){%>
-                        <a href="/archives/<%= next.id%>/<%= type%>">下一篇：<%= next.name%></a> 
+                        <a href="/archives/<%= type%>/<%= next.code%>.html">下一篇：<%= next.name%></a> 
                         <%}%>
                     </div>
                     <div class="news-recommended">
@@ -35,7 +35,7 @@
                             <h5>最新动态</h5>
                             <ul class="news-list">
                             <% entrepriseNewsList.forEach(function(news){%>
-                               <li><a href="/archives/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr"><%=news.createDate%></label></li>
+                               <li><a href="/archives/<%=type%>/<%=news.code%>.html"><%=news.name%></a><label class="fr"><%=news.createDate%></label></li>
                             <%})%>
                             </ul> 
                         </div>
@@ -43,7 +43,7 @@
                          <h5>最新资讯</h5>
                             <ul class="news-list">
                             <% productInformationList.forEach(function(news){%>
-                               <li><a  href="/archives/<%=news.id%>/<%=type%>"><%=news.name%></a><label class="fr"><%=news.createDate%></label></li>
+                               <li><a  href="/archives/<%=type%>/<%=news.code%>.html"><%=news.name%></a><label class="fr"><%=news.createDate%></label></li>
                             <%})%>
                             </ul> 
                         </div>
