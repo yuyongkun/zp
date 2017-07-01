@@ -43,7 +43,7 @@ var index = {
 		queryProductListEn:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameEn name,t.imgUrl FROM three_product_list t WHERE t.firstCode= ?  ORDER BY t.code LIMIT ? ,? ',
 		queryProductListZh:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameCh name,t.imgUrl FROM three_product_list t WHERE t.firstCode= ?  ORDER BY t.code LIMIT ? ,? ',
 		queryPListEn:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameEn name,t.imgUrl FROM three_product_list t  ORDER BY t.code LIMIT ? ,? ',
-		queryPListZh:'SELECT t.id,t.code，t.secondCode,t.firstCode,t.nameCh name,t.imgUrl FROM three_product_list t  ORDER BY t.code LIMIT ? ,? ',
+		queryPListZh:'SELECT t.id,t.code,t.secondCode,t.firstCode,t.nameCh name,t.imgUrl FROM three_product_list t  ORDER BY t.code LIMIT ? ,? ',
 		queryPFCount:'SELECT COUNT(1) count  FROM three_product_list t WHERE t.firstCode= ? ',
 		queryPCCount:'SELECT COUNT(1) count  FROM three_product_list t ',
 };
