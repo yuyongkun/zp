@@ -12,7 +12,7 @@
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">产品编码</label>
-					<div class="group-item"><input type="text" id="code" name="code" value="<%=result.productCode%>"/></div>
+					<div class="group-item"><input type="text" id="code" name="code" value="<%=result.productCode%>" readonly="readonly"/></div>
 				</fieldset>
 				<div class="tc mt20">
 					<a onclick="saveProduct()" class="button green" id="btnAdd">保存</a>
@@ -27,8 +27,7 @@
 	   var id=$("#id").val();
 	   var nameEn=$("#nameEn").val();
 	   var nameCh=$("#nameCh").val();
-	   var code=$("#code").val();
-	   var data={productNameEn:nameEn,productNameCh:nameCh,productCode:code,id:id};
+	   var data={productNameEn:nameEn,productNameCh:nameCh,id:id};
 	   
 	   $.ajax({
 		   url:   "/product/first/save",

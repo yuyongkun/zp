@@ -40,12 +40,12 @@
         <ul class="zp-wrap">
             <li><a href="/"><%= __('Home') %></a></li>
             <li class="nav_first">
-                <a href="/products/1001/2101.html"><%= __('ProductCenter') %></a>
+                <a href="/productsC/Center.html"><%= __('ProductCenter') %></a>
                 <div class="about_nav products-nav">
                     <ul>
                     <%proList.forEach(function(first){%>
                         <li>
-                            <h3><a href="/products/<%= first.firstCode%>/<%= first.secondCode%>.html"><%= first.firstName%></a></h3>
+                            <h3><a href="/productF/<%= first.firstCode%>.html"><%= first.firstName%></a></h3>
                             <div class="zp-product-list">
                                 <ul>
                                  <%first.secondProList.forEach(function(obj){%>

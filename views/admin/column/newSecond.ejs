@@ -11,10 +11,6 @@
 					<div class="group-item">英文:<input type="text" id="nameEn" name="nameEn"/></div>
 				</fieldset>
 				<fieldset class="product-detail">
-					<label for="txtModule">产品编码</label>
-					<div class="group-item"><input type="text" id="code" name="code"/></div>
-				</fieldset>
-				<fieldset class="product-detail">
 					<label for="txtButton">一级产品名称</label>
 						<select name="firstCode" id="firstCode" onchange="getSecondProductList()">
 					<% var i=0;
@@ -41,9 +37,8 @@
     function saveProduct(){
        var nameEn=$("#nameEn").val();
  	   var nameCh=$("#nameCh").val();
- 	   var code=$("#code").val();
  	   var firstCode=$("#firstCode").val();
-	   var data={productNameEn:nameEn,productNameCh:nameCh,productCode:code,firstCode:firstCode};
+	   var data={productNameEn:nameEn,productNameCh:nameCh,firstCode:firstCode};
  	   $.ajax({
  		   url:"/product/second/save",
  		   type: "post",
