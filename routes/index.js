@@ -268,11 +268,11 @@ router.get('/products/:FCode/:code', function(req, res, next) {
 });
 
 /*产品详情*/
-router.get('/details/:id/:SCode', function(req, res, next) {
+router.get('/details/:SCode/:id', function(req, res, next) {
     var sql;
     var listSql;
-    var id = req.params.id;
-    var SCode = req.params.SCode.substring(0,req.params.SCode.indexOf('.'));
+    var SCode = req.params.SCode;
+    var id = req.params.id.substring(0,req.params.id.indexOf('.'));
     console.log(SCode);
     if (res.locals.inlanguage == 'en') {
         sql = model.index.queryProductEn;
@@ -298,7 +298,8 @@ router.get('/details/:id/:SCode', function(req, res, next) {
                 pro: result[0],
                 locale: req.cookies.locale,
                 list: list,
-                secondCode:SCode 
+                secondCode:SCode,
+                name:keyword
             });
         });
     });

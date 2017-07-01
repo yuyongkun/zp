@@ -33,7 +33,7 @@
            <%if(list &&list.length>0){
                 list.forEach(function(pro){ %>
                 <div class="products-center-item">
-                    <a href="/details/<%= pro.code%>/<%= secondCode%>.html">
+                    <a href="/details/<%= pro.secondCode%>/<%= pro.code%>.html">
                         <div class="products-icon">
                             <img src="<%= pro.imgUrl%>" title="<%= pro.name%>"  alt="<%= pro.name%>">
                         </div>

@@ -43,7 +43,7 @@
         <div class="zp-wrap hot-recommended">
             <h2><%= __('HotRecommended') %></h2>
             <%proList.forEach(function(first){%>
-                 <a href="/products/<%= first.firstCode%>.html">
+                 <a href="/productF/<%= first.firstCode%>.html">
                 <img src="/images/hot/hot-1.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
                 <p><%= first.firstName%></p>
             </a>
@@ -57,7 +57,7 @@
                     <div id="demo1">
                      <%if(hotList){
 			    			hotList.forEach(function(pro){ %>
-			                    <a href="/details/<%= pro.code%>/<%= pro.sCode%>.html" title="<%= pro.name%>" alt="<%= pro.name%>">
+			                    <a href="/details/<%= pro.sCode%>/<%= pro.code%>.html" title="<%= pro.name%>" alt="<%= pro.name%>">
 			                     <img src="<%= pro.imgUrl%>">
 			                    </a>
 			            <%})}%>
