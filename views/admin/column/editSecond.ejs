@@ -12,7 +12,7 @@
 				</fieldset>
 				<fieldset class="product-detail">
 					<label for="txtModule">产品编码</label>
-					<div class="group-item"><input type="text" id="code" name="code" value="<%=result.productCode%>"/></div>
+					<div class="group-item"><input type="text" id="code" name="code" value="<%=result.productCode%>" readonly="readonly"/></div>
 				</fieldset>
 				
 				<fieldset>
@@ -36,29 +36,28 @@
 		</section>
 		
 		<script type="text/javascript">
-   function saveProduct(){
-	   var id=$("#id").val();
-	   var nameEn=$("#nameEn").val();
-	   var nameCh=$("#nameCh").val();
-	   var code=$("#code").val();
-	   var firstCode=$("#firstCode").val();
-	   var data={productNameEn:nameEn,productNameCh:nameCh,productCode:code,firstCode:firstCode，id:id};
-	   
-	   $.ajax({
-		   url:   "/product/saveProduct",
-		   type: "post",
-		   data: data,
-		   dataType:'json',
-		   error: function(XMLHttpRequest, textStatus, errorThrown){
-		      var s3=errorThrown;
-		      alert("error message : "+errorThrown.toString());
-		      },
-		   success: function(data){
-		      var url="/product/second/list?code="+firstCode;
-		      location.href =url;
+		   function saveProduct(){
+			   var id=$("#id").val();
+			   var nameEn=$("#nameEn").val();
+			   var nameCh=$("#nameCh").val();
+			   var firstCode=$("#firstCode").val();
+			   var data={productNameEn:nameEn,productNameCh:nameCh,firstCode:firstCode,id:id};
+			   
+			   $.ajax({
+				   url:   "/product/saveProduct",
+				   type: "post",
+				   data: data,
+				   dataType:'json',
+				   error: function(XMLHttpRequest, textStatus, errorThrown){
+				      var s3=errorThrown;
+				      alert("error message : "+errorThrown.toString());
+				      },
+				   success: function(data){
+				      var url="/product/second/list?code="+firstCode;
+				      location.href =url;
+				   }
+				  }); 
 		   }
-		  }); 
-   }
-</script>
+		</script>
 </body>
         <%include ../footer.ejs%>

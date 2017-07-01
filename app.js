@@ -60,12 +60,13 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use('/', index);
 app.use('/admin', admin);
 app.use('/product', product);
 app.use('/ueditor', ueditor);
 app.use('/service', service);
 app.use('/adminNews', news);
+app.use('/', index);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
