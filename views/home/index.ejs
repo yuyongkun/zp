@@ -41,17 +41,26 @@
     </div>
         </div>
         <div class="zp-wrap hot-recommended">
-            <h2><%= __('HotRecommended') %></h2>
-            <%proList.forEach(function(first){%>
-                 <a href="/productsF/<%= first.firstCode%>.html">
-                <img src="/images/hot/hot-1.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
-                <p><%= first.firstName%></p>
-            </a>
-                <%})%>
+        <%proList.forEach(function(first,idx){%>
+                <a href="/productsF/<%= first.firstCode%>.html">
+                 <%if(idx==0){%>
+                 <img src="/images/hot/液压滤芯.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
+                 <%}else if(idx==1){%>
+                 <img src="/images/hot/空压机三滤.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
+                 <%}else if(idx==2){%>
+                 <img src="/images/hot/真空泵滤芯.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
+                 <%}else if(idx==3){%>
+                 <img src="/images/hot/金属烧结滤芯.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
+                 <%}else if(idx==4){%>
+                 <img src="/images/hot/滤油机.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
+                 <%}else if(idx==5){%>
+                 <img src="/images/hot/其他过滤设备.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
+                 <%}%>
+            <%})%>
         </div>
         <div class="zp-wrap zp-ad">
-            <a href="#" class="zp-ad-pre"></a>
-            <a href="#" class="zp-ad-next"></a>
+            <a href="javascript:void(0)" class="zp-ad-pre"></a>
+            <a href="javascript:void(0)" class="zp-ad-next"></a>
             <div id="demo">
                 <div id="indemo">
                     <div id="demo1">
