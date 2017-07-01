@@ -42,24 +42,12 @@
         </div>
         <div class="zp-wrap hot-recommended">
             <h2><%= __('HotRecommended') %></h2>
-            <%proList.forEach(function(first,idx){%>
-                 <a href="/products/<%= first.firstCode%>/<%= first.secondCode%>.html">
-                 <%if(idx==0){%>
-                 <img src="/images/hot/液压滤芯.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
-                 <%}else if(idx==1){%>
-                 <img src="/images/hot/空压机三滤.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
-                 <%}else if(idx==2){%>
-                 <img src="/images/hot/真空泵滤芯.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
-                 <%}else if(idx==3){%>
-                 <img src="/images/hot/金属烧结滤芯.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
-                 <%}else if(idx==4){%>
-                 <img src="/images/hot/滤油机.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
-                 <%}else if(idx==5){%>
-                 <img src="/images/hot/其他过滤设备.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
-                 <%}%>
+            <%proList.forEach(function(first){%>
+                 <a href="/products/<%= first.firstCode%>.html">
+                <img src="/images/hot/hot-1.jpg" title="<%= first.firstName%>" alt="<%= first.firstName%>">
                 <p><%= first.firstName%></p>
-                </a>
-            <%})%>
+            </a>
+                <%})%>
         </div>
         <div class="zp-wrap zp-ad">
             <a href="#" class="zp-ad-pre"></a>
@@ -89,7 +77,7 @@
                    <% newsList.forEach(function(news){%>
                    <div class="zp-info-news-list">
                         <img src="/images/cc.png">
-                        <a href="/archives/<%=news.code%>/<%=news.type%>"><%=news.name%></a>
+                        <a href="/archives/<%=news.type%>/<%=news.code%>.html"><%=news.name%></a>
                         <span><%=news.createDate%></span>
                     </div>
 				<%})%>
