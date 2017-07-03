@@ -125,6 +125,10 @@ router.get('/productsC/:code', function(req, res, next) {
                         describes: describes,
                         locals: pagehtml,
                         name:res.__('ProductCenter'),
+                        firstCode: '',
+                        firstName:'',
+                        secondCode: '',
+                        secondName:'',
                     };
                     if (pagecount <= 0) {
                         param.list = [];
@@ -181,9 +185,12 @@ router.get('/productsF/:code', function(req, res, next) {
                         keyword: keyword,
                         describes: describes,
                         firstCode: code,
+                        firstName:firstName,
+                        secondCode: '',
+                        secondName:'',
                         locals: pagehtml,
-                        name:firstName,
                     };
+                    console.log('param',param);
                     if (pagecount <= 0) {
                         param.list = [];
                     } else {
@@ -252,6 +259,7 @@ router.get('/products/:FCode/:code', function(req, res, next) {
                         secondCode: code,
                         locals: pagehtml,
                         firstName:firstName,
+                        secondName:secondName,
                         name:secondName
                     };
                     if (pagecount <= 0) {

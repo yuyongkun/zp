@@ -7,7 +7,17 @@
 <body>
 <%include ../public/header.ejs%>
 <div class="bread">
-    <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/productsC/Center.html">产品中心</a></p>
+    <p class="zp-wrap">
+    您当前位置：
+    <a href="/">首页</a>&gt;
+    <a href="/productsC/Center.html">产品中心</a>
+    <%if(firstName){%>
+    &gt;<a href="/productsF/<%=firstCode%>.html"><%= firstName%></a>
+    <%}%>
+    <%if(secondName){%>
+    &gt;<a href="/products/<%=firstCode%>/<%= secondCode%>.html"><%= secondName%></a>
+    <%}%>
+    </p>
 </div>
 <div class="zp-wrap">
     <div class="products-nav-content">
@@ -28,7 +38,7 @@
         </div>
     </div>
     <div class="products-wrap">
-        <h3><%=name%></h3>
+        <h3><%=firstName%></h3>
         <div id="products-center" class="clearfix products-content">
            <%if(list &&list.length>0){
                 list.forEach(function(pro){ %>

@@ -11,9 +11,9 @@
             <li>
                 <h4><%= __('ProductCenter') %></h4>
                 <%proList.forEach(function(first,idx){%>
-                 <p><a href="/products/<%= first.firstCode%>/<%= first.secondCode%>.html">
-                <%= first.firstName%>
-                </a></p>
+                 <p>
+                 <a href="/productsF/<%= first.firstCode%>.html"><%= first.firstName%></a>
+                </p>
                 <%})%>
             </li>
             <li>
