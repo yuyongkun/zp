@@ -86,13 +86,13 @@ var column={
 		firstList:'select id,productCode,productNameCh,productNameEn from first_product_list order by productCode  limit ?,? ',
 		queryFirst:'select id,productCode,productNameEn,productNameCh from first_product_list where id= ?',
 		queryfirstCount:'select count(1) count from first_product_list',
-		insertFirst:'INSERT INTO first_product_list (productCode,productNameEn,productNameCh,id,status,createdby,createdDate) VALUES (?,?,?,UUID(),"1","aidaFilter",NOW())',
-		updateFirst:'UPDATE first_product_list SET productCode =?,productNameEn=?,productNameCh=? WHERE id=?',
+		insertFirst:'INSERT INTO first_product_list (productNameEn,productNameCh,id,status,createdby,createdDate) VALUES (?,?,UUID(),"1","aidaFilter",NOW())',
+		updateFirst:'UPDATE first_product_list SET productNameEn=?,productNameCh=? WHERE id=?',
 		deleteSecond:'delete from second_product_list where id= ?',
 		querySecondCount:'select count(1) count from second_product_list where firstCode=?',
 		secondList:'SELECT t.id,t.productCode,t.productNameCh,t.productNameEn,f.productNameCh fName,f.productCode fCode FROM first_product_list f,second_product_list t WHERE t.FirstCode=f.productCode AND t.FirstCode=? order by t.productCode LIMIT ?,? ',
-		insertSecond:'INSERT INTO second_product_list (productCode,productNameEn,productNameCh,FirstCode,id,status,createdby,createdDate) VALUES (?,?,?,?,UUID(),"1","aidaFilter",NOW())',
-		updateSecond:'UPDATE second_product_list SET productCode =?,productNameEn=?,productNameCh=?,FirstCode=? WHERE id=?',
+		insertSecond:'INSERT INTO second_product_list (productNameEn,productNameCh,FirstCode,id,status,createdby,createdDate) VALUES (?,?,?,UUID(),"1","aidaFilter",NOW())',
+		updateSecond:'UPDATE second_product_list SET productNameEn=?,productNameCh=?,FirstCode=? WHERE id=?',
 		querySecond:'SELECT t.id,t.productCode,t.productNameCh,t.productNameEn,f.productNameCh fName,f.productCode fCode FROM first_product_list f,second_product_list t WHERE t.FirstCode=f.productCode AND t.id=?'
 };
 
