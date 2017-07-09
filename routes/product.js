@@ -389,7 +389,7 @@ router.post('/first/save', function(req, res, next) {
 	if(id){
 		sql=model.column.updateFirst;
 	}
-	var arr=[req.body.productCode,req.body.productNameEn,req.body.productNameCh,id];
+	var arr=[req.body.productNameEn,req.body.productNameCh,id];
 	controller.selectFun(res,sql,arr,function(result){
 		      res.send(JSON.stringify("SUCESS"));
 		});
@@ -449,11 +449,12 @@ router.get('/second/list', function(req, res, next) {
 router.post('/second/save', function(req, res, next) {
 	var sql=model.column.insertSecond;
 	var id=req.body.id;
-	console.log(id);
+	console.log('--------------'+id);
 	if(id){
 		sql=model.column.updateSecond;
 	}
-	var arr=[req.body.productCode,req.body.productNameEn,req.body.productNameCh,req.body.firstCode,req.body.id];
+	var arr=[req.body.productNameEn,req.body.productNameCh,req.body.firstCode,req.body.id];
+	console.log('--------------'+arr);
 	controller.selectFun(res,sql,arr,function(result){
 		      res.send(JSON.stringify("SUCESS"));
 		});
