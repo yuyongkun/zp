@@ -18,42 +18,42 @@ router.all('*', function(req, res, next) {
     }
     var firstSQL;
     var secondSQL;
-    
+
     if (res.locals.inlanguage == 'en') {
-    	firstSQL=model.index.firstListEn;
-    	secondSQL=model.index.secondListEn;
+        firstSQL = model.index.firstListEn;
+        secondSQL = model.index.secondListEn;
     } else {
-    	firstSQL=model.index.firstListZh;
-    	secondSQL=model.index.secondListZh;
+        firstSQL = model.index.firstListZh;
+        secondSQL = model.index.secondListZh;
     }
-    
+
     controller.selectFun(res, firstSQL, [], function(result) {
-        var firstProList=result;
-        console.log('result------>',firstProList);
-        var arr=[];
-        firstProList.forEach(function(filename,idx){
-            var code=filename.productCode;
+        var firstProList = result;
+        console.log('result------>', firstProList);
+        var arr = [];
+        firstProList.forEach(function(filename, idx) {
+            var code = filename.productCode;
             controller.selectFun(res, secondSQL, [code], function(result) {
-                console.log('idx------>',idx);
-                console.log('filename------>',filename);
-                var secondProList=result;
-                console.log('secondProList------>',result);
+                console.log('idx------>', idx);
+                console.log('filename------>', filename);
+                var secondProList = result;
+                console.log('secondProList------>', result);
                 arr.push({
-                    firstCode:firstProList[idx].productCode,
-                    firstName:firstProList[idx].productName,
-                    secondCode:secondProList[0].productCode,
-                    secondName:secondProList[0].productName,
-                    secondProList:secondProList,
+                    firstCode: firstProList[idx].productCode,
+                    firstName: firstProList[idx].productName,
+                    secondCode: secondProList[0].productCode,
+                    secondName: secondProList[0].productName,
+                    secondProList: secondProList,
                 });
-                if(arr.length==firstProList.length){
-                    res.locals.proList=arr;
-                    console.log('proList------>',res.locals.proList);
-                    next(); 
+                if (arr.length == firstProList.length) {
+                    res.locals.proList = arr;
+                    console.log('proList------>', res.locals.proList);
+                    next();
                 }
-            }); 
+            });
         });
     });
-    
+
 });
 
 /* 国际化 */
@@ -113,43 +113,44 @@ router.get('/productsC/:code', function(req, res, next) {
         } else {
             sql = model.index.queryPListZh;
         }
-	        var title = '过滤器'  + '_' + res.__('Company');
-	        var keyword = '过滤器';
-            var describes = res.__('describes_details_1') + '过滤器_' + res.__('describes_details_2') + '过滤器__'  + res.__('describes_details_3');
-            
-                //查询列表
-                controller.selectFun(res, sql, [startp, endp], function(result) {
-                    var param = {
-                        title: title,
-                        keyword: keyword,
-                        describes: describes,
-                        locals: pagehtml,
-                        name:res.__('ProductCenter'),
-                        firstCode: '',
-                        firstName:'',
-                        secondCode: '',
-                        secondName:'',
-                    };
-                    if (pagecount <= 0) {
-                        param.list = [];
-                    } else {
-                        param.list = result;
-                    }
-                    res.render('home/products', param);
-                });
-            });
+        var title = res.__('productCenterTitle');
+        var keyword = res.__('productCenterKey');
+        var describes = res.__('productCenterdescribes');
+
+
+        //查询列表
+        controller.selectFun(res, sql, [startp, endp], function(result) {
+            var param = {
+                title: title,
+                keyword: keyword,
+                describes: describes,
+                locals: pagehtml,
+                name: res.__('ProductCenter'),
+                firstCode: '',
+                firstName: '',
+                secondCode: '',
+                secondName: '',
+            };
+            if (pagecount <= 0) {
+                param.list = [];
+            } else {
+                param.list = result;
+            }
+            res.render('home/products', param);
         });
+    });
+});
 
 /*产品中心*/
 router.get('/productsF/:code', function(req, res, next) {
-    var code = req.params.code.substring(0,req.params.code.indexOf('.'));
+    var code = req.params.code.substring(0, req.params.code.indexOf('.'));
     var page = { limit: 30, num: 1 };
     if (req.query.p) {
         page['num'] = req.query.p < 1 ? 1 : req.query.p;
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
-    var href = '/productsF/' + code+'.html';
+    var href = '/productsF/' + code + '.html';
     var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
     controller.selectFun(res, model.index.queryPFCount, [code], function(count) {
         var pagecount = count[0].count;
@@ -174,37 +175,37 @@ router.get('/productsF/:code', function(req, res, next) {
                 firstName = result[0].productNameCh;
             }
             console.log('firstName------>', firstName);
-            var title = firstName  + '_' + res.__('Company');
+            var title = firstName + '_' + res.__('Company');
             var keyword = firstName;
-            var describes = res.__('describes_details_1') + firstName + '_' + res.__('describes_details_2') + firstName + '_'  + res.__('describes_details_3');
-            
-                //查询列表
-                controller.selectFun(res, sql, [code, startp, endp], function(result) {
-                    var param = {
-                        title: title,
-                        keyword: keyword,
-                        describes: describes,
-                        firstCode: code,
-                        firstName:firstName,
-                        secondCode: '',
-                        secondName:'',
-                        locals: pagehtml,
-                    };
-                    console.log('param',param);
-                    if (pagecount <= 0) {
-                        param.list = [];
-                    } else {
-                        param.list = result;
-                    }
-                    res.render('home/products', param);
-                });
+            var describes = res.__('describes_details_1') + firstName + '_' + res.__('describes_details_2') + firstName + '_' + res.__('describes_details_3');
+
+            //查询列表
+            controller.selectFun(res, sql, [code, startp, endp], function(result) {
+                var param = {
+                    title: title,
+                    keyword: keyword,
+                    describes: describes,
+                    firstCode: code,
+                    firstName: firstName,
+                    secondCode: '',
+                    secondName: '',
+                    locals: pagehtml,
+                };
+                console.log('param', param);
+                if (pagecount <= 0) {
+                    param.list = [];
+                } else {
+                    param.list = result;
+                }
+                res.render('home/products', param);
             });
         });
+    });
 });
 
 /*产品中心*/
 router.get('/products/:FCode/:code', function(req, res, next) {
-    var code = req.params.code.substring(0,req.params.code.indexOf('.'));
+    var code = req.params.code.substring(0, req.params.code.indexOf('.'));
     var fcode = req.params.FCode;
     var page = { limit: 30, num: 1 };
     if (req.query.p) {
@@ -212,7 +213,7 @@ router.get('/products/:FCode/:code', function(req, res, next) {
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
-    var href = '/products/' + fcode + '/' + code+'.html';
+    var href = '/products/' + fcode + '/' + code + '.html';
     var pagehelp = { currentpage: page.num, pagesize: 30, pagecount: 30, href: href };
     controller.selectFun(res, model.productModel.queryProductCount, [code], function(count) {
         var pagecount = count[0].count;
@@ -258,9 +259,9 @@ router.get('/products/:FCode/:code', function(req, res, next) {
                         firstCode: fcode,
                         secondCode: code,
                         locals: pagehtml,
-                        firstName:firstName,
-                        secondName:secondName,
-                        name:secondName
+                        firstName: firstName,
+                        secondName: secondName,
+                        name: secondName
                     };
                     if (pagecount <= 0) {
                         param.list = [];
@@ -280,7 +281,7 @@ router.get('/details/:SCode/:id', function(req, res, next) {
     var sql;
     var listSql;
     var SCode = req.params.SCode;
-    var id = req.params.id.substring(0,req.params.id.indexOf('.'));
+    var id = req.params.id.substring(0, req.params.id.indexOf('.'));
     console.log(SCode);
     if (res.locals.inlanguage == 'en') {
         sql = model.index.queryProductEn;
@@ -306,8 +307,8 @@ router.get('/details/:SCode/:id', function(req, res, next) {
                 pro: result[0],
                 locale: req.cookies.locale,
                 list: list,
-                secondCode:SCode,
-                name:keyword
+                secondCode: SCode,
+                name: keyword
             });
         });
     });
@@ -321,7 +322,6 @@ router.get('/case', function(req, res, next) {
         describes: res.__('indexTitle'),
     });
 });
-
 /*关于我们*/
 router.get('/aboutus', function(req, res, next) {
     res.render('home/aboutus', {
@@ -459,7 +459,7 @@ router.get('/ProductInformation', function(req, res, next) {
 //新闻详情
 router.get('/archives/:type/:id', function(req, res, next) {
     var type = req.params.type;
-    var id = req.params.id.substring(0,req.params.id.indexOf('.'));
+    var id = req.params.id.substring(0, req.params.id.indexOf('.'));
     console.log('newdetails-----', id);
     var sql, listSql, nextSql, lastSql;
     if (res.locals.inlanguage == 'en') {
