@@ -41,8 +41,8 @@ router.all('*', function(req, res, next) {
                 arr.push({
                     firstCode: firstProList[idx].productCode,
                     firstName: firstProList[idx].productName,
-                    secondCode: secondProList[0].productCode,
-                    secondName: secondProList[0].productName,
+                    secondCode: secondProList.length>0?secondProList[0].productCode:'',
+                    secondName: secondProList.length>0?secondProList[0].productName:'',
                     secondProList: secondProList,
                 });
                 if (arr.length == firstProList.length) {
