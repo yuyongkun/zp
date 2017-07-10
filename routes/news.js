@@ -80,4 +80,64 @@ router.get('/query/:type', function(req, res, next) {
 	});
 });
 
+router.get('/case/new', function(req, res, next) {
+	res.render('admin/case/new', { title: '发布新闻'});
+});
+
+
+router.post('/saveCase', function(req, res, next) {
+	console.log('req.body.id------>'+req.body.id);
+	if(req.body.id){
+		sql=model.cases.updateCase;
+	} else {
+		sql=model.cases.insertCase;
+	}
+	var arr=[req.body.nameCh,req.body.nameEn,req.body.descriptionCh,req.body.descriptionEn,req.body.type,req.body.id];
+	controller.selectFun(res,sql,arr,function(result){
+	    console.log(result);
+	    res.send(JSON.stringify("Success"));
+	});
+});
+
+
+router.get('/case/delete', function(req, res, next) {
+	console.log(req.query.id);
+	controller.selectFun(res,model.cases.del,[req.query.id],function(result){
+	    console.log(result);
+	    res.send(JSON.stringify("Success"));
+	});
+});
+router.get('/case/query', function(req, res, next) {
+	console.log("------------1");
+	var page={limit:10,num:1};
+	if(req.query.p){
+		page['num']=req.query.p<1?1:req.query.p;
+	}
+	var startp=(page.num-1)*page.limit;
+	var endp=page.limit;
+	var href='/news/query?n=10';
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
+	var queryCount=model.cases.queryCount;
+	var title="成功案例";
+	controller.selectFun(res,queryCount,[],function(count){
+		pagehelp['pagecount']=count[0].count;
+	    var pagehtml=pagination.pagehtml(pagehelp);
+	    console.log("------------2");
+	    var sql=model.cases.queryCaseList;
+	    controller.selectFun(res,sql,[startp,endp],function(result){
+		    console.log(result);
+			res.render('admin/case/list', {list:result,locals:pagehtml,title:title});
+		});
+	});
+});
+
+router.get('/case/detail', function(req, res, next) {
+	console.log(req.query.id);
+	var sql=model.cases.queryCase;
+	controller.selectFun(res,sql,[req.query.id],function(result){
+		console.log(result);
+		res.render('admin/case/caseDetail', { title: '编辑产品' ,result:result[0]});
+	});
+});
+
 module.exports = router;

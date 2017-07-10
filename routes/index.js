@@ -38,11 +38,19 @@ router.all('*', function(req, res, next) {
                 console.log('filename------>',filename);
                 var secondProList=result;
                 console.log('secondProList------>',result);
+                var secondCode;
+                var secondName;
+                if(secondProList[0]){
+                	secondName=secondProList[0].productName;
+                	secondCode=secondProList[0].productCode;
+                }
+              
+                console.log('second------>',secondCode);
                 arr.push({
                     firstCode:firstProList[idx].productCode,
                     firstName:firstProList[idx].productName,
-                    secondCode:secondProList[0].productCode,
-                    secondName:secondProList[0].productName,
+                    secondCode:secondCode,
+                    secondName:secondName,
                     secondProList:secondProList,
                 });
                 if(arr.length==firstProList.length){

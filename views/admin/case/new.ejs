@@ -1,0 +1,72 @@
+    <%include ../header.ejs%>
+    <body>
+       <%include ../left.ejs%>
+      <section id="main" class="column">
+      <div style="width: 100px;display: inline;float: left;margin-top: 15px;">
+<h3>案例发布</h3>
+</div>
+	<hr class="split"> 
+    <article class="module width_full">
+			<div class="module_content">
+				<fieldset>
+					<label for="txtName">中文名称</label>
+					<input type="hidden" id="id" name="id"/>
+					<input type="text" id="nameCh" name="nameCh" />
+				</fieldset>
+				<fieldset>
+					<label for="txtName">英文名称</label>
+					<input type="hidden" id="id" name="id"/>
+					<input type="text" id="nameEn" name="nameEn" />
+				</fieldset>
+				
+				<fieldset>
+				<div>
+				<label for="txtButton">详细信息</label>
+				<script id="editor" type="text/plain" style="width:100%;height:300px;"></script>
+				</div>
+				</fieldset>
+				<fieldset>
+				<div>
+				<label for="txtButton">详细信息英文</label>
+				<script id="editorEn" type="text/plain" style="width:100%;height:300px;"></script>
+				</div>
+				</fieldset>
+				<div class="tc mt20">
+					<a onclick="saveNews()" class="button green" id="btnAdd">保存</a>
+				</div>
+			</div>
+			
+		</article><!-- end of post new article -->
+		</section>
+		
+		<script type="text/javascript">
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+    var ueEn = UE.getEditor('editorEn');
+    
+    function saveNews(){
+       var nameEn=$("#nameEn").val();
+ 	   var nameCh=$("#nameCh").val();
+ 	   var descriptionCh=ue.getContent();
+ 	   var descriptionEn=ueEn.getContent();
+ 	  descriptionCh=descriptionCh.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
+ 	  descriptionEn=descriptionEn.replace(new RegExp("\s{2,} ","g"),"").replace(new RegExp("\n","g"), "");
+ 	   var data={nameEn:nameEn,nameCh:nameCh,descriptionCh:descriptionCh,descriptionEn:descriptionEn};
+ 	   $.ajax({
+ 		   url:"/adminNews/saveCase",
+ 		   type: "post",
+ 		   data: data,
+ 		   dataType:'json',
+ 		   error: function(XMLHttpRequest, textStatus, errorThrown){
+ 		      alert("error message : "+errorThrown.toString());
+ 		      },
+ 		   success: function(data){
+ 			  var url="/adminNews/case/query";
+ 		      location.href =url;
+ 		   }
+ 		  }); 
+    }
+</script>
+</body>
+        <%include ../footer.ejs%>

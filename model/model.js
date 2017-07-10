@@ -96,7 +96,22 @@ var column={
 		querySecond:'SELECT t.id,t.productCode,t.productNameCh,t.productNameEn,f.productNameCh fName,f.productCode fCode FROM first_product_list f,second_product_list t WHERE t.FirstCode=f.productCode AND t.id=?'
 };
 
+
+var cases = {
+		queryCount:'SELECT COUNT(1) count  FROM cases', 
+		queryCase:'SELECT t.id,t.code,t.nameCh,t.nameEn,t.descriptionEn,t.descriptionCh FROM cases t WHERE t.id= ?',
+		queryCaseEn:'SELECT t.id,t.code,t.nameEn name,t.descriptionEn description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t ',
+		queryCaseZh:'SELECT t.id,t.code,t.nameCh name,t.descriptionCh description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t ',
+		queryCaseList:'SELECT t.id,t.code,t.nameCh name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t  ORDER BY t.createDate desc LIMIT ? , ? ',
+		queryCaseListEn:'SELECT t.id,t.code,t.nameEn name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t   ORDER BY t.createDate DESC LIMIT ? , ? ',
+		queryCaseListZh:'SELECT t.id,t.code,t.nameCh name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t   ORDER BY t.createDate DESC LIMIT ? , ? ',
+		updateCase:'UPDATE cases  SET nameCh= ? ,nameEn= ? ,descriptionCh= ? ,descriptionEn= ?  WHERE id= ? ',
+		insertCase:'INSERT INTO cases (id,nameCh,nameEn,descriptionCh,descriptionEn,createBy,createDate) VALUES(UUID(),?,?,?,?,"aidaFilter",NOW())',
+		del:'DELETE FROM cases WHERE id=?',
+};
+
 exports.news = news;
+exports.cases = cases;
 exports.index = index;
 exports.hot = hot;
 exports.column = column;
