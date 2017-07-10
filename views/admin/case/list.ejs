@@ -1,0 +1,70 @@
+ <%include ../header.ejs%>
+ 
+<body>
+   <%include ../left.ejs%>
+<script type="text/javascript">
+	function deleteNews(id){
+        $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function(){
+        	var type=$("#type").value;
+        	 $.ajax({    
+                 type:'get',        
+                 url:'/adminNews/case/delete?id='+id,    
+                 cache:false,    
+                 dataType:'json',    
+                 success:function(data){
+                	 alert("你居然真的删除了..."); 
+                	 var url="/adminNews/case/query";
+        		      location.href =url;
+                 }    
+             });
+        });
+    }
+</script>
+<section id="main" class="column">
+<div style="width: 100px;display: inline;float: left;margin-top: 15px;">
+<h3><%=title %></h3>
+</div>
+	<hr class="split"> 
+	<article class="stats_overview"
+		style="float: left; width: 100%;height: auto; border: none;text-align: center;min-height: 500px;">
+		<article class="module width_full">
+			<div class="tab_container">
+				<table cellspacing="0" class="tablesorter"> 
+					<thead> 
+						<tr style="text-align: center;"> 
+							<th width="5%" class="tc">行号</th> 
+							<th width="35%">案例名称</th> 
+							<th width="25%">作者</th>
+							<th width="25%">时间</th> 
+							<th width="15%">操作</th>
+						</tr> 
+					</thead> 
+					<tbody> 
+						<%  i=0; 
+						list.forEach(function(pro){ 
+						i++; %>
+						<tr>
+							<td class="tc"><%=i%><input type="hidden" id="type" value="<%= pro.type%>"></td>
+							<td><%= pro.name%></td> 
+							<td><%= pro.createBy%></td>
+							<td><%= pro.createDate%></td> 
+							<td><a href="/adminNews/case/detail?id=<%= pro.id%>" title="编辑"><font class="ficomoon icon-edit"></font></a>
+							<a href="javascript:void(0)" onclick="deleteNews('<%= pro.id%>')" title="删除" ><font class="ficomoon icon-delete"></font></a></td> 
+						</tr>
+		<%})%>
+						
+						
+					</tbody> 
+				</table>
+			</div>
+		</article><!-- end of post new article -->
+		<nav class="nav">
+			<ul class="pagination paginationA paginationA01" id="pagination">
+				<%- locals %>
+			</ul>
+		</nav>
+	</article>
+</section>
+ 
+</body>
+<%include ../footer.ejs%>

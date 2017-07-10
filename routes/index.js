@@ -34,16 +34,24 @@ router.all('*', function(req, res, next) {
         firstProList.forEach(function(filename, idx) {
             var code = filename.productCode;
             controller.selectFun(res, secondSQL, [code], function(result) {
-                console.log('idx------>', idx);
-                console.log('filename------>', filename);
-                var secondProList = result;
-                console.log('secondProList------>', result);
+                console.log('idx------>',idx);
+                console.log('filename------>',filename);
+                var secondProList=result;
+                console.log('secondProList------>',result);
+                var secondCode;
+                var secondName;
+                if(secondProList[0]){
+                	secondName=secondProList[0].productName;
+                	secondCode=secondProList[0].productCode;
+                }
+              
+                console.log('second------>',secondCode);
                 arr.push({
-                    firstCode: firstProList[idx].productCode,
-                    firstName: firstProList[idx].productName,
-                    secondCode: secondProList.length>0?secondProList[0].productCode:'',
-                    secondName: secondProList.length>0?secondProList[0].productName:'',
-                    secondProList: secondProList,
+                    firstCode:firstProList[idx].productCode,
+                    firstName:firstProList[idx].productName,
+                    secondCode:secondCode,
+                    secondName:secondName,
+                    secondProList:secondProList,
                 });
                 if (arr.length == firstProList.length) {
                     res.locals.proList = arr;
