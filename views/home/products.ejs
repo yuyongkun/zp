@@ -9,13 +9,14 @@
 <div class="bread">
     <p class="zp-wrap">
     您当前位置：
-    <a href="/">首页</a>&gt;
+    <a href="/">首页</a>
+    &gt;
     <a href="/productsC/Center.html">产品中心</a>
     <%if(firstName){%>
     &gt;<a href="/productsF/<%=firstCode%>.html"><%= firstName%></a>
     <%}%>
     <%if(secondName){%>
-    &gt;<a href="/products/<%=firstCode%>/<%= secondCode%>.html"><%= secondName%></a>
+    &gt;<a href="/products/<%=firstCode%>/<%= secondCode%>.html"><%=secondName%></a>
     <%}%>
     </p>
 </div>
