@@ -322,6 +322,13 @@ router.get('/case', function(req, res, next) {
         describes: res.__('indexTitle'),
     });
 });
+router.get('/case/1.html', function(req, res, next) {
+    res.render('home/case-detail', {
+        title: res.__('caseTitle'),
+        keyword: res.__('indexTitle'),
+        describes: res.__('indexTitle'),
+    });
+});
 /*关于我们*/
 router.get('/aboutus', function(req, res, next) {
     res.render('home/aboutus', {
