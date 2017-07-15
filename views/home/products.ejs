@@ -39,7 +39,14 @@
         </div>
     </div>
     <div class="products-wrap">
-        <h3><%=firstName%></h3>
+        <h3>
+        <%if(secondName){%>
+        <a href="/products/<%=firstCode%>/<%= secondCode%>.html"><%=secondName%></a>
+        <%}else{%>
+         <%if(firstName){%>
+            <a href="/productsF/<%=firstCode%>.html"><%= firstName%></a>
+        <%}}%>
+    </h3>
         <div id="products-center" class="clearfix products-content">
            <%if(list &&list.length>0){
                 list.forEach(function(pro){ %>
