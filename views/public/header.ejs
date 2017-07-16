@@ -40,16 +40,16 @@
         <ul class="zp-wrap">
             <li><a href="/"><%= __('Home') %></a></li>
             <li class="nav_first">
-                <a href="/productsC/Center.html/1"><%= __('ProductCenter') %></a>
+                <a href="/productsC/Center/"><%= __('ProductCenter') %></a>
                 <div class="about_nav products-nav">
                     <ul>
                     <%proList.forEach(function(first){%>
                         <li>
-                            <h3><a href="/productsF/<%= first.firstCode%>.html/1"><%= first.firstName%></a></h3>
+                            <h3><a href="/productsF/<%= first.firstCode%>/"><%= first.firstName%></a></h3>
                             <div class="zp-product-list">
                                 <ul>
                                  <%first.secondProList.forEach(function(obj){%>
-                                    <li><a href="/products/<%= first.firstCode%>/<%=obj.productCode%>.html/1"><%=obj.productName%></a></li>
+                                    <li><a href="/products/<%= first.firstCode%>/<%=obj.productCode%>/"><%=obj.productName%></a></li>
                                  <%});%>
                                 </ul>
                             </div>
@@ -70,12 +70,12 @@
                     </div>-->
                 </div>
             </li>
-            <li class="nav_first"><a href="/NewsCenter/1"><%= __('NewsCenter') %></a>
+            <li class="nav_first"><a href="/NewsCenter/"><%= __('NewsCenter') %></a>
                 <div class="about_nav servicesupport-nav">
 
                     <ul>
-                        <li><a href="/EntreprisesNews/1"><%= __('EntreprisesNews') %></a></li>
-                        <li><a href="/ProductInformation/1"><%= __('ProductInformation') %></a></li>
+                        <li><a href="/EntreprisesNews/"><%= __('EntreprisesNews') %></a></li>
+                        <li><a href="/ProductInformation/"><%= __('ProductInformation') %></a></li>
                     </ul>
                 </div>
             </li>
