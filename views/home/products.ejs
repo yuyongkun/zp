@@ -8,10 +8,10 @@
 <%include ../public/header.ejs%>
 <div class="bread">
     <p class="zp-wrap">
-    您当前位置：
-    <a href="/">首页</a>
+    <%=__('CurrentLocation')%>：
+    <a href="/"><%=__('Home')%></a>
     &gt;
-    <a href="/productsC/Center/">产品中心</a>
+    <a href="/productsC/Center/"><%=__('ProductCenter')%></a>
     <%if(firstName){%>
     &gt;<a href="/productsF/<%=firstCode%>/"><%= firstName%></a>
     <%}%>

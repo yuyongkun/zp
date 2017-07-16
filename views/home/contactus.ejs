@@ -10,7 +10,7 @@
     <%include ../public/header.ejs%>
     <div class="servicesupport companyrelative">
         <div class="bread">
-            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/aboutus">关于AIDA</a>&gt;<a href="/contactus">联系我们</a></p>
+            <p class="zp-wrap"><%=__('CurrentLocation')%>：<a href="/"><%=__('Home')%></a>&gt;<a href="/aboutus">关于AIDA</a>&gt;<a href="/contactus"><%=__('ContactUs')%></a></p>
         </div>
         <div class="zp-wrap">
             <%include ../public/companyrelative.ejs%>

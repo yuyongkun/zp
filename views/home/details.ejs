@@ -8,9 +8,9 @@
    <%include ../public/header.ejs%>
    
    <div class="bread">
-       <p class="zp-wrap">您当前位置：
-           <a href="/">首页</a>&gt;
-           <a href="/productsC/Center.html/1">产品中心</a>&gt;
+       <p class="zp-wrap"><%=__('CurrentLocation')%>：
+           <a href="/"><%=__('Home')%></a>&gt;
+           <a href="/productsC/Center/"><%=__('ProductCenter')%></a>&gt;
            <%=pro.name%>
        </p>
    </div>  

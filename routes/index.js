@@ -332,7 +332,7 @@ router.get('/details/:SCode/:id', function(req, res, next) {
 });
 
 /*解决方案*/
-router.get('/case/:p', function(req, res, next) {
+router.get('/case/(:p.html)?', function(req, res, next) {
     console.log("------------1");
     var page={limit:10,num:1};
     if (req.params.p) {
@@ -358,12 +358,12 @@ router.get('/case/:p', function(req, res, next) {
        
         controller.selectFun(res,sql,[startp,endp],function(result){
             console.log(result);
-              res.render('home/case', {
-                    title: res.__('caseTitle'),
-                    keyword: res.__('indexTitle'),
-                    describes: res.__('indexTitle'),
-                    list:result,locals:pagehtml
-                });
+            res.render('home/case', {
+                title: res.__('caseTitle'),
+                keyword: res.__('indexTitle'),
+                describes: res.__('indexTitle'),
+                list:result,locals:pagehtml
+            });
         });
     });
 });
