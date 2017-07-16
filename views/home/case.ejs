@@ -14,14 +14,22 @@
         <div class="zp-wrap" style=" margin-bottom: 20px;">
             <div class="products-list">
                 <div class="products-center-item">
-                    <a href="/case-detail.html">
+                    
+                     <% list.forEach(function(cases){%>
+				     <a href="/caseDetail/<%=cases.code%>.html">
                         <div class="products-icon">
-                            <img src="/images/case.jpg" title="山东化工厂滤器产品使用经典案例" alt="山东化工厂滤器产品使用经典案例">
+                            <img src="/images/case.jpg" title="<%=cases.name%>" alt="<%=cases.name%>">
                         </div>
                     </a>
-                    <p class="products-desc">山东化工厂滤器产品使用经典案例</p>
+                    <p class="products-desc"><%=cases.name%></p>
+				    <%})%>
                 </div>
             </div>
+            	 <nav class="nav">
+					<ul class="pagination paginationA paginationA01" id="pagination">
+						<%- locals %>
+					</ul>
+				</nav>
         </div>
         <%include ../public/footer.ejs%>
             

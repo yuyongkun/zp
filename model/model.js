@@ -100,8 +100,8 @@ var column={
 var cases = {
 		queryCount:'SELECT COUNT(1) count  FROM cases', 
 		queryCase:'SELECT t.id,t.code,t.nameCh,t.nameEn,t.descriptionEn,t.descriptionCh FROM cases t WHERE t.id= ?',
-		queryCaseEn:'SELECT t.id,t.code,t.nameEn name,t.descriptionEn description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t ',
-		queryCaseZh:'SELECT t.id,t.code,t.nameCh name,t.descriptionCh description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t ',
+		queryCaseEn:'SELECT t.id,t.code,t.nameEn name,t.descriptionEn description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t WHERE t.code= ?',
+		queryCaseZh:'SELECT t.id,t.code,t.nameCh name,t.descriptionCh description,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t WHERE t.code= ?',
 		queryCaseList:'SELECT t.id,t.code,t.nameCh name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t  ORDER BY t.createDate desc LIMIT ? , ? ',
 		queryCaseListEn:'SELECT t.id,t.code,t.nameEn name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t   ORDER BY t.createDate DESC LIMIT ? , ? ',
 		queryCaseListZh:'SELECT t.id,t.code,t.nameCh name,t.createBy,DATE_FORMAT(t.createDate,"%Y/%c/%d") createDate FROM cases t   ORDER BY t.createDate DESC LIMIT ? , ? ',

@@ -323,13 +323,64 @@ router.get('/details/:SCode/:id', function(req, res, next) {
 });
 
 /*解决方案*/
-router.get('/case', function(req, res, next) {
-    res.render('home/case', {
-        title: res.__('caseTitle'),
-        keyword: res.__('indexTitle'),
-        describes: res.__('indexTitle'),
-    });
+router.get('/case/:p', function(req, res, next) {
+    console.log("------------1");
+	var page={limit:10,num:1};
+	if (req.params.p) {
+        page['num'] = req.params.p < 1 ? 1 : req.params.p;
+    }
+	var startp=(page.num-1)*page.limit;
+	var endp=page.limit;
+	var href='/news/query';
+	var pagehelp={currentpage:page.num,pagesize:10,pagecount:10,href:href};
+	var queryCount=model.cases.queryCount;
+	
+	var title="成功案例";
+	controller.selectFun(res,queryCount,[],function(count){
+		pagehelp['pagecount']=count[0].count;
+	    var pagehtml=pagination.pagehtml(pagehelp);
+	    console.log("------------2");
+	    var sql;
+	    if (res.locals.inlanguage == 'en') {
+	    	sql = model.cases.queryCaseListEn;
+        } else {
+        	sql = model.cases.queryCaseListZh;
+        }
+	   
+	    controller.selectFun(res,sql,[startp,endp],function(result){
+		    console.log(result);
+			  res.render('home/case', {
+			        title: res.__('caseTitle'),
+			        keyword: res.__('indexTitle'),
+			        describes: res.__('indexTitle'),
+			        list:result,locals:pagehtml
+			    });
+		});
+	});
 });
+
+/*关于我们*/
+router.get('/caseDetail/:code', function(req, res, next) {
+	
+	var code = req.params.code.substring(0, req.params.code.indexOf('.'));
+	
+	var sql;
+    if (res.locals.inlanguage == 'en') {
+    	sql = model.cases.queryCaseEn;
+    } else {
+    	sql = model.cases.queryCaseZh;
+    }
+    controller.selectFun(res,sql,[code],function(result){
+	    console.log(result);
+		  res.render('home/case-detail', {
+		        title: res.__('caseTitle'),
+		        keyword: res.__('indexTitle'),
+		        describes: res.__('indexTitle'),
+		        cases:result[0]
+		    });
+	});
+});
+
 /*关于我们*/
 router.get('/aboutus', function(req, res, next) {
     res.render('home/aboutus', {
