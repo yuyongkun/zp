@@ -154,7 +154,7 @@ router.get('/productsF/:code/:p', function(req, res, next) {
     var code = req.params.code.substring(0, req.params.code.indexOf('.'));
     var page = { limit: 30, num: 1 };
     if (req.params.p) {
-        page['num'] = rreq.params.p< 1 ? 1 : req.params.p;
+    	   page['num'] = rreq.params.p< 1 ? 1 : req.params.p;
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
