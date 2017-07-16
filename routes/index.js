@@ -5,7 +5,7 @@ var service_controller = require('../controller/serviceCtr');
 var keyword_controller = require('../controller/keywordCtr');
 var model = require('../model/model');
 var controller = require('../controller/controller');
-var pagination = require('../public/static/admin/js/pagination.js');
+var pagination = require('../public/static/admin/js/paginationIndex.js');
 var secondList = {};
 var uuid = require('node-uuid');
 
@@ -101,10 +101,10 @@ router.get('/', function(req, res, next) {
     });
 });
 /*产品中心*/
-router.get('/productsC/:code', function(req, res, next) {
+router.get('/productsC/:code/:p', function(req, res, next) {
     var page = { limit: 30, num: 1 };
-    if (req.query.p) {
-        page['num'] = req.query.p < 1 ? 1 : req.query.p;
+    if (req.params.p) {
+        page['num'] = req.params.p < 1 ? 1 : req.params.p;
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
@@ -150,11 +150,11 @@ router.get('/productsC/:code', function(req, res, next) {
 });
 
 /*产品中心*/
-router.get('/productsF/:code', function(req, res, next) {
+router.get('/productsF/:code/:p', function(req, res, next) {
     var code = req.params.code.substring(0, req.params.code.indexOf('.'));
     var page = { limit: 30, num: 1 };
-    if (req.query.p) {
-        page['num'] = req.query.p < 1 ? 1 : req.query.p;
+    if (req.params.p) {
+        page['num'] = rreq.params.p< 1 ? 1 : req.params.p;
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
@@ -212,12 +212,12 @@ router.get('/productsF/:code', function(req, res, next) {
 });
 
 /*产品中心*/
-router.get('/products/:FCode/:code', function(req, res, next) {
+router.get('/products/:FCode/:code/:p', function(req, res, next) {
     var code = req.params.code.substring(0, req.params.code.indexOf('.'));
     var fcode = req.params.FCode;
     var page = { limit: 30, num: 1 };
-    if (req.query.p) {
-        page['num'] = req.query.p < 1 ? 1 : req.query.p;
+    if (req.params.p) {
+        page['num'] = req.params.p < 1 ? 1 : req.params.p;
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
@@ -404,12 +404,12 @@ router.get('/contactus', function(req, res, next) {
 /*新闻中心*/
 function queryData(res, req, pathname, _type, _title) {
     var page = { limit: 10, num: 1 };
-    if (req.query.p) {
-        page['num'] = req.query.p < 1 ? 1 : req.query.p;
+    if (req.params.p) {
+        page['num'] = req.params.p < 1 ? 1 : req.params.p;
     }
     var startp = (page.num - 1) * page.limit;
     var endp = page.limit;
-    var href = pathname + '?n=10';
+    var href = "/"+pathname;
     var pagehelp = { currentpage: page.num, pagesize: 10, pagecount: 10, href: href };
     var queryCount = model.news.queryCountAll;
     var arr = [];
@@ -452,15 +452,15 @@ function queryData(res, req, pathname, _type, _title) {
     });
 }
 /*新闻中心*/
-router.get('/newsCenter', function(req, res, next) {
+router.get('/newsCenter/:p', function(req, res, next) {
     queryData(res, req, 'newsCenter', 3, res.__('NewsCenter'));
 });
 /*新闻中心-企业动态*/
-router.get('/EntreprisesNews', function(req, res, next) {
+router.get('/EntreprisesNews/:p', function(req, res, next) {
     queryData(res, req, 'EntreprisesNews', 1, res.__('EntreprisesNews'));
 });
 /*新闻中心-产品资讯*/
-router.get('/ProductInformation', function(req, res, next) {
+router.get('/ProductInformation/:p', function(req, res, next) {
     queryData(res, req, 'ProductInformation', 2, res.__('ProductInformation'));
 });
 

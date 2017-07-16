@@ -11,12 +11,12 @@
     您当前位置：
     <a href="/">首页</a>
     &gt;
-    <a href="/productsC/Center.html">产品中心</a>
+    <a href="/productsC/Center.html/1">产品中心</a>
     <%if(firstName){%>
-    &gt;<a href="/productsF/<%=firstCode%>.html"><%= firstName%></a>
+    &gt;<a href="/productsF/<%=firstCode%>.html/1"><%= firstName%></a>
     <%}%>
     <%if(secondName){%>
-    &gt;<a href="/products/<%=firstCode%>/<%= secondCode%>.html"><%=secondName%></a>
+    &gt;<a href="/products/<%=firstCode%>/<%= secondCode%>.html/1"><%=secondName%></a>
     <%}%>
     </p>
 </div>
@@ -27,10 +27,10 @@
             <ul>
               <%proList.forEach(function(first){%>
                 <li>
-                    <a href="/productsF/<%= first.firstCode%>.html"><span class="icon-everyone icon-arrow-right"></span><%= first.firstName%></a>
+                    <a href="/productsF/<%= first.firstCode%>.html/1"><span class="icon-everyone icon-arrow-right"></span><%= first.firstName%></a>
                    <ul>
                      <%first.secondProList.forEach(function(second){%>
-                        <li><a href="/products/<%= first.firstCode%>/<%= second.productCode%>.html"><%=second.productName%></a></li>
+                        <li><a href="/products/<%= first.firstCode%>/<%= second.productCode%>.html/1"><%=second.productName%></a></li>
                      <%});%>
                     </ul>
                 </li>

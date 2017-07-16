@@ -12,7 +12,7 @@
                 <h4><%= __('ProductCenter') %></h4>
                 <%proList.forEach(function(first,idx){%>
                  <p>
-                 <a href="/productsF/<%= first.firstCode%>.html"><%= first.firstName%></a>
+                 <a href="/productsF/<%= first.firstCode%>.html/1"><%= first.firstName%></a>
                 </p>
                 <%})%>
             </li>
@@ -28,8 +28,8 @@
             </li>
             <li>
                 <h4><%= __('NewsCenter') %></h4>
-                <p><a href="/EntreprisesNews/"><%= __('EntreprisesNews') %></a></p>
-                <p><a href="/ProductInformation"><%= __('ProductInformation') %></a></p>
+                <p><a href="/EntreprisesNews/1"><%= __('EntreprisesNews') %></a></p>
+                <p><a href="/ProductInformation/1"><%= __('ProductInformation') %></a></p>
             </li>
         </ul>
          <%if(main){%>
