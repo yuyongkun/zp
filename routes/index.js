@@ -530,7 +530,7 @@ router.get('/ProductInformation/(:p.html)?', function(req, res, next) {
 //新闻详情
 router.get('/archives/:type/:id', function(req, res, next) {
     var type = req.params.type;
-    var id = req.params.id.substring(0, req.params.id.indexOf('.'));
+    var id = req.params.id;
     console.log('newdetails-----', id);
     var sql, listSql, nextSql, lastSql;
     if (res.locals.inlanguage == 'en') {
