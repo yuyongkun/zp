@@ -10,7 +10,14 @@
     <%include ../public/header.ejs%>
         <div class="news">
         <div class="bread">
-            <p class="zp-wrap">您当前位置：<a href="/">首页</a>&gt;<a href="/EntreprisesNews/1%>"><%= __('NewsCenter') %></a>
+            <p class="zp-wrap">您当前位置：
+            <a href="/">首页</a>&gt;
+            <a href="/EntreprisesNews%>"><%= __('NewsCenter') %>&gt;
+            <%if(type==1){%>
+            <a href="/EntreprisesNews%>"><%=__('EntreprisesNews')%></a>
+            <%}else if(type==2){%>
+            <a href="/ProductInformation%>"><%=__('ProductInformation')%></a>
+            <%}%>
             </a></p>
         </div>
             <div class="zp-wrap">

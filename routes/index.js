@@ -323,6 +323,7 @@ router.get('/details/:SCode/:id', function(req, res, next) {
 });
 
 /*解决方案*/
+<<<<<<< HEAD
 router.get('/case/:p', function(req, res, next) {
     console.log("------------1");
 	var page={limit:10,num:1};
@@ -357,7 +358,7 @@ router.get('/case/:p', function(req, res, next) {
 			    });
 		});
 	});
-});
+
 
 /*关于我们*/
 router.get('/caseDetail/:code', function(req, res, next) {
@@ -384,7 +385,7 @@ router.get('/caseDetail/:code', function(req, res, next) {
 /*关于我们*/
 router.get('/aboutus', function(req, res, next) {
     res.render('home/aboutus', {
-        title: '关于我们',
+        title: res.__('AboutUs'),
         keyword: res.__('indexTitle'),
         describes: res.__('indexTitle'),
     });
@@ -399,8 +400,8 @@ function queryService(req, res, title, type, pathname) {
         }
         res.render('home/' + pathname, {
             title: title + '_' + res.__('Company'),
-            keyword: res.__('indexTitle'),
-            describes: res.__('indexTitle'),
+            keyword: title,
+            describes: res.__('Company')+title,
             content: result[0],
         });
     });
@@ -421,33 +422,33 @@ router.get('/ServiceProcess', function(req, res, next) {
 /*公司简介,公司荣誉,公司文化*/
 router.get('/companyinfo', function(req, res, next) {
     res.render('home/companyinfo', {
-        title: res.__('CompanyProfile') + '-' + res.__('Company'),
-        keyword: res.__('indexTitle'),
-        describes: res.__('indexTitle'),
+        title: res.__('CompanyProfile') + '_' + res.__('Company'),
+        keyword: res.__('CompanyProfile'),
+        describes: res.__('Company')+res.__('CompanyProfile'),
         type: 1,
     });
 });
 router.get('/companyhonor', function(req, res, next) {
     res.render('home/companyhonor', {
-        title: res.__('CompanyHonor') + '-' + res.__('Company'),
-        keyword: res.__('indexTitle'),
-        describes: res.__('indexTitle'),
+        title: res.__('CompanyHonor') + '_' + res.__('Company'),
+        keyword: res.__('CompanyHonor'),
+        describes: res.__('Company')+res.__('CompanyHonor'),
         type: 2,
     });
 });
 router.get('/companyculture', function(req, res, next) {
     res.render('home/companyculture', {
-        title: res.__('CompanyCulture') + '-' + res.__('Company'),
-        keyword: res.__('indexTitle'),
-        describes: res.__('indexTitle'),
+        title: res.__('CompanyCulture') + '_' + res.__('Company'),
+        keyword: res.__('CompanyCulture'),
+        describes: res.__('Company')+res.__('CompanyCulture'),
         type: 3,
     });
 });
 router.get('/contactus', function(req, res, next) {
     res.render('home/contactus', {
-        title: res.__('ContactUs') + '-' + res.__('Company'),
-        keyword: res.__('indexTitle'),
-        describes: res.__('indexTitle'),
+        title: res.__('ContactUs') + '_' + res.__('Company'),
+        keyword: res.__('ContactUs'),
+        describes: res.__('Company')+res.__('ContactUs'),
         type: 4,
     });
 });
@@ -492,9 +493,9 @@ function queryData(res, req, pathname, _type, _title) {
         controller.selectFun(res, sql, arr, function(result) {
             console.log('newslist----->', result);
             res.render('home/news', {
-                title: _title,
-                keyword: res.__('indexTitle'),
-                describes: res.__('indexTitle'),
+                title: _title+'_'+res.__('Company'),
+                keyword: _title,
+                describes: res.__('Company')+_title,
                 list: result,
                 locals: pagehtml,
                 type: _type,
