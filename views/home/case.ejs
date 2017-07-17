@@ -13,16 +13,16 @@
         </div>
         <div class="zp-wrap" style=" margin-bottom: 20px;">
             <div class="products-list">
-                <div class="products-center-item">
-                     <% list.forEach(function(cases){%>
-				     <a href="/caseDetail/<%=cases.code%>.html">
+                 <% list.forEach(function(cases){%>
+                 <div class="products-center-item">
+    			     <a href="/caseDetail/<%=cases.code%>.html">
                         <div class="products-icon">
                             <img src="/images/case.jpg" title="<%=cases.name%>" alt="<%=cases.name%>">
                         </div>
                         <p class="products-desc"><%=cases.name%></p>
-                    </a>
-				    <%})%>
+                     </a>
                 </div>
+			    <%})%>
             </div>
             	 <nav class="nav">
 					<ul class="pagination paginationA paginationA01" id="pagination">

@@ -69,7 +69,7 @@
                     <div id="demo1">
                      <%if(hotList){
 			    			hotList.forEach(function(pro){ %>
-			                    <a href="/details/<%= pro.sCode%>/<%= pro.code%>" title="<%= pro.name%>" alt="<%= pro.name%>">
+			                    <a href="/details/<%= pro.sCode%>/<%= pro.code%>.html" title="<%= pro.name%>" alt="<%= pro.name%>">
 			                     <img src="<%= pro.imgUrl%>">
 			                    </a>
 			            <%})}%>
@@ -89,7 +89,7 @@
                    <% newsList.forEach(function(news){%>
                    <div class="zp-info-news-list">
                         <img src="/images/cc.png">
-                        <a href="/archives/<%=news.type%>/<%=news.code%>.html"><%=news.name%></a>
+                        <a href="/archives/<%=news.type%>/<%=news.code%>/"><%=news.name%></a>
                         <span><%=news.createDate%></span>
                     </div>
 				<%})%>

@@ -11,8 +11,8 @@
    <div class="bread">
        <p class="zp-wrap"><%=__('CurrentLocation')%>：
            <a href="/"><%=__('Home')%></a>&gt;
-           <a href="/case"><%=__('Solution')%></a>&gt;
-           山东化工厂滤器产品使用经典案例
+           <a href="/case/"><%=__('Solution')%></a>&gt;
+           <a href="javascript:void(0)"><%= cases.name%></a>
        </p>
    </div>  
         <div class="zp-wrap">
@@ -20,24 +20,14 @@
                 <div class="details-head">
                     <span class="products-icon"><img src="/images/case.jpg" title="xx" alt="xx"></span>
                     <div class="details-info">
-                                <h1 class="products-desc"><%= cases.name%></h1>
-                <p>作者：aidaFilter 日期：<%= cases.createDate%></p>
-               <!--  <div class="products-js">
-                    <p>品牌： </p>
-                    <p>型号： </p>
-                    <p>滤材： </p>
-                    <p>过滤精度： </p>
-                    <p>工作温度： </p>
-                    <p>公称压力： </p>
-                    <p>应用领域： </p>
-                </div> -->
-                <%-cases.description%>
+                        <h1 class="products-desc"><%= cases.name%></h1>
+                        <p>作者：aidaFilter 日期：<%= cases.createDate%></p>
                     </div>
                 </div>
                 <div class="details-content">
                     <div id="details-content-body" class="details-content-body">
                         <div id="details-products-intro" class="details-func">
-                         <p style="margin-top: 0px;margin-bottom: 0px;padding: 0px;border: 0px;list-style: none;line-height: 28px">ISV系列管路吸油过滤器ISV40-160180C ISV系列管路吸油过滤器系由铝合金外壳，滤芯，旁通阀及目测发讯器和电讯器构成的轻质而坚固</p>
+                        <%-cases.description%>
                         </div>
                     </div>
                 </div>
